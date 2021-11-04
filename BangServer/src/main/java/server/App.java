@@ -33,7 +33,7 @@ public class App {
 						Socket sock = listener.accept();
 						Capitalizer cap = new Capitalizer(sock);
 						pool.execute(cap);
-						System.out.println("[Connected] > " + sock);
+						System.out.println("\n[Connected] > " + sock);
 						System.out.print(">> ");
 					} catch(IOException e){
 						// if thead is stopped
