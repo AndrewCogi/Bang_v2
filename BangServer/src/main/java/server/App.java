@@ -30,7 +30,9 @@ public class App {
 			public void run(){
 				while(!Thread.interrupted()){
 					try{
+						// accept connection
 						Socket sock = listener.accept();
+						// add socket into pool
 						Capitalizer cap = new Capitalizer(sock);
 						pool.execute(cap);
 						System.out.println("\n[Connected] > " + sock);
@@ -84,7 +86,7 @@ public class App {
 						break;
 					// unknown command
 					default:
-						System.out.println("[System] > Unknown command.");
+						System.out.println("[System] > Unknown command: " + cmd);
 				}
 			}
 		}
