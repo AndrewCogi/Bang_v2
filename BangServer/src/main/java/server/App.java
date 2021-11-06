@@ -19,22 +19,23 @@ public class App {
 		System.out.println("[System] > Server Start");
 
 		// open server socket
-		System.out.print("Port required(defult:2222)>>  ");
-		int portNum = sc.nextInt();
+		System.out.print("Port required(defult:2222): ");
+		int portNum = Integer.parseInt(sc.nextLine());
 		ServerSocket listener = new ServerSocket(portNum);
 		System.out.println("[System] > ServerSocket is opened (port: " + listener.getLocalPort() + ")");
 
 		// allocate 10 Threads
-		System.out.print("The number of thread required(default:10)>> ");
-		int threadPoolNum = sc.nextInt();
+		int threadPoolNum = 10;
 		ExecutorService pool = Executors.newFixedThreadPool(threadPoolNum);
 		System.out.println("[System] > Make ThreadPools (" + threadPoolNum + ")");
 
 		// client waiting
 		Thread waiter = new Thread(new Runnable(){
 			public void run(){
-				while(!Thread.interrupted()){
+				while(true){
 					try{
+						// notify
+						System.out.println("[System] > Waiting for clients...");
 						// accept connection
 						Socket sock = listener.accept();
 						// add socket into pool
@@ -45,7 +46,7 @@ public class App {
 					} catch(IOException e){
 						// if thead is stopped
 						if(Thread.interrupted() == true) {
-							System.out.println("[System] > Thread(socket) stopped.");
+							System.out.println("[System] > Thread(waiter) stopped.");
 							break;
 						}
 						// else accept error occured
@@ -59,39 +60,43 @@ public class App {
 		});
 		// thread start
 		waiter.start();
+		// waiting until thread start
+		try{Thread.sleep(500);} catch(InterruptedException e){
+			System.out.println("[ERROR] > while waiting thread(waiter) start.");
+			System.out.println(e.getMessage());
+		}
 
 		// command
+		String cmd;
 		while(true){
-			String cmd;
-			while(true){
-				System.out.print(">> ");
-				cmd = sc.nextLine();
-				switch(cmd){
-					// stop server
-					case "stop":
-						System.out.println("[System] > Server closing...");
-						try{
-							// Scanner & listener & Thread stop
-							sc.close();
-							System.out.println("[System] > Scanner(sc) stopped.");
-							listener.close();
-							System.out.println("[System] > ServerSocket(listener) stopped.");
-							waiter.interrupt();
-							System.out.println("[System] > Thread(waiter) interrupted.");
-							// System exit
-							System.exit(0);
-						} catch(IOException e){
-							System.out.println("[ERROR] > while closing server.");
-							System.out.println(e.getMessage());
-						}
-						break;
-					// nothing..
-					case "":
-						break;
-					// unknown command
-					default:
-						System.out.println("[System] > Unknown command: " + cmd);
-				}
+			System.out.print(">> ");
+			cmd = sc.nextLine();
+			switch(cmd){
+				// stop server
+				case "stop":
+					System.out.println("[System] > Server closing...");
+					try{
+						// Scanner & listener & Thread stop
+						sc.close();
+						System.out.println("[System] > Scanner(sc) stopped.");
+						listener.close();
+						System.out.println("[System] > ServerSocket(listener) stopped.");
+						waiter.interrupt();
+						System.out.println("[System] > Thread(waiter) interrupted.");
+
+						// stop server
+						System.exit(0);
+					} catch(IOException e){
+						System.out.println("[ERROR] > while closing server.");
+						System.out.println(e.getMessage());
+					}
+					break;
+				// nothing..
+				case "":
+					break;
+				// unknown command
+				default:
+					System.out.println("[System] > Unknown command: " + cmd);
 			}
 		}
 	}
