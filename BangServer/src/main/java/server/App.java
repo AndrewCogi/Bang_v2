@@ -13,17 +13,22 @@ import java.util.concurrent.Executors;
 
 public class App {
 	public static void main(String[] args) throws IOException{
+		// Scanner
+		Scanner sc = new Scanner(System.in);
 		// server start
 		System.out.println("[System] > Server Start");
 
 		// open server socket
-		ServerSocket listener = new ServerSocket(2222);
+		System.out.print("Port required(defult:2222)>>  ");
+		int portNum = sc.nextInt();
+		ServerSocket listener = new ServerSocket(portNum);
 		System.out.println("[System] > ServerSocket is opened (port: " + listener.getLocalPort() + ")");
 
 		// allocate 10 Threads
-		int threadPoolNum = 10;
+		System.out.print("The number of thread required(default:10)>> ");
+		int threadPoolNum = sc.nextInt();
 		ExecutorService pool = Executors.newFixedThreadPool(threadPoolNum);
-		System.out.println("[System] > Make ThreadPools (10)");
+		System.out.println("[System] > Make ThreadPools (" + threadPoolNum + ")");
 
 		// client waiting
 		Thread waiter = new Thread(new Runnable(){
@@ -57,7 +62,6 @@ public class App {
 
 		// command
 		while(true){
-			Scanner sc = new Scanner(System.in);
 			String cmd;
 			while(true){
 				System.out.print(">> ");
