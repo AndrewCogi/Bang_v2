@@ -13,7 +13,7 @@ import java.util.concurrent.Executors;
 
 public class App {
 	public static void main(String[] args) throws IOException{
-		// Scanner
+		// Scanner for input keyboard input
 		Scanner sc = new Scanner(System.in);
 		// server start
 		System.out.println("[System] > Server Start");
@@ -32,10 +32,10 @@ public class App {
 		// client waiting
 		Thread waiter = new Thread(new Runnable(){
 			public void run(){
+				// notify
+				System.out.println("[System] > Waiting for clients...");
 				while(true){
 					try{
-						// notify
-						System.out.println("[System] > Waiting for clients...");
 						// accept connection
 						Socket sock = listener.accept();
 						// add socket into pool
@@ -58,8 +58,10 @@ public class App {
 				}
 			}
 		});
+
 		// thread start
 		waiter.start();
+
 		// waiting until thread start
 		try{Thread.sleep(500);} catch(InterruptedException e){
 			System.out.println("[ERROR] > while waiting thread(waiter) start.");
@@ -76,13 +78,15 @@ public class App {
 				case "stop":
 					System.out.println("[System] > Server closing...");
 					try{
-						// Scanner & listener & Thread stop
+						// Scanner & listener & Thread & pool stop
 						sc.close();
-						System.out.println("[System] > Scanner(sc) stopped.");
+						System.out.println("[System] > Scanner(sc) is stopped.");
 						listener.close();
-						System.out.println("[System] > ServerSocket(listener) stopped.");
+						System.out.println("[System] > ServerSocket(listener) is stopped.");
 						waiter.interrupt();
-						System.out.println("[System] > Thread(waiter) interrupted.");
+						System.out.println("[System] > Thread(waiter) is interrupted.");
+						pool.shutdown();
+						System.out.println("[System] > ExecutorService(pool) is terminated.");
 
 						// stop server
 						System.exit(0);
