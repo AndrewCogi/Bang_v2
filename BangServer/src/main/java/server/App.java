@@ -7,30 +7,42 @@ package server;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class App {
+	private static Scanner sc; // Scanner for keyboard input
+	private static List<Socket> clients; // List of sockets(clients)
+	private static ServerSocket listener; // ServerSocket
+	private static Thread waiter; // client waiter
+	private static ExecutorService pool; // ThreadPool
+	private static final int threadPoolNum = 10; // How many threads in pool
+
 	public static void main(String[] args) throws IOException{
-		// Scanner for input keyboard input
-		Scanner sc = new Scanner(System.in);
+		// init
+		sc = new Scanner(System.in);
+		clients = new ArrayList<>();
+
 		// server start
 		System.out.println("[System] > Server Start");
 
-		// open server socket
+		// get port number
 		System.out.print("Port required(defult:2222): ");
 		int portNum = Integer.parseInt(sc.nextLine());
-		ServerSocket listener = new ServerSocket(portNum);
+
+		// open server socket
+		listener = new ServerSocket(portNum);
 		System.out.println("[System] > ServerSocket is opened (port: " + listener.getLocalPort() + ")");
 
 		// allocate 10 Threads
-		int threadPoolNum = 10;
-		ExecutorService pool = Executors.newFixedThreadPool(threadPoolNum);
+		pool = Executors.newFixedThreadPool(threadPoolNum);
 		System.out.println("[System] > Make ThreadPools (" + threadPoolNum + ")");
 
 		// client waiting
-		Thread waiter = new Thread(new Runnable(){
+		waiter = new Thread(new Runnable(){
 			public void run(){
 				// notify
 				System.out.println("[System] > Waiting for clients...");
@@ -41,6 +53,9 @@ public class App {
 						// add socket into pool
 						Capitalizer cap = new Capitalizer(sock);
 						pool.execute(cap);
+						// add socket into clients
+						clients.add(sock);
+						// notify
 						System.out.println("\n[Connected] > " + sock);
 						System.out.print(">> ");
 					} catch(IOException e){
@@ -69,39 +84,42 @@ public class App {
 		}
 
 		// command
-		String cmd;
 		while(true){
 			System.out.print(">> ");
-			cmd = sc.nextLine();
-			switch(cmd){
-				// stop server
-				case "stop":
-					System.out.println("[System] > Server closing...");
-					try{
-						// Scanner & listener & Thread & pool stop
-						sc.close();
-						System.out.println("[System] > Scanner(sc) is stopped.");
-						listener.close();
-						System.out.println("[System] > ServerSocket(listener) is stopped.");
-						waiter.interrupt();
-						System.out.println("[System] > Thread(waiter) is interrupted.");
-						pool.shutdown();
-						System.out.println("[System] > ExecutorService(pool) is terminated.");
-
-						// stop server
-						System.exit(0);
-					} catch(IOException e){
-						System.out.println("[ERROR] > while closing server.");
-						System.out.println(e.getMessage());
-					}
-					break;
-				// nothing..
-				case "":
-					break;
-				// unknown command
-				default:
-					System.out.println("[System] > Unknown command: " + cmd);
-			}
+			commandProsessor(sc.nextLine());
 		}
 	}
+
+	private static void commandProsessor(String cmd){
+		switch(cmd){
+			// stop server
+			case "stop":
+				System.out.println("[System] > Server closing...");
+				try{
+					// Scanner & listener & Thread & pool stop
+					sc.close();
+					System.out.println("[System] > Scanner(sc) is stopped.");
+					listener.close();
+					System.out.println("[System] > ServerSocket(listener) is stopped.");
+					waiter.interrupt();
+					System.out.println("[System] > Thread(waiter) is interrupted.");
+					pool.shutdown();
+					System.out.println("[System] > ExecutorService(pool) is terminated.");
+
+					// stop server
+					System.exit(0);
+				} catch(IOException e){
+					System.out.println("[ERROR] > while closing server.");
+					System.out.println(e.getMessage());
+				}
+				break;
+				// nothing..
+			case "":
+				break;
+				// unknown command
+			default:
+				System.out.println("[System] > Unknown command: " + cmd);
+		}
+	}
+
 }
