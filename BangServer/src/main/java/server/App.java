@@ -1,6 +1,6 @@
 /*
  * class name: App
- * purpose: get command & manage socket
+ * purpose: main App, open ServerSocket & wait clients
  */
 package server;
 
@@ -26,26 +26,26 @@ public class App {
 		clients = new ArrayList<>();
 
 		// server start
-		System.out.println("[System] > Server Start");
+		System.out.println("[System][App] > Server Start");
 
 		// get port number
-		System.out.print("Port required(defult:2222): ");
+		System.out.print("[System][App] > Port required(defult:2222): ");
 		int portNum = Integer.parseInt(sc.nextLine());
 
 		// open server socket
 		listener = new ServerSocket(portNum);
-		System.out.println("[System] > ServerSocket is opened (port: " + listener.getLocalPort() + ")");
+		System.out.println("[System][App] > ServerSocket is opened (port: " + listener.getLocalPort() + ")");
 
 		// allocate 10 Threads
 		pool = Executors.newFixedThreadPool(threadPoolNum);
-		System.out.println("[System] > Make ThreadPools (" + threadPoolNum + ")");
+		System.out.println("[System][App] > Make ThreadPools (" + threadPoolNum + ")");
 
 		// commandThread start
 		Commander commandThread = new Commander(sc);
-		commandThread.run();
+		commandThread.start();
 
 		// client waiting
-		System.out.println("[System] > Waiting for clients...");
+		System.out.println("[System][App] > Waiting for clients...");
 		while(true){
 			try{
 				// accept connection
@@ -59,8 +59,23 @@ public class App {
 				System.out.println("\n[Connected] > " + sock);
 				System.out.print(">> ");
 			} catch(IOException e){
-				System.out.println("[ERROR] > while accepting listener.");
-				System.out.println(e.getMessage());
+				if(commandThread.isInterrupted()){
+					try{
+						System.out.println("[System][App] > waiting for commandThread join...");
+						commandThread.join();
+					} catch(InterruptedException e1){
+						System.out.println("[ERROR] > while commandThread join.");
+						System.out.println(e.getMessage());
+					} finally{
+						// good
+						System.out.println("[System][App] > Server successfully closed.");
+						System.exit(0);
+					}
+				}
+				else{
+					System.out.println("[ERROR] > while accepting listener.");
+					System.out.println(e.getMessage());
+				}
 			}
 		}
 

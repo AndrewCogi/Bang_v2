@@ -1,13 +1,14 @@
+/* 
+ * class name: Commander
+ * purpose: command management
+ *
+ */
 package server;
 
 import java.io.IOException;
-import java.net.ServerSocket;
-import java.net.Socket;
-import java.util.List;
 import java.util.Scanner;
-import java.util.concurrent.ExecutorService;
 
-public class Commander implements Runnable{
+public class Commander extends Thread{
 	private Scanner sc;
 	private String cmd;
 
@@ -19,42 +20,46 @@ public class Commander implements Runnable{
 
 	@Override
 	public void run(){
-		while(true){
+		while(!this.isInterrupted()){
 			showCommandLine();
 			cmd = sc.nextLine();
 			switch(cmd){
 				// stop server
 				case "stop":
-					this.stop();
+					stop_server();
 					break;
 				// nothing...
 				case "":
 					break;
 				// unknown command
 				default:
-					System.out.println("[System] > Unknown command: " + cmd);
+					System.out.println("[System][Commander] > Unknown command: " + cmd);
 			}
 		}
-	} // end of method(run)
+	}
 
 	// stop server
-	public void stop(){
-		System.out.println("[System] > Server closing...");
-		try{
-			// Scanner & listener & pool stop
-			App.getScanner().close();
-			System.out.println("[System] > Scanner(sc) is stopped.");
+	public void stop_server(){
+		System.out.println("[System][Commander] > Server closing...");
+		// thread stop
+		this.interrupt();
+		try {
+			// listener stop
 			App.getServerSocket().close();
-			System.out.println("[System] > ServerSocket(listener) is stopped.");
-			App.getExecutorService().shutdown();
-			System.out.println("[System] > ExecutorService(pool) is terminated.");
-			// stop server
-			System.exit(0);
-		} catch(IOException e){
-			System.out.println("[ERROR] > while closing server.");
+			System.out.println("[System][Commander] > ServerSocket(listener) is stopped.");
+		} catch (IOException e) {
+			System.out.println("[ERROR] > while closing ServerSocket(listener).");
 			System.out.println(e.getMessage());
+		} finally {
+			// sc stop
+			sc.close();
+			App.getScanner().close();
+			System.out.println("[System][Commander] > Scanner(App.sc, Commander.sc) is stopped.");
+			// pool stop
+			App.getExecutorService().shutdown();
+			System.out.println("[System][Commander] > ExecutorService(pool) is terminated.");
 		}
-	} // end of method(stop)
+	}
 
 	// show command line interface
 	public void showCommandLine(){
