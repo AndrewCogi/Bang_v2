@@ -36,14 +36,3 @@ application {
 run {
 	standardInput = System.in
 }
-
-jar {
-	manifest {
-		attributes 'Main-Class': 'server.App'
-	}
-	from {
-		configurations.compile.collect {
-			it.isDirectory() ? it : zipTree(it)
-		}
-	}
-}
