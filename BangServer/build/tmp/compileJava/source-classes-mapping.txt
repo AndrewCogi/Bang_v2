@@ -1,6 +1,0 @@
-server/App.java
- server.App
-server/Commander.java
- server.Commander
-server/Capitalizer.java
- server.Capitalizer
