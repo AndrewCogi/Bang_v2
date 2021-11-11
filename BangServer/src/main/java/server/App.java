@@ -17,7 +17,6 @@ public class App {
 	private static Scanner sc; // Scanner for keyboard input
 	private static List<Socket> clients; // List of sockets(clients)
 	private static ServerSocket listener; // ServerSocket
-	private static Thread waiter; // client waiter
 	private static ExecutorService pool; // ThreadPool
 	private static final int threadPoolNum = 10; // How many threads in pool
 
@@ -41,85 +40,42 @@ public class App {
 		pool = Executors.newFixedThreadPool(threadPoolNum);
 		System.out.println("[System] > Make ThreadPools (" + threadPoolNum + ")");
 
+		// commandThread start
+		Commander commandThread = new Commander(sc);
+		commandThread.run();
+
 		// client waiting
-		waiter = new Thread(new Runnable(){
-			public void run(){
-				// notify
-				System.out.println("[System] > Waiting for clients...");
-				while(true){
-					try{
-						// accept connection
-						Socket sock = listener.accept();
-						// add socket into pool
-						Capitalizer cap = new Capitalizer(sock);
-						pool.execute(cap);
-						// add socket into clients
-						clients.add(sock);
-						// notify
-						System.out.println("\n[Connected] > " + sock);
-						System.out.print(">> ");
-					} catch(IOException e){
-						// if thead is stopped
-						if(Thread.interrupted() == true) {
-							System.out.println("[System] > Thread(waiter) stopped.");
-							break;
-						}
-						// else accept error occured
-						else{
-							System.out.println("[ERROR] > while accepting listener.");
-							System.out.println(e.getMessage());
-						}
-					}
-				}
-			}
-		});
-
-		// thread start
-		waiter.start();
-
-		// waiting until thread start
-		try{Thread.sleep(500);} catch(InterruptedException e){
-			System.out.println("[ERROR] > while waiting thread(waiter) start.");
-			System.out.println(e.getMessage());
-		}
-
-		// command
+		System.out.println("[System] > Waiting for clients...");
 		while(true){
-			System.out.print(">> ");
-			commandProsessor(sc.nextLine());
+			try{
+				// accept connection
+				Socket sock = listener.accept();
+				// add socket into pool
+				Capitalizer cap = new Capitalizer(sock);
+				pool.execute(cap);
+				// add socket into clients
+				clients.add(sock);
+				// notify
+				System.out.println("\n[Connected] > " + sock);
+				System.out.print(">> ");
+			} catch(IOException e){
+				System.out.println("[ERROR] > while accepting listener.");
+				System.out.println(e.getMessage());
+			}
 		}
+
 	}
 
-	private static void commandProsessor(String cmd){
-		switch(cmd){
-			// stop server
-			case "stop":
-				System.out.println("[System] > Server closing...");
-				try{
-					// Scanner & listener & Thread & pool stop
-					sc.close();
-					System.out.println("[System] > Scanner(sc) is stopped.");
-					listener.close();
-					System.out.println("[System] > ServerSocket(listener) is stopped.");
-					waiter.interrupt();
-					System.out.println("[System] > Thread(waiter) is interrupted.");
-					pool.shutdown();
-					System.out.println("[System] > ExecutorService(pool) is terminated.");
+	public synchronized static ServerSocket getServerSocket(){
+		return listener;
+	}
 
-					// stop server
-					System.exit(0);
-				} catch(IOException e){
-					System.out.println("[ERROR] > while closing server.");
-					System.out.println(e.getMessage());
-				}
-				break;
-				// nothing..
-			case "":
-				break;
-				// unknown command
-			default:
-				System.out.println("[System] > Unknown command: " + cmd);
-		}
+	public synchronized static Scanner getScanner(){
+		return sc;
+	}
+
+	public synchronized static ExecutorService getExecutorService(){
+		return pool;
 	}
 
 }
