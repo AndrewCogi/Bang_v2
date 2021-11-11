@@ -59,7 +59,7 @@ public class App {
 				System.out.println("\n[Connected] > " + sock);
 				System.out.print(">> ");
 			} catch(IOException e){
-				if(commandThread.isInterrupted()){
+				if(e.getMessage().equals("Socket closed")){
 					try{
 						System.out.println("[System][App] > waiting for commandThread join...");
 						commandThread.join();

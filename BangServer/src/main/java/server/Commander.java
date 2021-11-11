@@ -36,6 +36,8 @@ public class Commander extends Thread{
 					System.out.println("[System][Commander] > Unknown command: " + cmd);
 			}
 		}
+		// end of run
+		System.out.println("[System][Commander] > Thread(commandThread) is stopped.");
 	}
 
 	// stop server
