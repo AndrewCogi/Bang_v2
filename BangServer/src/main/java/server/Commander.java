@@ -25,8 +25,12 @@ public class Commander extends Thread{
 			cmd = sc.nextLine();
 			switch(cmd){
 				// stop server
-				case "stop":
+				case "stop server":
 					stop_server();
+					break;
+				// show clients info
+				case "show clients":
+					show_clients();
 					break;
 				// nothing...
 				case "":
@@ -38,6 +42,13 @@ public class Commander extends Thread{
 		}
 		// end of run
 		System.out.println("[System][Commander] > Thread(commandThread) is stopped.");
+	}
+
+	// show clients
+	public void show_clients(){
+		for(int i=0; i<App.getClients().size(); i++){
+			System.out.println("client[" + (i+1) + "]: " + App.getClients().get(i));
+		}
 	}
 
 	// stop server

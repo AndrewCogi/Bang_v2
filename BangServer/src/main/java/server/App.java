@@ -63,6 +63,7 @@ public class App {
 					try{
 						System.out.println("[System][App] > waiting for commandThread join...");
 						commandThread.join();
+						System.out.println("[System][App] > Thread(commandThread) is stopped confirm.");
 					} catch(InterruptedException e1){
 						System.out.println("[ERROR] > while commandThread join.");
 						System.out.println(e.getMessage());
@@ -91,6 +92,10 @@ public class App {
 
 	public synchronized static ExecutorService getExecutorService(){
 		return pool;
+	}
+
+	public synchronized static List<Socket> getClients(){
+		return clients;
 	}
 
 }
