@@ -1,7 +1,6 @@
 /* 
  * class name: Commander
  * purpose: command management
- *
  */
 package server;
 
