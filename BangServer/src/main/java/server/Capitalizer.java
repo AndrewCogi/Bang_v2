@@ -20,9 +20,6 @@ public class Capitalizer implements Runnable{
 			System.out.println("[ERROR] > while initalize stream.");
 			System.out.println(e.getMessage());
 		}
-		// sessionThread start
-		Session sessionThread = new Session(socket);
-		sessionThread.start();
 	}
 
 	@Override
