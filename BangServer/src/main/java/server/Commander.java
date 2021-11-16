@@ -5,6 +5,7 @@
 package server;
 
 import java.io.IOException;
+import java.net.Socket;
 import java.util.Scanner;
 
 public class Commander extends Thread{
@@ -45,8 +46,10 @@ public class Commander extends Thread{
 
 	// show clients
 	public void show_clients(){
-		for(int i=0; i<App.getClients().size(); i++){
-			System.out.println("client[" + (i+1) + "]: " + App.getClients().get(i));
+		int i=1;
+		for(Socket s : App.getClients().keySet()){
+			System.out.println("client[" + i + "]: " + s);
+			i++;
 		}
 	}
 

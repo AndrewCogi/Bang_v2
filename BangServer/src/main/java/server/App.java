@@ -7,15 +7,14 @@ package server;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
 import java.util.Scanner;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class App {
 	private static Scanner sc; // Scanner for keyboard input
-	private static List<Socket> clients; // List of sockets(clients)
+	private static HashMap<Socket,String> clients; // Map of socket-clientName
 	private static ServerSocket listener; // ServerSocket
 	private static ExecutorService pool; // ThreadPool
 	private static final int threadPoolNum = 10; // How many threads in pool
@@ -23,7 +22,7 @@ public class App {
 	public static void main(String[] args) throws IOException{
 		// init
 		sc = new Scanner(System.in);
-		clients = new ArrayList<>();
+		clients = new HashMap<>();
 
 		// server start
 		System.out.println("[System][App] > Server Start");
@@ -54,7 +53,7 @@ public class App {
 				Capitalizer cap = new Capitalizer(sock);
 				pool.execute(cap);
 				// add socket into clients
-				clients.add(sock);
+				clients.put(sock,"Unknown");
 				// notify
 				System.out.println("\n[Connected] > " + sock);
 				System.out.print(">> ");
@@ -95,7 +94,7 @@ public class App {
 		return pool;
 	}
 
-	public synchronized static List<Socket> getClients(){
+	public synchronized static HashMap<Socket,String> getClients(){
 		return clients;
 	}
 

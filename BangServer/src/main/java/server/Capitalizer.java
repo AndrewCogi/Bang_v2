@@ -17,6 +17,8 @@ public class Capitalizer implements Runnable{
 	private PrintWriter os;
 	// session manager
 	private SessionManager session;
+	// login manager
+	private LoginManager login;
 
 	// constructor
 	public Capitalizer(Socket socket){
@@ -28,17 +30,20 @@ public class Capitalizer implements Runnable{
 			System.out.println(e.getMessage());
 		}
 		session = new SessionManager(socket, os);
-		// login = new LoginManager(os);
+		login = new LoginManager();
 		// game = new GameManager(os);
 	}
 
 	@Override
 	public void run(){
+		// IMPORTANT!: DO NOT STOP!
 		String cmd;
 		while(is.hasNextLine()){
 			cmd = is.nextLine();
 			// session command
 			if(cmd.startsWith("session")) session.request(cmd);
+			// login command
+			else if(cmd.startsWith("login")) login.request(cmd);
 		}
 	}
 }

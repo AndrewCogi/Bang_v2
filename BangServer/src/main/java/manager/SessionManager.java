@@ -6,7 +6,6 @@ package manager;
 
 import java.io.PrintWriter;
 import java.net.Socket;
-import java.util.Scanner;
 import timer.SessionTimer;
 
 public class SessionManager{

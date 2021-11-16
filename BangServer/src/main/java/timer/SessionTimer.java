@@ -33,7 +33,6 @@ public class SessionTimer extends Thread{
 		disconnected();
 		// stop this thread
 		this.interrupt();
-		System.out.println("[System][SessionTimer] > SessionTimer(timer) is stopped.");
 	}
 
 	// disconnected process method
@@ -42,8 +41,13 @@ public class SessionTimer extends Thread{
 		// client: stop client side app
 		os.println("session/DISCONNECTED");
 		System.out.println("\n[DISCONNECTED] > "+socket);
+		System.out.print(">> ");
 		// remove this socket in clients
-		server.App.getClients().remove(server.App.getClients().indexOf(socket));
+		for(Socket s : server.App.getClients().keySet()){
+			if(socket == s){
+				server.App.getClients().remove(s);
+			}
+		}
 	}
 
 	// true: yes! timeout / false: no! not yet
