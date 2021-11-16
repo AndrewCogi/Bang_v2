@@ -4,28 +4,57 @@
  */
 package manager;
 
-public class LoginManager{
-	private String playerName;
+import java.io.PrintWriter;
+import java.net.Socket;
 
-	public LoginManager(){
+public class LoginManager{
+	// socket (for check connection)
+	private Socket socket;
+	// playerName
+	private String playerName;
+	// output stream
+	private PrintWriter os;
+
+	// constructor
+	public LoginManager(PrintWriter os){
 		this.playerName = "";
+		this.os = os;
 	}
 
 	public void request(String cmd){
 		// login/[??]
 		String[] splitCmd = cmd.split("/");
 		System.out.println("[System][LoginManager][get] > "+cmd);
-		// player first login
+		// login/PLAYERNAME/[playerName]
 		if(splitCmd[1].equals("PLAYERNAME")){
-			if(checkPlayerName()){
-				// setPlayerName();
+			String tempName = splitCmd[2];
+			// check this playerName is available
+			if(checkPlayerName(tempName)){
+				// init
+				this.playerName = tempName;
+				// add playerName into clients
+				setPlayerName(this.playerName);
+				// send result
+				os.println("login/PLAYERNAME/TRUE");
+			}
+			else{
+				// send result
+				os.println("login/PLAYERNAME/FALSE");
 			}
 		}
 	}
 
 	// check this playerName is available
-	private boolean checkPlayerName(){
-		return false;
+	private boolean checkPlayerName(String tempName){
+		for(String name : server.App.getClients().values()){
+			if(name.equals(tempName)) return false;
+		}
+		return true;
+	}
+
+	// set playerName into clients
+	private void setPlayerName(String newName){
+		// TODO
 	}
 
 }

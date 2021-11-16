@@ -43,11 +43,7 @@ public class SessionTimer extends Thread{
 		System.out.println("\n[DISCONNECTED] > "+socket);
 		System.out.print(">> ");
 		// remove this socket in clients
-		for(Socket s : server.App.getClients().keySet()){
-			if(socket == s){
-				server.App.getClients().remove(s);
-			}
-		}
+		server.App.getClients().remove(socket);
 	}
 
 	// true: yes! timeout / false: no! not yet

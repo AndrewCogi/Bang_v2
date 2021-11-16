@@ -26,7 +26,7 @@ public class SessionManager{
 	public void request(String cmd){
 		// session/[??]
 		String[] splitCmd = cmd.split("/");
-		System.out.println("[System][SessionManager][get] > "+cmd);
+		// System.out.println("[System][SessionManager][get] > "+cmd);
 		// respond session check packet
 		if(splitCmd[1].equals("SESSIONCHECKPKT")){
 			SessionCheckPKT();
@@ -38,6 +38,6 @@ public class SessionManager{
 	private void SessionCheckPKT(){
 		String respondMessage = "session/SESSIONCHECKPKT";
 		os.println(respondMessage);
-		System.out.println("[System][SessionManager][send] > "+respondMessage);
+		// System.out.println("[System][SessionManager][send] > "+respondMessage);
 	}
 }

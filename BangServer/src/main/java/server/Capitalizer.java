@@ -30,7 +30,7 @@ public class Capitalizer implements Runnable{
 			System.out.println(e.getMessage());
 		}
 		session = new SessionManager(socket, os);
-		login = new LoginManager();
+		login = new LoginManager(os);
 		// game = new GameManager(os);
 	}
 
