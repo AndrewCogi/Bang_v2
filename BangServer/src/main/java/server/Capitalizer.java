@@ -30,13 +30,16 @@ public class Capitalizer implements Runnable{
 			System.out.println(e.getMessage());
 		}
 		session = new SessionManager(socket, os);
-		login = new LoginManager(os);
+		login = new LoginManager(socket, os);
 		// game = new GameManager(os);
 	}
 
 	@Override
 	public void run(){
 		// IMPORTANT!: DO NOT STOP!
+		// until session is over!
+		// TODO: if session is over, mist kill this capitalizer
+		// ->isAlive() make
 		String cmd;
 		while(is.hasNextLine()){
 			cmd = is.nextLine();

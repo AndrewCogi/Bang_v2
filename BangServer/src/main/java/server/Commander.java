@@ -46,10 +46,8 @@ public class Commander extends Thread{
 
 	// show clients
 	public void show_clients(){
-		int i=1;
 		for(Socket s : App.getClients().keySet()){
-			System.out.println("client[" + i + "]: " + s);
-			i++;
+			System.out.println("client[" + App.getClients().get(s) + "]: " + s);
 		}
 	}
 

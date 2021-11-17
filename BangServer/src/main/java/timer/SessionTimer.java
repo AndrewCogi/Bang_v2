@@ -25,6 +25,7 @@ public class SessionTimer extends Thread{
 			try{
 				Thread.sleep(1000);
 			} catch(InterruptedException e){
+				System.out.println("[ERROR] > while sessionTimer is working.");
 				System.out.println(e.getMessage());
 			}
 		}

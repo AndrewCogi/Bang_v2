@@ -16,9 +16,10 @@ public class LoginManager{
 	private PrintWriter os;
 
 	// constructor
-	public LoginManager(PrintWriter os){
-		this.playerName = "";
+	public LoginManager(Socket socket, PrintWriter os){
+		this.socket = socket;
 		this.os = os;
+		this.playerName = "Unknown";
 	}
 
 	public void request(String cmd){
@@ -36,10 +37,12 @@ public class LoginManager{
 				setPlayerName(this.playerName);
 				// send result
 				os.println("login/PLAYERNAME/TRUE");
+				System.out.println("[System][LoginManager][SUCCESS] > "+socket+" "+playerName);
 			}
 			else{
 				// send result
 				os.println("login/PLAYERNAME/FALSE");
+				System.out.println("[System][LoginManager][FAIL] > "+socket+" "+playerName);
 			}
 		}
 	}
@@ -54,7 +57,7 @@ public class LoginManager{
 
 	// set playerName into clients
 	private void setPlayerName(String newName){
-		// TODO
+		server.App.getClients().put(socket,newName);
 	}
 
 }
