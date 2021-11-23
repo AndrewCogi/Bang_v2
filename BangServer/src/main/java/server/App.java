@@ -55,7 +55,7 @@ public class App {
 				// add socket into clients
 				clients.put(sock,"Unknown");
 				// notify
-				System.out.println("\n[Connected] > " + sock);
+				System.out.println("\n[CONNECTED] > " + sock);
 				System.out.print(">> ");
 			} catch(IOException e){
 				// listener is stopped
