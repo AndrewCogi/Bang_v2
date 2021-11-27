@@ -21,9 +21,13 @@ public class Commander extends Thread{
 	@Override
 	public void run(){
 		while(!this.isInterrupted()){
-			showCommandLine();
 			cmd = sc.nextLine();
 			switch(cmd){
+				// help
+				case "?":
+				case "h":
+					help();
+					break;
 				// stop server
 				case "stop server":
 					stop_server();
@@ -44,10 +48,22 @@ public class Commander extends Thread{
 		System.out.println("[System][Commander] > Thread(commandThread) is stopped.");
 	}
 
+
+	// helper
+	public void help(){
+		System.out.println(" stop server: Stops the server.");
+		System.out.println(" show clients: Show information of the client.");
+	}
+
 	// show clients
 	public void show_clients(){
-		for(Socket s : App.getClients().keySet()){
-			System.out.println("client[" + App.getClients().get(s) + "]: " + s);
+		// if no clients,
+		if(App.getClients().size() == 0) System.out.println("[System][Commander] no clients!");
+		// if have clients,
+		else{
+			for(Socket s : App.getClients().keySet()){
+				System.out.println("PlayerName[" + App.getClients().get(s) + "] " + s);
+			}
 		}
 	}
 
@@ -72,11 +88,6 @@ public class Commander extends Thread{
 			App.getExecutorService().shutdown();
 			System.out.println("[System][Commander] > ExecutorService(pool) is terminated.");
 		}
-	}
-
-	// show command line interface
-	public void showCommandLine(){
-		System.out.print(">> ");
 	}
 
 } // end of class

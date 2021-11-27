@@ -37,12 +37,12 @@ public class LoginManager{
 				setPlayerName(this.playerName);
 				// send result
 				os.println("login/PLAYERNAME/TRUE");
-				System.out.println("[System][LoginManager][SUCCESS] > "+socket+" "+playerName);
+				System.out.println("[System][LoginManager][SUCCESS] > PlayerName["+playerName+"] "+socket);
 			}
 			else{
 				// send result
 				os.println("login/PLAYERNAME/FALSE");
-				System.out.println("[System][LoginManager][FAIL] > "+socket+" "+playerName);
+				System.out.println("[System][LoginManager][FAIL] > PlayerName["+playerName+"] "+socket);
 			}
 		}
 	}

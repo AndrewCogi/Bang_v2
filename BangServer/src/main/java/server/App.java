@@ -39,12 +39,14 @@ public class App {
 		pool = Executors.newFixedThreadPool(threadPoolNum);
 		System.out.println("[System][App] > Make ThreadPools (" + threadPoolNum + ")");
 
+		// client waiting
+		System.out.println("[System][App] > Waiting for clients...");
+		System.out.println("[System][App] > 'h' or '?' for help.");
+
 		// commandThread start
 		Commander commandThread = new Commander(sc);
 		commandThread.start();
 
-		// client waiting
-		System.out.println("[System][App] > Waiting for clients...");
 		while(true){
 			try{
 				// accept connection
@@ -55,8 +57,7 @@ public class App {
 				// add socket into clients
 				clients.put(sock,"Unknown");
 				// notify
-				System.out.println("\n[CONNECTED] > " + sock);
-				System.out.print(">> ");
+				System.out.println("[CONNECTED] > "+sock);
 			} catch(IOException e){
 				// listener is stopped
 				if(e.getMessage().equals("Socket closed")){

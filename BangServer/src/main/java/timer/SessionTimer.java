@@ -41,8 +41,7 @@ public class SessionTimer extends Thread{
 		// send [session/DISCONNECTED] message
 		// client: stop client side app
 		os.println("session/DISCONNECTED");
-		System.out.println("\n[DISCONNECTED] > "+socket);
-		System.out.print(">> ");
+		System.out.println("[DISCONNECTED] > PlayerName["+server.App.getClients().get(socket)+"] "+socket);
 		// remove this socket in clients
 		server.App.getClients().remove(socket);
 	}
