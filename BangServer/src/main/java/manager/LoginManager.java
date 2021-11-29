@@ -6,6 +6,7 @@ package manager;
 
 import java.io.PrintWriter;
 import java.net.Socket;
+import debug.DateTime;
 
 public class LoginManager{
 	// socket (for check connection)
@@ -37,11 +38,14 @@ public class LoginManager{
 				setPlayerName(this.playerName);
 				// send result
 				os.println("login/PLAYERNAME/TRUE");
-				System.out.println("[System][LoginManager][SUCCESS] > PlayerName["+playerName+"] "+socket);
+				DateTime.showTime();
+				System.out.println("[ENTERED] > PlayerName["+playerName+"] "+socket);
 			}
+			// this playerName is not available
 			else{
 				// send result
 				os.println("login/PLAYERNAME/FALSE");
+				DateTime.showTime();
 				System.out.println("[System][LoginManager][FAIL] > PlayerName["+playerName+"] "+socket);
 			}
 		}

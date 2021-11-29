@@ -28,18 +28,18 @@ public class Commander extends Thread{
 				case "h":
 					help();
 					break;
-				// stop server
+					// stop server
 				case "stop server":
 					stop_server();
 					break;
-				// show clients info
+					// show clients info
 				case "show clients":
 					show_clients();
 					break;
-				// nothing...
+					// nothing...
 				case "":
 					break;
-				// unknown command
+					// unknown command
 				default:
 					System.out.println("[System][Commander] > Unknown command: " + cmd);
 			}
@@ -51,18 +51,22 @@ public class Commander extends Thread{
 
 	// helper
 	public void help(){
-		System.out.println(" stop server: Stops the server.");
-		System.out.println(" show clients: Show information of the client.");
+		System.out.println("[System][Commander] > stop server:\t Stops the server.");
+		System.out.println("[System][Commander] > show clients:\t Show information of the client.");
 	}
 
 	// show clients
 	public void show_clients(){
 		// if no clients,
-		if(App.getClients().size() == 0) System.out.println("[System][Commander] no clients!");
+		if(App.getClients().size() == 0){
+			System.out.println("[System][Commander] > Nobody in here.");
+		}
 		// if have clients,
 		else{
+			int idx = 0;
 			for(Socket s : App.getClients().keySet()){
-				System.out.println("PlayerName[" + App.getClients().get(s) + "] " + s);
+				System.out.println("Client["+idx+"] > PlayerName[" + App.getClients().get(s) + "] " + s);
+				idx++;
 			}
 		}
 	}

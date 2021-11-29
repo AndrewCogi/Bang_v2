@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.Scanner;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import debug.DateTime;
 
 public class App {
 	private static Scanner sc; // Scanner for keyboard input
@@ -57,6 +58,7 @@ public class App {
 				// add socket into clients
 				clients.put(sock,"Unknown");
 				// notify
+				DateTime.showTime();
 				System.out.println("[CONNECTED] > "+sock);
 			} catch(IOException e){
 				// listener is stopped
