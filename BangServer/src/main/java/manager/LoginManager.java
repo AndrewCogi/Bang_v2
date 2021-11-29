@@ -26,7 +26,6 @@ public class LoginManager{
 	public void request(String cmd){
 		// login/[??]
 		String[] splitCmd = cmd.split("/");
-		System.out.println("[System][LoginManager][get] > "+cmd);
 		// login/PLAYERNAME/[playerName]
 		if(splitCmd[1].equals("PLAYERNAME")){
 			String tempName = splitCmd[2];
@@ -37,7 +36,7 @@ public class LoginManager{
 					// send result
 					os.println("login/PLAYERNAME/FALSE/Member exceeded");
 					DateTime.showTime();
-					System.out.println("[System][LoginManager][FAIL][Member Exceeded] > PlayerName["+playerName+"] "+socket);
+					System.out.println("[LOGIN FAILED][Member Exceeded] > PlayerName["+playerName+"] "+socket);
 				}
 				else{
 					// init
@@ -47,7 +46,7 @@ public class LoginManager{
 					// send result
 					os.println("login/PLAYERNAME/TRUE");
 					DateTime.showTime();
-					System.out.println("[ENTERED] > PlayerName["+playerName+"] "+socket);
+					System.out.println("[LOGIN SUCCESSED] > PlayerName["+playerName+"] "+socket);
 				}
 			}
 			// this playerName is not available
@@ -55,7 +54,7 @@ public class LoginManager{
 				// send result
 				os.println("login/PLAYERNAME/FALSE/Name duplicated");
 				DateTime.showTime();
-				System.out.println("[System][LoginManager][FAIL][Name Duplicated] > PlayerName["+playerName+"] "+socket);
+				System.out.println("[LOGIN FAILED][Name Duplicated] > PlayerName["+playerName+"] "+socket);
 			}
 		}
 	}
