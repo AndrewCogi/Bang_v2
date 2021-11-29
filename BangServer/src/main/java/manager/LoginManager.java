@@ -32,21 +32,30 @@ public class LoginManager{
 			String tempName = splitCmd[2];
 			// check this playerName is available
 			if(checkPlayerName(tempName)){
-				// init
-				this.playerName = tempName;
-				// add playerName into clients
-				setPlayerName(this.playerName);
-				// send result
-				os.println("login/PLAYERNAME/TRUE");
-				DateTime.showTime();
-				System.out.println("[ENTERED] > PlayerName["+playerName+"] "+socket);
+				// check the number of players
+				if(!checkPlayerNumber()){
+					// send result
+					os.println("login/PLAYERNAME/FALSE/Member exceeded");
+					DateTime.showTime();
+					System.out.println("[System][LoginManager][FAIL][Member Exceeded] > PlayerName["+playerName+"] "+socket);
+				}
+				else{
+					// init
+					this.playerName = tempName;
+					// add playerName into clients
+					setPlayerName(this.playerName);
+					// send result
+					os.println("login/PLAYERNAME/TRUE");
+					DateTime.showTime();
+					System.out.println("[ENTERED] > PlayerName["+playerName+"] "+socket);
+				}
 			}
 			// this playerName is not available
 			else{
 				// send result
-				os.println("login/PLAYERNAME/FALSE");
+				os.println("login/PLAYERNAME/FALSE/Name duplicated");
 				DateTime.showTime();
-				System.out.println("[System][LoginManager][FAIL] > PlayerName["+playerName+"] "+socket);
+				System.out.println("[System][LoginManager][FAIL][Name Duplicated] > PlayerName["+playerName+"] "+socket);
 			}
 		}
 	}
@@ -57,6 +66,15 @@ public class LoginManager{
 			if(name.equals(tempName)) return false;
 		}
 		return true;
+	}
+
+	// check player numbers
+	private boolean checkPlayerNumber(){
+		int nums = 0;
+		for(String s : server.App.getClients().values()){
+			if(!s.equals("Unknown")) nums++;
+		}
+		return (nums < 7) ? true : false;
 	}
 
 	// set playerName into clients
