@@ -22,7 +22,7 @@ public class Capitalizer implements Runnable{
 	private LoginManager login;
 
 	// constructor
-	public Capitalizer(Socket socket){
+	public Capitalizer(Socket socket, int attemptNum){
 		try{
 			this.socket = socket;
 			this.is = new Scanner(socket.getInputStream());
@@ -31,7 +31,8 @@ public class Capitalizer implements Runnable{
 			System.out.println("[ERROR] > while initalize stream.");
 			System.out.println(e.getMessage());
 		}
-		login = new LoginManager(socket, os);
+		// manager init
+		login = new LoginManager(socket, os, attemptNum);
 		// game = new GameManager(os);
 	}
 
@@ -51,13 +52,14 @@ public class Capitalizer implements Runnable{
 
 	// disconnected process method
 	private void disconnected(){
-		// send [session/DISCONNECTED] message
-		// client: stop client side app
-		os.println("session/DISCONNECTED");
 		DateTime.showTime();
 		System.out.println("[DISCONNECTED] > PlayerName["+server.App.getClients().get(socket)+"] "+socket);
 		// remove this socket in clients
 		server.App.getClients().remove(socket);
+		// remove this os in clientsPrintWriter
+		server.App.getClientsPrintWriter().remove(os);
+		// broadcasting
+		server.App.broadcast("player/PLAYERNUM/"+server.App.getPlayerNumber());
 	}
 }
 

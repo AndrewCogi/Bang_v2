@@ -36,6 +36,9 @@ public class Commander extends Thread{
 				case "show clients":
 					show_clients();
 					break;
+				case "check health":
+					check_health();
+					break;
 					// nothing...
 				case "":
 					break;
@@ -50,30 +53,41 @@ public class Commander extends Thread{
 
 
 	// helper
-	public void help(){
+	private void help(){
 		System.out.println("[System][Commander] > stop server:\t Stops the server.");
 		System.out.println("[System][Commander] > show clients:\t Show information of the client.");
+		System.out.println("[System][Commander] > check health:\t Show variables informations.");
+	}
+
+	// check variables
+	private void check_health(){
+		// clients
+		System.out.println("[System][Commander] > clients size: "+App.getClients().size());
+		// clientsPrintWriter
+		System.out.println("[System][Commander] > clientsPrintWriter size: "+App.getClientsPrintWriter().size());
 	}
 
 	// show clients
-	public void show_clients(){
+	private void show_clients(){
 		// if no clients,
 		if(App.getClients().size() == 0){
 			System.out.println("[System][Commander] > Nobody in here.");
 		}
 		// if have clients,
 		else{
-			int idx = 0;
+			int idx = 1;
 			for(Socket s : App.getClients().keySet()){
-				System.out.println("Client["+idx+"] > PlayerName[" + App.getClients().get(s) + "] " + s);
+				System.out.println("Client["+idx+"] > PlayerName[" + App.getClients().get(s) + "]\t" + s);
 				idx++;
 			}
 		}
 	}
 
 	// stop server
-	public void stop_server(){
+	private void stop_server(){
 		System.out.println("[System][Commander] > Server closing...");
+		// broadcasting [session/DISCONNECTED] message
+		App.broadcast("session/DISCONNECTED");
 		// thread stop
 		this.interrupt();
 		try {
