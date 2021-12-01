@@ -4,7 +4,9 @@
  */
 package server;
 
+import java.io.BufferedWriter;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.Scanner;
@@ -25,8 +27,8 @@ public class Capitalizer implements Runnable{
 	public Capitalizer(Socket socket, int attemptNum){
 		try{
 			this.socket = socket;
-			this.is = new Scanner(socket.getInputStream());
-			this.os = new PrintWriter(socket.getOutputStream(), true);
+			this.is = new Scanner(socket.getInputStream(),"UTF-8");
+			this.os = new PrintWriter(new BufferedWriter(new OutputStreamWriter(socket.getOutputStream(),"UTF-8")), true);
 		} catch(IOException e){
 			System.out.println("[ERROR] > while initalize stream.");
 			System.out.println(e.getMessage());

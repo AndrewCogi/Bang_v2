@@ -77,7 +77,7 @@ public class Commander extends Thread{
 		else{
 			int idx = 1;
 			for(Socket s : App.getClients().keySet()){
-				System.out.println("Client["+idx+"] > PlayerName[" + App.getClients().get(s) + "]\t" + s);
+				System.out.println("Client["+idx+"] > PlayerName[" + App.getClients().get(s) + "]\t\t" + s);
 				idx++;
 			}
 		}
