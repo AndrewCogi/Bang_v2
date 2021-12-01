@@ -69,11 +69,13 @@ public class Commander extends Thread{
 		// broadcast game is begin
 		for(int cnt=5; cnt>0; cnt--){
 			System.out.println("[System][Commander] > Game start in "+cnt+"...");
-			App.broadcast("game/GAMESTART/"+cnt);
+			App.broadcast("game/GAMESTARTCOUNTDOWN/"+cnt);
 			try{Thread.sleep(1000);}
 			catch(InterruptedException e){System.out.println("[ERROR] > while count down."); return;}
 		}
 		System.out.println("[System][Commander] > Game start!");
+		// broadcast remove notice
+		App.broadcast("game/DISABLENOTICE");
 		// game start == true
 		App.setGameStarted(true);
 	}
