@@ -8,9 +8,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Scanner;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -20,7 +18,7 @@ import debug.DateTime;
 public class App {
 	private static Scanner sc; // Scanner for keyboard input
 	private static HashMap<Socket,String> clients; // Map of socket-clientName
-	private static List<PrintWriter> clientsPrintWriter; // list of clients' PrintWriter
+	private static HashMap<PrintWriter,String> clientsPrintWriter; // list of clients' PrintWriter & name
 	private static ServerSocket listener; // ServerSocket
 	private static ExecutorService pool; // ThreadPool
 	private static final int threadPoolNum = 10; // How many threads in pool
@@ -30,7 +28,7 @@ public class App {
 		// init
 		sc = new Scanner(System.in);
 		clients = new HashMap<>();
-		clientsPrintWriter = new ArrayList<>();
+		clientsPrintWriter = new HashMap<>();
 
 		// server start
 		System.out.println("[System][App] > Server Start");
@@ -110,12 +108,12 @@ public class App {
 		return clients;
 	}
 
-	public synchronized static List<PrintWriter> getClientsPrintWriter(){
+	public synchronized static HashMap<PrintWriter,String> getClientsPrintWriter(){
 		return clientsPrintWriter;
 	}
 
 	public synchronized static void broadcast(String cmd){
-		for(PrintWriter os : getClientsPrintWriter()){
+		for(PrintWriter os : getClientsPrintWriter().keySet()){
 			os.println(cmd);
 		}
 	}

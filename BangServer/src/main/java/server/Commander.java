@@ -63,24 +63,40 @@ public class Commander extends Thread{
 	private void check_health(){
 		// clients
 		System.out.println("[System][Commander] > clients size: "+App.getClients().size());
+		System.out.println("[System][Commander] > clients info: "+App.getClients().toString());
 		// clientsPrintWriter
 		System.out.println("[System][Commander] > clientsPrintWriter size: "+App.getClientsPrintWriter().size());
+		System.out.println("[System][Commander] > clientsPrintWriter info: "+App.getClientsPrintWriter().toString());
 	}
 
-	// show clients
+	// show online & logined clients
 	private void show_clients(){
 		// if no clients,
 		if(App.getClients().size() == 0){
 			System.out.println("[System][Commander] > Nobody in here.");
+			return;
 		}
-		// if have clients,
-		else{
-			int idx = 1;
-			for(Socket s : App.getClients().keySet()){
-				System.out.println("Client["+idx+"] > PlayerName[" + App.getClients().get(s) + "]\t\t" + s);
+		System.out.println("[System][Commander] > =======Log on Clients=======");
+		// online clients,
+		int idx = 0;
+		for(Socket s : App.getClients().keySet()){
+			if(!App.getClientsPrintWriter().containsValue(App.getClients().get(s))){
+				System.out.println("[System][Commander] > Socket ["+s+"]");
 				idx++;
 			}
 		}
+		// no online clients,
+		if(idx == 0) System.out.println("[System][Commander] > Nobody in here.");
+
+		// ingame clients,
+		idx = 0;
+		System.out.println("[System][Commander] > =======Log in Clients=======");
+		for(String s : App.getClientsPrintWriter().values()){
+			System.out.println("[System][Commander] > PlayerName [" +s+ "]");
+			idx++;
+		}
+		// no ingame clients,
+		if(idx == 0) System.out.println("[System][Commander] > Nobody in here.");
 	}
 
 	// stop server

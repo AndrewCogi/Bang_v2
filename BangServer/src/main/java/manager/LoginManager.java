@@ -48,7 +48,7 @@ public class LoginManager{
 					DateTime.showTime();
 					System.out.println("[LOGIN SUCCESSED] > PlayerName["+playerName+"] "+socket);
 					// add os into clientsPrintWriter
-					server.App.getClientsPrintWriter().add(os);
+					server.App.getClientsPrintWriter().put(os,playerName);
 					// broadcasting
 					server.App.broadcast("player/PLAYERNUM/"+server.App.getPlayerNumber());
 				}
