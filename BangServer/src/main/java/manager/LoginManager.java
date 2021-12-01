@@ -1,6 +1,6 @@
 /* 
  * class name: LoginManager
- * purpose: login contents management
+ * purpose: login input management
  */
 package manager;
 

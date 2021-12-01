@@ -23,6 +23,7 @@ public class App {
 	private static ExecutorService pool; // ThreadPool
 	private static final int threadPoolNum = 10; // How many threads in pool
 	private static int accessAttempt = 0; // How many times access atteption
+	private static boolean gameStarted = false; // Check game is started
 
 	public static void main(String[] args) throws IOException{
 		// init
@@ -90,6 +91,14 @@ public class App {
 			}
 		}
 
+	}
+
+	public synchronized static void setGameStarted(boolean b){
+		gameStarted = b;
+	}
+
+	public synchronized static boolean getGameStarted(){
+		return gameStarted;
 	}
 
 	public synchronized static ServerSocket getServerSocket(){

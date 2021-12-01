@@ -9,7 +9,9 @@ import java.net.Socket;
 import java.util.Scanner;
 
 public class Commander extends Thread{
+	// Scanner for command
 	private Scanner sc;
+	// command info
 	private String cmd;
 
 	// constructor
@@ -36,8 +38,9 @@ public class Commander extends Thread{
 				case "show clients":
 					show_clients();
 					break;
-				case "check health":
-					check_health();
+					// game start!
+				case "game start":
+					game_start();
 					break;
 					// nothing...
 				case "":
@@ -51,22 +54,36 @@ public class Commander extends Thread{
 		System.out.println("[System][Commander] > Thread(commandThread) is stopped.");
 	}
 
+	// game start!
+	private void game_start(){
+		// if game is already started,
+		if(App.getGameStarted() == true){
+			System.out.println("[System][Commander] > Game is already started.");
+			return;
+		}
+		// if not in 7 players,
+		if(App.getClientsPrintWriter().size() != 7){
+			System.out.println("[System][Commander] > We don't have enough players. (now: "+App.getClientsPrintWriter().size()+"/7)");
+			return;
+		}
+		// broadcast game is begin
+		for(int cnt=5; cnt>0; cnt--){
+			System.out.println("[System][Commander] > Game start in "+cnt+"...");
+			App.broadcast("game/GAMESTART/"+cnt);
+			try{Thread.sleep(1000);}
+			catch(InterruptedException e){System.out.println("[ERROR] > while count down."); return;}
+		}
+		System.out.println("[System][Commander] > Game start!");
+		// game start == true
+		App.setGameStarted(true);
+	}
+
 
 	// helper
 	private void help(){
 		System.out.println("[System][Commander] > stop server:\t Stops the server.");
 		System.out.println("[System][Commander] > show clients:\t Show information of the client.");
-		System.out.println("[System][Commander] > check health:\t Show variables informations.");
-	}
-
-	// check variables
-	private void check_health(){
-		// clients
-		System.out.println("[System][Commander] > clients size: "+App.getClients().size());
-		System.out.println("[System][Commander] > clients info: "+App.getClients().toString());
-		// clientsPrintWriter
-		System.out.println("[System][Commander] > clientsPrintWriter size: "+App.getClientsPrintWriter().size());
-		System.out.println("[System][Commander] > clientsPrintWriter info: "+App.getClientsPrintWriter().toString());
+		System.out.println("[System][Commander] > game start:\t Start game.");
 	}
 
 	// show online & logined clients
