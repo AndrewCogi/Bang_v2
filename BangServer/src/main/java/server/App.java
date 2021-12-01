@@ -120,11 +120,7 @@ public class App {
 
 	// get player number
 	public synchronized static int getPlayerNumber(){
-		int num = 0;
-		for(String s : getClients().values()){
-			if(!s.startsWith("Unknown")) num++;
-		}
-		return num;
+		return getClientsPrintWriter().size();
 	}
 
 	// get accessAttempt

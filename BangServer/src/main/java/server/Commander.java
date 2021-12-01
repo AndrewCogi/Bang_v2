@@ -81,7 +81,7 @@ public class Commander extends Thread{
 		int idx = 0;
 		for(Socket s : App.getClients().keySet()){
 			if(!App.getClientsPrintWriter().containsValue(App.getClients().get(s))){
-				System.out.println("[System][Commander] > Socket ["+s+"]");
+				System.out.println("[System][Commander] > "+s);
 				idx++;
 			}
 		}
@@ -92,7 +92,7 @@ public class Commander extends Thread{
 		idx = 0;
 		System.out.println("[System][Commander] > =======Log in Clients=======");
 		for(String s : App.getClientsPrintWriter().values()){
-			System.out.println("[System][Commander] > PlayerName [" +s+ "]");
+			System.out.println("[System][Commander] > PlayerName ["+s+"]");
 			idx++;
 		}
 		// no ingame clients,
