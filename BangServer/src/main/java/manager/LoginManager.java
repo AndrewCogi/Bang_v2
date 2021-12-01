@@ -29,37 +29,46 @@ public class LoginManager{
 		// login/PLAYERNAME/[playerName]
 		if(splitCmd[1].equals("PLAYERNAME")){
 			String tempName = splitCmd[2];
-			// check this playerName is available
-			if(checkPlayerName(tempName)){
-				// check the number of players
-				if(!checkPlayerNumber()){
-					// send result
-					os.println("login/PLAYERNAME/FALSE/Member exceeded");
-					DateTime.showTime();
-					System.out.println("[LOGIN FAILED][Member Exceeded] > PlayerName["+playerName+"] "+socket);
-				}
-				else{
-					// init
-					this.playerName = tempName;
-					// add playerName into clients
-					setPlayerName(this.playerName);
-					// send result
-					os.println("login/PLAYERNAME/TRUE");
-					DateTime.showTime();
-					System.out.println("[LOGIN SUCCESSED] > PlayerName["+playerName+"] "+socket);
-					// add os into clientsPrintWriter
-					server.App.getClientsPrintWriter().put(os,playerName);
-					// broadcasting
-					server.App.broadcast("player/PLAYERNUM/"+server.App.getPlayerNumber());
-				}
+
+			// if game is begin,
+			if(server.App.getGameStarted() == true){
+				// send result
+				os.println("login/PLAYERNAME/FALSE/Game is already started");
+				DateTime.showTime();
+				System.out.println("[LOGIN FAILED][Game is already Started.] > PlayerName["+playerName+"] "+socket);
+				return;
 			}
-			// this playerName is not available
-			else{
+
+			// if playerName is not available,
+			if(!checkPlayerName(tempName)){
 				// send result
 				os.println("login/PLAYERNAME/FALSE/Name duplicated");
 				DateTime.showTime();
 				System.out.println("[LOGIN FAILED][Name Duplicated] > PlayerName["+playerName+"] "+socket);
+				return;
 			}
+
+			// if players > 7,
+			if(!checkPlayerNumber()){
+				// send result
+				os.println("login/PLAYERNAME/FALSE/Member exceeded");
+				DateTime.showTime();
+				System.out.println("[LOGIN FAILED][Member Exceeded] > PlayerName["+playerName+"] "+socket);
+				return;
+			}
+
+			// init
+			this.playerName = tempName;
+			// add playerName into clients
+			setPlayerName(this.playerName);
+			// send result
+			os.println("login/PLAYERNAME/TRUE");
+			DateTime.showTime();
+			System.out.println("[LOGIN SUCCESSED] > PlayerName["+playerName+"] "+socket);
+			// add os into clientsPrintWriter
+			server.App.getClientsPrintWriter().put(os,playerName);
+			// broadcasting
+			server.App.broadcast("player/PLAYERNUM/"+server.App.getPlayerNumber());
 		}
 	}
 
