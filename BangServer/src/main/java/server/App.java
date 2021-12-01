@@ -14,6 +14,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 import debug.DateTime;
+import gm.Gm;
 
 public class App {
 	private static Scanner sc; // Scanner for keyboard input
@@ -24,6 +25,7 @@ public class App {
 	private static final int threadPoolNum = 10; // How many threads in pool
 	private static int accessAttempt = 0; // How many times access atteption
 	private static boolean gameStarted = false; // Check game is started
+	private static Gm gm = new Gm(); // game dealer
 
 	public static void main(String[] args) throws IOException{
 		// init
@@ -93,34 +95,47 @@ public class App {
 
 	}
 
+	// set gameStarted
 	public synchronized static void setGameStarted(boolean b){
 		gameStarted = b;
 	}
 
+	// get gameStarted
 	public synchronized static boolean getGameStarted(){
 		return gameStarted;
 	}
 
+	// get gm
+	public synchronized static Gm getGm(){
+		return gm;
+	}
+
+	// get listener
 	public synchronized static ServerSocket getServerSocket(){
 		return listener;
 	}
 
+	// get sc
 	public synchronized static Scanner getScanner(){
 		return sc;
 	}
 
+	// get pool
 	public synchronized static ExecutorService getExecutorService(){
 		return pool;
 	}
 
+	// get clients
 	public synchronized static HashMap<Socket,String> getClients(){
 		return clients;
 	}
 
+	// get clientsPrintWriter
 	public synchronized static HashMap<PrintWriter,String> getClientsPrintWriter(){
 		return clientsPrintWriter;
 	}
 
+	// broadcast
 	public synchronized static void broadcast(String cmd){
 		for(PrintWriter os : getClientsPrintWriter().keySet()){
 			os.println(cmd);

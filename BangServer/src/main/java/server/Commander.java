@@ -8,6 +8,8 @@ import java.io.IOException;
 import java.net.Socket;
 import java.util.Scanner;
 
+import debug.DateTime;
+
 public class Commander extends Thread{
 	// Scanner for command
 	private Scanner sc;
@@ -69,17 +71,31 @@ public class Commander extends Thread{
 		// broadcast game is begin
 		for(int cnt=5; cnt>0; cnt--){
 			System.out.println("[System][Commander] > Game start in "+cnt+"...");
-			App.broadcast("game/GAMESTARTCOUNTDOWN/"+cnt);
+			App.broadcast("game/SETTEXT/MIDDLE_NOTICE/Game start in "+cnt+"...");
 			try{Thread.sleep(1000);}
 			catch(InterruptedException e){System.out.println("[ERROR] > while count down."); return;}
 		}
+		DateTime.showTime();
 		System.out.println("[System][Commander] > Game start!");
 		// broadcast remove notice
-		App.broadcast("game/DISABLENOTICE");
+		App.broadcast("game/DISABLE/MIDDLE_NOTICE");
 		// game start == true
 		App.setGameStarted(true);
+		System.out.println("[System][Commander] > setGameStarted: ["+App.getGameStarted()+"]");
+		// init gm(setting seat, select role, select scenario, select character)
+		App.getGm().init();
+		// start gm(start turn until game is ended)
+		App.getGm().start();
+		// if you here, game is ended!
+		DateTime.showTime();
+		System.out.println("[System][Commander] > Game Over!");
+		// game start == false
+		App.setGameStarted(false);
+		System.out.println("[System][Commander] > setGameStarted: ["+App.getGameStarted()+"]");
+		// resetting "Waiting for players..."
+		App.broadcast("game/ENABLE/MIDDLE_NOTICE");
+		App.broadcast("player/PLAYERNUM/"+server.App.getPlayerNumber());
 	}
-
 
 	// helper
 	private void help(){
