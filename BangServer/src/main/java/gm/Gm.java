@@ -5,9 +5,16 @@
 
 package gm;
 
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.List;
+
 public class Gm{
+	// player's turn(== init seat)
+	private List<String> turn;
 
 	public Gm(){
+		this.turn = new LinkedList<>();
 	}
 
 	// init (setting seat, select role, select scenario, select character)
@@ -35,7 +42,20 @@ public class Gm{
 
 	// setting seat
 	private void setting_seat(){
-
+		// init turn list
+		this.turn = new LinkedList<>();
+		// make turn list & shuffle
+		for(String s : server.App.getClientsPrintWriter().values()){ this.turn.add(s); }
+		Collections.shuffle(this.turn);
+		// check
+		System.out.print("[System][Gm] > SEAT(TURN): ");
+		for(String s : this.turn){ System.out.print(" > "+s); }
+		System.out.println();
+		// broadcasting turn
+		StringBuilder turns = new StringBuilder("");
+		for(String s : this.turn){ turns.append(s+"/"); }
+		turns.deleteCharAt(turns.length()-1);
+		server.App.broadcast("game/INIT/SEAT/"+turns);
 	}
 
 	// select role
