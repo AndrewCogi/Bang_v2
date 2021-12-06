@@ -42,7 +42,7 @@ public class Gm{
 
 	// setting seat
 	private void setting_seat(){
-		// init turn list
+		// re-init turn list
 		this.turn = new LinkedList<>();
 		// make turn list & shuffle
 		for(String s : server.App.getClientsPrintWriter().values()){ this.turn.add(s); }

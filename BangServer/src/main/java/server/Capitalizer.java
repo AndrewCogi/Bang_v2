@@ -22,6 +22,8 @@ public class Capitalizer implements Runnable{
 	private PrintWriter os;
 	// login manager
 	private LoginManager login;
+	// session manager
+	private SessionManager session;
 
 	// constructor
 	public Capitalizer(Socket socket, int attemptNum){
@@ -35,6 +37,7 @@ public class Capitalizer implements Runnable{
 		}
 		// manager init
 		login = new LoginManager(socket, os, attemptNum);
+		session = new SessionManager(is, os);
 		// game = new GameManager(os);
 	}
 
@@ -47,6 +50,8 @@ public class Capitalizer implements Runnable{
 			cmd = is.nextLine();
 			// login command
 			if(cmd.startsWith("login")) login.request(cmd);
+			// session command
+			if(cmd.startsWith("session")) session.request(cmd);
 		}
 		// if Capitalizer is end.
 		disconnected();

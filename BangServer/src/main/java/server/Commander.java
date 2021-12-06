@@ -77,6 +77,8 @@ public class Commander extends Thread{
 		}
 		DateTime.showTime();
 		System.out.println("[System][Commander] > Game start!");
+		// broadcast the game is started
+		App.broadcast("game/STATE/START");
 		// broadcast remove notice
 		App.broadcast("game/DISABLE/MIDDLE_NOTICE");
 		// game start == true
@@ -89,6 +91,8 @@ public class Commander extends Thread{
 		// if you here, game is ended!
 		DateTime.showTime();
 		System.out.println("[System][Commander] > Game Over!");
+		// broadcast the game is ended
+		App.broadcast("game/STATE/END");
 		// game start == false
 		App.setGameStarted(false);
 		System.out.println("[System][Commander] > setGameStarted: ["+App.getGameStarted()+"]");

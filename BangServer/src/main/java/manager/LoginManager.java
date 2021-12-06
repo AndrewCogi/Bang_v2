@@ -9,7 +9,7 @@ import java.net.Socket;
 import debug.DateTime;
 
 public class LoginManager{
-	// socket (for check connection)
+	// socket (for add output stream into clients)
 	private Socket socket;
 	// playerName
 	private String playerName;
