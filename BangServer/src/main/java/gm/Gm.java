@@ -42,6 +42,9 @@ public class Gm{
 
 	// setting seat
 	private void setting_seat(){
+		// broadcasting "Allocating seats..." & ENABLE TOP_NOTICE
+		server.App.broadcast("game/SETTEXT/TOP_NOTICE/Allocating seats...");
+		server.App.broadcast("game/ENABLE/TOP_NOTICE");
 		// re-init turn list
 		this.turn = new LinkedList<>();
 		// make turn list & shuffle
@@ -56,6 +59,8 @@ public class Gm{
 		for(String s : this.turn){ turns.append(s+"/"); }
 		turns.deleteCharAt(turns.length()-1);
 		server.App.broadcast("game/INIT/SEAT/"+turns);
+		// broadcasting disable TOP_NOTICE
+		server.App.broadcast("game/DISABLE/TOP_NOTICE");
 	}
 
 	// select role
