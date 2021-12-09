@@ -9,12 +9,17 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
+import card.RoleDeck;
+
 public class Gm{
 	// player's turn(== init seat)
 	private List<String> turn;
+	// respond members
+	private int respond;
 
 	public Gm(){
 		this.turn = new LinkedList<>();
+		this.respond = 0;
 	}
 
 	// init (setting seat, select role, select scenario, select character)
@@ -32,7 +37,7 @@ public class Gm{
 	public void start(){
 		System.out.println("[System][Gm] > start Bang.");
 		// test
-		for(int i=10; i>0; i--){
+		for(int i=30; i>0; i--){
 			System.out.println("[Testing] > Bang end in "+i+"...");
 			try{Thread.sleep(1000);}
 			catch(InterruptedException e){System.out.println(e.getMessage());}
@@ -65,7 +70,20 @@ public class Gm{
 
 	// select role
 	private void select_role(){
-
+		// broadcasting "Select your role..." & ENABLE TOP_NOTICE
+		server.App.broadcast("game/SETTEXT/TOP_NOTICE/Select your role...");
+		server.App.broadcast("game/ENABLE/TOP_NOTICE");
+		// make role deck
+		RoleDeck roleDeck = new RoleDeck();
+		// make & shuffle role deck
+		roleDeck.make_role_deck();
+		roleDeck.shuffle();
+		// broadcasting SELECT/ROLE/[0]/[1]/[2]/[3]/[4]/[5]/[6]
+		server.App.broadcast("game/SELECT/ROLE/"+
+				roleDeck.getCardName(0)+"/"+roleDeck.getCardName(1)+"/"+
+				roleDeck.getCardName(2)+"/"+roleDeck.getCardName(3)+"/"+
+				roleDeck.getCardName(4)+"/"+roleDeck.getCardName(5)+"/"+roleDeck.getCardName(6));
+		// wait until everyone respond
 	}
 
 	// select scenario
