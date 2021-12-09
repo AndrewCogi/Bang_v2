@@ -15,11 +15,10 @@ public class Gm{
 	// player's turn(== init seat)
 	private List<String> turn;
 	// respond members
-	private int respond;
+	private static int respond = 0;
 
 	public Gm(){
 		this.turn = new LinkedList<>();
-		this.respond = 0;
 	}
 
 	// init (setting seat, select role, select scenario, select character)
@@ -37,7 +36,7 @@ public class Gm{
 	public void start(){
 		System.out.println("[System][Gm] > start Bang.");
 		// test
-		for(int i=30; i>0; i--){
+		for(int i=90; i>0; i--){
 			System.out.println("[Testing] > Bang end in "+i+"...");
 			try{Thread.sleep(1000);}
 			catch(InterruptedException e){System.out.println(e.getMessage());}
@@ -64,14 +63,18 @@ public class Gm{
 		for(String s : this.turn){ turns.append(s+"/"); }
 		turns.deleteCharAt(turns.length()-1);
 		server.App.broadcast("game/INIT/SEAT/"+turns);
+		// waiting for setting seats
+		try{ Thread.sleep(7000); } catch(InterruptedException e){}
 		// broadcasting disable TOP_NOTICE
 		server.App.broadcast("game/DISABLE/TOP_NOTICE");
 	}
 
 	// select role
 	private void select_role(){
+		// re-init respond
+		setRespond(0);
 		// broadcasting "Select your role..." & ENABLE TOP_NOTICE
-		server.App.broadcast("game/SETTEXT/TOP_NOTICE/Select your role...");
+		server.App.broadcast("game/SETTEXT/TOP_NOTICE/Select your role...(0 | 7)");
 		server.App.broadcast("game/ENABLE/TOP_NOTICE");
 		// make role deck
 		RoleDeck roleDeck = new RoleDeck();
@@ -84,6 +87,12 @@ public class Gm{
 				roleDeck.getCardName(2)+"/"+roleDeck.getCardName(3)+"/"+
 				roleDeck.getCardName(4)+"/"+roleDeck.getCardName(5)+"/"+roleDeck.getCardName(6));
 		// wait until everyone respond
+		while(getRespond() != 7){}
+		// everyone picked, open their roles
+		for(int cnt=3; cnt>0; cnt--){
+			server.App.broadcast("game/SETTEXT/TOP_NOTICE/Open your role in "+cnt+"...");
+			try{ Thread.sleep(1000); } catch(InterruptedException e){};
+		}
 	}
 
 	// select scenario
@@ -94,5 +103,15 @@ public class Gm{
 	// select_character
 	private void select_character(){
 
+	}
+
+	// get respond
+	public static synchronized int getRespond(){
+		return respond;
+	}
+
+	// set respond
+	public static synchronized void setRespond(int n){
+		respond = n;
 	}
 }
