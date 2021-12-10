@@ -22,10 +22,10 @@ public class GameManager{
 		String[] splitCmd = cmd.split("/");
 		// game/SELECT/[??]
 		if(splitCmd[1].equals("SELECT")){
-			// game/SELECT/ROLE/[role name]/[cardNum]
+			// game/SELECT/ROLE/[id]/[role name]/[cardNum]
 			if(splitCmd[2].equals("ROLE")){
-				// broadcast who select card
-				server.App.broadcast("game/PLAYERSELECT/ROLE/"+splitCmd[3]+"/"+splitCmd[4]);
+				// broadcast who select card without selecter
+				server.App.broadcast(splitCmd[3],"game/PLAYERSELECT/ROLE/"+splitCmd[4]+"/"+splitCmd[5]);
 				// +1 respond
 				Gm.setRespond(Gm.getRespond()+1);
 				// broadcast how many players picked

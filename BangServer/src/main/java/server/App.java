@@ -142,6 +142,14 @@ public class App {
 		}
 	}
 
+	// broadcast without id
+	public synchronized static void broadcast(String id, String cmd){
+		for(PrintWriter os : getClientsPrintWriter().keySet()){
+			if(getClientsPrintWriter().get(os).equals(id)) continue;
+			os.println(cmd);
+		}
+	}
+
 	// get player number
 	public synchronized static int getPlayerNumber(){
 		return getClientsPrintWriter().size();

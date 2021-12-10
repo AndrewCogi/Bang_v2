@@ -36,7 +36,7 @@ public class Gm{
 	public void start(){
 		System.out.println("[System][Gm] > start Bang.");
 		// test
-		for(int i=90; i>0; i--){
+		for(int i=10; i>0; i--){
 			System.out.println("[Testing] > Bang end in "+i+"...");
 			try{Thread.sleep(1000);}
 			catch(InterruptedException e){System.out.println(e.getMessage());}
