@@ -24,6 +24,8 @@ public class GameManager{
 		if(splitCmd[1].equals("SELECT")){
 			// game/SELECT/ROLE/[id]/[role name]/[cardNum]
 			if(splitCmd[2].equals("ROLE")){
+				// add Gm.role
+				Gm.getRole().put(splitCmd[3],splitCmd[4]);
 				// broadcast who select card without selecter
 				server.App.broadcast(splitCmd[3],"game/PLAYERSELECT/ROLE/"+splitCmd[4]+"/"+splitCmd[5]);
 				// +1 respond

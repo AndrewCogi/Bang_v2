@@ -6,6 +6,7 @@
 package gm;
 
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -14,6 +15,8 @@ import card.RoleDeck;
 public class Gm{
 	// player's turn(== init seat)
 	private List<String> turn;
+	// player's role(== init role) <ID,Role>
+	private static HashMap<String,String> role;
 	// respond members
 	private static int respond = 0;
 
@@ -73,6 +76,8 @@ public class Gm{
 	private void select_role(){
 		// re-init respond
 		setRespond(0);
+		// re-init role
+		role = new HashMap<String,String>();
 		// broadcasting "Select your role..." & ENABLE TOP_NOTICE
 		server.App.broadcast("game/SETTEXT/TOP_NOTICE/Select your role...(0 | 7)");
 		server.App.broadcast("game/ENABLE/TOP_NOTICE");
@@ -88,9 +93,21 @@ public class Gm{
 				roleDeck.getCardName(4)+"/"+roleDeck.getCardName(5)+"/"+roleDeck.getCardName(6));
 		// wait until everyone respond
 		while(getRespond() != 7){}
-		// everyone picked, open their roles
-		for(int cnt=3; cnt>0; cnt--){
-			server.App.broadcast("game/SETTEXT/TOP_NOTICE/Open your role in "+cnt+"...");
+		// everyone picked, allocating their roles
+		for(int cnt=5; cnt>0; cnt--){
+			server.App.broadcast("game/SETTEXT/TOP_NOTICE/Allocating roles in "+cnt+"...");
+			try{ Thread.sleep(1000); } catch(InterruptedException e){};
+		}
+		// allocating roles...
+		server.App.broadcast("game/DISABLE/TOP_NOTICE");
+		server.App.broadcast("game/DISABLE/SELECT_PANEL");
+		server.App.broadcast("game/SETTEXT/MIDDLE_NOTICE/Allocating roles...");
+		server.App.broadcast("game/ENABLE/MIDDLE_NOTICE");
+		// broadcasting their roles
+		for(String name : role.keySet()){
+			String roleName = role.get(name);
+			// game/INIT/ROLE/[name]/[roleName]
+			server.App.broadcast("game/INIT/ROLE/"+name+"/"+roleName);
 			try{ Thread.sleep(1000); } catch(InterruptedException e){};
 		}
 	}
@@ -105,13 +122,18 @@ public class Gm{
 
 	}
 
+
+
 	// get respond
 	public static synchronized int getRespond(){
 		return respond;
 	}
-
 	// set respond
 	public static synchronized void setRespond(int n){
 		respond = n;
+	}
+	// get role
+	public static synchronized HashMap<String,String> getRole(){
+		return role;
 	}
 }
