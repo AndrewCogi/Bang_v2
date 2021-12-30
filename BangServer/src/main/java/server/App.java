@@ -25,13 +25,14 @@ public class App {
 	private static final int threadPoolNum = 10; // How many threads in pool
 	private static int accessAttempt = 0; // How many times access atteption
 	private static boolean gameStarted = false; // Check game is started
-	private static Gm gm = new Gm(); // game dealer
+	private static Gm gm; // game dealer
 
 	public static void main(String[] args) throws IOException{
 		// init
 		sc = new Scanner(System.in);
 		clients = new HashMap<>();
 		clientsPrintWriter = new HashMap<>();
+		gm = new Gm();
 
 		// server start
 		System.out.println("[System][App] > Server Start");

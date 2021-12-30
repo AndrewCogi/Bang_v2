@@ -1,6 +1,7 @@
 /* 
- * class name: CardDeck
- * purpose: game multi-purpose card deck (character, role etc...)
+ * class name: RoleDeck
+ * purpose: game role card deck for allocate players' role
+ * (sceriffo(1),vice(2),fuorilegge(3),rinnegato(1))
  */
 
 package card;
@@ -37,7 +38,7 @@ public class RoleDeck{
 		Collections.shuffle(deck);
 	}
 
-	// get [idx] element (== cardName)
+	// get [idx] element name (== cardName)
 	public String getCardName(int idx){
 		return deck.get(idx).getCardName();
 	}

@@ -57,16 +57,17 @@ public class LoginManager{
 				return;
 			}
 
+			// if you here, login success!
 			// init
 			this.playerName = tempName;
 			// add playerName into clients
-			setPlayerName(this.playerName);
+			server.App.getClients().put(socket,this.playerName);
+			// add os into clientsPrintWriter
+			server.App.getClientsPrintWriter().put(os,playerName);
 			// send result
 			os.println("login/PLAYERNAME/TRUE");
 			DateTime.showTime();
 			System.out.println("[LOGIN SUCCESSED] > PlayerName["+playerName+"] "+socket);
-			// add os into clientsPrintWriter
-			server.App.getClientsPrintWriter().put(os,playerName);
 			// broadcasting
 			server.App.broadcast("player/PLAYERNUM/"+server.App.getPlayerNumber());
 		}
@@ -87,11 +88,6 @@ public class LoginManager{
 			if(!s.startsWith("Unknown")) num++;
 		}
 		return (num < 7) ? true : false;
-	}
-
-	// set playerName into clients
-	private void setPlayerName(String newName){
-		server.App.getClients().put(socket,newName);
 	}
 
 }
