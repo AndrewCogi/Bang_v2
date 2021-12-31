@@ -69,7 +69,7 @@ public class Gm{
 		// waiting for setting seats
 		try{ Thread.sleep(7000); } catch(InterruptedException e){}
 		// broadcasting disable TOP_NOTICE
-		server.App.broadcast("game/DISABLE/TOP_NOTICE");
+		// server.App.broadcast("game/DISABLE/TOP_NOTICE");
 	}
 
 	// select role
@@ -80,7 +80,7 @@ public class Gm{
 		role = new HashMap<String,String>();
 		// broadcasting "Select your role..." & ENABLE TOP_NOTICE
 		server.App.broadcast("game/SETTEXT/TOP_NOTICE/Select your role...(0 | 7)");
-		server.App.broadcast("game/ENABLE/TOP_NOTICE");
+		// server.App.broadcast("game/ENABLE/TOP_NOTICE");
 		// make role deck
 		RoleDeck roleDeck = new RoleDeck();
 		// make & shuffle role deck
@@ -99,10 +99,9 @@ public class Gm{
 			try{ Thread.sleep(1000); } catch(InterruptedException e){};
 		}
 		// allocating roles...
-		server.App.broadcast("game/DISABLE/TOP_NOTICE");
+		server.App.broadcast("game/SETTEXT/TOP_NOTICE/ ");
 		server.App.broadcast("game/DISABLE/SELECT_PANEL");
-		server.App.broadcast("game/SETTEXT/MIDDLE_NOTICE/Allocating roles...");
-		server.App.broadcast("game/ENABLE/MIDDLE_NOTICE");
+		server.App.broadcast("game/SETTEXT/TOP_NOTICE/Allocating roles...");
 		// broadcasting their roles
 		for(String name : role.keySet()){
 			String roleName = role.get(name);
