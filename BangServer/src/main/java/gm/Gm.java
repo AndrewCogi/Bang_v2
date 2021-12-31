@@ -45,6 +45,8 @@ public class Gm{
 			catch(InterruptedException e){System.out.println(e.getMessage());}
 		}
 		System.out.println("[System][Gm] > end Bang.");
+		// disable TOP_NOTICE
+		server.App.broadcast("game/DISABLE/TOP_NOTICE");
 	}
 
 	// setting seat
