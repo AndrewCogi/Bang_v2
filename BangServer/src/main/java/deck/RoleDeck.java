@@ -4,11 +4,13 @@
  * (sceriffo(1),vice(2),fuorilegge(3),rinnegato(1))
  */
 
-package card;
+package deck;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
+import card.RoleCard;
 
 public class RoleDeck{
 	// deck

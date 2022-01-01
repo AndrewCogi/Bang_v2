@@ -10,13 +10,15 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
-import card.RoleDeck;
+import deck.RoleDeck;
 
 public class Gm{
 	// player's turn(== init seat)
 	private List<String> turn;
 	// player's role(== init role) <ID,Role>
 	private static HashMap<String,String> role;
+	// vote last scenario
+	private static int[] vote_last_scenario;
 	// respond members
 	private static int respond = 0;
 
@@ -71,7 +73,7 @@ public class Gm{
 		// waiting for setting seats
 		try{ Thread.sleep(7000); } catch(InterruptedException e){}
 		// broadcasting disable TOP_NOTICE
-		// server.App.broadcast("game/DISABLE/TOP_NOTICE");
+		server.App.broadcast("game/SETTEXT/TOP_NOTICE/ ");
 	}
 
 	// select role
@@ -80,9 +82,8 @@ public class Gm{
 		setRespond(0);
 		// re-init role
 		role = new HashMap<String,String>();
-		// broadcasting "Select your role..." & ENABLE TOP_NOTICE
+		// broadcasting "Select your role..."
 		server.App.broadcast("game/SETTEXT/TOP_NOTICE/Select your role...(0 | 7)");
-		// server.App.broadcast("game/ENABLE/TOP_NOTICE");
 		// make role deck
 		RoleDeck roleDeck = new RoleDeck();
 		// make & shuffle role deck
@@ -115,7 +116,33 @@ public class Gm{
 
 	// select scenario
 	private void select_scenario(){
-
+		// re-init respond
+		setRespond(0);
+		// re-init last_scenario
+		vote_last_scenario = new int[]{0,0};
+		// broadcasting "Select last scenario..."
+		server.App.broadcast("game/SETTEXT/TOP_NOTICE/Select last scenario...("+
+				vote_last_scenario[0]+" vs "+vote_last_scenario[1]+")");
+		// broadcasting SELECT/LAST_SCENARIO
+		server.App.broadcast("game/SELECT/LAST_SCENARIO");
+		// swit until everyone respond
+		while(getRespond() != 7){}
+		// delay for socket IO
+		try{ Thread.sleep(100); } catch(InterruptedException e){};
+		// everyone picked, broadcast result
+		server.App.broadcast("game/SETTEXT/TOP_NOTICE/Result");
+		server.App.broadcast("game/DISABLE/SELECT_PANEL");
+		server.App.broadcast("game/ENABLE/MIDDLE_NOTICE");
+		if(vote_last_scenario[0] > vote_last_scenario[1]){
+			server.App.broadcast("game/SETTEXT/MIDDLE_NOTICE/a_fistful_of_cards");
+		}
+		else if(vote_last_scenario[0] < vote_last_scenario[1]){
+			server.App.broadcast("game/SETTEXT/MIDDLE_NOTICE/high_noon");
+		}
+		// waiting 5 seconds
+		try{ Thread.sleep(5000); } catch(InterruptedException e){};
+		// make scenario deck
+		// ScenarioDeck scenarioDeck = new ScenarioDeck();
 	}
 
 	// select_character
@@ -136,5 +163,15 @@ public class Gm{
 	// get role
 	public static synchronized HashMap<String,String> getRole(){
 		return role;
+	}
+	// get vote_last_scenario
+	public static synchronized int[] getVote_last_scenario(){
+		return vote_last_scenario;
+	}
+	// vote last scenario card
+	public static synchronized void vote_last_scenario(int cardNum){
+		// cardNum == 1 (a fistful of cards)
+		// cardNum == 2 (high noon)
+		vote_last_scenario[cardNum-1]++;
 	}
 }

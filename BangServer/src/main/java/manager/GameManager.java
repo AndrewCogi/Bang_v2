@@ -33,6 +33,17 @@ public class GameManager{
 				// broadcast how many players picked
 				server.App.broadcast("game/SETTEXT/TOP_NOTICE/Select your role...("+Gm.getRespond()+" | 7)");
 			}
+			
+			// game/SELECT/LAST_SCENARIO/[cardNum]
+			else if(splitCmd[2].equals("LAST_SCENARIO")){
+				// add Gm.vote_last_scenario
+				Gm.vote_last_scenario(Integer.parseInt(splitCmd[3]));
+				// +1 respond
+				Gm.setRespond(Gm.getRespond()+1);
+				// broadcast how many players picked
+				server.App.broadcast("game/SETTEXT/TOP_NOTICE/Select last scenario...("+
+						Gm.getVote_last_scenario()[0]+" vs "+Gm.getVote_last_scenario()[1]+")");
+			}
 		}
 
 		// unknown message
