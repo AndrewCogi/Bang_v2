@@ -105,7 +105,7 @@ public class Gm{
 		}
 		// allocating roles...
 		server.App.broadcast("game/SETTEXT/TOP_NOTICE/ ");
-		server.App.broadcast("game/DISABLE/SELECT_PANEL");
+		server.App.broadcast("game/DISABLE/SELECT_PANEL/ROLE");
 		server.App.broadcast("game/SETTEXT/TOP_NOTICE/Allocating roles...");
 		// broadcasting their roles
 		for(String name : role.keySet()){
@@ -141,7 +141,7 @@ public class Gm{
 			server.App.broadcast("game/PLAYERSELECT/SCENARIO/high_noon");
 		}
 		server.App.broadcast("game/SETTEXT/TOP_NOTICE/Result");
-		server.App.broadcast("game/DISABLE/SELECT_PANEL");
+		server.App.broadcast("game/DISABLE/SELECT_PANEL/SCENARIO");
 		// waiting 5 seconds
 		try{ Thread.sleep(5000); } catch(InterruptedException e){};
 		// make scenario deck
