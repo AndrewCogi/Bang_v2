@@ -48,14 +48,16 @@ public class Gm{
 		}
 		System.out.println("[System][Gm] > end Bang.");
 		// disable TOP_NOTICE
-		server.App.broadcast("game/DISABLE/TOP_NOTICE");
+		server.App.broadcast("game/SETTEXT/TOP_NOTICE/ ");
 	}
 
 	// setting seat
 	private void setting_seat(){
-		// broadcasting "Allocating seats..." & ENABLE TOP_NOTICE
+		// broadcasting "Allocating seats..." & ENABLE TOP_NOTICE & MIDDLE_NOTICE
 		server.App.broadcast("game/SETTEXT/TOP_NOTICE/Allocating seats...");
 		server.App.broadcast("game/ENABLE/TOP_NOTICE");
+		server.App.broadcast("game/SETTEXT/MIDDLE_NOTICE/ ");
+		server.App.broadcast("game/ENABLE/MIDDLE_NOTICE");
 		// re-init turn list
 		this.turn = new LinkedList<>();
 		// make turn list & shuffle
@@ -122,7 +124,7 @@ public class Gm{
 		vote_last_scenario = new int[]{0,0};
 		// broadcasting "Select last scenario..."
 		server.App.broadcast("game/SETTEXT/TOP_NOTICE/Select last scenario...("+
-				vote_last_scenario[0]+" vs "+vote_last_scenario[1]+")");
+				(Gm.getVote_last_scenario()[0]+Gm.getVote_last_scenario()[1])+" | 7)");
 		// broadcasting SELECT/LAST_SCENARIO
 		server.App.broadcast("game/SELECT/LAST_SCENARIO");
 		// swit until everyone respond
@@ -130,15 +132,16 @@ public class Gm{
 		// delay for socket IO
 		try{ Thread.sleep(100); } catch(InterruptedException e){};
 		// everyone picked, broadcast result
-		server.App.broadcast("game/SETTEXT/TOP_NOTICE/Result");
-		server.App.broadcast("game/DISABLE/SELECT_PANEL");
-		server.App.broadcast("game/ENABLE/MIDDLE_NOTICE");
 		if(vote_last_scenario[0] > vote_last_scenario[1]){
 			server.App.broadcast("game/SETTEXT/MIDDLE_NOTICE/a_fistful_of_cards");
+			server.App.broadcast("game/PLAYERSELECT/SCENARIO/a_fistful_of_cards");
 		}
 		else if(vote_last_scenario[0] < vote_last_scenario[1]){
 			server.App.broadcast("game/SETTEXT/MIDDLE_NOTICE/high_noon");
+			server.App.broadcast("game/PLAYERSELECT/SCENARIO/high_noon");
 		}
+		server.App.broadcast("game/SETTEXT/TOP_NOTICE/Result");
+		server.App.broadcast("game/DISABLE/SELECT_PANEL");
 		// waiting 5 seconds
 		try{ Thread.sleep(5000); } catch(InterruptedException e){};
 		// make scenario deck

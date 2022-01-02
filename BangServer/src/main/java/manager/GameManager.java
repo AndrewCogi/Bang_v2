@@ -42,7 +42,7 @@ public class GameManager{
 				Gm.setRespond(Gm.getRespond()+1);
 				// broadcast how many players picked
 				server.App.broadcast("game/SETTEXT/TOP_NOTICE/Select last scenario...("+
-						Gm.getVote_last_scenario()[0]+" vs "+Gm.getVote_last_scenario()[1]+")");
+						(Gm.getVote_last_scenario()[0]+Gm.getVote_last_scenario()[1])+" | 7)");
 			}
 		}
 

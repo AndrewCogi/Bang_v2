@@ -79,8 +79,6 @@ public class Commander extends Thread{
 		System.out.println("[System][Commander] > Game start!");
 		// broadcast the game is started
 		App.broadcast("game/STATE/START");
-		// broadcast remove notice
-		App.broadcast("game/DISABLE/MIDDLE_NOTICE");
 		// game start == true
 		App.setGameStarted(true);
 		System.out.println("[System][Commander] > setGameStarted: ["+App.getGameStarted()+"]");
