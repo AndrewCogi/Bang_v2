@@ -10,7 +10,9 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
+import card.ScenarioCard;
 import deck.RoleDeck;
+import deck.ScenarioDeck;
 
 public class Gm{
 	// player's turn(== init seat)
@@ -19,6 +21,9 @@ public class Gm{
 	private static HashMap<String,String> role;
 	// vote last scenario
 	private static int[] vote_last_scenario;
+	// scenario deck
+	private static ScenarioDeck scenarioTurnDeck;
+	private static ScenarioDeck scenarioWildDeck;
 	// respond members
 	private static int respond = 0;
 
@@ -33,7 +38,7 @@ public class Gm{
 		// select role
 		select_role();
 		// select scenario
-		select_scenario();
+		select_last_scenario();
 		// select character
 		select_character();
 	}
@@ -118,8 +123,8 @@ public class Gm{
 		}
 	}
 
-	// select scenario
-	private void select_scenario(){
+	// select last scenario
+	private void select_last_scenario(){
 		// re-init respond
 		setRespond(0);
 		// re-init last_scenario
@@ -147,7 +152,19 @@ public class Gm{
 		// waiting 5 seconds
 		try{ Thread.sleep(5000); } catch(InterruptedException e){};
 		// make scenario deck
-		// ScenarioDeck scenarioDeck = new ScenarioDeck();
+		scenarioTurnDeck = new ScenarioDeck();
+		scenarioTurnDeck.make_init_deck(1,vote_last_scenario[0] > vote_last_scenario[1]);
+		scenarioWildDeck = new ScenarioDeck();
+		scenarioWildDeck.make_init_deck(2,true);
+		// check
+		for(int i=0; i<scenarioTurnDeck.getSize(); i++){
+			System.out.println("[ScenarioTurnDeck]: "+scenarioTurnDeck.getCardName(i));
+		}
+		System.out.println();
+		for(int i=0; i<scenarioWildDeck.getSize(); i++){
+			System.out.println("[ScenarioWildDeck]: "+scenarioWildDeck.getCardName(i));
+		}
+		System.out.println();
 	}
 
 	// select_character

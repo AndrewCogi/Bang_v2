@@ -15,7 +15,7 @@ public class ScenarioCard{
 	}
 
 	// get card name
-	public String getCardname(){
+	public String getCardName(){
 		return cardName;
 	}
 }
