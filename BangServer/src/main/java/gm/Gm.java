@@ -73,7 +73,7 @@ public class Gm{
 		turns.deleteCharAt(turns.length()-1);
 		server.App.broadcast("game/INIT/SEAT/"+turns);
 		// waiting for setting seats
-		try{ Thread.sleep(7000); } catch(InterruptedException e){}
+		try{ Thread.sleep(700*7); } catch(InterruptedException e){}
 		// broadcasting disable TOP_NOTICE
 		server.App.broadcast("game/SETTEXT/TOP_NOTICE/ ");
 	}
@@ -85,7 +85,7 @@ public class Gm{
 		// re-init role
 		role = new HashMap<String,String>();
 		// broadcasting "Select your role..."
-		server.App.broadcast("game/SETTEXT/TOP_NOTICE/Select your role...(0 | 7)");
+		// server.App.broadcast("game/SETTEXT/TOP_NOTICE/Select your role...(0 | 7)");
 		// make role deck
 		RoleDeck roleDeck = new RoleDeck();
 		// make & shuffle role deck
@@ -99,10 +99,12 @@ public class Gm{
 		// wait until everyone respond
 		while(getRespond() != 7){}
 		// everyone picked, allocating their roles
-		for(int cnt=5; cnt>0; cnt--){
-			server.App.broadcast("game/SETTEXT/TOP_NOTICE/Allocating roles in "+cnt+"...");
-			try{ Thread.sleep(1000); } catch(InterruptedException e){};
-		}
+		// for(int cnt=3; cnt>0; cnt--){
+			// server.App.broadcast("game/SETTEXT/TOP_NOTICE/Allocating roles in "+cnt+"...");
+			// try{ Thread.sleep(1000); } catch(InterruptedException e){};
+		// }
+		// wait for socket IO
+		try{ Thread.sleep(1000); } catch(InterruptedException e){};
 		// allocating roles...
 		server.App.broadcast("game/SETTEXT/TOP_NOTICE/ ");
 		server.App.broadcast("game/DISABLE/SELECT_PANEL/ROLE");
@@ -112,7 +114,7 @@ public class Gm{
 			String roleName = role.get(name);
 			// game/INIT/ROLE/[name]/[roleName]
 			server.App.broadcast("game/INIT/ROLE/"+name+"/"+roleName);
-			try{ Thread.sleep(1000); } catch(InterruptedException e){};
+			try{ Thread.sleep(1000/2); } catch(InterruptedException e){};
 		}
 	}
 
@@ -123,14 +125,14 @@ public class Gm{
 		// re-init last_scenario
 		vote_last_scenario = new int[]{0,0};
 		// broadcasting "Select last scenario..."
-		server.App.broadcast("game/SETTEXT/TOP_NOTICE/Select last scenario...("+
-				(Gm.getVote_last_scenario()[0]+Gm.getVote_last_scenario()[1])+" | 7)");
+		// server.App.broadcast("game/SETTEXT/TOP_NOTICE/Select last scenario...("+
+				// (Gm.getVote_last_scenario()[0]+Gm.getVote_last_scenario()[1])+" | 7)");
 		// broadcasting SELECT/LAST_SCENARIO
 		server.App.broadcast("game/SELECT/LAST_SCENARIO");
 		// swit until everyone respond
 		while(getRespond() != 7){}
 		// delay for socket IO
-		try{ Thread.sleep(100); } catch(InterruptedException e){};
+		try{ Thread.sleep(1000); } catch(InterruptedException e){};
 		// everyone picked, broadcast result
 		if(vote_last_scenario[0] > vote_last_scenario[1]){
 			server.App.broadcast("game/SETTEXT/MIDDLE_NOTICE/a_fistful_of_cards");
