@@ -11,6 +11,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import card.ScenarioCard;
+import deck.CharacterDeck;
 import deck.RoleDeck;
 import deck.ScenarioDeck;
 
@@ -19,6 +20,8 @@ public class Gm{
 	private List<String> turn;
 	// player's role(== init role) <ID,Role>
 	private static HashMap<String,String> role;
+	// player's character(== init character) <ID,character>
+	private static HashMap<String,String> character;
 	// vote last scenario
 	private static int[] vote_last_scenario;
 	// scenario deck
@@ -134,7 +137,7 @@ public class Gm{
 				// (Gm.getVote_last_scenario()[0]+Gm.getVote_last_scenario()[1])+" | 7)");
 		// broadcasting SELECT/LAST_SCENARIO
 		server.App.broadcast("game/SELECT/LAST_SCENARIO");
-		// swit until everyone respond
+		// wait until everyone respond
 		while(getRespond() != 7){}
 		// delay for socket IO
 		try{ Thread.sleep(1000); } catch(InterruptedException e){};
@@ -151,6 +154,8 @@ public class Gm{
 		server.App.broadcast("game/DISABLE/SELECT_PANEL/SCENARIO");
 		// waiting 5 seconds
 		try{ Thread.sleep(5000); } catch(InterruptedException e){};
+		// delete middle notice
+		server.App.broadcast("game/SETTEXT/MIDDLE_NOTICE/ ");
 		// make scenario deck
 		scenarioTurnDeck = new ScenarioDeck();
 		scenarioTurnDeck.make_init_deck(1,vote_last_scenario[0] > vote_last_scenario[1]);
@@ -169,7 +174,42 @@ public class Gm{
 
 	// select_character
 	private void select_character(){
-
+		// re-init respond
+		setRespond(0);
+		// re-init character
+		character = new HashMap<String,String>();
+		// make character deck
+		CharacterDeck characterDeck = new CharacterDeck();
+		characterDeck.make_character_deck();
+		// broadcasting SELECT/CHARACTER/[ex1]/[ch1]/[hp1]/
+		// [ex2]/[ch2]/[hp2]/[ex3]/[ch3]/[hp3]/[ex4]/[ch4]/[hp4]
+		for(String playerID : server.App.getClientsPrintWriter().values()){
+			// extract 3 characters
+			String characterInfo1 = characterDeck.extract();
+			String characterInfo2 = characterDeck.extract();
+			String characterInfo3 = characterDeck.extract();
+			String characterInfo4 = characterDeck.extract();
+			server.App.broadcast_within(playerID,"game/SELECT/CHARACTER/"+
+					characterInfo1+"/"+characterInfo2+"/"+characterInfo3+"/"+characterInfo4);
+		}
+		// wait until eveone respond
+		while(getRespond() != 7){}
+		// delay for socket IO
+		try{ Thread.sleep(1000); } catch(InterruptedException e){};
+		// allocating characters...
+		server.App.broadcast("game/SETTEXT/TOP_NOTICE/ ");
+		server.App.broadcast("game/DISABLE/SELECT_PANEL/CHARACTER");
+		server.App.broadcast("game/SETTEXT/TOP_NOTICE/Allocating characters...");
+		// broadcasting their characters
+		for(String playerID : character.keySet()){
+			String characterExtension = character.get(playerID).split("/")[0];
+			String characterName = character.get(playerID).split("/")[1];
+			// game/INIT/CHARACTER/[playerName]/[characterExtension]/[characterName]
+			server.App.broadcast("game/INIT/CHARACTER/"+playerID+"/"+characterExtension+"/"+characterName);
+			try{ Thread.sleep(1000/2); } catch(InterruptedException e){};
+		}
+		// disable top notice
+		server.App.broadcast("game/SETTEXT/TOP_NOTICE/ ");
 	}
 
 
@@ -185,6 +225,10 @@ public class Gm{
 	// get role
 	public static synchronized HashMap<String,String> getRole(){
 		return role;
+	}
+	// get character
+	public static synchronized HashMap<String,String> getCharacter(){
+		return character;
 	}
 	// get vote_last_scenario
 	public static synchronized int[] getVote_last_scenario(){

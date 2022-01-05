@@ -90,9 +90,9 @@ public class ScenarioDeck{
 		while(deck.size() > num){
 			// make random number (0~deck.size()-1)
 			int randomNumber = (int)(Math.random() * deck.size()-1);
-			System.out.println("[ScenarioDeck][RandomNumber]: "+randomNumber);
+			// System.out.println("[ScenarioDeck][RandomNumber]: "+randomNumber);
 			// remove deck[randomNumber]
-			System.out.println("[ScenarioDeck][RandomNumber]: delete -> "+deck.get(randomNumber).getCardName());
+			// System.out.println("[ScenarioDeck][RandomNumber]: delete -> "+deck.get(randomNumber).getCardName());
 			deck.remove(randomNumber);
 		}
 	}
