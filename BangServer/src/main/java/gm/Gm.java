@@ -10,7 +10,6 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
-import card.ScenarioCard;
 import deck.CharacterDeck;
 import deck.RoleDeck;
 import deck.ScenarioDeck;
