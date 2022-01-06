@@ -43,6 +43,8 @@ public class Gm{
 		select_last_scenario();
 		// select character
 		select_character();
+		// setting remains
+		setting_remains();
 	}
 
 	public void start(){
@@ -155,20 +157,6 @@ public class Gm{
 		try{ Thread.sleep(5000); } catch(InterruptedException e){};
 		// delete middle notice
 		server.App.broadcast("game/SETTEXT/MIDDLE_NOTICE/ ");
-		// make scenario deck
-		scenarioTurnDeck = new ScenarioDeck();
-		scenarioTurnDeck.make_init_deck(1,vote_last_scenario[0] > vote_last_scenario[1]);
-		scenarioWildDeck = new ScenarioDeck();
-		scenarioWildDeck.make_init_deck(2,true);
-		// check
-		for(int i=0; i<scenarioTurnDeck.getSize(); i++){
-			System.out.println("[ScenarioTurnDeck]: "+scenarioTurnDeck.getCardName(i));
-		}
-		System.out.println();
-		for(int i=0; i<scenarioWildDeck.getSize(); i++){
-			System.out.println("[ScenarioWildDeck]: "+scenarioWildDeck.getCardName(i));
-		}
-		System.out.println();
 	}
 
 	// select_character
@@ -210,6 +198,76 @@ public class Gm{
 		// disable top notice
 		server.App.broadcast("game/SETTEXT/TOP_NOTICE/ ");
 	}
+
+	// setting remains
+	private void setting_remains(){
+		// broadcast top notice
+		server.App.broadcast("game/SETTEXT/TOP_NOTICE/Setting remains...");
+		// setting scenario
+		setting_scenario(); // 덱 만들기 & 플레이어들 UI 바꿔주기
+		// setting main deck
+		setting_main_deck(); // 덱 만들기 & 플레이어들 UI 바꿔주기
+		// setting gold rush
+		setting_gold_rush(); // 덱 만들기 & 플레이어들 UI 바꿔주기
+		// setting guns
+		setting_init_gun(); // 플레이어들 총 나누어주기 (colt-45)
+		// setting hp & gold
+		setting_init_hp_gold(); // 플레이어들 체력 및 금덩이 배치해주기
+		// setting players' hand
+		setting_init_player_hand(); // 플레이어들 핸드카드 나누어주기
+		// broadcast top notice
+		server.App.broadcast("game/SETTEXT/TOP_NOTICE/Game Start!");
+	}
+
+	// setting scenario (making scenario deck)
+	private void setting_scenario(){
+		// make scenario deck
+		scenarioTurnDeck = new ScenarioDeck();
+		scenarioTurnDeck.make_init_deck(1,vote_last_scenario[0] > vote_last_scenario[1]);
+		scenarioWildDeck = new ScenarioDeck();
+		scenarioWildDeck.make_init_deck(2,true);
+		// check
+		for(int i=0; i<scenarioTurnDeck.getSize(); i++){
+			System.out.println("[ScenarioTurnDeck]: "+scenarioTurnDeck.getCardName(i));
+		}
+		System.out.println();
+		for(int i=0; i<scenarioWildDeck.getSize(); i++){
+			System.out.println("[ScenarioWildDeck]: "+scenarioWildDeck.getCardName(i));
+		}
+		System.out.println();
+		// TODO 플레이어들 UI 바꿔주도록 하자 (뒷면으로)
+	}
+
+	// setting main deck
+	private void setting_main_deck(){
+
+	}
+
+	// setting gold rush
+	private void setting_gold_rush(){
+
+	}
+
+	// setting init hp & gold
+	private void setting_init_hp_gold(){
+
+	}
+
+	// setting init player hand
+	private void setting_init_player_hand(){
+
+	}
+
+	// setting init gun
+	private void setting_init_gun(){
+		// broadcasting guns...
+		for(String playerID : server.App.getClientsPrintWriter().values()){
+			server.App.broadcast("game/INIT/GUN/"+playerID);
+			try{ Thread.sleep(500/2); } catch(InterruptedException e){};
+		}
+	}
+
+
 
 
 
