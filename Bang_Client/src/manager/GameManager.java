@@ -135,6 +135,10 @@ public class GameManager {
 			}
 			// game/INIT/CHARACTER/[id]/[characterExtension]/[characterName]
 			else if(splitCmd[2].equals("CHARACTER")) {
+				// if [id] == myName, activate ability button
+				if(splitCmd[3].equals(myName)) {
+					Setter.setPlayerCharacterAbilityButtonAvailable(true);
+				}
 				// make card
 				CardMaker.make_card_handField_character(splitCmd[3], splitCmd[4], splitCmd[5]);
 				// available(->true) card

@@ -111,6 +111,16 @@ public class Setter {
 		UI.mp.repaint();
 	}
 	
+	// set player character ability button available
+	public static void setPlayerCharacterAbilityButtonAvailable(boolean activate) {
+		UI.player_A_ability.setVisible(activate);
+		if(activate == true) UI.player_A.add(UI.player_A_ability);
+		else if(activate == false) UI.player_A.remove(UI.player_A_ability);
+		
+		// repaint
+		UI.mp.repaint();
+	}
+	
 	// set player_role image available(userName, activate) (A:me)
 	// (B:bottom-left, C:middle-left, D: top-left)
 	// (E:top-right, F:middle-right, G:bottom-right)

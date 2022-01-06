@@ -73,6 +73,8 @@ public class UI {
 	// scenario notice (next,now)
 	public static JLabel scenario_turn_next;
 	public static JLabel scenario_turn_now;
+	// character ability button
+	public static JButton player_A_ability;
 	// select panel (role)
 	public static JPanel select_panel_role;
 	// select panel (character)
@@ -96,6 +98,8 @@ public class UI {
 		// init scenario & scenario_notice
 		init_scenario();
 		init_scenario_notice();
+		// init character ability button
+		init_character_ability_button();
 		
 //		// test (show players panels)
 //		mp.add(player_A);
@@ -171,6 +175,16 @@ public class UI {
 //		select_panel.add(CardMaker.make_card_select_panel_role("vice",os,1));
 	}
 	
+	// init character ability button
+	private void init_character_ability_button() {
+		// init button
+		player_A_ability = new JButton();
+		// set bounds
+		player_A_ability.setBounds(3,138,87,30);
+		// set visible = false
+		player_A_ability.setVisible(false);
+	}
+	
 	// init scenario
 	private void init_scenario() {
 		// init buttons
@@ -198,11 +212,6 @@ public class UI {
 		scenario_turn_front.setVisible(false);
 		scenario_wild_back.setVisible(false);
 		scenario_wild_front.setVisible(false);
-		//add into main_panel
-		mp.add(scenario_turn_back);
-		mp.add(scenario_turn_front);
-		mp.add(scenario_wild_back);
-		mp.add(scenario_wild_front);
 	}
 	
 	// init scenario notice
@@ -225,9 +234,6 @@ public class UI {
 		// set invisible
 		scenario_turn_next.setVisible(false);
 		scenario_turn_now.setVisible(false);
-		// add those into main panel
-		mp.add(scenario_turn_next);
-		mp.add(scenario_turn_now);
 	}
 	
 	// init seats things
