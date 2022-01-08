@@ -22,7 +22,7 @@ public class RoleDeck{
 	}
 
 	// making role deck
-	public void make_role_deck(){
+	public void make_init_deck(){
 		// re-init role deck
 		deck = new ArrayList<>();
 		// add informations

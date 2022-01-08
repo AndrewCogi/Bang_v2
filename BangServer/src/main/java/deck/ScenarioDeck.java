@@ -29,59 +29,59 @@ public class ScenarioDeck{
 			deck = new ArrayList<>();
 			// add senario cards
 			// a_fistful_of_cards
-			deck.add(new ScenarioCard("agguato"));
-			deck.add(new ScenarioCard("cecchino"));
-			deck.add(new ScenarioCard("dead_man"));
-			deck.add(new ScenarioCard("fratelli_di_sangue"));
-			deck.add(new ScenarioCard("il_giudice"));
-			deck.add(new ScenarioCard("lazo"));
-			deck.add(new ScenarioCard("legge_del_west"));
-			deck.add(new ScenarioCard("liquore_forte"));
-			deck.add(new ScenarioCard("miniera_abbandonata"));
-			deck.add(new ScenarioCard("peyote"));
-			deck.add(new ScenarioCard("ranch"));
-			deck.add(new ScenarioCard("rimbalzo"));
-			deck.add(new ScenarioCard("roulette_russa"));
-			deck.add(new ScenarioCard("vendetta"));
+			deck.add(new ScenarioCard("a_fistful_of_cards","agguato"));
+			deck.add(new ScenarioCard("a_fistful_of_cards","cecchino"));
+			deck.add(new ScenarioCard("a_fistful_of_cards","dead_man"));
+			deck.add(new ScenarioCard("a_fistful_of_cards","fratelli_di_sangue"));
+			deck.add(new ScenarioCard("a_fistful_of_cards","il_giudice"));
+			deck.add(new ScenarioCard("a_fistful_of_cards","lazo"));
+			deck.add(new ScenarioCard("a_fistful_of_cards","legge_del_west"));
+			deck.add(new ScenarioCard("a_fistful_of_cards","liquore_forte"));
+			deck.add(new ScenarioCard("a_fistful_of_cards","miniera_abbandonata"));
+			deck.add(new ScenarioCard("a_fistful_of_cards","peyote"));
+			deck.add(new ScenarioCard("a_fistful_of_cards","ranch"));
+			deck.add(new ScenarioCard("a_fistful_of_cards","rimbalzo"));
+			deck.add(new ScenarioCard("a_fistful_of_cards","roulette_russa"));
+			deck.add(new ScenarioCard("a_fistful_of_cards","vendetta"));
 			// high_noon
-			deck.add(new ScenarioCard("benedizione"));
-			deck.add(new ScenarioCard("citta'_fantasma"));
-			deck.add(new ScenarioCard("corsa_all'oro"));
-			deck.add(new ScenarioCard("i_dalton"));
-			deck.add(new ScenarioCard("il_dottore"));
-			deck.add(new ScenarioCard("il_reverendo"));
-			deck.add(new ScenarioCard("il_treno"));
-			deck.add(new ScenarioCard("maledizione"));
-			deck.add(new ScenarioCard("sbornia"));
-			deck.add(new ScenarioCard("sermone"));
-			deck.add(new ScenarioCard("sete"));
-			deck.add(new ScenarioCard("sparatoria"));
+			deck.add(new ScenarioCard("high_noon","benedizione"));
+			deck.add(new ScenarioCard("high_noon","citta'_fantasma"));
+			deck.add(new ScenarioCard("high_noon","corsa_all'oro"));
+			deck.add(new ScenarioCard("high_noon","i_dalton"));
+			deck.add(new ScenarioCard("high_noon","il_dottore"));
+			deck.add(new ScenarioCard("high_noon","il_reverendo"));
+			deck.add(new ScenarioCard("high_noon","il_treno"));
+			deck.add(new ScenarioCard("high_noon","maledizione"));
+			deck.add(new ScenarioCard("high_noon","sbornia"));
+			deck.add(new ScenarioCard("high_noon","sermone"));
+			deck.add(new ScenarioCard("high_noon","sete"));
+			deck.add(new ScenarioCard("high_noon","sparatoria"));
 			// remove scenarioCard until remain 11 cards
 			remove_cards(11);
 			// shuffle deck
 			shuffle();
 			// add last scenario card
-			if(isFistful == true) deck.add(deck.size(), new ScenarioCard("per_un_pugno_di_carte"));
-			else deck.add(deck.size(), new ScenarioCard("mezzogiorno_di_fuoco"));
+			if(isFistful == true) deck.add(deck.size(), new ScenarioCard("a_fistful_of_cards","per_un_pugno_di_carte"));
+			else deck.add(deck.size(), new ScenarioCard("high_noon","mezzogiorno_di_fuoco"));
 		}
 		else if(num == 2){
 			// re-init scenario deck
 			deck = new ArrayList<>();
 			// add scenario cards
 			// wild_west_show
-			deck.add(new ScenarioCard("bavaglio"));
-			deck.add(new ScenarioCard("camposanto"));
-			deck.add(new ScenarioCard("darling_valentine"));
-			deck.add(new ScenarioCard("dorothy_rage"));
-			deck.add(new ScenarioCard("helena_zontero"));
-			deck.add(new ScenarioCard("lady_rosa_del_texas"));
-			deck.add(new ScenarioCard("miss_susanna"));
-			deck.add(new ScenarioCard("regolamento_di_conti"));
-			deck.add(new ScenarioCard("sacagaway"));
+			deck.add(new ScenarioCard("wild_west_show","bavaglio"));
+			deck.add(new ScenarioCard("wild_west_show","camposanto"));
+			deck.add(new ScenarioCard("wild_west_show","darling_valentine"));
+			deck.add(new ScenarioCard("wild_west_show","dorothy_rage"));
+			deck.add(new ScenarioCard("wild_west_show","helena_zontero"));
+			deck.add(new ScenarioCard("wild_west_show","lady_rosa_del_texas"));
+			deck.add(new ScenarioCard("wild_west_show","miss_susanna"));
+			deck.add(new ScenarioCard("wild_west_show","regolamento_di_conti"));
+			deck.add(new ScenarioCard("wild_west_show","sacagaway"));
 			// shuffle deck
 			shuffle();
 			// add last scenario card
-			deck.add(deck.size(), new ScenarioCard("wild_west_show"));
+			deck.add(deck.size(), new ScenarioCard("wild_west_show","wild_west_show"));
 		}
 	}
 
@@ -101,7 +101,7 @@ public class ScenarioDeck{
 	public int getSize(){
 		return deck.size();
 	}
-	
+
 	// shuffle role deck
 	public void shuffle(){
 		Collections.shuffle(deck);
@@ -110,5 +110,10 @@ public class ScenarioDeck{
 	// get [idx] element name (== cardName)
 	public String getCardName(int idx){
 		return deck.get(idx).getCardName();
+	}
+	
+	// get [idx] element name (== cardExtension)
+	public String getCardExtension(int idx){
+		return deck.get(idx).getCardExtension();
 	}
 }

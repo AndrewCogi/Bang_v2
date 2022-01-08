@@ -21,7 +21,7 @@ public class CharacterDeck{
 	}
 
 	// making character deck
-	public void make_character_deck(){
+	public void make_init_deck(){
 		// re-init character deck
 		deck = new ArrayList<>();
 		// add informations

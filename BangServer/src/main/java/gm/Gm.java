@@ -11,6 +11,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import deck.CharacterDeck;
+import deck.MainDeck;
 import deck.RoleDeck;
 import deck.ScenarioDeck;
 
@@ -26,6 +27,9 @@ public class Gm{
 	// scenario deck
 	private static ScenarioDeck scenarioTurnDeck;
 	private static ScenarioDeck scenarioWildDeck;
+	// main deck (playing deck)
+	private static MainDeck mainDeck_new;
+	private static MainDeck mainDeck_old;
 	// respond members
 	private static int respond = 0;
 
@@ -98,7 +102,7 @@ public class Gm{
 		// make role deck
 		RoleDeck roleDeck = new RoleDeck();
 		// make & shuffle role deck
-		roleDeck.make_role_deck();
+		roleDeck.make_init_deck();
 		roleDeck.shuffle();
 		// broadcasting SELECT/ROLE/[0]/[1]/[2]/[3]/[4]/[5]/[6]
 		server.App.broadcast("game/SELECT/ROLE/"+
@@ -167,7 +171,7 @@ public class Gm{
 		character = new HashMap<String,String>();
 		// make character deck
 		CharacterDeck characterDeck = new CharacterDeck();
-		characterDeck.make_character_deck();
+		characterDeck.make_init_deck();
 		// broadcasting SELECT/CHARACTER/[ex1]/[ch1]/[hp1]/
 		// [ex2]/[ch2]/[hp2]/[ex3]/[ch3]/[hp3]/[ex4]/[ch4]/[hp4]
 		for(String playerID : server.App.getClientsPrintWriter().values()){
@@ -235,22 +239,36 @@ public class Gm{
 			System.out.println("[ScenarioWildDeck]: "+scenarioWildDeck.getCardName(i));
 		}
 		System.out.println();
-		// TODO 플레이어들 UI 바꿔주도록 하자 (뒷면으로)
+		// broadcasting game/INIT/SCENARIO/[extension]/[turn-first scenario]
+		server.App.broadcast("game/INIT/SCENAIO/"+
+				scenarioTurnDeck.getCardExtension(0)+"/"+scenarioTurnDeck.getCardName(0));
 	}
 
 	// setting main deck
 	private void setting_main_deck(){
-
+		// makd main deck
+		MainDeck mainDeck_new = new MainDeck();
+		MainDeck mainDeck_old = new MainDeck();
+		mainDeck_new.make_init_deck();
+		mainDeck_new.shuffle();
+		// broadcast game/INIT/MAIN_DECK
+		server.App.broadcast("game/INIT/MAIN_DECK");
 	}
 
 	// setting gold rush
 	private void setting_gold_rush(){
-
+		// makd gold_rush deck
+		GoldRushDeck goldRushDeck_new = new GoldRushDeck();
+		GoldRushDeck goldRushDeck_old = new GoldRushDeck();
+		goldRushDeck_new.make_init_deck();
+		goldRushDeck_new.shuffle();
+		// broadcast game/INIT/GOLD_RUSH/[card1]/[card2]/[card3]
 	}
 
 	// setting init hp & gold
 	private void setting_init_hp_gold(){
-
+		// broadcast game/INIT/HP_GOLD
+		server.App.broadcast("game/INIT/HP_GOLD");
 	}
 
 	// setting init player hand
