@@ -133,14 +133,14 @@ public class GameManager {
 					Setter.setPlayerRoleImageAvailable(splitCmd[3], true);
 				}
 			}
-			// game/INIT/CHARACTER/[id]/[characterExtension]/[characterName]
+			// game/INIT/CHARACTER/[id]/[characterExtension]/[characterName]/[characterHp]
 			else if(splitCmd[2].equals("CHARACTER")) {
 				// if [id] == myName, activate ability button
 				if(splitCmd[3].equals(myName)) {
 					Setter.setPlayerCharacterAbilityButtonAvailable(true);
 				}
 				// make card
-				CardMaker.make_card_handField_character(splitCmd[3], splitCmd[4], splitCmd[5]);
+				CardMaker.make_card_handField_character(splitCmd[3], splitCmd[4], splitCmd[5],Integer.parseInt(splitCmd[6]));
 				// available(->true) card
 				Setter.setPlayerCharacterImageAvailable(splitCmd[3], true);
 			}
@@ -150,6 +150,59 @@ public class GameManager {
 				CardMaker.make_card_handField_gun_init(splitCmd[3]);
 				// available(->true) card
 				Setter.setPlayerGunImageAvailable(splitCmd[3],true);
+			}
+			// game/INIT/SCENAIO/[extension]/[scenarioName]
+			else if(splitCmd[2].equals("SCENAIO")) {
+				// make scenario init setting
+				String scenarioExtension = splitCmd[3];
+				String scenarioName = splitCmd[4];
+				// [first scenario],[empty],[wild-west(back)],[empty]
+				CardMaker.make_card_handField_scenario(1, scenarioExtension, scenarioName);
+				CardMaker.make_card_handField_scenario(2, null, null);
+				CardMaker.make_card_handField_scenario(3, "back", "wild_west_show");
+				CardMaker.make_card_handField_scenario(4, null, null);
+			}
+			// game/INIT/MAIN_DECK
+			else if(splitCmd[2].equals("MAIN_DECK")) {
+				// make main deck [back], [empty]
+				CardMaker.make_card_handField_main_init();
+				Setter.setMainDeckImageAvailable(true);
+			}
+			// game/INIT/GOLD_RUSH/[cardColor1]/[cardName1]/[cardColor2]/[cardName2]/[cardColor3]/[cardName3]
+			else if(splitCmd[2].equals("GOLD_RUSH")) {
+				// make gold rush store
+				String cardColor1 = splitCmd[3];
+				String cardColor2 = splitCmd[5];
+				String cardColor3 = splitCmd[7];
+				String cardName1 = splitCmd[4];
+				String cardName2 = splitCmd[6];
+				String cardName3 = splitCmd[8];
+				// TODO
+			}
+			// game/INIT/HP_GOLD
+			else if(splitCmd[2].equals("HP_GOLD")) {
+				// setting hp
+				Setter.setPlayerHpText(UI.player_A_name.getText(), Integer.parseInt(UI.player_A_character.getText().split("/")[2]), UI.player_A_role.getText().equals("sceriffo"));
+				Setter.setPlayerHpText(UI.player_B_name.getText(), Integer.parseInt(UI.player_B_character.getText().split("/")[2]), UI.player_B_role.getText().equals("sceriffo"));
+				Setter.setPlayerHpText(UI.player_C_name.getText(), Integer.parseInt(UI.player_C_character.getText().split("/")[2]), UI.player_C_role.getText().equals("sceriffo"));
+				Setter.setPlayerHpText(UI.player_D_name.getText(), Integer.parseInt(UI.player_D_character.getText().split("/")[2]), UI.player_D_role.getText().equals("sceriffo"));
+				Setter.setPlayerHpText(UI.player_E_name.getText(), Integer.parseInt(UI.player_E_character.getText().split("/")[2]), UI.player_E_role.getText().equals("sceriffo"));
+				Setter.setPlayerHpText(UI.player_F_name.getText(), Integer.parseInt(UI.player_F_character.getText().split("/")[2]), UI.player_F_role.getText().equals("sceriffo"));
+				Setter.setPlayerHpText(UI.player_G_name.getText(), Integer.parseInt(UI.player_G_character.getText().split("/")[2]), UI.player_G_role.getText().equals("sceriffo"));
+				// hp image & text available -> true
+				Setter.setPlayerHpImageAvailable(true);
+				Setter.setPlayerHpTextAvailable(true);
+				// setting gold
+				Setter.setPlayerGoldText(UI.player_A_name.getText(), 0);
+				Setter.setPlayerGoldText(UI.player_B_name.getText(), 0);
+				Setter.setPlayerGoldText(UI.player_C_name.getText(), 0);
+				Setter.setPlayerGoldText(UI.player_D_name.getText(), 0);
+				Setter.setPlayerGoldText(UI.player_E_name.getText(), 0);
+				Setter.setPlayerGoldText(UI.player_F_name.getText(), 0);
+				Setter.setPlayerGoldText(UI.player_G_name.getText(), 0);
+				// gold image & text available -> true
+				Setter.setPlayerGoldImageAvailable(true);
+				Setter.setPlayerGoldTextAvailable(true);
 			}
 		}
 		
@@ -234,9 +287,10 @@ public class GameManager {
 			}
 			// game/PLSYERSELECT/SCENARIO/[cardName]
 			else if(splitCmd[2].equals("SCENARIO")) {
+				// make card
 				String cardName = splitCmd[3];
-				Setter.setLastScenarioImage(cardName);
-				Setter.setLastScenarioImage("wild_west_show");
+				CardMaker.make_card_handField_scenario_init(cardName);
+				CardMaker.make_card_handField_scenario_init("wild_west_show");
 				// available
 				Setter.setScenarioImageAvailable(1, true);
 				Setter.setScenarioImageAvailable(2, true);

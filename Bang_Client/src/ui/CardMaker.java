@@ -16,6 +16,70 @@ import javax.swing.JButton;
 import client.App;
 
 public class CardMaker {
+	// set scenario image (1: turn_back / 2: turn_front / 3: wild_back / 4: wild_front)
+	public static void make_card_handField_scenario(int target, String extension, String cardName) {
+		// if extension & cardName == null, empty card!
+		if(extension == null && cardName == null) {
+			if(target == 1) UI.scenario_turn_back.setIcon(new ImageIcon(".\\.\\resources\\card\\empty_87.png"));
+			else if(target == 2) UI.scenario_turn_front.setIcon(new ImageIcon(".\\.\\resources\\card\\empty_87.png"));
+			else if(target == 3) UI.scenario_wild_back.setIcon(new ImageIcon(".\\.\\resources\\card\\empty_87.png"));
+			else if(target == 4) UI.scenario_wild_front.setIcon(new ImageIcon(".\\.\\resources\\card\\empty_87.png"));
+			UI.mp.repaint();
+			return;
+		}
+		// target == 1 (turn_back)
+		if(target == 1) {
+			// set image "extension/cardName"
+			UI.scenario_turn_back.setIcon(new ImageIcon(".\\.\\resources\\card\\scenario\\"+extension+"\\"+cardName+"_87.png"));
+		}
+		// target == 2 (turn_front)
+		else if(target == 2) {
+			// set image "extension/cardName"
+			UI.scenario_turn_front.setIcon(new ImageIcon(".\\.\\resources\\card\\scenario\\"+extension+"\\"+cardName+"_87.png"));
+		}
+		// target == 3 (wild_back)
+		else if(target == 3) {
+			// set image "extension/cardName"
+			UI.scenario_wild_back.setIcon(new ImageIcon(".\\.\\resources\\card\\scenario\\"+extension+"\\"+cardName+"_87.png"));
+		}
+		// target == 4 (wild_front)
+		else if(target == 4) {
+			// set image "extension/cardName"
+			UI.scenario_wild_front.setIcon(new ImageIcon(".\\.\\resources\\card\\scenario\\"+extension+"\\"+cardName+"_87.png"));
+		}
+		// repaint
+		UI.mp.repaint();
+	}
+	
+	// set last scenario image
+	public static void make_card_handField_scenario_init(String cardName) {
+		if(cardName.equals("a_fistful_of_cards")) {
+			// set image "a fistful of cards"
+			UI.scenario_turn_back.setIcon(new ImageIcon(".\\.\\resources\\card\\scenario\\a_fistful_of_cards\\per_un_pugno_di_carte_87.png"));
+		}
+		else if(cardName.equals("high_noon")) {
+			// set image "high noon"
+			UI.scenario_turn_back.setIcon(new ImageIcon(".\\.\\resources\\card\\scenario\\high_noon\\mezzogiorno_di_fuoco_87.png"));
+		}
+		else if(cardName.equals("wild_west_show")) {
+			// set image "wild west show"
+			UI.scenario_wild_back.setIcon(new ImageIcon(".\\.\\resources\\card\\scenario\\wild_west_show\\wild_west_show_87.png"));
+		}
+		// repaint
+		UI.mp.repaint();
+	}
+	
+	// set main_deck image
+	public static void make_card_handField_main_init() {
+		// main_deck_new (back image)
+		UI.main_deck_new.setIcon(new ImageIcon(".\\.\\resources\\card\\playing\\back_87.png"));
+		// main_deck_old (empty image)
+		UI.main_deck_old.setIcon(new ImageIcon(".\\.\\resources\\card\\empty_87.png"));
+		
+		// repaint
+		UI.mp.repaint();
+	}
+	
 	// make hand & field card button (init gun card)
 	public static void make_card_handField_gun_init(String userName) {
 		// find seat (A)
@@ -124,6 +188,7 @@ public class CardMaker {
 			UI.player_G_gun.setBounds(90,3,87,135);
 		}
 	}
+	
 	// make hand & field card button (role card)
 	public static void make_card_handField_role(String userName, String roleName, boolean isForward) {
 		// find seat (seat is 'A')
@@ -366,11 +431,11 @@ public class CardMaker {
 	}
 	
 	// make hand & field card button (character card)
-	public static void make_card_handField_character(String playerName, String cardPack, String cardName) {
+	public static void make_card_handField_character(String playerName, String cardPack, String cardName, int cardHp) {
 		// seatLocation = player_A_character
 		if(UI.player_A_name.getText().equals(playerName)) {
 			// init select_panel_card image
-			UI.player_A_character = new JButton(cardPack+"/"+cardName){
+			UI.player_A_character = new JButton(cardPack+"/"+cardName+"/"+cardHp){
 				private static final long serialVersionUID = 1L;
 				Image background = new ImageIcon(".\\.\\resources\\card\\character\\"+cardPack+"\\"+cardName+"_87.png").getImage();
 				// drawing background
@@ -385,7 +450,7 @@ public class CardMaker {
 		// seatLocation = player_B_character
 		else if(UI.player_B_name.getText().equals(playerName)) {
 			// init select_panel_card image
-			UI.player_B_character = new JButton(cardPack+"/"+cardName) {
+			UI.player_B_character = new JButton(cardPack+"/"+cardName+"/"+cardHp) {
 				private static final long serialVersionUID = 1L;
 				Image background = new ImageIcon(".\\.\\resources\\card\\character\\"+cardPack+"\\"+cardName+"_87.png").getImage();
 				// drawing background
@@ -400,7 +465,7 @@ public class CardMaker {
 		// seatLocation = player_C_character
 		else if(UI.player_C_name.getText().equals(playerName)) {
 			// init select_panel_card image
-			UI.player_C_character = new JButton(cardPack+"/"+cardName) {
+			UI.player_C_character = new JButton(cardPack+"/"+cardName+"/"+cardHp) {
 				private static final long serialVersionUID = 1L;
 				Image background = new ImageIcon(".\\.\\resources\\card\\character\\"+cardPack+"\\"+cardName+"_87_player_C.png").getImage();
 				// drawing background
@@ -415,7 +480,7 @@ public class CardMaker {
 		// seatLocation= player_D_character
 		else if(UI.player_D_name.getText().equals(playerName)) {
 			// init select_panel_card image
-			UI.player_D_character = new JButton(cardPack+"/"+cardName) {
+			UI.player_D_character = new JButton(cardPack+"/"+cardName+"/"+cardHp) {
 				private static final long serialVersionUID = 1L;
 				Image background = new ImageIcon(".\\.\\resources\\card\\character\\"+cardPack+"\\"+cardName+"_87_player_DE.png").getImage();
 				// drawing background
@@ -430,7 +495,7 @@ public class CardMaker {
 		// seatLocation = player_E_character
 		else if(UI.player_E_name.getText().equals(playerName)) {
 			// init select_panel_card image
-			UI.player_E_character = new JButton(cardPack+"/"+cardName) {
+			UI.player_E_character = new JButton(cardPack+"/"+cardName+"/"+cardHp) {
 				private static final long serialVersionUID = 1L;
 				Image background = new ImageIcon(".\\.\\resources\\card\\character\\"+cardPack+"\\"+cardName+"_87_player_DE.png").getImage();
 				// drawing background
@@ -445,7 +510,7 @@ public class CardMaker {
 		// seatLocation = player_F_character
 		else if(UI.player_F_name.getText().equals(playerName)) {
 			// init select_panel_card image
-			UI.player_F_character = new JButton(cardPack+"/"+cardName) {
+			UI.player_F_character = new JButton(cardPack+"/"+cardName+"/"+cardHp) {
 				private static final long serialVersionUID = 1L;
 				Image background = new ImageIcon(".\\.\\resources\\card\\character\\"+cardPack+"\\"+cardName+"_87_player_F.png").getImage();
 				// drawing background
@@ -460,7 +525,7 @@ public class CardMaker {
 		// seatLocation = player_G_character
 		else if(UI.player_G_name.getText().equals(playerName)) {
 			// init select_panel_card image
-			UI.player_G_character = new JButton(cardPack+"/"+cardName) {
+			UI.player_G_character = new JButton(cardPack+"/"+cardName+"/"+cardHp) {
 				private static final long serialVersionUID = 1L;
 				Image background = new ImageIcon(".\\.\\resources\\card\\character\\"+cardPack+"\\"+cardName+"_87.png").getImage();
 				// drawing background

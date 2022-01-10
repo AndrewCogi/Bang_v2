@@ -65,6 +65,38 @@ public class UI {
 	public static JButton player_E_gun;
 	public static JButton player_F_gun;
 	public static JButton player_G_gun;
+	// playerHp (text) in each seat
+	public static JLabel player_A_hp_text;
+	public static JLabel player_B_hp_text;
+	public static JLabel player_C_hp_text;
+	public static JLabel player_D_hp_text;
+	public static JLabel player_E_hp_text;
+	public static JLabel player_F_hp_text;
+	public static JLabel player_G_hp_text;
+	// playerHp (icon) in each seat
+	public static JButton player_A_hp_icon;
+	public static JButton player_B_hp_icon;
+	public static JButton player_C_hp_icon;
+	public static JButton player_D_hp_icon;
+	public static JButton player_E_hp_icon;
+	public static JButton player_F_hp_icon;
+	public static JButton player_G_hp_icon;
+	// playerGold (text) in each seat
+	public static JLabel player_A_gold_text;
+	public static JLabel player_B_gold_text;
+	public static JLabel player_C_gold_text;
+	public static JLabel player_D_gold_text;
+	public static JLabel player_E_gold_text;
+	public static JLabel player_F_gold_text;
+	public static JLabel player_G_gold_text;
+	// playerGold (icon) in each seat
+	public static JButton player_A_gold_icon;
+	public static JButton player_B_gold_icon;
+	public static JButton player_C_gold_icon;
+	public static JButton player_D_gold_icon;
+	public static JButton player_E_gold_icon;
+	public static JButton player_F_gold_icon;
+	public static JButton player_G_gold_icon;
 	// scenario(turn/wildWest)
 	public static JButton scenario_turn_back;
 	public static JButton scenario_turn_front;
@@ -73,6 +105,9 @@ public class UI {
 	// scenario notice (next,now)
 	public static JLabel scenario_turn_next;
 	public static JLabel scenario_turn_now;
+	// main deck (playing card) (new, old)
+	public static JButton main_deck_new;
+	public static JButton main_deck_old;
 	// character ability button
 	public static JButton player_A_ability;
 	// select panel (role)
@@ -98,8 +133,14 @@ public class UI {
 		// init scenario & scenario_notice
 		init_scenario();
 		init_scenario_notice();
+		// init main deck (playing card deck)
+		init_main_deck();
 		// init character ability button
 		init_character_ability_button();
+		// init character hp & gold icon
+		init_character_hp_gold_icon();
+		// init character hp & gold text
+		init_character_hp_gold_text();
 		
 //		// test (show players panels)
 //		mp.add(player_A);
@@ -111,12 +152,33 @@ public class UI {
 //		mp.add(player_G);
 //		mp.repaint();
 //		// test (이름넣어주기)
+//		player_A_name.setText("A");
 //		player_B_name.setText("B");
 //		player_C_name.setText("C");
 //		player_D_name.setText("D");
 //		player_E_name.setText("E");
 //		player_F_name.setText("F");
 //		player_G_name.setText("G");
+//		
+//		// test (체력 및 골드 이미지, 텍스트 확인)
+//		Setter.setPlayerHpText("A", 1);
+//		Setter.setPlayerHpText("B", 2);
+//		Setter.setPlayerHpText("C", 3);
+//		Setter.setPlayerHpText("D", 4);
+//		Setter.setPlayerHpText("E", 5);
+//		Setter.setPlayerHpText("F", 6);
+//		Setter.setPlayerHpText("G", 7);
+//		Setter.setPlayerHpImageAvailable(true);
+//		Setter.setPlayerHpTextAvailable(true);
+//		Setter.setPlayerGoldText("A", 1);
+//		Setter.setPlayerGoldText("B", 2);
+//		Setter.setPlayerGoldText("C", 3);
+//		Setter.setPlayerGoldText("D", 4);
+//		Setter.setPlayerGoldText("E", 5);
+//		Setter.setPlayerGoldText("F", 6);
+//		Setter.setPlayerGoldText("G", 7);
+//		Setter.setPlayerGoldImageAvailable(true);
+//		Setter.setPlayerGoldTextAvailable(true);
 		
 //		// test (직업 선택 완료)
 //		CardMaker.make_card_handField_role(player_A_name.getText(), "vice", true);
@@ -136,13 +198,13 @@ public class UI {
 //		Setter.setPlayerRoleImageAvailable("G", true);
 		
 //		// test (캐릭터 선택 완료)
-//		CardMaker.make_card_handField_character(player_A_name.getText(), "dodge_city", "vera_custer");
-//		CardMaker.make_card_handField_character(player_B_name.getText(), "dodge_city", "vera_custer");
-//		CardMaker.make_card_handField_character(player_C_name.getText(), "dodge_city", "vera_custer");
-//		CardMaker.make_card_handField_character(player_D_name.getText(), "dodge_city", "vera_custer");
-//		CardMaker.make_card_handField_character(player_E_name.getText(), "dodge_city", "vera_custer");
-//		CardMaker.make_card_handField_character(player_F_name.getText(), "dodge_city", "vera_custer");
-//		CardMaker.make_card_handField_character(player_G_name.getText(), "dodge_city", "vera_custer");
+//		CardMaker.make_card_handField_character(player_A_name.getText(), "dodge_city", "vera_custer", 7);
+//		CardMaker.make_card_handField_character(player_B_name.getText(), "dodge_city", "vera_custer", 8);
+//		CardMaker.make_card_handField_character(player_C_name.getText(), "dodge_city", "vera_custer", 9);
+//		CardMaker.make_card_handField_character(player_D_name.getText(), "dodge_city", "vera_custer", 10);
+//		CardMaker.make_card_handField_character(player_E_name.getText(), "dodge_city", "vera_custer", 11);
+//		CardMaker.make_card_handField_character(player_F_name.getText(), "dodge_city", "vera_custer", 12);
+//		CardMaker.make_card_handField_character(player_G_name.getText(), "dodge_city", "vera_custer", 13);
 //		// test (캐릭터 이미지 보이게)
 //		Setter.setPlayerCharacterImageAvailable(player_A_name.getText(), true);
 //		Setter.setPlayerCharacterImageAvailable(player_B_name.getText(), true);
@@ -175,12 +237,216 @@ public class UI {
 //		select_panel.add(CardMaker.make_card_select_panel_role("vice",os,1));
 	}
 	
+	// init main deck (playing card deck)
+	private void init_main_deck() {
+		// init buttons
+		main_deck_new = new JButton();
+		main_deck_old = new JButton();
+		// set bounds
+		main_deck_new.setBounds(852,405,87,135);
+		main_deck_old.setBounds(955,405,87,135);
+		// set button fill false
+		main_deck_new.setContentAreaFilled(false);
+		main_deck_old.setContentAreaFilled(false);
+		// set invisible
+		main_deck_new.setVisible(false);
+		main_deck_old.setVisible(false);
+	}
+	
+	// init character hp & gold icon
+	private void init_character_hp_gold_icon() {
+		// init buttons
+		player_A_hp_icon = new JButton();
+		player_B_hp_icon = new JButton();
+		player_C_hp_icon = new JButton();
+		player_D_hp_icon = new JButton();
+		player_E_hp_icon = new JButton();
+		player_F_hp_icon = new JButton();
+		player_G_hp_icon = new JButton();
+		player_A_gold_icon = new JButton();
+		player_B_gold_icon = new JButton();
+		player_C_gold_icon = new JButton();
+		player_D_gold_icon = new JButton();
+		player_E_gold_icon = new JButton();
+		player_F_gold_icon = new JButton();
+		player_G_gold_icon = new JButton();
+		// set bounds
+		player_A_hp_icon.setBounds(15,200,30,30);
+		player_B_hp_icon.setBounds(15,165,30,30);
+		player_C_hp_icon.setBounds(40,10,30,30);
+		player_D_hp_icon.setBounds(390,25,30,30);
+		player_E_hp_icon.setBounds(390,25,30,30);
+		player_F_hp_icon.setBounds(170,385,30,30);
+		player_G_hp_icon.setBounds(15,165,30,30);
+		player_A_gold_icon.setBounds(15,240,30,30);
+		player_B_gold_icon.setBounds(15,220,30,30);
+		player_C_gold_icon.setBounds(40,55,30,30);
+		player_D_gold_icon.setBounds(390,80,30,30);
+		player_E_gold_icon.setBounds(390,80,30,30);
+		player_F_gold_icon.setBounds(170,430,30,30);
+		player_G_gold_icon.setBounds(15,220,30,30);
+		// set button fill false
+		player_A_hp_icon.setContentAreaFilled(false);
+		player_B_hp_icon.setContentAreaFilled(false);
+		player_C_hp_icon.setContentAreaFilled(false);
+		player_D_hp_icon.setContentAreaFilled(false);
+		player_E_hp_icon.setContentAreaFilled(false);
+		player_F_hp_icon.setContentAreaFilled(false);
+		player_G_hp_icon.setContentAreaFilled(false);
+		player_A_gold_icon.setContentAreaFilled(false);
+		player_B_gold_icon.setContentAreaFilled(false);
+		player_C_gold_icon.setContentAreaFilled(false);
+		player_D_gold_icon.setContentAreaFilled(false);
+		player_E_gold_icon.setContentAreaFilled(false);
+		player_F_gold_icon.setContentAreaFilled(false);
+		player_G_gold_icon.setContentAreaFilled(false);
+		// set focus painted false
+		player_A_hp_icon.setFocusPainted(false);
+		player_B_hp_icon.setFocusPainted(false);
+		player_C_hp_icon.setFocusPainted(false);
+		player_D_hp_icon.setFocusPainted(false);
+		player_E_hp_icon.setFocusPainted(false);
+		player_F_hp_icon.setFocusPainted(false);
+		player_G_hp_icon.setFocusPainted(false);
+		player_A_gold_icon.setFocusPainted(false);
+		player_B_gold_icon.setFocusPainted(false);
+		player_C_gold_icon.setFocusPainted(false);
+		player_D_gold_icon.setFocusPainted(false);
+		player_E_gold_icon.setFocusPainted(false);
+		player_F_gold_icon.setFocusPainted(false);
+		player_G_gold_icon.setFocusPainted(false);
+		// set border painted false
+		player_A_hp_icon.setBorderPainted(false);
+		player_B_hp_icon.setBorderPainted(false);
+		player_C_hp_icon.setBorderPainted(false);
+		player_D_hp_icon.setBorderPainted(false);
+		player_E_hp_icon.setBorderPainted(false);
+		player_F_hp_icon.setBorderPainted(false);
+		player_G_hp_icon.setBorderPainted(false);
+		player_A_gold_icon.setBorderPainted(false);
+		player_B_gold_icon.setBorderPainted(false);
+		player_C_gold_icon.setBorderPainted(false);
+		player_D_gold_icon.setBorderPainted(false);
+		player_E_gold_icon.setBorderPainted(false);
+		player_F_gold_icon.setBorderPainted(false);
+		player_G_gold_icon.setBorderPainted(false);
+		// set image icon
+		player_A_hp_icon.setIcon(new ImageIcon(".\\.\\resources\\hp.png"));
+		player_B_hp_icon.setIcon(new ImageIcon(".\\.\\resources\\hp.png"));
+		player_C_hp_icon.setIcon(new ImageIcon(".\\.\\resources\\hp.png"));
+		player_D_hp_icon.setIcon(new ImageIcon(".\\.\\resources\\hp.png"));
+		player_E_hp_icon.setIcon(new ImageIcon(".\\.\\resources\\hp.png"));
+		player_F_hp_icon.setIcon(new ImageIcon(".\\.\\resources\\hp.png"));
+		player_G_hp_icon.setIcon(new ImageIcon(".\\.\\resources\\hp.png"));
+		player_A_gold_icon.setIcon(new ImageIcon(".\\.\\resources\\gold.png"));
+		player_B_gold_icon.setIcon(new ImageIcon(".\\.\\resources\\gold.png"));
+		player_C_gold_icon.setIcon(new ImageIcon(".\\.\\resources\\gold.png"));
+		player_D_gold_icon.setIcon(new ImageIcon(".\\.\\resources\\gold.png"));
+		player_E_gold_icon.setIcon(new ImageIcon(".\\.\\resources\\gold.png"));
+		player_F_gold_icon.setIcon(new ImageIcon(".\\.\\resources\\gold.png"));
+		player_G_gold_icon.setIcon(new ImageIcon(".\\.\\resources\\gold.png"));
+		// set invisible
+		player_A_hp_icon.setVisible(false);
+		player_B_hp_icon.setVisible(false);
+		player_C_hp_icon.setVisible(false);
+		player_D_hp_icon.setVisible(false);
+		player_E_hp_icon.setVisible(false);
+		player_F_hp_icon.setVisible(false);
+		player_G_hp_icon.setVisible(false);
+		player_A_gold_icon.setVisible(false);
+		player_B_gold_icon.setVisible(false);
+		player_C_gold_icon.setVisible(false);
+		player_D_gold_icon.setVisible(false);
+		player_E_gold_icon.setVisible(false);
+		player_F_gold_icon.setVisible(false);
+		player_G_gold_icon.setVisible(false);
+	}
+	
+	// init character hp & gold text
+	private void init_character_hp_gold_text() {
+		// init labels
+		player_A_hp_text = new JLabel();
+		player_B_hp_text = new JLabel();
+		player_C_hp_text = new JLabel();
+		player_D_hp_text = new JLabel();
+		player_E_hp_text = new JLabel();
+		player_F_hp_text = new JLabel();
+		player_G_hp_text = new JLabel();
+		player_A_gold_text = new JLabel();
+		player_B_gold_text = new JLabel();
+		player_C_gold_text = new JLabel();
+		player_D_gold_text = new JLabel();
+		player_E_gold_text = new JLabel();
+		player_F_gold_text = new JLabel();
+		player_G_gold_text = new JLabel();
+		// set bounds
+		player_A_hp_text.setBounds(48,200,50,30);
+		player_B_hp_text.setBounds(48,165,50,30);
+		player_C_hp_text.setBounds(75,10,50,30);
+		player_D_hp_text.setBounds(425,25,50,30);
+		player_E_hp_text.setBounds(425,25,50,30);
+		player_F_hp_text.setBounds(205,385,50,30);
+		player_G_hp_text.setBounds(48,165,50,30);
+		player_A_gold_text.setBounds(48,240,50,30);
+		player_B_gold_text.setBounds(48,220,50,30);
+		player_C_gold_text.setBounds(75,55,50,30);
+		player_D_gold_text.setBounds(425,80,50,30);
+		player_E_gold_text.setBounds(425,80,50,30);
+		player_F_gold_text.setBounds(205,430,50,30);
+		player_G_gold_text.setBounds(48,220,50,30);
+		// set font
+		player_A_hp_text.setFont(new Font("Serif",1,20));
+		player_B_hp_text.setFont(new Font("Serif",1,20));
+		player_C_hp_text.setFont(new Font("Serif",1,20));
+		player_D_hp_text.setFont(new Font("Serif",1,20));
+		player_E_hp_text.setFont(new Font("Serif",1,20));
+		player_F_hp_text.setFont(new Font("Serif",1,20));
+		player_G_hp_text.setFont(new Font("Serif",1,20));
+		player_A_gold_text.setFont(new Font("Serif",1,20));
+		player_B_gold_text.setFont(new Font("Serif",1,20));
+		player_C_gold_text.setFont(new Font("Serif",1,20));
+		player_D_gold_text.setFont(new Font("Serif",1,20));
+		player_E_gold_text.setFont(new Font("Serif",1,20));
+		player_F_gold_text.setFont(new Font("Serif",1,20));
+		player_G_gold_text.setFont(new Font("Serif",1,20));
+		// set color
+		player_A_hp_text.setForeground(Color.WHITE);
+		player_B_hp_text.setForeground(Color.WHITE);
+		player_C_hp_text.setForeground(Color.WHITE);
+		player_D_hp_text.setForeground(Color.WHITE);
+		player_E_hp_text.setForeground(Color.WHITE);
+		player_F_hp_text.setForeground(Color.WHITE);
+		player_G_hp_text.setForeground(Color.WHITE);
+		player_A_gold_text.setForeground(Color.WHITE);
+		player_B_gold_text.setForeground(Color.WHITE);
+		player_C_gold_text.setForeground(Color.WHITE);
+		player_D_gold_text.setForeground(Color.WHITE);
+		player_E_gold_text.setForeground(Color.WHITE);
+		player_F_gold_text.setForeground(Color.WHITE);
+		player_G_gold_text.setForeground(Color.WHITE);
+		// set invisible
+		player_A_hp_text.setVisible(false);
+		player_B_hp_text.setVisible(false);
+		player_C_hp_text.setVisible(false);
+		player_D_hp_text.setVisible(false);
+		player_E_hp_text.setVisible(false);
+		player_F_hp_text.setVisible(false);
+		player_G_hp_text.setVisible(false);
+		player_A_gold_text.setVisible(false);
+		player_B_gold_text.setVisible(false);
+		player_C_gold_text.setVisible(false);
+		player_D_gold_text.setVisible(false);
+		player_E_gold_text.setVisible(false);
+		player_F_gold_text.setVisible(false);
+		player_G_gold_text.setVisible(false);
+	}
+	
 	// init character ability button
 	private void init_character_ability_button() {
 		// init button
 		player_A_ability = new JButton();
 		// set bounds
-		player_A_ability.setBounds(3,138,87,30);
+		player_A_ability.setBounds(3,138,87,50);
 		// set visible = false
 		player_A_ability.setVisible(false);
 	}

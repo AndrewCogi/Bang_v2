@@ -121,6 +121,151 @@ public class Setter {
 		UI.mp.repaint();
 	}
 	
+	// set main_deck image available (both of new, old)
+	public static void setMainDeckImageAvailable(boolean activate) {
+		UI.main_deck_new.setVisible(activate);
+		UI.main_deck_old.setVisible(activate);
+		if(activate == true) {
+			UI.mp.add(UI.main_deck_new);
+			UI.mp.add(UI.main_deck_old);
+		}
+		else if(activate == false) {
+			UI.mp.remove(UI.main_deck_new);
+			UI.mp.remove(UI.main_deck_old);
+		}
+		
+		// repaint
+		UI.mp.repaint();
+	}
+	
+	// set player_hp image available
+	public static void setPlayerHpImageAvailable(boolean activate) {
+		UI.player_A_hp_icon.setVisible(activate);
+		UI.player_B_hp_icon.setVisible(activate);
+		UI.player_C_hp_icon.setVisible(activate);
+		UI.player_D_hp_icon.setVisible(activate);
+		UI.player_E_hp_icon.setVisible(activate);
+		UI.player_F_hp_icon.setVisible(activate);
+		UI.player_G_hp_icon.setVisible(activate);
+		if(activate == true) {
+			UI.player_A.add(UI.player_A_hp_icon);
+			UI.player_B.add(UI.player_B_hp_icon);
+			UI.player_C.add(UI.player_C_hp_icon);
+			UI.player_D.add(UI.player_D_hp_icon);
+			UI.player_E.add(UI.player_E_hp_icon);
+			UI.player_F.add(UI.player_F_hp_icon);
+			UI.player_G.add(UI.player_G_hp_icon);
+		}
+		else if(activate == false) {
+			UI.player_A.remove(UI.player_A_hp_icon);
+			UI.player_B.remove(UI.player_B_hp_icon);
+			UI.player_C.remove(UI.player_C_hp_icon);
+			UI.player_D.remove(UI.player_D_hp_icon);
+			UI.player_E.remove(UI.player_E_hp_icon);
+			UI.player_F.remove(UI.player_F_hp_icon);
+			UI.player_G.remove(UI.player_G_hp_icon);
+		}
+		
+		// repaint
+		UI.mp.repaint();
+	}
+	
+	// set player_gold image available
+	public static void setPlayerGoldImageAvailable(boolean activate) {
+		UI.player_A_gold_icon.setVisible(activate);
+		UI.player_B_gold_icon.setVisible(activate);
+		UI.player_C_gold_icon.setVisible(activate);
+		UI.player_D_gold_icon.setVisible(activate);
+		UI.player_E_gold_icon.setVisible(activate);
+		UI.player_F_gold_icon.setVisible(activate);
+		UI.player_G_gold_icon.setVisible(activate);
+		if(activate == true) {
+			UI.player_A.add(UI.player_A_gold_icon);
+			UI.player_B.add(UI.player_B_gold_icon);
+			UI.player_C.add(UI.player_C_gold_icon);
+			UI.player_D.add(UI.player_D_gold_icon);
+			UI.player_E.add(UI.player_E_gold_icon);
+			UI.player_F.add(UI.player_F_gold_icon);
+			UI.player_G.add(UI.player_G_gold_icon);
+		}
+		else if(activate == false) {
+			UI.player_A.remove(UI.player_A_gold_icon);
+			UI.player_B.remove(UI.player_B_gold_icon);
+			UI.player_C.remove(UI.player_C_gold_icon);
+			UI.player_D.remove(UI.player_D_gold_icon);
+			UI.player_E.remove(UI.player_E_gold_icon);
+			UI.player_F.remove(UI.player_F_gold_icon);
+			UI.player_G.remove(UI.player_G_gold_icon);
+		}
+		
+		// repaint
+		UI.mp.repaint();
+	}
+	
+	// set player_hp text available
+	public static void setPlayerHpTextAvailable(boolean activate) {
+		UI.player_A_hp_text.setVisible(activate);
+		UI.player_B_hp_text.setVisible(activate);
+		UI.player_C_hp_text.setVisible(activate);
+		UI.player_D_hp_text.setVisible(activate);
+		UI.player_E_hp_text.setVisible(activate);
+		UI.player_F_hp_text.setVisible(activate);
+		UI.player_G_hp_text.setVisible(activate);
+		if(activate == true) {
+			UI.player_A.add(UI.player_A_hp_text);
+			UI.player_B.add(UI.player_B_hp_text);
+			UI.player_C.add(UI.player_C_hp_text);
+			UI.player_D.add(UI.player_D_hp_text);
+			UI.player_E.add(UI.player_E_hp_text);
+			UI.player_F.add(UI.player_F_hp_text);
+			UI.player_G.add(UI.player_G_hp_text);
+		}
+		else if(activate == false) {
+			UI.player_A.remove(UI.player_A_hp_text);
+			UI.player_B.remove(UI.player_B_hp_text);
+			UI.player_C.remove(UI.player_C_hp_text);
+			UI.player_D.remove(UI.player_D_hp_text);
+			UI.player_E.remove(UI.player_E_hp_text);
+			UI.player_F.remove(UI.player_F_hp_text);
+			UI.player_G.remove(UI.player_G_hp_text);
+		}
+		
+		// repaint
+		UI.mp.repaint();
+	}
+	
+	// set player_gold text available
+	public static void setPlayerGoldTextAvailable(boolean activate) {
+		UI.player_A_gold_text.setVisible(activate);
+		UI.player_B_gold_text.setVisible(activate);
+		UI.player_C_gold_text.setVisible(activate);
+		UI.player_D_gold_text.setVisible(activate);
+		UI.player_E_gold_text.setVisible(activate);
+		UI.player_F_gold_text.setVisible(activate);
+		UI.player_G_gold_text.setVisible(activate);
+		if(activate == true) {
+			UI.player_A.add(UI.player_A_gold_text);
+			UI.player_B.add(UI.player_B_gold_text);
+			UI.player_C.add(UI.player_C_gold_text);
+			UI.player_D.add(UI.player_D_gold_text);
+			UI.player_E.add(UI.player_E_gold_text);
+			UI.player_F.add(UI.player_F_gold_text);
+			UI.player_G.add(UI.player_G_gold_text);
+		}
+		else if(activate == false) {
+			UI.player_A.remove(UI.player_A_gold_text);
+			UI.player_B.remove(UI.player_B_gold_text);
+			UI.player_C.remove(UI.player_C_gold_text);
+			UI.player_D.remove(UI.player_D_gold_text);
+			UI.player_E.remove(UI.player_E_gold_text);
+			UI.player_F.remove(UI.player_F_gold_text);
+			UI.player_G.remove(UI.player_G_gold_text);
+		}
+		
+		// repaint
+		UI.mp.repaint();
+	}
+
 	// set player_role image available(userName, activate) (A:me)
 	// (B:bottom-left, C:middle-left, D: top-left)
 	// (E:top-right, F:middle-right, G:bottom-right)
@@ -494,20 +639,81 @@ public class Setter {
 		UI.mp.repaint();
 	}
 	
-	// set last scenario image
-	public static void setLastScenarioImage(String cardName) {
-		if(cardName.equals("a_fistful_of_cards")) {
-			// set image "a fistful of cards"
-			UI.scenario_turn_back.setIcon(new ImageIcon(".\\.\\resources\\card\\scenario\\a_fistful_of_cards\\per_un_pugno_di_carte_87.png"));
+	// set player_hp text
+	public static void setPlayerHpText(String name, int hp, boolean isSceriffo) {
+		// find seat (A)
+		if(UI.player_A_name.getText().equals(name)) {
+			if(isSceriffo == true) UI.player_A_hp_text.setText(" x "+(hp+1));
+			else UI.player_A_hp_text.setText(" x "+hp);
 		}
-		else if(cardName.equals("high_noon")) {
-			// set image "high noon"
-			UI.scenario_turn_back.setIcon(new ImageIcon(".\\.\\resources\\card\\scenario\\high_noon\\mezzogiorno_di_fuoco_87.png"));
+		// find seat (B)
+		else if(UI.player_B_name.getText().equals(name)) {
+			if(isSceriffo == true) UI.player_B_hp_text.setText(" x "+(hp+1));
+			else UI.player_B_hp_text.setText(" x "+hp);
 		}
-		else if(cardName.equals("wild_west_show")) {
-			// set image "wild west show"
-			UI.scenario_wild_back.setIcon(new ImageIcon(".\\.\\resources\\card\\scenario\\wild_west_show\\wild_west_show_87.png"));
+		// find seat (C)
+		else if(UI.player_C_name.getText().equals(name)) {
+			if(isSceriffo == true) UI.player_C_hp_text.setText(" x "+(hp+1));
+			else UI.player_C_hp_text.setText(" x "+hp);
 		}
+		// find seat (D)
+		else if(UI.player_D_name.getText().equals(name)) {
+			if(isSceriffo == true) UI.player_D_hp_text.setText(" x "+(hp+1));
+			else UI.player_D_hp_text.setText(" x "+hp);
+		}
+		// find seat (E)
+		else if(UI.player_E_name.getText().equals(name)) {
+			if(isSceriffo == true) UI.player_E_hp_text.setText(" x "+(hp+1));
+			else UI.player_E_hp_text.setText(" x "+hp);
+		}
+		// find seat (F)
+		else if(UI.player_F_name.getText().equals(name)) {
+			if(isSceriffo == true) UI.player_F_hp_text.setText(" x "+(hp+1));
+			else UI.player_F_hp_text.setText(" x "+hp);
+		}
+		// find seat (G)
+		else if(UI.player_G_name.getText().equals(name)) {
+			if(isSceriffo == true) UI.player_G_hp_text.setText(" x "+(hp+1));
+			else UI.player_G_hp_text.setText(" x "+hp);
+		}
+		
+		// repaint
+		UI.mp.repaint();
+	}
+	
+	// set player_gold text
+	public static void setPlayerGoldText(String name, int gold) {
+		// find seat (A)
+		if(UI.player_A_name.getText().equals(name)) {
+			UI.player_A_gold_text.setText(" x "+gold);
+		}
+		// find seat (B)
+		else if(UI.player_B_name.getText().equals(name)) {
+			UI.player_B_gold_text.setText(" x "+gold);
+		}
+		// find seat (C)
+		else if(UI.player_C_name.getText().equals(name)) {
+			UI.player_C_gold_text.setText(" x "+gold);
+		}
+		// find seat (D)
+		else if(UI.player_D_name.getText().equals(name)) {
+			UI.player_D_gold_text.setText(" x "+gold);
+		}
+		// find seat (E)
+		else if(UI.player_E_name.getText().equals(name)) {
+			UI.player_E_gold_text.setText(" x "+gold);
+		}
+		// find seat (F)
+		else if(UI.player_F_name.getText().equals(name)) {
+			UI.player_F_gold_text.setText(" x "+gold);
+		}
+		// find seat (G)
+		else if(UI.player_G_name.getText().equals(name)) {
+			UI.player_G_gold_text.setText(" x "+gold);
+		}
+		
+		// repaint
+		UI.mp.repaint();
 	}
 	
 	// set text in notice (top:1 / middle:2)
