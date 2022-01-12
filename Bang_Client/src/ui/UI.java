@@ -1,5 +1,6 @@
 package ui;
 
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -12,8 +13,10 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.io.PrintWriter;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.FlowLayout;
 import java.awt.event.MouseMotionAdapter;
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 public class UI {
@@ -97,6 +100,14 @@ public class UI {
 	public static JButton player_E_gold_icon;
 	public static JButton player_F_gold_icon;
 	public static JButton player_G_gold_icon;
+	// playerHand in each seat
+	public static JPanel player_A_hand;
+	public static JPanel player_B_hand;
+	public static JPanel player_C_hand;
+	public static JPanel player_D_hand;
+	public static JPanel player_E_hand;
+	public static JPanel player_F_hand;
+	public static JPanel player_G_hand;
 	// scenario(turn/wildWest)
 	public static JButton scenario_turn_back;
 	public static JButton scenario_turn_front;
@@ -130,127 +141,121 @@ public class UI {
 		init_select_panel_role();
 		init_select_panel_character();
 		init_select_panel_scenario();
-		// init scenario & scenario_notice
-		init_scenario();
+		// init scenario_notice
 		init_scenario_notice();
-		// init main deck (playing card deck)
-		init_main_deck();
 		// init character ability button
 		init_character_ability_button();
 		// init character hp & gold icon
 		init_character_hp_gold_icon();
 		// init character hp & gold text
 		init_character_hp_gold_text();
+		// init players' hand panel
+		init_hand_panel();
 		
-//		// test (show players panels)
-//		mp.add(player_A);
-//		mp.add(player_B);
-//		mp.add(player_C);
-//		mp.add(player_D);
-//		mp.add(player_E);
-//		mp.add(player_F);
-//		mp.add(player_G);
-//		mp.repaint();
-//		// test (이름넣어주기)
-//		player_A_name.setText("A");
-//		player_B_name.setText("B");
-//		player_C_name.setText("C");
-//		player_D_name.setText("D");
-//		player_E_name.setText("E");
-//		player_F_name.setText("F");
-//		player_G_name.setText("G");
-//		
-//		// test (체력 및 골드 이미지, 텍스트 확인)
-//		Setter.setPlayerHpText("A", 1);
-//		Setter.setPlayerHpText("B", 2);
-//		Setter.setPlayerHpText("C", 3);
-//		Setter.setPlayerHpText("D", 4);
-//		Setter.setPlayerHpText("E", 5);
-//		Setter.setPlayerHpText("F", 6);
-//		Setter.setPlayerHpText("G", 7);
-//		Setter.setPlayerHpImageAvailable(true);
-//		Setter.setPlayerHpTextAvailable(true);
-//		Setter.setPlayerGoldText("A", 1);
-//		Setter.setPlayerGoldText("B", 2);
-//		Setter.setPlayerGoldText("C", 3);
-//		Setter.setPlayerGoldText("D", 4);
-//		Setter.setPlayerGoldText("E", 5);
-//		Setter.setPlayerGoldText("F", 6);
-//		Setter.setPlayerGoldText("G", 7);
-//		Setter.setPlayerGoldImageAvailable(true);
-//		Setter.setPlayerGoldTextAvailable(true);
-		
-//		// test (직업 선택 완료)
-//		CardMaker.make_card_handField_role(player_A_name.getText(), "vice", true);
-//		CardMaker.make_card_handField_role(player_B_name.getText(), "sceriffo", true);
-//		CardMaker.make_card_handField_role(player_C_name.getText(), "vice", true);
-//		CardMaker.make_card_handField_role(player_D_name.getText(), "vice", false);
-//		CardMaker.make_card_handField_role(player_E_name.getText(), "vice", true);
-//		CardMaker.make_card_handField_role(player_F_name.getText(), "vice", false);
-//		CardMaker.make_card_handField_role(player_G_name.getText(), "vice", true);
-//		// test (직업 이미지 보이게)
-//		Setter.setPlayerRoleImageAvailable("A", true);
-//		Setter.setPlayerRoleImageAvailable("B", true);
-//		Setter.setPlayerRoleImageAvailable("C", true);
-//		Setter.setPlayerRoleImageAvailable("D", true);
-//		Setter.setPlayerRoleImageAvailable("E", true);
-//		Setter.setPlayerRoleImageAvailable("F", true);
-//		Setter.setPlayerRoleImageAvailable("G", true);
-		
-//		// test (캐릭터 선택 완료)
-//		CardMaker.make_card_handField_character(player_A_name.getText(), "dodge_city", "vera_custer", 7);
-//		CardMaker.make_card_handField_character(player_B_name.getText(), "dodge_city", "vera_custer", 8);
-//		CardMaker.make_card_handField_character(player_C_name.getText(), "dodge_city", "vera_custer", 9);
-//		CardMaker.make_card_handField_character(player_D_name.getText(), "dodge_city", "vera_custer", 10);
-//		CardMaker.make_card_handField_character(player_E_name.getText(), "dodge_city", "vera_custer", 11);
-//		CardMaker.make_card_handField_character(player_F_name.getText(), "dodge_city", "vera_custer", 12);
-//		CardMaker.make_card_handField_character(player_G_name.getText(), "dodge_city", "vera_custer", 13);
-//		// test (캐릭터 이미지 보이게)
-//		Setter.setPlayerCharacterImageAvailable(player_A_name.getText(), true);
-//		Setter.setPlayerCharacterImageAvailable(player_B_name.getText(), true);
-//		Setter.setPlayerCharacterImageAvailable(player_C_name.getText(), true);
-//		Setter.setPlayerCharacterImageAvailable(player_D_name.getText(), true);
-//		Setter.setPlayerCharacterImageAvailable(player_E_name.getText(), true);
-//		Setter.setPlayerCharacterImageAvailable(player_F_name.getText(), true);
-//		Setter.setPlayerCharacterImageAvailable(player_G_name.getText(), true);
-
-//		// test (캐릭터 선택창 만들기)
-//		select_panel_character.removeAll();
-//		select_panel_character.add(CardMaker.make_card_select_panel_character("original", "bart_cassidy"));
-//		select_panel_character.add(CardMaker.make_card_select_panel_character("original", "bart_cassidy"));
-//		select_panel_character.add(CardMaker.make_card_select_panel_character("original", "bart_cassidy"));
-//		select_panel_character.add(CardMaker.make_card_select_panel_character("original", "bart_cassidy"));
-//		select_panel_character.setVisible(true);
-		
-//		// test (시나리오 선택창 만들기)
-//		select_panel_scenario.removeAll();
-//		select_panel_scenario.setVisible(true);
-
-//		// test (선택창 만들기)
-//		select_panel_role.removeAll();
-//		select_panel_role.add(CardMaker.make_card_select_panel_character("original", "bart_cassidy"));
-//		select_panel_role.add(CardMaker.make_card_select_panel_playing("brown", "bang", 'C', '2'));
-//		select_panel_role.setVisible(true);
-		
-		
-//		select_chance = 1;
-//		select_panel.add(CardMaker.make_card_select_panel_role("vice",os,1));
+		// test function
+		test_func();
 	}
 	
-	// init main deck (playing card deck)
-	private void init_main_deck() {
-		// init buttons
-		main_deck_new = new JButton();
-		main_deck_old = new JButton();
+	// init main frame & main panel
+	private void init_main(String userName) {
+		// set title
+		mf = new JFrame("Bang! - Board Game ("+userName+")");
+		// set close operation
+		mf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		// set screen size
+		mf.setSize(1920,1040);
+		// set resize false
+		mf.setResizable(false);
+		// if mouse moved, repaint
+		mf.addMouseMotionListener(new MouseMotionAdapter() {
+			@Override
+			public void mouseMoved(MouseEvent e) {
+				mf.repaint();
+			}
+		});
+		
+		// set main panel
+		mp = new JPanel(){
+			private static final long serialVersionUID = 1L;
+			Image background = new ImageIcon(".\\.\\resources\\background\\background_sample2.png").getImage();
+			// drawing background
+			protected void paintComponent(Graphics g) {
+				g.drawImage(background, 0, 0, null);
+			}
+		};
+		// set no layout
+		mp.setLayout(null);
+		// add main panel into main frame
+		mf.setContentPane(mp);
+	}
+	
+	// init notices label properties
+	private void init_notices() {
+		// top
+		// set notice label
+		notice_top = new JLabel();
+		// set font
+		notice_top.setFont(new Font("Serif",1,50));
+		// set text color
+		notice_top.setForeground(Color.BLACK);
+		// set bound
+		notice_top.setBounds(460,170,1000,100);
+		// set text center
+		notice_top.setHorizontalAlignment(SwingConstants.CENTER);
+		
+		// middle
+		// set notice label
+		notice_middle = new JLabel();
+		// set font
+		notice_middle.setFont(new Font("Serif",1,50));
+		// set text color
+		notice_middle.setForeground(Color.BLACK);
+		// set bound
+		notice_middle.setBounds(460,440,1000,100);
+		// set text center
+		notice_middle.setHorizontalAlignment(SwingConstants.CENTER);
+		
+		// set notice available (middle) -> That is default
+		Setter.setNoticeAvailable(2,true);
+	}
+	
+	// init seats things
+	private void init_seats() {
+		// seats image
+		init_seats_image();
+		// player name label
+		init_playerName();
+	}
+	
+	// init hand panel
+	private void init_hand_panel() {
+		// init panel (A)
+		player_A_hand = new JPanel() {
+			private static final long serialVersionUID = 1L;
+			Image background = new ImageIcon(".\\.\\resources\\background\\???.png").getImage();
+			// drawing background
+			protected void paintComponent(Graphics g) {
+				g.drawImage(background, 0, 0, null);
+			}
+		};
 		// set bounds
-		main_deck_new.setBounds(852,405,87,135);
-		main_deck_old.setBounds(955,405,87,135);
-		// set button fill false
-		main_deck_new.setContentAreaFilled(false);
-		main_deck_old.setContentAreaFilled(false);
-		// set invisible
-		main_deck_new.setVisible(false);
-		main_deck_old.setVisible(false);
+		player_A_hand.setBounds(678,830,560,170);
+		// set layout
+		player_A_hand.setLayout(new FlowLayout(FlowLayout.CENTER, -40, 30));
+		
+		// init panel (B)
+		player_B_hand = new JPanel() {
+			private static final long serialVersionUID = 1L;
+			Image background = new ImageIcon(".\\.\\resources\\background\\???.png").getImage();
+			// drawing background
+			protected void paintComponent(Graphics g) {
+				g.drawImage(background, 0, 0, null);
+			}
+		};
+		// set bounds
+		player_B_hand.setBounds(205,868,470,133);
+		// set layout
+		player_B_hand.setLayout(new FlowLayout(FlowLayout.CENTER, -40, 20));
 	}
 	
 	// init character hp & gold icon
@@ -451,35 +456,6 @@ public class UI {
 		player_A_ability.setVisible(false);
 	}
 	
-	// init scenario
-	private void init_scenario() {
-		// init buttons
-		scenario_turn_back = new JButton();
-		scenario_turn_front = new JButton();
-		scenario_wild_back = new JButton();
-		scenario_wild_front = new JButton();
-		// set bounds
-		scenario_turn_back.setBounds(460,435,87,135);
-		scenario_turn_front.setBounds(550,435,87,135);
-		scenario_wild_back.setBounds(640,435,87,135);
-		scenario_wild_front.setBounds(730,435,87,135);
-		// set button fill false
-		scenario_turn_back.setContentAreaFilled(false);
-		scenario_turn_front.setContentAreaFilled(false);
-		scenario_wild_back.setContentAreaFilled(false);
-		scenario_wild_front.setContentAreaFilled(false);
-		// set image icon
-		scenario_turn_back.setIcon(new ImageIcon(".\\.\\resources\\card\\empty_87.png"));
-		scenario_turn_front.setIcon(new ImageIcon(".\\.\\resources\\card\\empty_87.png"));
-		scenario_wild_back.setIcon(new ImageIcon(".\\.\\resources\\card\\empty_87.png"));
-		scenario_wild_front.setIcon(new ImageIcon(".\\.\\resources\\card\\empty_87.png"));
-		// set visible = false
-		scenario_turn_back.setVisible(false);
-		scenario_turn_front.setVisible(false);
-		scenario_wild_back.setVisible(false);
-		scenario_wild_front.setVisible(false);
-	}
-	
 	// init scenario notice
 	private void init_scenario_notice() {
 		// init
@@ -500,47 +476,6 @@ public class UI {
 		// set invisible
 		scenario_turn_next.setVisible(false);
 		scenario_turn_now.setVisible(false);
-	}
-	
-	// init seats things
-	private void init_seats() {
-		// seats image
-		init_seats_image();
-		// player name label
-		init_playerName();
-	}
-	
-	// init main frame & main panel
-	private void init_main(String userName) {
-		// set title
-		mf = new JFrame("Bang! - Board Game ("+userName+")");
-		// set close operation
-		mf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		// set screen size
-		mf.setSize(1920,1040);
-		// set resize false
-		mf.setResizable(false);
-		// if mouse moved, repaint
-		mf.addMouseMotionListener(new MouseMotionAdapter() {
-			@Override
-			public void mouseMoved(MouseEvent e) {
-				mf.repaint();
-			}
-		});
-		
-		// set main panel
-		mp = new JPanel(){
-			private static final long serialVersionUID = 1L;
-			Image background = new ImageIcon(".\\.\\resources\\background\\background_sample1.png").getImage();
-			// drawing background
-			protected void paintComponent(Graphics g) {
-				g.drawImage(background, 0, 0, null);
-			}
-		};
-		// set no layout
-		mp.setLayout(null);
-		// add main panel into main frame
-		mf.setContentPane(mp);
 	}
 	
 	// init select role panel
@@ -827,39 +762,135 @@ public class UI {
 		// player_G_name.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 	}
 	
-	// init notices label properties
-	private void init_notices() {
-		// top
-		// set notice label
-		notice_top = new JLabel();
-		// set font
-		notice_top.setFont(new Font("Serif",1,50));
-		// set text color
-		notice_top.setForeground(Color.BLACK);
-		// set bound
-		notice_top.setBounds(460,170,1000,100);
-		// set text center
-		notice_top.setHorizontalAlignment(SwingConstants.CENTER);
-		
-		// middle
-		// set notice label
-		notice_middle = new JLabel();
-		// set font
-		notice_middle.setFont(new Font("Serif",1,50));
-		// set text color
-		notice_middle.setForeground(Color.BLACK);
-		// set bound
-		notice_middle.setBounds(460,440,1000,100);
-		// set text center
-		notice_middle.setHorizontalAlignment(SwingConstants.CENTER);
-		
-		// set notice available (middle) -> That is default
-		Setter.setNoticeAvailable(2,true);
-	}
-	
 	// set visible
 	public void setVisible(boolean b) {
 		mf.setVisible(b);
+	}
+	
+	// test function
+	private void test_func() {
+		// test (show players panels)
+		mp.add(player_A);
+		mp.add(player_B);
+		mp.add(player_C);
+		mp.add(player_D);
+		mp.add(player_E);
+		mp.add(player_F);
+		mp.add(player_G);
+		mp.repaint();
+		// test (이름넣어주기)
+		player_A_name.setText("A");
+		player_B_name.setText("B");
+		player_C_name.setText("C");
+		player_D_name.setText("D");
+		player_E_name.setText("E");
+		player_F_name.setText("F");
+		player_G_name.setText("G");
+		
+		// test (체력 및 골드 이미지, 텍스트 확인)
+		Setter.setPlayerHpText("A", 1, false);
+		Setter.setPlayerHpText("B", 2, false);
+		Setter.setPlayerHpText("C", 3, false);
+		Setter.setPlayerHpText("D", 4, false);
+		Setter.setPlayerHpText("E", 5, false);
+		Setter.setPlayerHpText("F", 6, false);
+		Setter.setPlayerHpText("G", 7, false);
+		Setter.setPlayerHpImageAvailable(true);
+		Setter.setPlayerHpTextAvailable(true);
+		Setter.setPlayerGoldText("A", 1);
+		Setter.setPlayerGoldText("B", 2);
+		Setter.setPlayerGoldText("C", 3);
+		Setter.setPlayerGoldText("D", 4);
+		Setter.setPlayerGoldText("E", 5);
+		Setter.setPlayerGoldText("F", 6);
+		Setter.setPlayerGoldText("G", 7);
+		Setter.setPlayerGoldImageAvailable(true);
+		Setter.setPlayerGoldTextAvailable(true);
+		
+		// test (직업 선택 완료)
+		CardMaker.make_card_handField_role(player_A_name.getText(), "vice", false);
+		CardMaker.make_card_handField_role(player_B_name.getText(), "sceriffo", true);
+		CardMaker.make_card_handField_role(player_C_name.getText(), "vice", false);
+		CardMaker.make_card_handField_role(player_D_name.getText(), "vice", false);
+		CardMaker.make_card_handField_role(player_E_name.getText(), "vice", true);
+		CardMaker.make_card_handField_role(player_F_name.getText(), "vice", false);
+		CardMaker.make_card_handField_role(player_G_name.getText(), "vice", true);
+		// test (직업 이미지 보이게)
+		Setter.setPlayerRoleImageAvailable("A", true);
+		Setter.setPlayerRoleImageAvailable("B", true);
+		Setter.setPlayerRoleImageAvailable("C", true);
+		Setter.setPlayerRoleImageAvailable("D", true);
+		Setter.setPlayerRoleImageAvailable("E", true);
+		Setter.setPlayerRoleImageAvailable("F", true);
+		Setter.setPlayerRoleImageAvailable("G", true);
+		
+		// test (캐릭터 선택 완료)
+		CardMaker.make_card_handField_character(player_A_name.getText(), "dodge_city", "vera_custer", 7);
+		CardMaker.make_card_handField_character(player_B_name.getText(), "dodge_city", "vera_custer", 8);
+		CardMaker.make_card_handField_character(player_C_name.getText(), "dodge_city", "vera_custer", 9);
+		CardMaker.make_card_handField_character(player_D_name.getText(), "dodge_city", "vera_custer", 10);
+		CardMaker.make_card_handField_character(player_E_name.getText(), "dodge_city", "vera_custer", 11);
+		CardMaker.make_card_handField_character(player_F_name.getText(), "dodge_city", "vera_custer", 12);
+		CardMaker.make_card_handField_character(player_G_name.getText(), "dodge_city", "vera_custer", 13);
+		// test (캐릭터 이미지 보이게)
+		Setter.setPlayerCharacterImageAvailable(player_A_name.getText(), true);
+		Setter.setPlayerCharacterImageAvailable(player_B_name.getText(), true);
+		Setter.setPlayerCharacterImageAvailable(player_C_name.getText(), true);
+		Setter.setPlayerCharacterImageAvailable(player_D_name.getText(), true);
+		Setter.setPlayerCharacterImageAvailable(player_E_name.getText(), true);
+		Setter.setPlayerCharacterImageAvailable(player_F_name.getText(), true);
+		Setter.setPlayerCharacterImageAvailable(player_G_name.getText(), true);
+
+		// test (플레이어 핸드 넣어보기)(A) (max: 11)
+		player_A_hand.add(CardMaker.make_card_handField_playing(player_A_name.getText(), "brown", "bang", 'C', 2, UI.player_A_hand.getComponentCount(), true));
+		player_A_hand.add(CardMaker.make_card_handField_playing(player_A_name.getText(), "brown", "bang", 'C', 2, UI.player_A_hand.getComponentCount(), true));
+		player_A_hand.add(CardMaker.make_card_handField_playing(player_A_name.getText(), "brown", "bang", 'C', 2, UI.player_A_hand.getComponentCount(), true));
+		player_A_hand.add(CardMaker.make_card_handField_playing(player_A_name.getText(), "brown", "bang", 'C', 2, UI.player_A_hand.getComponentCount(), true));
+		player_A_hand.add(CardMaker.make_card_handField_playing(player_A_name.getText(), "brown", "bang", 'C', 2, UI.player_A_hand.getComponentCount(), true));
+		player_A_hand.add(CardMaker.make_card_handField_playing(player_A_name.getText(), "brown", "bang", 'C', 2, UI.player_A_hand.getComponentCount(), true));
+		player_A_hand.add(CardMaker.make_card_handField_playing(player_A_name.getText(), "brown", "bang", 'C', 2, UI.player_A_hand.getComponentCount(), false));
+		player_A_hand.add(CardMaker.make_card_handField_playing(player_A_name.getText(), "brown", "bang", 'C', 2, UI.player_A_hand.getComponentCount(), false));
+		player_A_hand.add(CardMaker.make_card_handField_playing(player_A_name.getText(), "brown", "bang", 'C', 2, UI.player_A_hand.getComponentCount(), false));
+		mp.add(player_A_hand);
+		player_A_hand.setBorder(BorderFactory.createLineBorder(Color.BLACK,3));
+		
+		// test (플레이어 핸드 넣어보기)(B) (max: 14)
+		player_B_hand.add(CardMaker.make_card_handField_playing(player_B_name.getText(), "brown", "bang", 'C', 2, UI.player_B_hand.getComponentCount(), true));
+		player_B_hand.add(CardMaker.make_card_handField_playing(player_B_name.getText(), "brown", "bang", 'C', 2, UI.player_B_hand.getComponentCount(), false));
+		player_B_hand.add(CardMaker.make_card_handField_playing(player_B_name.getText(), "brown", "bang", 'C', 2, UI.player_B_hand.getComponentCount(), false));
+		player_B_hand.add(CardMaker.make_card_handField_playing(player_B_name.getText(), "brown", "bang", 'C', 2, UI.player_B_hand.getComponentCount(), false));
+		player_B_hand.add(CardMaker.make_card_handField_playing(player_B_name.getText(), "brown", "bang", 'C', 2, UI.player_B_hand.getComponentCount(), false));
+		player_B_hand.add(CardMaker.make_card_handField_playing(player_B_name.getText(), "brown", "bang", 'C', 2, UI.player_B_hand.getComponentCount(), false));
+		player_B_hand.add(CardMaker.make_card_handField_playing(player_B_name.getText(), "brown", "bang", 'C', 2, UI.player_B_hand.getComponentCount(), false));
+		player_B_hand.add(CardMaker.make_card_handField_playing(player_B_name.getText(), "brown", "bang", 'C', 2, UI.player_B_hand.getComponentCount(), false));
+		player_B_hand.add(CardMaker.make_card_handField_playing(player_B_name.getText(), "brown", "bang", 'C', 2, UI.player_B_hand.getComponentCount(), false));
+		player_B_hand.add(CardMaker.make_card_handField_playing(player_B_name.getText(), "brown", "bang", 'C', 2, UI.player_B_hand.getComponentCount(), false));
+		mp.add(player_B_hand);
+		player_B_hand.setBorder(BorderFactory.createLineBorder(Color.BLACK,3));
+
+		
+		
+//		// test (캐릭터 선택창 만들기)
+//		select_panel_character.removeAll();
+//		select_panel_character.add(CardMaker.make_card_select_panel_character("original", "bart_cassidy"));
+//		select_panel_character.add(CardMaker.make_card_select_panel_character("original", "bart_cassidy"));
+//		select_panel_character.add(CardMaker.make_card_select_panel_character("original", "bart_cassidy"));
+//		select_panel_character.add(CardMaker.make_card_select_panel_character("original", "bart_cassidy"));
+//		select_panel_character.setVisible(true);
+		
+//		// test (시나리오 선택창 만들기)
+//		select_panel_scenario.removeAll();
+//		select_panel_scenario.setVisible(true);
+
+//		// test (선택창 만들기)
+//		select_panel_role.removeAll();
+//		select_panel_role.add(CardMaker.make_card_select_panel_character("original", "bart_cassidy"));
+//		select_panel_role.add(CardMaker.make_card_select_panel_playing("brown", "bang", 'C', '2'));
+//		select_panel_role.setVisible(true);
+		
+		
+//		select_chance = 1;
+//		select_panel.add(CardMaker.make_card_select_panel_role("vice",os,1));
 	}
 
 }

@@ -16,7 +16,7 @@ import javax.swing.JButton;
 import client.App;
 
 public class CardMaker {
-	// set scenario image (1: turn_back / 2: turn_front / 3: wild_back / 4: wild_front)
+	// make hand & field card button (scenario card) (1: turn_back / 2: turn_front / 3: wild_back / 4: wild_front)
 	public static void make_card_handField_scenario(int target, String extension, String cardName) {
 		// if extension & cardName == null, empty card!
 		if(extension == null && cardName == null) {
@@ -51,8 +51,8 @@ public class CardMaker {
 		UI.mp.repaint();
 	}
 	
-	// set last scenario image
-	public static void make_card_handField_scenario_init(String cardName) {
+	// make hand & field card button (last scenario card)
+	public static void make_card_handField_scenario_last(String cardName) {
 		if(cardName.equals("a_fistful_of_cards")) {
 			// set image "a fistful of cards"
 			UI.scenario_turn_back.setIcon(new ImageIcon(".\\.\\resources\\card\\scenario\\a_fistful_of_cards\\per_un_pugno_di_carte_87.png"));
@@ -69,15 +69,56 @@ public class CardMaker {
 		UI.mp.repaint();
 	}
 	
-	// set main_deck image
-	public static void make_card_handField_main_init() {
+	// make hand & field card button (init main card)
+	public static void make_card_handField_main_deck_init() {
+		// init buttons
+		UI.main_deck_new = new JButton();
+		UI.main_deck_old = new JButton();
+		// set bounds
+		UI.main_deck_new.setBounds(852,405,87,135);
+		UI.main_deck_old.setBounds(955,405,87,135);
+		// set button fill false
+		UI.main_deck_new.setContentAreaFilled(false);
+		UI.main_deck_old.setContentAreaFilled(false);
 		// main_deck_new (back image)
 		UI.main_deck_new.setIcon(new ImageIcon(".\\.\\resources\\card\\playing\\back_87.png"));
 		// main_deck_old (empty image)
 		UI.main_deck_old.setIcon(new ImageIcon(".\\.\\resources\\card\\empty_87.png"));
+		// set invisible
+		UI.main_deck_new.setVisible(false);
+		UI.main_deck_old.setVisible(false);
 		
 		// repaint
 		UI.mp.repaint();
+	}
+	
+	// make hand & field card button (init scenario card)
+	public static void make_card_handField_scenario_init() {
+		// init buttons
+		UI.scenario_turn_back = new JButton();
+		UI.scenario_turn_front = new JButton();
+		UI.scenario_wild_back = new JButton();
+		UI.scenario_wild_front = new JButton();
+		// set bounds
+		UI.scenario_turn_back.setBounds(460,435,87,135);
+		UI.scenario_turn_front.setBounds(550,435,87,135);
+		UI.scenario_wild_back.setBounds(640,435,87,135);
+		UI.scenario_wild_front.setBounds(730,435,87,135);
+		// set button fill false
+		UI.scenario_turn_back.setContentAreaFilled(false);
+		UI.scenario_turn_front.setContentAreaFilled(false);
+		UI.scenario_wild_back.setContentAreaFilled(false);
+		UI.scenario_wild_front.setContentAreaFilled(false);
+		// set image icon
+		UI.scenario_turn_back.setIcon(new ImageIcon(".\\.\\resources\\card\\empty_87.png"));
+		UI.scenario_turn_front.setIcon(new ImageIcon(".\\.\\resources\\card\\empty_87.png"));
+		UI.scenario_wild_back.setIcon(new ImageIcon(".\\.\\resources\\card\\empty_87.png"));
+		UI.scenario_wild_front.setIcon(new ImageIcon(".\\.\\resources\\card\\empty_87.png"));
+		// set visible = false
+		UI.scenario_turn_back.setVisible(false);
+		UI.scenario_turn_front.setVisible(false);
+		UI.scenario_wild_back.setVisible(false);
+		UI.scenario_wild_front.setVisible(false);
 	}
 	
 	// make hand & field card button (init gun card)
@@ -539,75 +580,93 @@ public class CardMaker {
 	}
 	
 	// make hand & field card button (playing card)
-	public static JButton make_card_handField_playing(char seatLocation, String cardColor, String cardName, char cardShape, char cardNum) {
+	public static Select_button make_card_handField_playing(String id, String cardColor, String cardName, char cardShape, int cardNum, int haveCardNum, boolean isForward) {
 		// temp card button
-		JButton temp_card = null;
+		Select_button temp_card = null;
 		
-		// seatLocation = player_A hand & field
-		if(seatLocation == 'A') {
-			// set handField card image
-			temp_card = new JButton(cardColor+"/"+cardName+"/"+cardShape+"/"+cardNum) {
-				private static final long serialVersionUID = 1L;
-				Image background = new ImageIcon(".\\.\\resources\\card\\playing\\"+cardColor+"\\"+cardName+"_"+cardShape+"_"+cardNum+"_87.png").getImage();
-				// drawing background
-				protected void paintComponent(Graphics g) {
-					g.drawImage(background, 0, 0, null);
-				}
-			};
+		// id = player_A hand & field
+		if(UI.player_A_name.getText().equals(id)) {
+			// forward?
+			if(isForward == true) {
+				// set handField card image
+				temp_card = new Select_button(cardColor, cardName, cardShape, cardNum) {
+					private static final long serialVersionUID = 1L;
+					Image background = new ImageIcon(".\\.\\resources\\card\\playing\\"+cardColor+"\\"+cardName+"_"+cardShape+"_"+cardNum+"_87.png").getImage();
+					// drawing background
+					protected void paintComponent(Graphics g) {
+						g.drawImage(background, 0, 0, null);
+					}
+				};
+			}
+			// backward?
+			else if(isForward == false) {
+				// set handField card image
+				temp_card = new Select_button(cardColor, cardName, cardShape, cardNum) {
+					private static final long serialVersionUID = 1L;
+					Image background = new ImageIcon(".\\.\\resources\\card\\playing\\back_87.png").getImage();
+					// drawing background
+					protected void paintComponent(Graphics g) {
+						g.drawImage(background, 0, 0, null);
+					}
+				};
+			}
 			// set size
 			temp_card.setPreferredSize(new Dimension(87,135));
-		}
-		
-		// seatLocation = player_B field
-		else if(seatLocation == 'B') {
-			// set field card image
-			temp_card = new JButton(cardColor+"/"+cardName+"/"+cardShape+"/"+cardNum) {
-				private static final long serialVersionUID = 1L;
-				Image background = new ImageIcon(".\\.\\resources\\card\\playing\\"+cardColor+"\\"+cardName+"_"+cardShape+"_"+cardNum+"_87.png").getImage();
-				// drawing background
-				protected void paintComponent(Graphics g) {
-					g.drawImage(background, 0, 0, null);
+			// set mouse listener
+			temp_card.addMouseListener(new MouseAdapter() {
+				public void mouseEntered(MouseEvent e) {
+					Select_button this_card = (Select_button)e.getComponent();
+					e.getComponent().setBounds(this_card.getX(), this_card.getY()-30, this_card.getWidth(), this_card.getHeight());
 				}
-			};
-			// set size
-			temp_card.setPreferredSize(new Dimension(87,135));
-		}
-		
-		// seatLocation = player_C field
-		else if(seatLocation == 'C') {
-			// set field card image
-			temp_card = new JButton(cardColor+"/"+cardName+"/"+cardShape+"/"+cardNum) {
-				private static final long serialVersionUID = 1L;
-				Image background = new ImageIcon(".\\.\\resources\\card\\playing\\"+cardColor+"\\"+cardName+"_"+cardShape+"_"+cardNum+"_87_player_C.png").getImage();
-				// drawing background
-				protected void paintComponent(Graphics g) {
-					g.drawImage(background, 0, 0, null);
+				public void mouseExited(MouseEvent e) {
+					Select_button this_card = (Select_button)e.getComponent();
+					e.getComponent().setBounds(this_card.getX(), this_card.getY()+30, this_card.getWidth(), this_card.getHeight());
 				}
-			};
-			// set size
-			temp_card.setPreferredSize(new Dimension(135,87));
+			});
 		}
 		
-		
-		
-		
-		
-		
-		
-		// seatLocation = player_G field
-		else if(seatLocation == 'G') {
-			// set field card image
-			temp_card = new JButton(cardColor+"/"+cardName+"/"+cardShape+"/"+cardNum) {
-				private static final long serialVersionUID = 1L;
-				Image background = new ImageIcon(".\\.\\resources\\card\\playing\\"+cardColor+"\\"+cardName+"_"+cardShape+"_"+cardNum+"_87.png").getImage();
-				// drawing background
-				protected void paintComponent(Graphics g) {
-					g.drawImage(background, 0, 0, null);
+		// id = player_B hand & field
+		if(UI.player_B_name.getText().equals(id)) {
+			// forward?
+			if(isForward == true) {
+				// set handField card image
+				temp_card = new Select_button(cardColor, cardName, cardShape, cardNum) {
+					private static final long serialVersionUID = 1L;
+					Image background = new ImageIcon(".\\.\\resources\\card\\playing\\"+cardColor+"\\"+cardName+"_"+cardShape+"_"+cardNum+"_70.png").getImage();
+					// drawing background
+					protected void paintComponent(Graphics g) {
+						g.drawImage(background, 0, 0, null);
+					}
+				};
+			}
+			// backward?
+			else if(isForward == false) {
+				// set handField card image
+				temp_card = new Select_button(cardColor, cardName, cardShape, cardNum) {
+					private static final long serialVersionUID = 1L;
+					Image background = new ImageIcon(".\\.\\resources\\card\\playing\\back_70.png").getImage();
+					// drawing background
+					protected void paintComponent(Graphics g) {
+						g.drawImage(background, 0, 0, null);
+					}
+				};
+			}
+			// set size
+			temp_card.setPreferredSize(new Dimension(70,108));
+			// set mouse listener
+			temp_card.addMouseListener(new MouseAdapter() {
+				public void mouseEntered(MouseEvent e) {
+					Select_button this_card = (Select_button)e.getComponent();
+					e.getComponent().setBounds(this_card.getX(), this_card.getY()-20, this_card.getWidth(), this_card.getHeight());
 				}
-			};
-			// set size
-			temp_card.setPreferredSize(new Dimension(87,135));
+				public void mouseExited(MouseEvent e) {
+					Select_button this_card = (Select_button)e.getComponent();
+					e.getComponent().setBounds(this_card.getX(), this_card.getY()+20, this_card.getWidth(), this_card.getHeight());
+				}
+			});
 		}
+		
+		// TODO (C~G)
 		
 		// return maked button
 		return temp_card;
@@ -616,7 +675,7 @@ public class CardMaker {
 	// make select panel card button (character card)
 	public static Select_button make_card_select_panel_character(String myName, String cardPack, String cardName, PrintWriter os, int hp) {
 		// init select_panel_card image
-		Select_button select_temp_card = new Select_button(cardName+"/"+hp);
+		Select_button select_temp_card = new Select_button(cardName, hp);
 		select_temp_card.setIcon(new ImageIcon(".\\.\\resources\\card\\character\\"+cardPack+"\\"+cardName+"_155.png"));
 		
 		// set click event
@@ -649,7 +708,7 @@ public class CardMaker {
 	// make select panel card button (character question card)
 	public static Select_button make_card_select_panel_character_question(String myName, String cardPack, String cardName, PrintWriter os, int hp) {
 		// init select_panel_card image
-		Select_button select_temp_card = new Select_button(cardName+"/"+hp);
+		Select_button select_temp_card = new Select_button(cardName, hp);
 		select_temp_card.setIcon(new ImageIcon(".\\.\\resources\\card\\question_155.png"));
 		
 		// set click event
@@ -686,7 +745,7 @@ public class CardMaker {
 	// make select panel card button (role card)
 	public static Select_button make_card_select_panel_role(String myName, String cardName, PrintWriter os, int cardNum) {
 		// init select_panel_card image
-		Select_button select_temp_card = new Select_button(cardName+"/"+cardNum);
+		Select_button select_temp_card = new Select_button(cardName, cardNum);
 		select_temp_card.setIcon(new ImageIcon(".\\.\\resources\\card\\role\\"+"role_back"+"_155.png"));
 		
 		// set click event
@@ -726,7 +785,7 @@ public class CardMaker {
 	// make select panel card button (last scenario card)
 	public static Select_button make_card_select_panel_last_scenario(String extension, String cardName, PrintWriter os, int cardNum) {
 		// init select_panel_card image
-		Select_button select_temp_card = new Select_button(cardName+"/"+cardNum);
+		Select_button select_temp_card = new Select_button(cardName, cardNum);
 		select_temp_card.setIcon(new ImageIcon(".\\.\\resources\\card\\scenario\\"+extension+"\\"+cardName+"_155.png"));
 		
 		// set click event

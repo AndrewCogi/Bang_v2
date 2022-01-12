@@ -165,7 +165,7 @@ public class GameManager {
 			// game/INIT/MAIN_DECK
 			else if(splitCmd[2].equals("MAIN_DECK")) {
 				// make main deck [back], [empty]
-				CardMaker.make_card_handField_main_init();
+				CardMaker.make_card_handField_main_deck_init();
 				Setter.setMainDeckImageAvailable(true);
 			}
 			// game/INIT/GOLD_RUSH/[cardColor1]/[cardName1]/[cardColor2]/[cardName2]/[cardColor3]/[cardName3]
@@ -203,6 +203,18 @@ public class GameManager {
 				// gold image & text available -> true
 				Setter.setPlayerGoldImageAvailable(true);
 				Setter.setPlayerGoldTextAvailable(true);
+			}
+			// game/INIT/PLAYER_HAND/[id]/[cardColor]/[cardName]/[cardShape]/[cardNumber]
+			else if(splitCmd[2].equals("PLAYER_HAND")) {
+				String id = splitCmd[3];
+				String cardColor = splitCmd[4];
+				String cardName = splitCmd[5];
+				char cardShape = splitCmd[6].charAt(0);
+				int cardNumber = Integer.parseInt(splitCmd[7]);
+				// make hand & field card, add into [id]'s card (if myname -> forward / not myname ->backward
+				if(myName.equals(id)) UI.player_A_hand.add(CardMaker.make_card_handField_playing(id, cardColor, cardName, cardShape, cardNumber, UI.player_A_hand.getComponentCount(), true));
+				else UI.player_A_hand.add(CardMaker.make_card_handField_playing(id, cardColor, cardName, cardShape, cardNumber, UI.player_A_hand.getComponentCount(), false));
+				// TODO -> make player_X_hand panel
 			}
 		}
 		
@@ -275,8 +287,6 @@ public class GameManager {
 					if(c instanceof Select_button) {
 						Select_button btn = (Select_button)c;
 						if(btn.getName().equals(cardName) && btn.getNum() == cardNum) {
-							// set border into RED
-							// btn.setBorder(BorderFactory.createLineBorder(Color.RED,4));
 							// set disabled image
 							btn.setDisabledIcon(new ImageIcon(".\\.\\resources\\card\\role\\role_back_155_gray.png"));
 							// disable button
@@ -287,10 +297,12 @@ public class GameManager {
 			}
 			// game/PLSYERSELECT/SCENARIO/[cardName]
 			else if(splitCmd[2].equals("SCENARIO")) {
-				// make card
+				// init scenario buttons
+				CardMaker.make_card_handField_scenario_init();
+				// make card last scenario
 				String cardName = splitCmd[3];
-				CardMaker.make_card_handField_scenario_init(cardName);
-				CardMaker.make_card_handField_scenario_init("wild_west_show");
+				CardMaker.make_card_handField_scenario_last(cardName);
+				CardMaker.make_card_handField_scenario_last("wild_west_show");
 				// available
 				Setter.setScenarioImageAvailable(1, true);
 				Setter.setScenarioImageAvailable(2, true);
