@@ -639,6 +639,71 @@ public class Setter {
 		UI.mp.repaint();
 	}
 	
+	// set gold rush available (1: new / 2: open_1 / 3: open_2 / 4: open_3)
+	public static void setGoldRushImageAvailable(int target, boolean activate) {
+		if(target == 1) {
+			UI.gold_rush_new.setVisible(activate);
+			if(activate == true) UI.mp.add(UI.gold_rush_new);
+			else UI.mp.remove(UI.gold_rush_new);
+		}
+		else if(target == 2) {
+			UI.gold_rush_open_1.setVisible(activate);
+			if(activate == true) UI.mp.add(UI.gold_rush_open_1);
+			else UI.mp.remove(UI.gold_rush_open_1);
+		}
+		else if(target == 3) {
+			UI.gold_rush_open_2.setVisible(activate);
+			if(activate == true) UI.mp.add(UI.gold_rush_open_2);
+			else UI.mp.remove(UI.gold_rush_open_2);
+		}
+		else if(target == 4) {
+			UI.gold_rush_open_3.setVisible(activate);
+			if(activate == true) UI.mp.add(UI.gold_rush_open_3);
+			else UI.mp.remove(UI.gold_rush_open_3);
+		}
+		// repaint
+		UI.mp.repaint();
+	}
+	
+	// set player hand available
+	public static void setPlayerHandImageAvailable(char seatLocation, boolean activate) {
+		if(seatLocation == 'A') {
+			UI.player_A_hand.setVisible(activate);
+			if(activate == true) UI.mp.add(UI.player_A_hand);
+			else UI.mp.remove(UI.player_A_hand);
+		}
+		else if(seatLocation == 'B') {
+			UI.player_B_hand.setVisible(activate);
+			if(activate == true) UI.mp.add(UI.player_B_hand);
+			else UI.mp.remove(UI.player_B_hand);			
+		}
+		else if(seatLocation == 'C') {
+			UI.player_C_hand.setVisible(activate);
+			if(activate == true) UI.mp.add(UI.player_C_hand);
+			else UI.mp.remove(UI.player_C_hand);
+		}
+		else if(seatLocation == 'D') {
+			UI.player_D_hand.setVisible(activate);
+			if(activate == true) UI.mp.add(UI.player_D_hand);
+			else UI.mp.remove(UI.player_D_hand);
+		}
+		else if(seatLocation == 'E') {
+			UI.player_E_hand.setVisible(activate);
+			if(activate == true) UI.mp.add(UI.player_E_hand);
+			else UI.mp.remove(UI.player_E_hand);
+		}
+		else if(seatLocation == 'F') {
+			UI.player_F_hand.setVisible(activate);
+			if(activate == true) UI.mp.add(UI.player_F_hand);
+			else UI.mp.remove(UI.player_F_hand);
+		}
+		else if(seatLocation == 'G') {
+			UI.player_G_hand.setVisible(activate);
+			if(activate == true) UI.mp.add(UI.player_G_hand);
+			else UI.mp.remove(UI.player_G_hand);
+		}
+	}
+	
 	// set player_hp text
 	public static void setPlayerHpText(String name, int hp, boolean isSceriffo) {
 		// find seat (A)

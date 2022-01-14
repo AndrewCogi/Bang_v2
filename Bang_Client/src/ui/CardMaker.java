@@ -3,6 +3,7 @@
 package ui;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -119,6 +120,69 @@ public class CardMaker {
 		UI.scenario_turn_front.setVisible(false);
 		UI.scenario_wild_back.setVisible(false);
 		UI.scenario_wild_front.setVisible(false);
+	}
+	
+	// make hand & field card button (gold rush card)
+	public static void make_card_handField_gold_rush(int target, String cardColor, String cardName, int cost) {
+		// target == 1 && else -> null (new)
+		if(target == 1) {
+			// init button
+			UI.gold_rush_new = new JButton();
+			// set bounds
+			UI.gold_rush_new.setBounds(1077,435,87,135);
+			// set image
+			UI.gold_rush_new.setIcon(new ImageIcon(".\\.\\resources\\card\\gold_rush\\back_87.png"));
+			// set invisible
+			UI.gold_rush_new.setVisible(false);
+		}
+		// target == 2 (open1)
+		else if(target == 2) {
+			// init button
+			UI.gold_rush_open_1= new JButton(cardColor+"/"+cardName+"/"+cost) {
+				private static final long serialVersionUID = 1L;
+				Image background = new ImageIcon(".\\.\\resources\\card\\gold_rush\\"+cardColor+"\\"+cardName+"_87.png").getImage();
+				// drawing background
+				protected void paintComponent(Graphics g) {
+					g.drawImage(background, 0, 0, null);
+				}
+			};
+			// set bounds
+			UI.gold_rush_open_1.setBounds(1166,435,87,135);
+			// set invisible
+			UI.gold_rush_open_1.setVisible(false);
+		}
+		// target == 3 (open2)
+		else if(target == 3) {
+			// init button
+			UI.gold_rush_open_2= new JButton(cardColor+"/"+cardName+"/"+cost) {
+				private static final long serialVersionUID = 1L;
+				Image background = new ImageIcon(".\\.\\resources\\card\\gold_rush\\"+cardColor+"\\"+cardName+"_87.png").getImage();
+				// drawing background
+				protected void paintComponent(Graphics g) {
+					g.drawImage(background, 0, 0, null);
+				}
+			};
+			// set bounds
+			UI.gold_rush_open_2.setBounds(1255,435,87,135);
+			// set invisible
+			UI.gold_rush_open_2.setVisible(false);
+		}
+		// target == 4 (open3)
+		else if(target == 4) {
+			// init button
+			UI.gold_rush_open_3= new JButton(cardColor+"/"+cardName+"/"+cost) {
+				private static final long serialVersionUID = 1L;
+				Image background = new ImageIcon(".\\.\\resources\\card\\gold_rush\\"+cardColor+"\\"+cardName+"_87.png").getImage();
+				// drawing background
+				protected void paintComponent(Graphics g) {
+					g.drawImage(background, 0, 0, null);
+				}
+			};
+			// set bounds
+			UI.gold_rush_open_3.setBounds(1344,435,87,135);
+			// set invisible
+			UI.gold_rush_open_3.setVisible(false);
+		}
 	}
 	
 	// make hand & field card button (init gun card)
@@ -580,7 +644,7 @@ public class CardMaker {
 	}
 	
 	// make hand & field card button (playing card)
-	public static Select_button make_card_handField_playing(String id, String cardColor, String cardName, char cardShape, int cardNum, int haveCardNum, boolean isForward) {
+	public static Select_button make_card_handField_playing(String id, String cardColor, String cardName, char cardShape, int cardNum, boolean isForward) {
 		// temp card button
 		Select_button temp_card = null;
 		
@@ -666,9 +730,236 @@ public class CardMaker {
 			});
 		}
 		
-		// TODO (C~G)
+		// id = player_C hand & field
+		if(UI.player_C_name.getText().equals(id)) {
+			// forward?
+			if(isForward == true) {
+				// set handField card image
+				temp_card = new Select_button(cardColor, cardName, cardShape, cardNum) {
+					private static final long serialVersionUID = 1L;
+					Image background = new ImageIcon(".\\.\\resources\\card\\playing\\"+cardColor+"\\"+cardName+"_"+cardShape+"_"+cardNum+"_70_player_C.png").getImage();
+					// drawing background
+					protected void paintComponent(Graphics g) {
+						g.drawImage(background, 0, 0, null);
+					}
+				};
+			}
+			// backward?
+			else if(isForward == false) {
+				// set handField card image
+				temp_card = new Select_button(cardColor, cardName, cardShape, cardNum) {
+					private static final long serialVersionUID = 1L;
+					Image background = new ImageIcon(".\\.\\resources\\card\\playing\\back_70_player_C.png").getImage();
+					// drawing background
+					protected void paintComponent(Graphics g) {
+						g.drawImage(background, 0, 0, null);
+					}
+				};
+			}
+			// set size
+			temp_card.setPreferredSize(new Dimension(108,70));
+			temp_card.setMaximumSize(new Dimension(108,70));
+			// set mouse listener
+			temp_card.addMouseListener(new MouseAdapter() {
+				public void mouseEntered(MouseEvent e) {
+					Select_button this_card = (Select_button)e.getComponent();
+					e.getComponent().setBounds(this_card.getX()+20, this_card.getY(), this_card.getWidth(), this_card.getHeight());
+				}
+				public void mouseExited(MouseEvent e) {
+					Select_button this_card = (Select_button)e.getComponent();
+					e.getComponent().setBounds(this_card.getX()-20, this_card.getY(), this_card.getWidth(), this_card.getHeight());
+				}
+			});
+		}
 		
-		// return maked button
+		// id = player_D hand & field
+		if(UI.player_D_name.getText().equals(id)) {
+			// forward?
+			if(isForward == true) {
+				// set handField card image
+				temp_card = new Select_button(cardColor, cardName, cardShape, cardNum) {
+					private static final long serialVersionUID = 1L;
+					Image background = new ImageIcon(".\\.\\resources\\card\\playing\\"+cardColor+"\\"+cardName+"_"+cardShape+"_"+cardNum+"_70_player_DE.png").getImage();
+					// drawing background
+					protected void paintComponent(Graphics g) {
+						g.drawImage(background, 0, 0, null);
+					}
+				};
+			}
+			// backward?
+			else if(isForward == false) {
+				// set handField card image
+				temp_card = new Select_button(cardColor, cardName, cardShape, cardNum) {
+					private static final long serialVersionUID = 1L;
+					Image background = new ImageIcon(".\\.\\resources\\card\\playing\\back_70_player_DE.png").getImage();
+					// drawing background
+					protected void paintComponent(Graphics g) {
+						g.drawImage(background, 0, 0, null);
+					}
+				};
+			}
+			// set size
+			temp_card.setPreferredSize(new Dimension(70,108));
+			// set mouse listener
+			temp_card.addMouseListener(new MouseAdapter() {
+				public void mouseEntered(MouseEvent e) {
+					Select_button this_card = (Select_button)e.getComponent();
+					e.getComponent().setBounds(this_card.getX(), this_card.getY()+20, this_card.getWidth(), this_card.getHeight());
+				}
+				public void mouseExited(MouseEvent e) {
+					Select_button this_card = (Select_button)e.getComponent();
+					e.getComponent().setBounds(this_card.getX(), this_card.getY()-20, this_card.getWidth(), this_card.getHeight());
+				}
+			});
+		}
+		
+		// id = player_E hand & field
+		if(UI.player_E_name.getText().equals(id)) {
+			// forward?
+			if(isForward == true) {
+				// set handField card image
+				temp_card = new Select_button(cardColor, cardName, cardShape, cardNum) {
+					private static final long serialVersionUID = 1L;
+					Image background = new ImageIcon(".\\.\\resources\\card\\playing\\"+cardColor+"\\"+cardName+"_"+cardShape+"_"+cardNum+"_70_player_DE.png").getImage();
+					// drawing background
+					protected void paintComponent(Graphics g) {
+						g.drawImage(background, 0, 0, null);
+					}
+				};
+			}
+			// backward?
+			else if(isForward == false) {
+				// set handField card image
+				temp_card = new Select_button(cardColor, cardName, cardShape, cardNum) {
+					private static final long serialVersionUID = 1L;
+					Image background = new ImageIcon(".\\.\\resources\\card\\playing\\back_70_player_DE.png").getImage();
+					// drawing background
+					protected void paintComponent(Graphics g) {
+						g.drawImage(background, 0, 0, null);
+					}
+				};
+			}
+			// set size
+			temp_card.setPreferredSize(new Dimension(70,108));
+			// set mouse listener
+			temp_card.addMouseListener(new MouseAdapter() {
+				public void mouseEntered(MouseEvent e) {
+					Select_button this_card = (Select_button)e.getComponent();
+					e.getComponent().setBounds(this_card.getX(), this_card.getY()+20, this_card.getWidth(), this_card.getHeight());
+				}
+				public void mouseExited(MouseEvent e) {
+					Select_button this_card = (Select_button)e.getComponent();
+					e.getComponent().setBounds(this_card.getX(), this_card.getY()-20, this_card.getWidth(), this_card.getHeight());
+				}
+			});
+		}
+		
+		// id = player_F hand & field
+		if(UI.player_F_name.getText().equals(id)) {
+			// forward?
+			if(isForward == true) {
+				// set handField card image
+				temp_card = new Select_button(cardColor, cardName, cardShape, cardNum) {
+					private static final long serialVersionUID = 1L;
+					Image background = new ImageIcon(".\\.\\resources\\card\\playing\\"+cardColor+"\\"+cardName+"_"+cardShape+"_"+cardNum+"_70_player_F.png").getImage();
+					// drawing background
+					protected void paintComponent(Graphics g) {
+						g.drawImage(background, 0, 0, null);
+					}
+				};
+			}
+			// backward?
+			else if(isForward == false) {
+				// set handField card image
+				temp_card = new Select_button(cardColor, cardName, cardShape, cardNum) {
+					private static final long serialVersionUID = 1L;
+					Image background = new ImageIcon(".\\.\\resources\\card\\playing\\back_70_player_F.png").getImage();
+					// drawing background
+					protected void paintComponent(Graphics g) {
+						g.drawImage(background, 0, 0, null);
+					}
+				};
+			}
+			// set size
+			temp_card.setPreferredSize(new Dimension(108,70));
+			// set mouse listener
+			temp_card.addMouseListener(new MouseAdapter() {
+				public void mouseEntered(MouseEvent e) {
+					Select_button this_card = (Select_button)e.getComponent();
+					e.getComponent().setBounds(this_card.getX()-20, this_card.getY(), this_card.getWidth(), this_card.getHeight());
+				}
+				public void mouseExited(MouseEvent e) {
+					Select_button this_card = (Select_button)e.getComponent();
+					e.getComponent().setBounds(this_card.getX()+20, this_card.getY(), this_card.getWidth(), this_card.getHeight());
+				}
+			});
+		}
+		
+		// id = player_G hand & field
+		if(UI.player_G_name.getText().equals(id)) {
+			// forward?
+			if(isForward == true) {
+				// set handField card image
+				temp_card = new Select_button(cardColor, cardName, cardShape, cardNum) {
+					private static final long serialVersionUID = 1L;
+					Image background = new ImageIcon(".\\.\\resources\\card\\playing\\"+cardColor+"\\"+cardName+"_"+cardShape+"_"+cardNum+"_70.png").getImage();
+					// drawing background
+					protected void paintComponent(Graphics g) {
+						g.drawImage(background, 0, 0, null);
+					}
+				};
+			}
+			// backward?
+			else if(isForward == false) {
+				// set handField card image
+				temp_card = new Select_button(cardColor, cardName, cardShape, cardNum) {
+					private static final long serialVersionUID = 1L;
+					Image background = new ImageIcon(".\\.\\resources\\card\\playing\\back_70.png").getImage();
+					// drawing background
+					protected void paintComponent(Graphics g) {
+						g.drawImage(background, 0, 0, null);
+					}
+				};
+			}
+			// set size
+			temp_card.setPreferredSize(new Dimension(70,108));
+			// set mouse listener
+			temp_card.addMouseListener(new MouseAdapter() {
+				public void mouseEntered(MouseEvent e) {
+					Select_button this_card = (Select_button)e.getComponent();
+					e.getComponent().setBounds(this_card.getX(), this_card.getY()-20, this_card.getWidth(), this_card.getHeight());
+				}
+				public void mouseExited(MouseEvent e) {
+					Select_button this_card = (Select_button)e.getComponent();
+					e.getComponent().setBounds(this_card.getX(), this_card.getY()+20, this_card.getWidth(), this_card.getHeight());
+				}
+			});
+		}
+		
+		// return made button
+		return temp_card;
+	}
+	
+	// make fake card for player_C_hand, player_F_hand
+	public static Select_button make_card_handField_playing_fake() {
+		Select_button temp_card = new Select_button() {
+			private static final long serialVersionUID = 1L;
+			Image background = new ImageIcon(".\\.\\resources\\card\\empty_70.png").getImage();
+			// drawing background
+			protected void paintComponent(Graphics g) {
+				g.drawImage(background, 0, 0, null);
+			}
+		};
+		// set size
+		temp_card.setPreferredSize(new Dimension(70,108));
+		// set invisible
+		temp_card.setEnabled(false);
+		temp_card.setBorderPainted(false);
+		temp_card.setContentAreaFilled(false);
+		temp_card.setFocusPainted(false);
+		temp_card.setEnabled(false);
+		
+		// return made button
 		return temp_card;
 	}
 	
@@ -831,4 +1122,5 @@ public class CardMaker {
 		// return card
 		return select_temp_card;
 	}
+	
 }

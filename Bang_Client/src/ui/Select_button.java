@@ -14,6 +14,9 @@ public class Select_button extends JButton{
 	private String color;
 	
 	// constructor
+	public Select_button() {}
+	
+	// constructor
 	public Select_button(String name, int num) {
 		this.name = name;
 		this.num = num;

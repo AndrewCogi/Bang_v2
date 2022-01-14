@@ -168,16 +168,26 @@ public class GameManager {
 				CardMaker.make_card_handField_main_deck_init();
 				Setter.setMainDeckImageAvailable(true);
 			}
-			// game/INIT/GOLD_RUSH/[cardColor1]/[cardName1]/[cardColor2]/[cardName2]/[cardColor3]/[cardName3]
+			// game/INIT/GOLD_RUSH/[cardColor1]/[cardName1]/[cardCost1]/[cardColor2]/[cardName2]/[cardCost2]/[cardColor3]/[cardName3]/[cardCost3]
 			else if(splitCmd[2].equals("GOLD_RUSH")) {
 				// make gold rush store
 				String cardColor1 = splitCmd[3];
-				String cardColor2 = splitCmd[5];
-				String cardColor3 = splitCmd[7];
+				String cardColor2 = splitCmd[6];
+				String cardColor3 = splitCmd[9];
 				String cardName1 = splitCmd[4];
-				String cardName2 = splitCmd[6];
-				String cardName3 = splitCmd[8];
-				// TODO
+				String cardName2 = splitCmd[7];
+				String cardName3 = splitCmd[10];
+				int cardCost1 = Integer.parseInt(splitCmd[5]);
+				int cardCost2 = Integer.parseInt(splitCmd[8]);
+				int cardCost3 = Integer.parseInt(splitCmd[11]);
+				CardMaker.make_card_handField_gold_rush(1, null, null, -1);
+				CardMaker.make_card_handField_gold_rush(2, cardColor1, cardName1, cardCost1);
+				CardMaker.make_card_handField_gold_rush(3, cardColor2, cardName2, cardCost2);
+				CardMaker.make_card_handField_gold_rush(4, cardColor3, cardName3, cardCost3);
+				Setter.setGoldRushImageAvailable(1, true);
+				Setter.setGoldRushImageAvailable(2, true);
+				Setter.setGoldRushImageAvailable(3, true);
+				Setter.setGoldRushImageAvailable(4, true);
 			}
 			// game/INIT/HP_GOLD
 			else if(splitCmd[2].equals("HP_GOLD")) {
@@ -212,8 +222,8 @@ public class GameManager {
 				char cardShape = splitCmd[6].charAt(0);
 				int cardNumber = Integer.parseInt(splitCmd[7]);
 				// make hand & field card, add into [id]'s card (if myname -> forward / not myname ->backward
-				if(myName.equals(id)) UI.player_A_hand.add(CardMaker.make_card_handField_playing(id, cardColor, cardName, cardShape, cardNumber, UI.player_A_hand.getComponentCount(), true));
-				else UI.player_A_hand.add(CardMaker.make_card_handField_playing(id, cardColor, cardName, cardShape, cardNumber, UI.player_A_hand.getComponentCount(), false));
+				if(myName.equals(id)) UI.player_A_hand.add(CardMaker.make_card_handField_playing(id, cardColor, cardName, cardShape, cardNumber, true));
+				else UI.player_A_hand.add(CardMaker.make_card_handField_playing(id, cardColor, cardName, cardShape, cardNumber, false));
 				// TODO -> make player_X_hand panel
 			}
 		}
