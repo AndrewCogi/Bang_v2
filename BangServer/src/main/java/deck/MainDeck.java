@@ -118,6 +118,13 @@ public class MainDeck{
 		MainCard picked = deck.get(0); deck.remove(0);
 		String cardInfo = picked.getCardColor()+"/"+picked.getCardName()+
 			"/"+picked.getCardShape()+"/"+picked.getCardNumber();
+		System.out.println("[MainDeck][picked card]: "+cardInfo);
 		return cardInfo;
+	}
+
+	// add card
+	public void add(String cardInfo){
+		deck.add(new MainCard(cardInfo.split("/")[0], cardInfo.split("/")[1], 
+					cardInfo.split("/")[2].charAt(0), Integer.parseInt(cardInfo.split("/")[3])));
 	}
 }

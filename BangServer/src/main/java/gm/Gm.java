@@ -204,17 +204,17 @@ public class Gm{
 		// broadcast top notice
 		server.App.broadcast("game/SETTEXT/TOP_NOTICE/Setting remains...");
 		// setting scenario
-		setting_scenario(); // 덱 만들기 & 플레이어들 UI 바꿔주기
+		setting_scenario();
 		// setting main deck
-		setting_main_deck(); // 덱 만들기 & 플레이어들 UI 바꿔주기
+		setting_main_deck();
 		// setting gold rush
-		setting_gold_rush(); // 덱 만들기 & 플레이어들 UI 바꿔주기
+		setting_gold_rush();
 		// setting guns
-		setting_init_gun(); // 플레이어들 총 나누어주기 (colt-45)
+		setting_init_gun();
 		// setting hp & gold
-		setting_init_hp_gold(); // 플레이어들 체력 및 금덩이 배치해주기
+		setting_init_hp_gold();
 		// setting players' hand
-		setting_init_player_hand(); // 플레이어들 핸드카드 나누어주기
+		setting_init_player_hand();
 		// broadcast top notice
 		server.App.broadcast("game/SETTEXT/TOP_NOTICE/Game Start!");
 	}
@@ -242,9 +242,9 @@ public class Gm{
 
 	// setting main deck
 	private void setting_main_deck(){
-		// makd main deck
-		MainDeck mainDeck_new = new MainDeck();
-		MainDeck mainDeck_old = new MainDeck();
+		// make main deck
+		mainDeck_new = new MainDeck();
+		mainDeck_old = new MainDeck();
 		mainDeck_new.make_init_deck();
 		mainDeck_new.shuffle();
 		// broadcast game/INIT/MAIN_DECK
@@ -280,7 +280,27 @@ public class Gm{
 
 	// setting init player hand
 	private void setting_init_player_hand(){
-
+		for(String playerID : server.App.getClientsPrintWriter().values()){
+			// check player hp
+			int isSceriffo = 0;
+			if(role.get(playerID).equals("sceriffo")) isSceriffo = 1;
+			int characterHp = character.get(playerID).getHp();
+			int playerHp = isSceriffo+characterHp;
+			// broadcast game/INIT/PLAYER_HAND_ENABLE
+			server.App.broadcast("game/ENABLE/PLAYER_HAND/"+playerID);
+			// broadcast game/INIT/PLAYER_HAND/[playerID]/[cardColor]/[cardName]/[cardShape]/[cardNumber]
+			for(int i=0; i<playerHp; i++){
+				// extract card info & add cardInfo into mainDeck_old
+				String cardInfo = mainDeck_new.pop();
+				String cardColor = cardInfo.split("/")[0];
+				String cardName = cardInfo.split("/")[1];
+				String cardShape = cardInfo.split("/")[2];
+				String cardNumber = cardInfo.split("/")[3];
+				mainDeck_old.add(cardInfo);
+				server.App.broadcast("game/INIT/PLAYER_HAND/"+playerID+"/"+cardColor+"/"+cardName+"/"+
+						cardShape+"/"+cardNumber);
+			}
+		}
 	}
 
 	// setting init gun
