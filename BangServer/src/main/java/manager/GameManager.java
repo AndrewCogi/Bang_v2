@@ -6,6 +6,7 @@ package manager;
 
 import java.io.PrintWriter;
 
+import card.CharactersCard;
 import gm.Gm;
 
 public class GameManager{
@@ -52,7 +53,7 @@ public class GameManager{
 			// game/SELECT/CHARACTER/[id]/[characterExtension]/[characterName]
 			else if(splitCmd[2].equals("CHARACTER")){
 				// add Gm.character
-				Gm.getCharacter().put(splitCmd[3],splitCmd[4]+"/"+splitCmd[5]);
+				Gm.getCharacter().put(splitCmd[3], new CharactersCard(splitCmd[4],splitCmd[5]));
 				// check
 				System.out.println("[Gm][GameManager] > "+splitCmd[3]+" picked - "+splitCmd[4]+"/"+splitCmd[5]);
 				// +1 respond

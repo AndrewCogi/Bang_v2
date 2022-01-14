@@ -112,7 +112,7 @@ public class ScenarioDeck{
 		return deck.get(idx).getCardName();
 	}
 	
-	// get [idx] element name (== cardExtension)
+	// get [idx] element extension (== cardExtension)
 	public String getCardExtension(int idx){
 		return deck.get(idx).getCardExtension();
 	}

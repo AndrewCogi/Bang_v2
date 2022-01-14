@@ -10,7 +10,10 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
+import card.CharactersCard;
+import card.GoldRushCard;
 import deck.CharacterDeck;
+import deck.GoldRushDeck;
 import deck.MainDeck;
 import deck.RoleDeck;
 import deck.ScenarioDeck;
@@ -21,7 +24,7 @@ public class Gm{
 	// player's role(== init role) <ID,Role>
 	private static HashMap<String,String> role;
 	// player's character(== init character) <ID,character>
-	private static HashMap<String,String> character;
+	private static HashMap<String,CharactersCard> character;
 	// vote last scenario
 	private static int[] vote_last_scenario;
 	// scenario deck
@@ -111,11 +114,6 @@ public class Gm{
 				roleDeck.getCardName(4)+"/"+roleDeck.getCardName(5)+"/"+roleDeck.getCardName(6));
 		// wait until everyone respond
 		while(getRespond() != 7){}
-		// everyone picked, allocating their roles
-		// for(int cnt=3; cnt>0; cnt--){
-			// server.App.broadcast("game/SETTEXT/TOP_NOTICE/Allocating roles in "+cnt+"...");
-			// try{ Thread.sleep(1000); } catch(InterruptedException e){};
-		// }
 		// wait for socket IO
 		try{ Thread.sleep(1000); } catch(InterruptedException e){};
 		// allocating roles...
@@ -137,9 +135,6 @@ public class Gm{
 		setRespond(0);
 		// re-init last_scenario
 		vote_last_scenario = new int[]{0,0};
-		// broadcasting "Select last scenario..."
-		// server.App.broadcast("game/SETTEXT/TOP_NOTICE/Select last scenario...("+
-				// (Gm.getVote_last_scenario()[0]+Gm.getVote_last_scenario()[1])+" | 7)");
 		// broadcasting SELECT/LAST_SCENARIO
 		server.App.broadcast("game/SELECT/LAST_SCENARIO");
 		// wait until everyone respond
@@ -168,14 +163,14 @@ public class Gm{
 		// re-init respond
 		setRespond(0);
 		// re-init character
-		character = new HashMap<String,String>();
+		character = new HashMap<String,CharactersCard>();
 		// make character deck
 		CharacterDeck characterDeck = new CharacterDeck();
 		characterDeck.make_init_deck();
 		// broadcasting SELECT/CHARACTER/[ex1]/[ch1]/[hp1]/
 		// [ex2]/[ch2]/[hp2]/[ex3]/[ch3]/[hp3]/[ex4]/[ch4]/[hp4]
 		for(String playerID : server.App.getClientsPrintWriter().values()){
-			// extract 3 characters
+			// extract 4 characters
 			String characterInfo1 = characterDeck.extract();
 			String characterInfo2 = characterDeck.extract();
 			String characterInfo3 = characterDeck.extract();
@@ -193,10 +188,11 @@ public class Gm{
 		server.App.broadcast("game/SETTEXT/TOP_NOTICE/Allocating characters...");
 		// broadcasting their characters
 		for(String playerID : character.keySet()){
-			String characterExtension = character.get(playerID).split("/")[0];
-			String characterName = character.get(playerID).split("/")[1];
-			// game/INIT/CHARACTER/[playerName]/[characterExtension]/[characterName]
-			server.App.broadcast("game/INIT/CHARACTER/"+playerID+"/"+characterExtension+"/"+characterName);
+			String characterExtension = character.get(playerID).getExtension();
+			String characterName = character.get(playerID).getCardName();
+			int characterHp = character.get(playerID).getHp();
+			// game/INIT/CHARACTER/[playerName]/[characterExtension]/[characterName]/[characterHp]
+			server.App.broadcast("game/INIT/CHARACTER/"+playerID+"/"+characterExtension+"/"+characterName+"/"+characterHp);
 			try{ Thread.sleep(1000/2); } catch(InterruptedException e){};
 		}
 		// disable top notice
@@ -262,7 +258,18 @@ public class Gm{
 		GoldRushDeck goldRushDeck_old = new GoldRushDeck();
 		goldRushDeck_new.make_init_deck();
 		goldRushDeck_new.shuffle();
-		// broadcast game/INIT/GOLD_RUSH/[card1]/[card2]/[card3]
+		// get 3 cards & add openCards into goldRushDeck_old
+		GoldRushCard openCard1 = goldRushDeck_new.pop();
+		GoldRushCard openCard2 = goldRushDeck_new.pop();
+		GoldRushCard openCard3 = goldRushDeck_new.pop();
+		goldRushDeck_old.add(openCard1);
+		goldRushDeck_old.add(openCard2);
+		goldRushDeck_old.add(openCard3);
+
+		// broadcast game/INIT/GOLD_RUSH/[color1]/[name1]/[cost1]/[color2]/[name2]/[cost2]/[color3]/[name3]/[cost3]
+		server.App.broadcast("game/INIT/GOLD_RUSH/"+openCard1.getCardColor()+"/"+openCard1.getCardName()+"/"+openCard1.getCost()+
+				"/"+openCard2.getCardColor()+"/"+openCard2.getCardName()+"/"+openCard2.getCost()+
+				"/"+openCard3.getCardColor()+"/"+openCard3.getCardName()+"/"+openCard3.getCost());
 	}
 
 	// setting init hp & gold
@@ -302,7 +309,7 @@ public class Gm{
 		return role;
 	}
 	// get character
-	public static synchronized HashMap<String,String> getCharacter(){
+	public static synchronized HashMap<String,CharactersCard> getCharacter(){
 		return character;
 	}
 	// get vote_last_scenario

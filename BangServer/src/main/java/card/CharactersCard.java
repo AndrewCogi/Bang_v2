@@ -1,5 +1,5 @@
 /* 
- * class name: CharacterCard
+ * class name: CharactersCard
  * purpose: have character card information
  */
 
