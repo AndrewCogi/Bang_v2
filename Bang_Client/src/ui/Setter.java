@@ -1,7 +1,5 @@
 package ui;
 
-import javax.swing.ImageIcon;
-
 import client.App;
 
 public class Setter {
@@ -666,38 +664,38 @@ public class Setter {
 	}
 	
 	// set player hand available
-	public static void setPlayerHandImageAvailable(char seatLocation, boolean activate) {
-		if(seatLocation == 'A') {
+	public static void setPlayerHandImageAvailable(String id, boolean activate) {
+		if(UI.player_A_name.getText().equals(id)) {
 			UI.player_A_hand.setVisible(activate);
 			if(activate == true) UI.mp.add(UI.player_A_hand);
 			else UI.mp.remove(UI.player_A_hand);
 		}
-		else if(seatLocation == 'B') {
+		else if(UI.player_B_name.getText().equals(id)) {
 			UI.player_B_hand.setVisible(activate);
 			if(activate == true) UI.mp.add(UI.player_B_hand);
 			else UI.mp.remove(UI.player_B_hand);			
 		}
-		else if(seatLocation == 'C') {
+		else if(UI.player_C_name.getText().equals(id)) {
 			UI.player_C_hand.setVisible(activate);
 			if(activate == true) UI.mp.add(UI.player_C_hand);
 			else UI.mp.remove(UI.player_C_hand);
 		}
-		else if(seatLocation == 'D') {
+		else if(UI.player_D_name.getText().equals(id)) {
 			UI.player_D_hand.setVisible(activate);
 			if(activate == true) UI.mp.add(UI.player_D_hand);
 			else UI.mp.remove(UI.player_D_hand);
 		}
-		else if(seatLocation == 'E') {
+		else if(UI.player_E_name.getText().equals(id)) {
 			UI.player_E_hand.setVisible(activate);
 			if(activate == true) UI.mp.add(UI.player_E_hand);
 			else UI.mp.remove(UI.player_E_hand);
 		}
-		else if(seatLocation == 'F') {
+		else if(UI.player_F_name.getText().equals(id)) {
 			UI.player_F_hand.setVisible(activate);
 			if(activate == true) UI.mp.add(UI.player_F_hand);
 			else UI.mp.remove(UI.player_F_hand);
 		}
-		else if(seatLocation == 'G') {
+		else if(UI.player_G_name.getText().equals(id)) {
 			UI.player_G_hand.setVisible(activate);
 			if(activate == true) UI.mp.add(UI.player_G_hand);
 			else UI.mp.remove(UI.player_G_hand);
@@ -806,6 +804,17 @@ public class Setter {
 		UI.player_E.removeAll();
 		UI.player_F.removeAll();
 		UI.player_G.removeAll();
+		// player_[A~G] hand panel clear
+		UI.player_A_hand.removeAll();
+		UI.player_B_hand.removeAll();
+		UI.player_C_hand.removeAll();
+		UI.player_D_hand.removeAll();
+		UI.player_E_hand.removeAll();
+		UI.player_F_hand.removeAll();
+		UI.player_G_hand.removeAll();
+		// add fake card (C,F)
+		UI.player_C_hand.add(CardMaker.make_card_handField_playing_fake());
+		UI.player_F_hand.add(CardMaker.make_card_handField_playing_fake());
 		// main_panel clear
 		UI.mp.removeAll();
 		// disable (select_panel_role)

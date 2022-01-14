@@ -278,7 +278,7 @@ public class UI {
 		player_C_hand.setBounds(0,130,150,470);
 		// set layout
 		player_C_hand.setLayout(new FlowLayout(FlowLayout.CENTER, 0, -40));
-		// set add 2 fake card
+		// set add a fake card
 		player_C_hand.add(CardMaker.make_card_handField_playing_fake());
 		
 		// init panel (D)
@@ -322,7 +322,7 @@ public class UI {
 		player_F_hand.setBounds(1755,130,150,470);
 		// set layout
 		player_F_hand.setLayout(new FlowLayout(FlowLayout.CENTER, 0, -40));
-		// set add 2 fake card
+		// set add a fake card
 		player_F_hand.add(CardMaker.make_card_handField_playing_fake());
 		
 		// init panel (G)
@@ -922,7 +922,7 @@ public class UI {
 //		Setter.setPlayerCharacterImageAvailable(player_E_name.getText(), true);
 //		Setter.setPlayerCharacterImageAvailable(player_F_name.getText(), true);
 //		Setter.setPlayerCharacterImageAvailable(player_G_name.getText(), true);
-
+//
 //		// test (플레이어 핸드 넣어보기)(A) (max: 11)
 //		player_A_hand.add(CardMaker.make_card_handField_playing(player_A_name.getText(), "brown", "bang", 'C', 2, true));
 //		player_A_hand.add(CardMaker.make_card_handField_playing(player_A_name.getText(), "brown", "bang", 'C', 2, true));
@@ -930,7 +930,7 @@ public class UI {
 //		player_A_hand.add(CardMaker.make_card_handField_playing(player_A_name.getText(), "brown", "bang", 'C', 2, true));
 //		player_A_hand.add(CardMaker.make_card_handField_playing(player_A_name.getText(), "brown", "bang", 'C', 2, true));
 //		player_A_hand.add(CardMaker.make_card_handField_playing(player_A_name.getText(), "brown", "bang", 'C', 2, true));
-//		Setter.setPlayerHandImageAvailable('A',true);
+//		Setter.setPlayerHandImageAvailable(UI.player_A_name.getText(),true);
 //		player_A_hand.setBorder(BorderFactory.createLineBorder(Color.BLACK,3));
 //		
 //		// test (플레이어 핸드 넣어보기)(B) (max: 14)
@@ -939,7 +939,7 @@ public class UI {
 //		player_B_hand.add(CardMaker.make_card_handField_playing(player_B_name.getText(), "brown", "bang", 'C', 2, false));
 //		player_B_hand.add(CardMaker.make_card_handField_playing(player_B_name.getText(), "brown", "bang", 'C', 2, false));
 //		player_B_hand.add(CardMaker.make_card_handField_playing(player_B_name.getText(), "brown", "bang", 'C', 2, false));
-//		Setter.setPlayerHandImageAvailable('B',true);
+//		Setter.setPlayerHandImageAvailable(UI.player_B_name.getText(),true);
 //		player_B_hand.setBorder(BorderFactory.createLineBorder(Color.BLACK,3));
 //
 //		// test (플레이어 핸드 넣어보기)(C) (max: 13)

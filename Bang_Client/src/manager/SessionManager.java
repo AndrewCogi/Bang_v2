@@ -6,7 +6,7 @@ import javax.swing.JOptionPane;
 
 import timer.SessionTimer;
 
-public class SessionManager {
+public class SessionManager extends Thread{
 	// check server is alive (TTL = 10 sec)
 	private SessionTimer sessionTimer;
 	// output stream
