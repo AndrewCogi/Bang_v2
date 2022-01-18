@@ -156,7 +156,7 @@ public class UI {
 		init_hand_panel();
 		
 		// test function TODO
-		// test_func();
+		test_func();
 	}
 	
 	// init main frame & main panel
@@ -919,13 +919,13 @@ public class UI {
 		Setter.setPlayerGunImageAvailable(player_G_name.getText(), true);
 		
 		// test (캐릭터 선택 완료)
-		CardMaker.make_card_handField_character(player_A_name.getText(), "original", "el_gringo", 7);
-		CardMaker.make_card_handField_character(player_B_name.getText(), "dodge_city", "vera_custer", 8);
-		CardMaker.make_card_handField_character(player_C_name.getText(), "dodge_city", "vera_custer", 9);
-		CardMaker.make_card_handField_character(player_D_name.getText(), "dodge_city", "vera_custer", 10);
-		CardMaker.make_card_handField_character(player_E_name.getText(), "dodge_city", "vera_custer", 11);
-		CardMaker.make_card_handField_character(player_F_name.getText(), "dodge_city", "vera_custer", 12);
-		CardMaker.make_card_handField_character(player_G_name.getText(), "dodge_city", "vera_custer", 13);
+		CardMaker.make_card_handField_character(player_A_name.getText(), "original", "willy_the_kid", 4);
+		CardMaker.make_card_handField_character(player_B_name.getText(), "original", "willy_the_kid", 4);
+		CardMaker.make_card_handField_character(player_C_name.getText(), "original", "willy_the_kid", 4);
+		CardMaker.make_card_handField_character(player_D_name.getText(), "original", "willy_the_kid", 4);
+		CardMaker.make_card_handField_character(player_E_name.getText(), "original", "willy_the_kid", 4);
+		CardMaker.make_card_handField_character(player_F_name.getText(), "original", "willy_the_kid", 4);
+		CardMaker.make_card_handField_character(player_G_name.getText(), "original", "willy_the_kid", 4);
 		// test (캐릭터 이미지 보이게)
 		Setter.setPlayerCharacterImageAvailable(player_A_name.getText(), true);
 		Setter.setPlayerCharacterImageAvailable(player_B_name.getText(), true);

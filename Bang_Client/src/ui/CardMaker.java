@@ -203,10 +203,12 @@ public class CardMaker {
 				public void mouseEntered(MouseEvent e) {
 					// add border painting
 					UI.scenario_turn_back.setBorder(BorderFactory.createLineBorder(Color.WHITE,2));
+					UI.mp.repaint();
 				}
 				public void mouseExited(MouseEvent e) {
 					// remove border painting
 					UI.scenario_turn_back.setBorder(null);
+					UI.mp.repaint();
 				}
 			});
 			// set disable
@@ -226,10 +228,12 @@ public class CardMaker {
 				public void mouseEntered(MouseEvent e) {
 					// add border painting
 					UI.scenario_turn_back.setBorder(BorderFactory.createLineBorder(Color.WHITE,2));
+					UI.mp.repaint();
 				}
 				public void mouseExited(MouseEvent e) {
 					// remove border painting
 					UI.scenario_turn_back.setBorder(null);
+					UI.mp.repaint();
 				}
 			});
 			// set disable
@@ -249,10 +253,12 @@ public class CardMaker {
 				public void mouseEntered(MouseEvent e) {
 					// add border painting
 					UI.scenario_wild_back.setBorder(BorderFactory.createLineBorder(Color.WHITE,2));
+					UI.mp.repaint();
 				}
 				public void mouseExited(MouseEvent e) {
 					// remove border painting
 					UI.scenario_wild_back.setBorder(null);
+					UI.mp.repaint();
 				}
 			});
 			// set disable
@@ -291,11 +297,16 @@ public class CardMaker {
 		// target == 1 && else -> null (new)
 		if(target == 1) {
 			// init button
-			UI.gold_rush_new = new JButton();
+			UI.gold_rush_new = new JButton() {
+				private static final long serialVersionUID = 1L;
+				Image background = new ImageIcon(".\\.\\resources\\card\\gold_rush\\back_87.png").getImage();
+				// drawing background
+				protected void paintComponent(Graphics g) {
+					g.drawImage(background, 0, 0, null);
+				}
+			};
 			// set bounds
 			UI.gold_rush_new.setBounds(1077,435,87,135);
-			// set image
-			UI.gold_rush_new.setIcon(new ImageIcon(".\\.\\resources\\card\\gold_rush\\back_87.png"));
 			// set invisible
 			UI.gold_rush_new.setVisible(false);
 			// set border null
@@ -308,10 +319,12 @@ public class CardMaker {
 				public void mouseEntered(MouseEvent e) {
 					// add border painting
 					UI.gold_rush_new.setBorder(BorderFactory.createLineBorder(Color.WHITE,2));
+					UI.mp.repaint();
 				}
 				public void mouseExited(MouseEvent e) {
 					// remove border painting
 					UI.gold_rush_new.setBorder(null);
+					UI.mp.repaint();
 				}
 			});
 		}
@@ -477,6 +490,8 @@ public class CardMaker {
 			
 			// set bounds
 			UI.player_A_gun.setBounds(90,3,87,135);
+			// set border null
+			UI.player_A_gun.setBorder(null);
 			// set show
 			JPanel show = new JPanel() {
 				private static final long serialVersionUID = 1L;
@@ -489,12 +504,16 @@ public class CardMaker {
 			// set mouse listener
 			UI.player_A_gun.addMouseListener(new MouseAdapter() {
 				public void mouseEntered(MouseEvent e) {
+					// add border painting
+					UI.player_A_gun.setBorder(BorderFactory.createLineBorder(Color.WHITE,2));
 					// show details
 					show.setBounds(1730,690,155,240);
 					UI.mp.add(show);
 					UI.mp.repaint();
 				}
 				public void mouseExited(MouseEvent e) {
+					// remove border painting
+					UI.player_A_gun.setBorder(null);
 					// remove details
 					UI.mp.remove(show);
 					UI.mp.repaint();
@@ -515,6 +534,8 @@ public class CardMaker {
 			
 			// set bounds
 			UI.player_B_gun.setBounds(90,3,87,135);
+			// set border null
+			UI.player_B_gun.setBorder(null);
 			// set show
 			JPanel show = new JPanel() {
 				private static final long serialVersionUID = 1L;
@@ -527,12 +548,16 @@ public class CardMaker {
 			// set mouse listener
 			UI.player_B_gun.addMouseListener(new MouseAdapter() {
 				public void mouseEntered(MouseEvent e) {
+					// add border painting
+					UI.player_B_gun.setBorder(BorderFactory.createLineBorder(Color.WHITE,2));
 					// show details
 					show.setBounds(1730,690,155,240);
 					UI.mp.add(show);
 					UI.mp.repaint();
 				}
 				public void mouseExited(MouseEvent e) {
+					// remove border painting
+					UI.player_B_gun.setBorder(null);
 					// remove details
 					UI.mp.remove(show);
 					UI.mp.repaint();
@@ -553,6 +578,8 @@ public class CardMaker {
 			
 			// set bounds
 			UI.player_C_gun.setBounds(138,90,135,87);
+			// set border null
+			UI.player_C_gun.setBorder(null);
 			// set show
 			JPanel show = new JPanel() {
 				private static final long serialVersionUID = 1L;
@@ -565,12 +592,16 @@ public class CardMaker {
 			// set mouse listener
 			UI.player_C_gun.addMouseListener(new MouseAdapter() {
 				public void mouseEntered(MouseEvent e) {
+					// add border painting
+					UI.player_C_gun.setBorder(BorderFactory.createLineBorder(Color.WHITE,2));
 					// show details
 					show.setBounds(1730,690,155,240);
 					UI.mp.add(show);
 					UI.mp.repaint();
 				}
 				public void mouseExited(MouseEvent e) {
+					// remove border painting
+					UI.player_C_gun.setBorder(null);
 					// remove details
 					UI.mp.remove(show);
 					UI.mp.repaint();
@@ -591,6 +622,8 @@ public class CardMaker {
 			
 			// set bounds
 			UI.player_D_gun.setBounds(293,138,87,135);
+			// set border null
+			UI.player_D_gun.setBorder(null);
 			// set show
 			JPanel show = new JPanel() {
 				private static final long serialVersionUID = 1L;
@@ -603,12 +636,16 @@ public class CardMaker {
 			// set mouse listener
 			UI.player_D_gun.addMouseListener(new MouseAdapter() {
 				public void mouseEntered(MouseEvent e) {
+					// add border painting
+					UI.player_D_gun.setBorder(BorderFactory.createLineBorder(Color.WHITE,2));
 					// show details
 					show.setBounds(1730,690,155,240);
 					UI.mp.add(show);
 					UI.mp.repaint();
 				}
 				public void mouseExited(MouseEvent e) {
+					// remove border painting
+					UI.player_D_gun.setBorder(null);
 					// remove details
 					UI.mp.remove(show);
 					UI.mp.repaint();
@@ -629,6 +666,8 @@ public class CardMaker {
 			
 			// set bounds
 			UI.player_E_gun.setBounds(293,138,87,135);
+			// set border null
+			UI.player_E_gun.setBorder(null);
 			// set show
 			JPanel show = new JPanel() {
 				private static final long serialVersionUID = 1L;
@@ -641,12 +680,16 @@ public class CardMaker {
 			// set mouse listener
 			UI.player_E_gun.addMouseListener(new MouseAdapter() {
 				public void mouseEntered(MouseEvent e) {
+					// add border painting
+					UI.player_E_gun.setBorder(BorderFactory.createLineBorder(Color.WHITE,2));
 					// show details
 					show.setBounds(1730,690,155,240);
 					UI.mp.add(show);
 					UI.mp.repaint();
 				}
 				public void mouseExited(MouseEvent e) {
+					// remove border painting
+					UI.player_E_gun.setBorder(null);
 					// remove details
 					UI.mp.remove(show);
 					UI.mp.repaint();
@@ -667,6 +710,8 @@ public class CardMaker {
 			
 			// set bounds
 			UI.player_F_gun.setBounds(3,293,135,87);
+			// set border null
+			UI.player_F_gun.setBorder(null);
 			// set show
 			JPanel show = new JPanel() {
 				private static final long serialVersionUID = 1L;
@@ -679,12 +724,16 @@ public class CardMaker {
 			// set mouse listener
 			UI.player_F_gun.addMouseListener(new MouseAdapter() {
 				public void mouseEntered(MouseEvent e) {
+					// add border painting
+					UI.player_F_gun.setBorder(BorderFactory.createLineBorder(Color.WHITE,2));
 					// show details
 					show.setBounds(1730,690,155,240);
 					UI.mp.add(show);
 					UI.mp.repaint();
 				}
 				public void mouseExited(MouseEvent e) {
+					// remove border painting
+					UI.player_F_gun.setBorder(null);
 					// remove details
 					UI.mp.remove(show);
 					UI.mp.repaint();
@@ -705,6 +754,8 @@ public class CardMaker {
 			
 			// set bounds
 			UI.player_G_gun.setBounds(90,3,87,135);
+			// set border null
+			UI.player_G_gun.setBorder(null);
 			// set show
 			JPanel show = new JPanel() {
 				private static final long serialVersionUID = 1L;
@@ -717,12 +768,16 @@ public class CardMaker {
 			// set mouse listener
 			UI.player_G_gun.addMouseListener(new MouseAdapter() {
 				public void mouseEntered(MouseEvent e) {
+					// add border painting
+					UI.player_G_gun.setBorder(BorderFactory.createLineBorder(Color.WHITE,2));
 					// show details
 					show.setBounds(1730,690,155,240);
 					UI.mp.add(show);
 					UI.mp.repaint();
 				}
 				public void mouseExited(MouseEvent e) {
+					// remove border painting
+					UI.player_G_gun.setBorder(null);
 					// remove details
 					UI.mp.remove(show);
 					UI.mp.repaint();
@@ -762,6 +817,8 @@ public class CardMaker {
 
 			// set bounds
 			UI.player_A_role.setBounds(90,138,87,135);
+			// set border null
+			UI.player_A_role.setBorder(null);
 			// set show
 			JPanel show = new JPanel() {
 				private static final long serialVersionUID = 1L;
@@ -774,14 +831,18 @@ public class CardMaker {
 			// set mouse listener
 			UI.player_A_role.addMouseListener(new MouseAdapter() {
 				public void mouseEntered(MouseEvent e) {
+					// add border painting
+					UI.player_A_role.setBorder(BorderFactory.createLineBorder(Color.WHITE, 2));
 					// isForward == true, show details
 					if(isForward == true) {
 						show.setBounds(1730,690,155,240);
 						UI.mp.add(show);
-						UI.mp.repaint();	
 					}
+					UI.mp.repaint();
 				}
 				public void mouseExited(MouseEvent e) {
+					// remove border painting
+					UI.player_A_role.setBorder(null);
 					// remove details
 					UI.mp.remove(show);
 					UI.mp.repaint();
@@ -821,6 +882,8 @@ public class CardMaker {
 			
 			// set bounds
 			UI.player_B_role.setBounds(90,138,87,135);
+			// set border null
+			UI.player_B_role.setBorder(null);
 			// set show
 			JPanel show = new JPanel() {
 				private static final long serialVersionUID = 1L;
@@ -833,14 +896,18 @@ public class CardMaker {
 			// set mouse listener
 			UI.player_B_role.addMouseListener(new MouseAdapter() {
 				public void mouseEntered(MouseEvent e) {
+					// add border painting
+					UI.player_B_role.setBorder(BorderFactory.createLineBorder(Color.WHITE, 2));
 					// isForward == true, show details
 					if(isForward == true) {
 						show.setBounds(1730,690,155,240);
-						UI.mp.add(show);
-						UI.mp.repaint();	
+						UI.mp.add(show);	
 					}
+					UI.mp.repaint();
 				}
 				public void mouseExited(MouseEvent e) {
+					// remove border painting
+					UI.player_B_role.setBorder(null);
 					// remove details
 					UI.mp.remove(show);
 					UI.mp.repaint();
@@ -880,6 +947,8 @@ public class CardMaker {
 			
 			// set bounds
 			UI.player_C_role.setBounds(3,90,135,87);
+			// set border null
+			UI.player_C_role.setBorder(null);
 			// set show
 			JPanel show = new JPanel() {
 				private static final long serialVersionUID = 1L;
@@ -892,14 +961,18 @@ public class CardMaker {
 			// set mouse listener
 			UI.player_C_role.addMouseListener(new MouseAdapter() {
 				public void mouseEntered(MouseEvent e) {
+					// add border painting
+					UI.player_C_role.setBorder(BorderFactory.createLineBorder(Color.WHITE, 2));
 					// isForward == true, show details
 					if(isForward == true) {
 						show.setBounds(1730,690,155,240);
-						UI.mp.add(show);
-						UI.mp.repaint();	
+						UI.mp.add(show);	
 					}
+					UI.mp.repaint();
 				}
 				public void mouseExited(MouseEvent e) {
+					// remove border painting
+					UI.player_C_role.setBorder(null);
 					// remove details
 					UI.mp.remove(show);
 					UI.mp.repaint();
@@ -939,6 +1012,8 @@ public class CardMaker {
 			
 			// set bounds
 			UI.player_D_role.setBounds(293,4,87,135);
+			// set border null
+			UI.player_D_role.setBorder(null);
 			// set show
 			JPanel show = new JPanel() {
 				private static final long serialVersionUID = 1L;
@@ -951,14 +1026,18 @@ public class CardMaker {
 			// set mouse listener
 			UI.player_D_role.addMouseListener(new MouseAdapter() {
 				public void mouseEntered(MouseEvent e) {
+					// add border painting
+					UI.player_D_role.setBorder(BorderFactory.createLineBorder(Color.WHITE, 2));
 					// isForward == true, show details
 					if(isForward == true) {
 						show.setBounds(1730,690,155,240);
 						UI.mp.add(show);
-						UI.mp.repaint();	
 					}
+					UI.mp.repaint();
 				}
 				public void mouseExited(MouseEvent e) {
+					// remove border painting
+					UI.player_D_role.setBorder(null);
 					// remove details
 					UI.mp.remove(show);
 					UI.mp.repaint();
@@ -998,6 +1077,8 @@ public class CardMaker {
 			
 			// set bounds
 			UI.player_E_role.setBounds(293,4,87,135);
+			// set border null
+			UI.player_E_role.setBorder(null);
 			// set show
 			JPanel show = new JPanel() {
 				private static final long serialVersionUID = 1L;
@@ -1010,14 +1091,18 @@ public class CardMaker {
 			// set mouse listener
 			UI.player_E_role.addMouseListener(new MouseAdapter() {
 				public void mouseEntered(MouseEvent e) {
+					// add border painting
+					UI.player_E_role.setBorder(BorderFactory.createLineBorder(Color.WHITE, 2));
 					// isForward == true, show details
 					if(isForward == true) {
 						show.setBounds(1730,690,155,240);
 						UI.mp.add(show);
-						UI.mp.repaint();	
 					}
+					UI.mp.repaint();
 				}
 				public void mouseExited(MouseEvent e) {
+					// remove border painting
+					UI.player_E_role.setBorder(null);
 					// remove details
 					UI.mp.remove(show);
 					UI.mp.repaint();
@@ -1057,6 +1142,8 @@ public class CardMaker {
 			
 			// set bounds
 			UI.player_F_role.setBounds(138,293,135,87);
+			// set border null
+			UI.player_F_role.setBorder(null);
 			// set show
 			JPanel show = new JPanel() {
 				private static final long serialVersionUID = 1L;
@@ -1069,14 +1156,18 @@ public class CardMaker {
 			// set mouse listener
 			UI.player_F_role.addMouseListener(new MouseAdapter() {
 				public void mouseEntered(MouseEvent e) {
+					// add border painting
+					UI.player_F_role.setBorder(BorderFactory.createLineBorder(Color.WHITE, 2));
 					// isForward == true, show details
 					if(isForward == true) {
 						show.setBounds(1730,690,155,240);
 						UI.mp.add(show);
-						UI.mp.repaint();
 					}
+					UI.mp.repaint();
 				}
 				public void mouseExited(MouseEvent e) {
+					// add border painting
+					UI.player_F_role.setBorder(null);
 					// remove details
 					UI.mp.remove(show);
 					UI.mp.repaint();
@@ -1116,6 +1207,8 @@ public class CardMaker {
 			
 			// set bounds
 			UI.player_G_role.setBounds(90,138,87,135);
+			// set border null
+			UI.player_G_role.setBorder(null);
 			// set show
 			JPanel show = new JPanel() {
 				private static final long serialVersionUID = 1L;
@@ -1128,14 +1221,18 @@ public class CardMaker {
 			// set mouse listener
 			UI.player_G_role.addMouseListener(new MouseAdapter() {
 				public void mouseEntered(MouseEvent e) {
+					// add border painting
+					UI.player_G_role.setBorder(BorderFactory.createLineBorder(Color.WHITE, 2));
 					// isForward == true, show details
 					if(isForward == true) {
 						show.setBounds(1730,690,155,240);
 						UI.mp.add(show);
-						UI.mp.repaint();
 					}
+					UI.mp.repaint();
 				}
 				public void mouseExited(MouseEvent e) {
+					// remove border painting
+					UI.player_G_role.setBorder(null);
 					// remove details
 					UI.mp.remove(show);
 					UI.mp.repaint();
@@ -1162,6 +1259,8 @@ public class CardMaker {
 			};
 			// set bounds
 			UI.player_A_character.setBounds(3,3,87,135);
+			// set border null
+			UI.player_A_character.setBorder(null);
 			// set show
 			JPanel show = new JPanel() {
 				private static final long serialVersionUID = 1L;
@@ -1174,12 +1273,16 @@ public class CardMaker {
 			// set mouse listener
 			UI.player_A_character.addMouseListener(new MouseAdapter() {
 				public void mouseEntered(MouseEvent e) {
+					// add border painting
+					UI.player_A_character.setBorder(BorderFactory.createLineBorder(Color.WHITE, 2));
 					// show details
 					show.setBounds(1730,690,155,240);
 					UI.mp.add(show);
 					UI.mp.repaint();
 				}
 				public void mouseExited(MouseEvent e) {
+					// remove border painting
+					UI.player_A_character.setBorder(null);
 					// remove details
 					UI.mp.remove(show);
 					UI.mp.repaint();
@@ -1200,6 +1303,8 @@ public class CardMaker {
 			};
 			// set bounds
 			UI.player_B_character.setBounds(3,3,87,135);
+			// set border null
+			UI.player_B_character.setBorder(null);
 			// set show
 			JPanel show = new JPanel() {
 				private static final long serialVersionUID = 1L;
@@ -1212,12 +1317,16 @@ public class CardMaker {
 			// set mouse listener
 			UI.player_B_character.addMouseListener(new MouseAdapter() {
 				public void mouseEntered(MouseEvent e) {
+					// add border painting
+					UI.player_B_character.setBorder(BorderFactory.createLineBorder(Color.WHITE, 2));
 					// show details
 					show.setBounds(1730,690,155,240);
 					UI.mp.add(show);
 					UI.mp.repaint();
 				}
 				public void mouseExited(MouseEvent e) {
+					// remove border painting
+					UI.player_B_character.setBorder(null);
 					// remove details
 					UI.mp.remove(show);
 					UI.mp.repaint();
@@ -1238,6 +1347,8 @@ public class CardMaker {
 			};
 			// set bounds
 			UI.player_C_character.setBounds(139,3,135,87);
+			// set border null
+			UI.player_C_character.setBorder(null);
 			// set show
 			JPanel show = new JPanel() {
 				private static final long serialVersionUID = 1L;
@@ -1250,12 +1361,16 @@ public class CardMaker {
 			// set mouse listener
 			UI.player_C_character.addMouseListener(new MouseAdapter() {
 				public void mouseEntered(MouseEvent e) {
+					// add border painting
+					UI.player_C_character.setBorder(BorderFactory.createLineBorder(Color.WHITE, 2));
 					// show details
 					show.setBounds(1730,690,155,240);
 					UI.mp.add(show);
 					UI.mp.repaint();
 				}
 				public void mouseExited(MouseEvent e) {
+					// remove border painting
+					UI.player_C_character.setBorder(null);
 					// remove details
 					UI.mp.remove(show);
 					UI.mp.repaint();
@@ -1276,6 +1391,8 @@ public class CardMaker {
 			};
 			// set bounds
 			UI.player_D_character.setBounds(380,139,87,135);
+			// set border null
+			UI.player_D_character.setBorder(null);
 			// set show
 			JPanel show = new JPanel() {
 				private static final long serialVersionUID = 1L;
@@ -1288,12 +1405,16 @@ public class CardMaker {
 			// set mouse listener
 			UI.player_D_character.addMouseListener(new MouseAdapter() {
 				public void mouseEntered(MouseEvent e) {
+					// add border painting
+					UI.player_D_character.setBorder(BorderFactory.createLineBorder(Color.WHITE, 2));
 					// show details
 					show.setBounds(1730,690,155,240);
 					UI.mp.add(show);
 					UI.mp.repaint();
 				}
 				public void mouseExited(MouseEvent e) {
+					// remove border painting
+					UI.player_D_character.setBorder(null);
 					// remove details
 					UI.mp.remove(show);
 					UI.mp.repaint();
@@ -1314,6 +1435,8 @@ public class CardMaker {
 			};
 			// set bounds
 			UI.player_E_character.setBounds(380,139,87,135);
+			// set border null
+			UI.player_E_character.setBorder(null);
 			// set show
 			JPanel show = new JPanel() {
 				private static final long serialVersionUID = 1L;
@@ -1326,12 +1449,16 @@ public class CardMaker {
 			// set mouse listener
 			UI.player_E_character.addMouseListener(new MouseAdapter() {
 				public void mouseEntered(MouseEvent e) {
+					// add border painting
+					UI.player_E_character.setBorder(BorderFactory.createLineBorder(Color.WHITE, 2));
 					// show details
 					show.setBounds(1730,690,155,240);
 					UI.mp.add(show);
 					UI.mp.repaint();
 				}
 				public void mouseExited(MouseEvent e) {
+					// remove border painting
+					UI.player_E_character.setBorder(null);
 					// remove details
 					UI.mp.remove(show);
 					UI.mp.repaint();
@@ -1352,6 +1479,8 @@ public class CardMaker {
 			};
 			// set bounds
 			UI.player_F_character.setBounds(3,380,135,87);
+			// set border null
+			UI.player_F_character.setBorder(null);
 			// set show
 			JPanel show = new JPanel() {
 				private static final long serialVersionUID = 1L;
@@ -1364,12 +1493,16 @@ public class CardMaker {
 			// set mouse listener
 			UI.player_F_character.addMouseListener(new MouseAdapter() {
 				public void mouseEntered(MouseEvent e) {
+					// add border painting
+					UI.player_F_character.setBorder(BorderFactory.createLineBorder(Color.WHITE, 2));
 					// show details
 					show.setBounds(1730,690,155,240);
 					UI.mp.add(show);
 					UI.mp.repaint();
 				}
 				public void mouseExited(MouseEvent e) {
+					// remove border painting
+					UI.player_F_character.setBorder(null);
 					// remove details
 					UI.mp.remove(show);
 					UI.mp.repaint();
@@ -1390,6 +1523,8 @@ public class CardMaker {
 			};
 			// set bounds
 			UI.player_G_character.setBounds(3,3,87,135);
+			// set border null
+			UI.player_G_character.setBorder(null);
 			// set show
 			JPanel show = new JPanel() {
 				private static final long serialVersionUID = 1L;
@@ -1402,12 +1537,16 @@ public class CardMaker {
 			// set mouse listener
 			UI.player_G_character.addMouseListener(new MouseAdapter() {
 				public void mouseEntered(MouseEvent e) {
+					// add border painting
+					UI.player_G_character.setBorder(BorderFactory.createLineBorder(Color.WHITE, 2));
 					// show details
 					show.setBounds(1730,690,155,240);
 					UI.mp.add(show);
 					UI.mp.repaint();
 				}
 				public void mouseExited(MouseEvent e) {
+					// remove border painting
+					UI.player_G_character.setBorder(null);
 					// remove details
 					UI.mp.remove(show);
 					UI.mp.repaint();
@@ -1452,6 +1591,8 @@ public class CardMaker {
 			}
 			// set size
 			temp_card.setPreferredSize(new Dimension(87,135));
+			// set border null
+			temp_card.setBorder(null);
 			// set show
 			JPanel show = new JPanel() {
 				private static final long serialVersionUID = 1L;
@@ -1513,6 +1654,8 @@ public class CardMaker {
 			}
 			// set size
 			temp_card.setPreferredSize(new Dimension(70,108));
+			// set border null
+			temp_card.setBorder(null);
 			// set show
 			JPanel show = new JPanel() {
 				private static final long serialVersionUID = 1L;
@@ -1574,6 +1717,8 @@ public class CardMaker {
 			}
 			// set size
 			temp_card.setPreferredSize(new Dimension(108,70));
+			// set border null
+			temp_card.setBorder(null);
 			// set show
 			JPanel show = new JPanel() {
 				private static final long serialVersionUID = 1L;
@@ -1635,6 +1780,8 @@ public class CardMaker {
 			}
 			// set size
 			temp_card.setPreferredSize(new Dimension(70,108));
+			// set border null
+			temp_card.setBorder(null);
 			// set show
 			JPanel show = new JPanel() {
 				private static final long serialVersionUID = 1L;
@@ -1696,6 +1843,8 @@ public class CardMaker {
 			}
 			// set size
 			temp_card.setPreferredSize(new Dimension(70,108));
+			// set border null
+			temp_card.setBorder(null);
 			// set show
 			JPanel show = new JPanel() {
 				private static final long serialVersionUID = 1L;
@@ -1757,6 +1906,8 @@ public class CardMaker {
 			}
 			// set size
 			temp_card.setPreferredSize(new Dimension(108,70));
+			// set border null
+			temp_card.setBorder(null);
 			// set show
 			JPanel show = new JPanel() {
 				private static final long serialVersionUID = 1L;
@@ -1818,6 +1969,8 @@ public class CardMaker {
 			}
 			// set size
 			temp_card.setPreferredSize(new Dimension(70,108));
+			// set border null
+			temp_card.setBorder(null);
 			// set show
 			JPanel show = new JPanel() {
 				private static final long serialVersionUID = 1L;
@@ -1883,7 +2036,6 @@ public class CardMaker {
 		// init select_panel_card image
 		Select_button select_temp_card = new Select_button(cardName, hp);
 		select_temp_card.setIcon(new ImageIcon(".\\.\\resources\\card\\character\\"+cardPack+"\\"+cardName+"_155.png"));
-		
 		// set click event
 		select_temp_card.addMouseListener(new MouseAdapter() {
 			@Override
@@ -1916,7 +2068,6 @@ public class CardMaker {
 		// init select_panel_card image
 		Select_button select_temp_card = new Select_button(cardName, hp);
 		select_temp_card.setIcon(new ImageIcon(".\\.\\resources\\card\\question_155.png"));
-		
 		// set click event
 		select_temp_card.addMouseListener(new MouseAdapter() {
 			@Override
