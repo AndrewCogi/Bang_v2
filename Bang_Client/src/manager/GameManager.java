@@ -162,10 +162,12 @@ public class GameManager {
 				String scenarioExtension = splitCmd[3];
 				String scenarioName = splitCmd[4];
 				// [first scenario],[empty],[wild-west(back)],[empty]
+				Setter.setScenarioImageAvailable(1, false);
+				Setter.setScenarioImageAvailable(3, false);
 				CardMaker.make_card_handField_scenario(1, scenarioExtension, scenarioName);
-				CardMaker.make_card_handField_scenario(2, null, null);
 				CardMaker.make_card_handField_scenario(3, "back", "wild_west_show");
-				CardMaker.make_card_handField_scenario(4, null, null);
+				Setter.setScenarioImageAvailable(1, true);
+				Setter.setScenarioImageAvailable(3, true);
 			}
 			// game/INIT/MAIN_DECK
 			else if(splitCmd[2].equals("MAIN_DECK")) {
@@ -227,7 +229,7 @@ public class GameManager {
 				char cardShape = splitCmd[6].charAt(0);
 				int cardNumber = Integer.parseInt(splitCmd[7]);
 				// make hand & field card, add into [id]'s card (if myName -> forward / not myName ->backward)
-				if(myName.equals(id)) UI.player_A_hand.add(CardMaker.make_card_handField_playing(id, cardColor, cardName, cardShape, cardNumber, false));	
+				if(myName.equals(id)) UI.player_A_hand.add(CardMaker.make_card_handField_playing(id, cardColor, cardName, cardShape, cardNumber, true));	
 				else if(UI.player_B_name.getText().equals(id)) UI.player_B_hand.add(CardMaker.make_card_handField_playing(id, cardColor, cardName, cardShape, cardNumber, false));
 				else if(UI.player_C_name.getText().equals(id)) UI.player_C_hand.add(CardMaker.make_card_handField_playing(id, cardColor, cardName, cardShape, cardNumber, false));
 				else if(UI.player_D_name.getText().equals(id)) UI.player_D_hand.add(CardMaker.make_card_handField_playing(id, cardColor, cardName, cardShape, cardNumber, false));
@@ -316,17 +318,13 @@ public class GameManager {
 			}
 			// game/PLSYERSELECT/SCENARIO/[cardName]
 			else if(splitCmd[2].equals("SCENARIO")) {
-				// init scenario buttons
-				CardMaker.make_card_handField_scenario_init();
 				// make card last scenario
 				String cardName = splitCmd[3];
 				CardMaker.make_card_handField_scenario_last(cardName);
 				CardMaker.make_card_handField_scenario_last("wild_west_show");
 				// available
 				Setter.setScenarioImageAvailable(1, true);
-				Setter.setScenarioImageAvailable(2, true);
 				Setter.setScenarioImageAvailable(3, true);
-				Setter.setScenarioImageAvailable(4, true);
 			}
 		}
 		

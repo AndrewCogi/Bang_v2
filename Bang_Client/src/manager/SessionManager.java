@@ -39,6 +39,7 @@ public class SessionManager extends Thread{
 		else if(splitCmd[1].equals("SESSIONACK")) {
 			os.println("session/SESSIONACK");
 			sessionTimer.setTimer(0);
+			try {Thread.sleep(10);} catch(InterruptedException e) {}
 		}
 	}
 }
