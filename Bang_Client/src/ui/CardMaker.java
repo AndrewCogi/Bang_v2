@@ -4,6 +4,7 @@ package ui;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.MouseInfo;
@@ -13,9 +14,11 @@ import java.io.PrintWriter;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import client.App;
+import manager.DetailReader;
 
 public class CardMaker {
 	// make hand & field card button (scenario card) (1: turn_back / 2: turn_front / 3: wild_back / 4: wild_front)
@@ -34,30 +37,20 @@ public class CardMaker {
 			UI.scenario_turn_back.setPreferredSize(new Dimension(87,135));
 			// set border null
 			UI.scenario_turn_back.setBorder(null);
- 			// set show
-			JPanel show = new JPanel() {
-				private static final long serialVersionUID = 1L;
-				Image background = new ImageIcon(".\\.\\resources\\card\\scenario\\"+extension+"\\"+cardName+"_155.png").getImage();
-				// drawing background
-				protected void paintComponent(Graphics g) {
-					g.drawImage(background, 0, 0, null);
-				}
-			};
 			// set mouse listener
 			UI.scenario_turn_back.addMouseListener(new MouseAdapter() {
 				public void mouseEntered(MouseEvent e) {
 					// add border painting
 					UI.scenario_turn_back.setBorder(BorderFactory.createLineBorder(Color.WHITE,2));
 					// show details
-					show.setBounds(1730,690,155,240);
-					UI.mp.add(show);
+					UI.show_detail_panel.setText(DetailReader.getDetail(".\\.\\resources\\card\\scenario\\"+extension+"\\"+cardName+".txt"));
 					UI.mp.repaint();
 				}
 				public void mouseExited(MouseEvent e) {
 					// remove border painting
 					UI.scenario_turn_back.setBorder(null);
 					// remove details
-					UI.mp.remove(show);
+					UI.show_detail_panel.setText(null);
 					UI.mp.repaint();
 				}
 			});
@@ -79,30 +72,20 @@ public class CardMaker {
 			UI.scenario_turn_front.setPreferredSize(new Dimension(87,135));
 			// set border null
 			UI.scenario_turn_front.setBorder(null);
- 			// set show
-			JPanel show = new JPanel() {
-				private static final long serialVersionUID = 1L;
-				Image background = new ImageIcon(".\\.\\resources\\card\\scenario\\"+extension+"\\"+cardName+"_155.png").getImage();
-				// drawing background
-				protected void paintComponent(Graphics g) {
-					g.drawImage(background, 0, 0, null);
-				}
-			};
 			// set mouse listener
 			UI.scenario_turn_front.addMouseListener(new MouseAdapter() {
 				public void mouseEntered(MouseEvent e) {
 					// add border painting
 					UI.scenario_turn_front.setBorder(BorderFactory.createLineBorder(Color.WHITE,2));
 					// show details
-					show.setBounds(1730,690,155,240);
-					UI.mp.add(show);
+					UI.show_detail_panel.setText(DetailReader.getDetail(".\\.\\resources\\card\\scenario\\"+extension+"\\"+cardName+".txt"));
 					UI.mp.repaint();
 				}
 				public void mouseExited(MouseEvent e) {
 					// remove border painting
 					UI.scenario_turn_front.setBorder(null);
 					// remove details
-					UI.mp.remove(show);
+					UI.show_detail_panel.setText(null);
 					UI.mp.repaint();
 				}
 			});
@@ -153,30 +136,20 @@ public class CardMaker {
 			UI.scenario_wild_front.setPreferredSize(new Dimension(87,135));
 			// set border null
 			UI.scenario_wild_front.setBorder(null);
- 			// set show
-			JPanel show = new JPanel() {
-				private static final long serialVersionUID = 1L;
-				Image background = new ImageIcon(".\\.\\resources\\card\\scenario\\"+extension+"\\"+cardName+"_155.png").getImage();
-				// drawing background
-				protected void paintComponent(Graphics g) {
-					g.drawImage(background, 0, 0, null);
-				}
-			};
 			// set mouse listener
 			UI.scenario_wild_front.addMouseListener(new MouseAdapter() {
 				public void mouseEntered(MouseEvent e) {
 					// add border painting
 					UI.scenario_wild_front.setBorder(BorderFactory.createLineBorder(Color.WHITE,2));
 					// show details
-					show.setBounds(1730,690,155,240);
-					UI.mp.add(show);
+					UI.show_detail_panel.setText(DetailReader.getDetail(".\\.\\resources\\card\\scenario\\"+extension+"\\"+cardName+".txt"));
 					UI.mp.repaint();
 				}
 				public void mouseExited(MouseEvent e) {
 					// remove border painting
 					UI.scenario_wild_front.setBorder(null);
 					// remove details
-					UI.mp.remove(show);
+					UI.show_detail_panel.setText(null);
 					UI.mp.repaint();
 				}
 			});
@@ -203,11 +176,15 @@ public class CardMaker {
 				public void mouseEntered(MouseEvent e) {
 					// add border painting
 					UI.scenario_turn_back.setBorder(BorderFactory.createLineBorder(Color.WHITE,2));
+					// show details
+					UI.show_detail_panel.setText(DetailReader.getDetail(".\\.\\resources\\card\\scenario\\a_fistful_of_cards\\per_un_pugno_di_carte.txt"));
 					UI.mp.repaint();
 				}
 				public void mouseExited(MouseEvent e) {
 					// remove border painting
 					UI.scenario_turn_back.setBorder(null);
+					// remove details
+					UI.show_detail_panel.setText(null);
 					UI.mp.repaint();
 				}
 			});
@@ -228,11 +205,15 @@ public class CardMaker {
 				public void mouseEntered(MouseEvent e) {
 					// add border painting
 					UI.scenario_turn_back.setBorder(BorderFactory.createLineBorder(Color.WHITE,2));
+					// show details
+					UI.show_detail_panel.setText(DetailReader.getDetail(".\\.\\resources\\card\\scenario\\high_noon\\mezzogiorno_di_fuoco.txt"));
 					UI.mp.repaint();
 				}
 				public void mouseExited(MouseEvent e) {
 					// remove border painting
 					UI.scenario_turn_back.setBorder(null);
+					// remove details
+					UI.show_detail_panel.setText(null);
 					UI.mp.repaint();
 				}
 			});
@@ -253,11 +234,15 @@ public class CardMaker {
 				public void mouseEntered(MouseEvent e) {
 					// add border painting
 					UI.scenario_wild_back.setBorder(BorderFactory.createLineBorder(Color.WHITE,2));
+					// show details
+					UI.show_detail_panel.setText(DetailReader.getDetail(".\\.\\resources\\card\\scenario\\wild_west_show\\wild_west_show.txt"));
 					UI.mp.repaint();
 				}
 				public void mouseExited(MouseEvent e) {
 					// remove border painting
 					UI.scenario_wild_back.setBorder(null);
+					// remove details
+					UI.show_detail_panel.setText(null);
 					UI.mp.repaint();
 				}
 			});
@@ -348,30 +333,20 @@ public class CardMaker {
 			// set Disable
 			UI.gold_rush_open_1.setDisabledIcon(UI.gold_rush_open_1.getIcon());
 			UI.gold_rush_open_1.setEnabled(false);
- 			// set show
-			JPanel show = new JPanel() {
-				private static final long serialVersionUID = 1L;
-				Image background = new ImageIcon(".\\.\\resources\\card\\gold_rush\\"+cardColor+"\\"+cardName+"_155.png").getImage();
-				// drawing background
-				protected void paintComponent(Graphics g) {
-					g.drawImage(background, 0, 0, null);
-				}
-			};
 			// set mouse listener
 			UI.gold_rush_open_1.addMouseListener(new MouseAdapter() {
 				public void mouseEntered(MouseEvent e) {
 					// add border painting
 					UI.gold_rush_open_1.setBorder(BorderFactory.createLineBorder(Color.WHITE,2));
 					// show details
-					show.setBounds(1730,690,155,240);
-					UI.mp.add(show);
+					UI.show_detail_panel.setText(DetailReader.getDetail(".\\.\\resources\\card\\gold_rush\\"+cardColor+"\\"+cardName+".txt"));
 					UI.mp.repaint();
 				}
 				public void mouseExited(MouseEvent e) {
 					// remove border painting
 					UI.gold_rush_open_1.setBorder(null);
 					// remove details
-					UI.mp.remove(show);
+					UI.show_detail_panel.setText(null);
 					UI.mp.repaint();
 				}
 			});
@@ -396,30 +371,20 @@ public class CardMaker {
 			// set Disable
 			UI.gold_rush_open_2.setDisabledIcon(UI.gold_rush_open_2.getIcon());
 			UI.gold_rush_open_2.setEnabled(false);
- 			// set show
-			JPanel show = new JPanel() {
-				private static final long serialVersionUID = 1L;
-				Image background = new ImageIcon(".\\.\\resources\\card\\gold_rush\\"+cardColor+"\\"+cardName+"_155.png").getImage();
-				// drawing background
-				protected void paintComponent(Graphics g) {
-					g.drawImage(background, 0, 0, null);
-				}
-			};
 			// set mouse listener
 			UI.gold_rush_open_2.addMouseListener(new MouseAdapter() {
 				public void mouseEntered(MouseEvent e) {
 					// add border painting
 					UI.gold_rush_open_2.setBorder(BorderFactory.createLineBorder(Color.WHITE,2));
 					// show details
-					show.setBounds(1730,690,155,240);
-					UI.mp.add(show);
+					UI.show_detail_panel.setText(DetailReader.getDetail(".\\.\\resources\\card\\gold_rush\\"+cardColor+"\\"+cardName+".txt"));
 					UI.mp.repaint();
 				}
 				public void mouseExited(MouseEvent e) {
 					// remove border painting
 					UI.gold_rush_open_2.setBorder(null);
 					// remove details
-					UI.mp.remove(show);
+					UI.show_detail_panel.setText(null);
 					UI.mp.repaint();
 				}
 			});
@@ -444,30 +409,20 @@ public class CardMaker {
 			// set Disable
 			UI.gold_rush_open_3.setDisabledIcon(UI.gold_rush_open_3.getIcon());
 			UI.gold_rush_open_3.setEnabled(false);
- 			// set show
-			JPanel show = new JPanel() {
-				private static final long serialVersionUID = 1L;
-				Image background = new ImageIcon(".\\.\\resources\\card\\gold_rush\\"+cardColor+"\\"+cardName+"_155.png").getImage();
-				// drawing background
-				protected void paintComponent(Graphics g) {
-					g.drawImage(background, 0, 0, null);
-				}
-			};
 			// set mouse listener
 			UI.gold_rush_open_3.addMouseListener(new MouseAdapter() {
 				public void mouseEntered(MouseEvent e) {
 					// add border painting
 					UI.gold_rush_open_3.setBorder(BorderFactory.createLineBorder(Color.WHITE,2));
 					// show details
-					show.setBounds(1730,690,155,240);
-					UI.mp.add(show);
+					UI.show_detail_panel.setText(DetailReader.getDetail(".\\.\\resources\\card\\gold_rush\\"+cardColor+"\\"+cardName+".txt"));
 					UI.mp.repaint();
 				}
 				public void mouseExited(MouseEvent e) {
 					// remove border painting
 					UI.gold_rush_open_3.setBorder(null);
 					// remove details
-					UI.mp.remove(show);
+					UI.show_detail_panel.setText(null);
 					UI.mp.repaint();
 				}
 			});
@@ -819,15 +774,6 @@ public class CardMaker {
 			UI.player_A_role.setBounds(90,138,87,135);
 			// set border null
 			UI.player_A_role.setBorder(null);
-			// set show
-			JPanel show = new JPanel() {
-				private static final long serialVersionUID = 1L;
-				Image background = new ImageIcon(".\\.\\resources\\card\\role\\"+roleName+"_155.png").getImage();
-				// drawing background
-				protected void paintComponent(Graphics g) {
-					g.drawImage(background, 0, 0, null);
-				}
-			};
 			// set mouse listener
 			UI.player_A_role.addMouseListener(new MouseAdapter() {
 				public void mouseEntered(MouseEvent e) {
@@ -835,8 +781,7 @@ public class CardMaker {
 					UI.player_A_role.setBorder(BorderFactory.createLineBorder(Color.WHITE, 2));
 					// isForward == true, show details
 					if(isForward == true) {
-						show.setBounds(1730,690,155,240);
-						UI.mp.add(show);
+						UI.show_detail_panel.setText(DetailReader.getDetail(".\\.\\resources\\card\\role\\"+roleName+".txt"));
 					}
 					UI.mp.repaint();
 				}
@@ -844,7 +789,7 @@ public class CardMaker {
 					// remove border painting
 					UI.player_A_role.setBorder(null);
 					// remove details
-					UI.mp.remove(show);
+					UI.show_detail_panel.setText(null);
 					UI.mp.repaint();
 				}
 			});
@@ -884,15 +829,6 @@ public class CardMaker {
 			UI.player_B_role.setBounds(90,138,87,135);
 			// set border null
 			UI.player_B_role.setBorder(null);
-			// set show
-			JPanel show = new JPanel() {
-				private static final long serialVersionUID = 1L;
-				Image background = new ImageIcon(".\\.\\resources\\card\\role\\"+roleName+"_155.png").getImage();
-				// drawing background
-				protected void paintComponent(Graphics g) {
-					g.drawImage(background, 0, 0, null);
-				}
-			};
 			// set mouse listener
 			UI.player_B_role.addMouseListener(new MouseAdapter() {
 				public void mouseEntered(MouseEvent e) {
@@ -900,8 +836,7 @@ public class CardMaker {
 					UI.player_B_role.setBorder(BorderFactory.createLineBorder(Color.WHITE, 2));
 					// isForward == true, show details
 					if(isForward == true) {
-						show.setBounds(1730,690,155,240);
-						UI.mp.add(show);	
+						UI.show_detail_panel.setText(DetailReader.getDetail(".\\.\\resources\\card\\role\\"+roleName+".txt"));
 					}
 					UI.mp.repaint();
 				}
@@ -909,7 +844,7 @@ public class CardMaker {
 					// remove border painting
 					UI.player_B_role.setBorder(null);
 					// remove details
-					UI.mp.remove(show);
+					UI.show_detail_panel.setText(null);
 					UI.mp.repaint();
 				}
 			});
@@ -949,15 +884,6 @@ public class CardMaker {
 			UI.player_C_role.setBounds(3,90,135,87);
 			// set border null
 			UI.player_C_role.setBorder(null);
-			// set show
-			JPanel show = new JPanel() {
-				private static final long serialVersionUID = 1L;
-				Image background = new ImageIcon(".\\.\\resources\\card\\role\\"+roleName+"_155.png").getImage();
-				// drawing background
-				protected void paintComponent(Graphics g) {
-					g.drawImage(background, 0, 0, null);
-				}
-			};
 			// set mouse listener
 			UI.player_C_role.addMouseListener(new MouseAdapter() {
 				public void mouseEntered(MouseEvent e) {
@@ -965,8 +891,7 @@ public class CardMaker {
 					UI.player_C_role.setBorder(BorderFactory.createLineBorder(Color.WHITE, 2));
 					// isForward == true, show details
 					if(isForward == true) {
-						show.setBounds(1730,690,155,240);
-						UI.mp.add(show);	
+						UI.show_detail_panel.setText(DetailReader.getDetail(".\\.\\resources\\card\\role\\"+roleName+".txt"));
 					}
 					UI.mp.repaint();
 				}
@@ -974,7 +899,7 @@ public class CardMaker {
 					// remove border painting
 					UI.player_C_role.setBorder(null);
 					// remove details
-					UI.mp.remove(show);
+					UI.show_detail_panel.setText(null);
 					UI.mp.repaint();
 				}
 			});
@@ -1014,15 +939,6 @@ public class CardMaker {
 			UI.player_D_role.setBounds(293,4,87,135);
 			// set border null
 			UI.player_D_role.setBorder(null);
-			// set show
-			JPanel show = new JPanel() {
-				private static final long serialVersionUID = 1L;
-				Image background = new ImageIcon(".\\.\\resources\\card\\role\\"+roleName+"_155.png").getImage();
-				// drawing background
-				protected void paintComponent(Graphics g) {
-					g.drawImage(background, 0, 0, null);
-				}
-			};
 			// set mouse listener
 			UI.player_D_role.addMouseListener(new MouseAdapter() {
 				public void mouseEntered(MouseEvent e) {
@@ -1030,8 +946,7 @@ public class CardMaker {
 					UI.player_D_role.setBorder(BorderFactory.createLineBorder(Color.WHITE, 2));
 					// isForward == true, show details
 					if(isForward == true) {
-						show.setBounds(1730,690,155,240);
-						UI.mp.add(show);
+						UI.show_detail_panel.setText(DetailReader.getDetail(".\\.\\resources\\card\\role\\"+roleName+".txt"));
 					}
 					UI.mp.repaint();
 				}
@@ -1039,7 +954,7 @@ public class CardMaker {
 					// remove border painting
 					UI.player_D_role.setBorder(null);
 					// remove details
-					UI.mp.remove(show);
+					UI.show_detail_panel.setText(null);
 					UI.mp.repaint();
 				}
 			});
@@ -1079,15 +994,6 @@ public class CardMaker {
 			UI.player_E_role.setBounds(293,4,87,135);
 			// set border null
 			UI.player_E_role.setBorder(null);
-			// set show
-			JPanel show = new JPanel() {
-				private static final long serialVersionUID = 1L;
-				Image background = new ImageIcon(".\\.\\resources\\card\\role\\"+roleName+"_155.png").getImage();
-				// drawing background
-				protected void paintComponent(Graphics g) {
-					g.drawImage(background, 0, 0, null);
-				}
-			};
 			// set mouse listener
 			UI.player_E_role.addMouseListener(new MouseAdapter() {
 				public void mouseEntered(MouseEvent e) {
@@ -1095,8 +1001,7 @@ public class CardMaker {
 					UI.player_E_role.setBorder(BorderFactory.createLineBorder(Color.WHITE, 2));
 					// isForward == true, show details
 					if(isForward == true) {
-						show.setBounds(1730,690,155,240);
-						UI.mp.add(show);
+						UI.show_detail_panel.setText(DetailReader.getDetail(".\\.\\resources\\card\\role\\"+roleName+".txt"));
 					}
 					UI.mp.repaint();
 				}
@@ -1104,7 +1009,7 @@ public class CardMaker {
 					// remove border painting
 					UI.player_E_role.setBorder(null);
 					// remove details
-					UI.mp.remove(show);
+					UI.show_detail_panel.setText(null);
 					UI.mp.repaint();
 				}
 			});
@@ -1144,15 +1049,6 @@ public class CardMaker {
 			UI.player_F_role.setBounds(138,293,135,87);
 			// set border null
 			UI.player_F_role.setBorder(null);
-			// set show
-			JPanel show = new JPanel() {
-				private static final long serialVersionUID = 1L;
-				Image background = new ImageIcon(".\\.\\resources\\card\\role\\"+roleName+"_155.png").getImage();
-				// drawing background
-				protected void paintComponent(Graphics g) {
-					g.drawImage(background, 0, 0, null);
-				}
-			};
 			// set mouse listener
 			UI.player_F_role.addMouseListener(new MouseAdapter() {
 				public void mouseEntered(MouseEvent e) {
@@ -1160,8 +1056,7 @@ public class CardMaker {
 					UI.player_F_role.setBorder(BorderFactory.createLineBorder(Color.WHITE, 2));
 					// isForward == true, show details
 					if(isForward == true) {
-						show.setBounds(1730,690,155,240);
-						UI.mp.add(show);
+						UI.show_detail_panel.setText(DetailReader.getDetail(".\\.\\resources\\card\\role\\"+roleName+".txt"));
 					}
 					UI.mp.repaint();
 				}
@@ -1169,7 +1064,7 @@ public class CardMaker {
 					// add border painting
 					UI.player_F_role.setBorder(null);
 					// remove details
-					UI.mp.remove(show);
+					UI.show_detail_panel.setText(null);
 					UI.mp.repaint();
 				}
 			});
@@ -1209,15 +1104,6 @@ public class CardMaker {
 			UI.player_G_role.setBounds(90,138,87,135);
 			// set border null
 			UI.player_G_role.setBorder(null);
-			// set show
-			JPanel show = new JPanel() {
-				private static final long serialVersionUID = 1L;
-				Image background = new ImageIcon(".\\.\\resources\\card\\role\\"+roleName+"_155.png").getImage();
-				// drawing background
-				protected void paintComponent(Graphics g) {
-					g.drawImage(background, 0, 0, null);
-				}
-			};
 			// set mouse listener
 			UI.player_G_role.addMouseListener(new MouseAdapter() {
 				public void mouseEntered(MouseEvent e) {
@@ -1225,8 +1111,7 @@ public class CardMaker {
 					UI.player_G_role.setBorder(BorderFactory.createLineBorder(Color.WHITE, 2));
 					// isForward == true, show details
 					if(isForward == true) {
-						show.setBounds(1730,690,155,240);
-						UI.mp.add(show);
+						UI.show_detail_panel.setText(DetailReader.getDetail(".\\.\\resources\\card\\role\\"+roleName+".txt"));
 					}
 					UI.mp.repaint();
 				}
@@ -1234,7 +1119,7 @@ public class CardMaker {
 					// remove border painting
 					UI.player_G_role.setBorder(null);
 					// remove details
-					UI.mp.remove(show);
+					UI.show_detail_panel.setText(null);
 					UI.mp.repaint();
 				}
 			});
@@ -1261,30 +1146,20 @@ public class CardMaker {
 			UI.player_A_character.setBounds(3,3,87,135);
 			// set border null
 			UI.player_A_character.setBorder(null);
-			// set show
-			JPanel show = new JPanel() {
-				private static final long serialVersionUID = 1L;
-				Image background = new ImageIcon(".\\.\\resources\\card\\character\\"+cardPack+"\\"+cardName+"_155.png").getImage();
-				// drawing background
-				protected void paintComponent(Graphics g) {
-					g.drawImage(background, 0, 0, null);
-				}
-			};
 			// set mouse listener
 			UI.player_A_character.addMouseListener(new MouseAdapter() {
 				public void mouseEntered(MouseEvent e) {
 					// add border painting
 					UI.player_A_character.setBorder(BorderFactory.createLineBorder(Color.WHITE, 2));
 					// show details
-					show.setBounds(1730,690,155,240);
-					UI.mp.add(show);
+					UI.show_detail_panel.setText(DetailReader.getDetail(".\\.\\resources\\card\\character\\"+cardPack+"\\"+cardName+".txt"));
 					UI.mp.repaint();
 				}
 				public void mouseExited(MouseEvent e) {
 					// remove border painting
 					UI.player_A_character.setBorder(null);
 					// remove details
-					UI.mp.remove(show);
+					UI.show_detail_panel.setText(null);
 					UI.mp.repaint();
 				}
 			});
@@ -1305,30 +1180,20 @@ public class CardMaker {
 			UI.player_B_character.setBounds(3,3,87,135);
 			// set border null
 			UI.player_B_character.setBorder(null);
-			// set show
-			JPanel show = new JPanel() {
-				private static final long serialVersionUID = 1L;
-				Image background = new ImageIcon(".\\.\\resources\\card\\character\\"+cardPack+"\\"+cardName+"_155.png").getImage();
-				// drawing background
-				protected void paintComponent(Graphics g) {
-					g.drawImage(background, 0, 0, null);
-				}
-			};
 			// set mouse listener
 			UI.player_B_character.addMouseListener(new MouseAdapter() {
 				public void mouseEntered(MouseEvent e) {
 					// add border painting
 					UI.player_B_character.setBorder(BorderFactory.createLineBorder(Color.WHITE, 2));
 					// show details
-					show.setBounds(1730,690,155,240);
-					UI.mp.add(show);
+					UI.show_detail_panel.setText(DetailReader.getDetail(".\\.\\resources\\card\\character\\"+cardPack+"\\"+cardName+".txt"));
 					UI.mp.repaint();
 				}
 				public void mouseExited(MouseEvent e) {
 					// remove border painting
 					UI.player_B_character.setBorder(null);
 					// remove details
-					UI.mp.remove(show);
+					UI.show_detail_panel.setText(null);
 					UI.mp.repaint();
 				}
 			});
@@ -1349,30 +1214,20 @@ public class CardMaker {
 			UI.player_C_character.setBounds(139,3,135,87);
 			// set border null
 			UI.player_C_character.setBorder(null);
-			// set show
-			JPanel show = new JPanel() {
-				private static final long serialVersionUID = 1L;
-				Image background = new ImageIcon(".\\.\\resources\\card\\character\\"+cardPack+"\\"+cardName+"_155.png").getImage();
-				// drawing background
-				protected void paintComponent(Graphics g) {
-					g.drawImage(background, 0, 0, null);
-				}
-			};
 			// set mouse listener
 			UI.player_C_character.addMouseListener(new MouseAdapter() {
 				public void mouseEntered(MouseEvent e) {
 					// add border painting
 					UI.player_C_character.setBorder(BorderFactory.createLineBorder(Color.WHITE, 2));
 					// show details
-					show.setBounds(1730,690,155,240);
-					UI.mp.add(show);
+					UI.show_detail_panel.setText(DetailReader.getDetail(".\\.\\resources\\card\\character\\"+cardPack+"\\"+cardName+".txt"));
 					UI.mp.repaint();
 				}
 				public void mouseExited(MouseEvent e) {
 					// remove border painting
 					UI.player_C_character.setBorder(null);
 					// remove details
-					UI.mp.remove(show);
+					UI.show_detail_panel.setText(null);
 					UI.mp.repaint();
 				}
 			});
@@ -1393,30 +1248,20 @@ public class CardMaker {
 			UI.player_D_character.setBounds(380,139,87,135);
 			// set border null
 			UI.player_D_character.setBorder(null);
-			// set show
-			JPanel show = new JPanel() {
-				private static final long serialVersionUID = 1L;
-				Image background = new ImageIcon(".\\.\\resources\\card\\character\\"+cardPack+"\\"+cardName+"_155.png").getImage();
-				// drawing background
-				protected void paintComponent(Graphics g) {
-					g.drawImage(background, 0, 0, null);
-				}
-			};
 			// set mouse listener
 			UI.player_D_character.addMouseListener(new MouseAdapter() {
 				public void mouseEntered(MouseEvent e) {
 					// add border painting
 					UI.player_D_character.setBorder(BorderFactory.createLineBorder(Color.WHITE, 2));
 					// show details
-					show.setBounds(1730,690,155,240);
-					UI.mp.add(show);
+					UI.show_detail_panel.setText(DetailReader.getDetail(".\\.\\resources\\card\\character\\"+cardPack+"\\"+cardName+".txt"));
 					UI.mp.repaint();
 				}
 				public void mouseExited(MouseEvent e) {
 					// remove border painting
 					UI.player_D_character.setBorder(null);
 					// remove details
-					UI.mp.remove(show);
+					UI.show_detail_panel.setText(null);
 					UI.mp.repaint();
 				}
 			});
@@ -1437,30 +1282,20 @@ public class CardMaker {
 			UI.player_E_character.setBounds(380,139,87,135);
 			// set border null
 			UI.player_E_character.setBorder(null);
-			// set show
-			JPanel show = new JPanel() {
-				private static final long serialVersionUID = 1L;
-				Image background = new ImageIcon(".\\.\\resources\\card\\character\\"+cardPack+"\\"+cardName+"_155.png").getImage();
-				// drawing background
-				protected void paintComponent(Graphics g) {
-					g.drawImage(background, 0, 0, null);
-				}
-			};
 			// set mouse listener
 			UI.player_E_character.addMouseListener(new MouseAdapter() {
 				public void mouseEntered(MouseEvent e) {
 					// add border painting
 					UI.player_E_character.setBorder(BorderFactory.createLineBorder(Color.WHITE, 2));
 					// show details
-					show.setBounds(1730,690,155,240);
-					UI.mp.add(show);
+					UI.show_detail_panel.setText(DetailReader.getDetail(".\\.\\resources\\card\\character\\"+cardPack+"\\"+cardName+".txt"));
 					UI.mp.repaint();
 				}
 				public void mouseExited(MouseEvent e) {
 					// remove border painting
 					UI.player_E_character.setBorder(null);
 					// remove details
-					UI.mp.remove(show);
+					UI.show_detail_panel.setText(null);
 					UI.mp.repaint();
 				}
 			});
@@ -1481,30 +1316,20 @@ public class CardMaker {
 			UI.player_F_character.setBounds(3,380,135,87);
 			// set border null
 			UI.player_F_character.setBorder(null);
-			// set show
-			JPanel show = new JPanel() {
-				private static final long serialVersionUID = 1L;
-				Image background = new ImageIcon(".\\.\\resources\\card\\character\\"+cardPack+"\\"+cardName+"_155.png").getImage();
-				// drawing background
-				protected void paintComponent(Graphics g) {
-					g.drawImage(background, 0, 0, null);
-				}
-			};
 			// set mouse listener
 			UI.player_F_character.addMouseListener(new MouseAdapter() {
 				public void mouseEntered(MouseEvent e) {
 					// add border painting
 					UI.player_F_character.setBorder(BorderFactory.createLineBorder(Color.WHITE, 2));
 					// show details
-					show.setBounds(1730,690,155,240);
-					UI.mp.add(show);
+					UI.show_detail_panel.setText(DetailReader.getDetail(".\\.\\resources\\card\\character\\"+cardPack+"\\"+cardName+".txt"));
 					UI.mp.repaint();
 				}
 				public void mouseExited(MouseEvent e) {
 					// remove border painting
 					UI.player_F_character.setBorder(null);
 					// remove details
-					UI.mp.remove(show);
+					UI.show_detail_panel.setText(null);
 					UI.mp.repaint();
 				}
 			});
@@ -1525,30 +1350,20 @@ public class CardMaker {
 			UI.player_G_character.setBounds(3,3,87,135);
 			// set border null
 			UI.player_G_character.setBorder(null);
-			// set show
-			JPanel show = new JPanel() {
-				private static final long serialVersionUID = 1L;
-				Image background = new ImageIcon(".\\.\\resources\\card\\character\\"+cardPack+"\\"+cardName+"_155.png").getImage();
-				// drawing background
-				protected void paintComponent(Graphics g) {
-					g.drawImage(background, 0, 0, null);
-				}
-			};
 			// set mouse listener
 			UI.player_G_character.addMouseListener(new MouseAdapter() {
 				public void mouseEntered(MouseEvent e) {
 					// add border painting
 					UI.player_G_character.setBorder(BorderFactory.createLineBorder(Color.WHITE, 2));
 					// show details
-					show.setBounds(1730,690,155,240);
-					UI.mp.add(show);
+					UI.show_detail_panel.setText(DetailReader.getDetail(".\\.\\resources\\card\\character\\"+cardPack+"\\"+cardName+".txt"));
 					UI.mp.repaint();
 				}
 				public void mouseExited(MouseEvent e) {
 					// remove border painting
 					UI.player_G_character.setBorder(null);
 					// remove details
-					UI.mp.remove(show);
+					UI.show_detail_panel.setText(null);
 					UI.mp.repaint();
 				}
 			});

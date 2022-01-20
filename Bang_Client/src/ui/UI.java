@@ -130,6 +130,8 @@ public class UI {
 	public static JPanel select_panel_character;
 	// select panel (scenario)
 	public static JPanel select_panel_scenario;
+	// show detail
+	public static JLabel show_detail_panel;
 	// select remain
 	public static int select_chance = 0;
 	
@@ -154,9 +156,21 @@ public class UI {
 		init_character_hp_gold_text();
 		// init players' hand panel
 		init_hand_panel();
+		// init show detail label
+		init_show_detail_panel();
 		
 		// test function TODO
 		test_func();
+	}
+	
+	// init show detail panel
+	private void init_show_detail_panel() {
+		show_detail_panel = new JLabel();
+		show_detail_panel.setFont(new Font(null,1,16));
+		show_detail_panel.setForeground(Color.WHITE);
+		show_detail_panel.setVerticalAlignment(JLabel.CENTER);
+		show_detail_panel.setBounds(1730,630,155,300);
+		mp.add(show_detail_panel);
 	}
 	
 	// init main frame & main panel
@@ -886,12 +900,12 @@ public class UI {
 //		
 		// test (직업 선택 완료)
 		CardMaker.make_card_handField_role(player_A_name.getText(), "vice", true);
-		CardMaker.make_card_handField_role(player_B_name.getText(), "sceriffo", false);
-		CardMaker.make_card_handField_role(player_C_name.getText(), "vice", false);
-		CardMaker.make_card_handField_role(player_D_name.getText(), "fuorilegge", false);
+		CardMaker.make_card_handField_role(player_B_name.getText(), "sceriffo", true);
+		CardMaker.make_card_handField_role(player_C_name.getText(), "vice", true);
+		CardMaker.make_card_handField_role(player_D_name.getText(), "fuorilegge", true);
 		CardMaker.make_card_handField_role(player_E_name.getText(), "fuorilegge", false);
 		CardMaker.make_card_handField_role(player_F_name.getText(), "fuorilegge", false);
-		CardMaker.make_card_handField_role(player_G_name.getText(), "rinnegato", false);
+		CardMaker.make_card_handField_role(player_G_name.getText(), "rinnegato", true);
 		// test (직업 이미지 보이게)
 		Setter.setPlayerRoleImageAvailable(player_A_name.getText(), true);
 		Setter.setPlayerRoleImageAvailable(player_B_name.getText(), true);
@@ -919,13 +933,13 @@ public class UI {
 		Setter.setPlayerGunImageAvailable(player_G_name.getText(), true);
 		
 		// test (캐릭터 선택 완료)
-		CardMaker.make_card_handField_character(player_A_name.getText(), "original", "willy_the_kid", 4);
-		CardMaker.make_card_handField_character(player_B_name.getText(), "original", "willy_the_kid", 4);
-		CardMaker.make_card_handField_character(player_C_name.getText(), "original", "willy_the_kid", 4);
-		CardMaker.make_card_handField_character(player_D_name.getText(), "original", "willy_the_kid", 4);
-		CardMaker.make_card_handField_character(player_E_name.getText(), "original", "willy_the_kid", 4);
-		CardMaker.make_card_handField_character(player_F_name.getText(), "original", "willy_the_kid", 4);
-		CardMaker.make_card_handField_character(player_G_name.getText(), "original", "willy_the_kid", 4);
+		CardMaker.make_card_handField_character(player_A_name.getText(), "dodge_city", "vera_custer", 4);
+		CardMaker.make_card_handField_character(player_B_name.getText(), "original", "bart_cassidy", 4);
+		CardMaker.make_card_handField_character(player_C_name.getText(), "original", "bart_cassidy", 4);
+		CardMaker.make_card_handField_character(player_D_name.getText(), "original", "bart_cassidy", 4);
+		CardMaker.make_card_handField_character(player_E_name.getText(), "original", "bart_cassidy", 4);
+		CardMaker.make_card_handField_character(player_F_name.getText(), "original", "bart_cassidy", 4);
+		CardMaker.make_card_handField_character(player_G_name.getText(), "original", "bart_cassidy", 4);
 		// test (캐릭터 이미지 보이게)
 		Setter.setPlayerCharacterImageAvailable(player_A_name.getText(), true);
 		Setter.setPlayerCharacterImageAvailable(player_B_name.getText(), true);
@@ -936,39 +950,39 @@ public class UI {
 		Setter.setPlayerCharacterImageAvailable(player_G_name.getText(), true);
 		
 		// test (플레이어 핸드 넣어보기)(A) (max: 11)
-		player_A_hand.add(CardMaker.make_card_handField_playing(player_A_name.getText(), "brown", "bang", 'C', 9, true));
+		player_A_hand.add(CardMaker.make_card_handField_playing(player_A_name.getText(), "brown", "bang", 'D', 8, true));
 		Setter.setPlayerHandImageAvailable(UI.player_A_name.getText(),true);
-		player_A_hand.setBorder(BorderFactory.createLineBorder(Color.BLACK,3));
+		// player_A_hand.setBorder(BorderFactory.createLineBorder(Color.BLACK,3));
 		
 		// test (플레이어 핸드 넣어보기)(B) (max: 14)
-		player_B_hand.add(CardMaker.make_card_handField_playing(player_B_name.getText(), "brown", "bang", 'C', 9, true));
+		player_B_hand.add(CardMaker.make_card_handField_playing(player_B_name.getText(), "brown", "bang", 'D', 8, true));
 		Setter.setPlayerHandImageAvailable(UI.player_B_name.getText(),true);
-		player_B_hand.setBorder(BorderFactory.createLineBorder(Color.BLACK,3));
+		// player_B_hand.setBorder(BorderFactory.createLineBorder(Color.BLACK,3));
 
 		// test (플레이어 핸드 넣어보기)(C) (max: 13)
-		player_C_hand.add(CardMaker.make_card_handField_playing(player_C_name.getText(), "brown", "bang", 'C', 9, true));
+		player_C_hand.add(CardMaker.make_card_handField_playing(player_C_name.getText(), "brown", "bang", 'D', 8, true));
 		Setter.setPlayerHandImageAvailable(player_C_name.getText(), true);
-		player_C_hand.setBorder(BorderFactory.createLineBorder(Color.BLACK,3));
+		// player_C_hand.setBorder(BorderFactory.createLineBorder(Color.BLACK,3));
 		
 		// test (플레이어 핸드 넣어보기)(D) (max: 14)
-		player_D_hand.add(CardMaker.make_card_handField_playing(player_D_name.getText(), "brown", "bang", 'C', 9, true));
+		player_D_hand.add(CardMaker.make_card_handField_playing(player_D_name.getText(), "brown", "bang", 'D', 8, true));
 		Setter.setPlayerHandImageAvailable(player_D_name.getText(),true);
-		player_D_hand.setBorder(BorderFactory.createLineBorder(Color.BLACK,3));
+		// player_D_hand.setBorder(BorderFactory.createLineBorder(Color.BLACK,3));
 		
 		// test (플레이어 핸드 넣어보기)(E) (max: 14)
-		player_E_hand.add(CardMaker.make_card_handField_playing(player_E_name.getText(), "brown", "bang", 'C', 9, true));
+		player_E_hand.add(CardMaker.make_card_handField_playing(player_E_name.getText(), "brown", "bang", 'D', 8, true));
 		Setter.setPlayerHandImageAvailable(player_E_name.getText(),true);
-		player_E_hand.setBorder(BorderFactory.createLineBorder(Color.BLACK,3));
+		// player_E_hand.setBorder(BorderFactory.createLineBorder(Color.BLACK,3));
 		
 		// test (플레이어 핸드 넣어보기)(F) (max: 13)
-		player_F_hand.add(CardMaker.make_card_handField_playing(player_F_name.getText(), "brown", "bang", 'C', 9, true));
+		player_F_hand.add(CardMaker.make_card_handField_playing(player_F_name.getText(), "brown", "bang", 'D', 8, true));
 		Setter.setPlayerHandImageAvailable(player_F_name.getText(), true);
-		player_F_hand.setBorder(BorderFactory.createLineBorder(Color.BLACK,3));
+		// player_F_hand.setBorder(BorderFactory.createLineBorder(Color.BLACK,3));
 		
 		// test (플레이어 핸드 넣어보기)(G) (max: 14)
-		player_G_hand.add(CardMaker.make_card_handField_playing(player_G_name.getText(), "brown", "bang", 'C', 9, true));
+		player_G_hand.add(CardMaker.make_card_handField_playing(player_G_name.getText(), "brown", "bang", 'D', 8, true));
 		Setter.setPlayerHandImageAvailable(player_G_name.getText(),true);
-		player_G_hand.setBorder(BorderFactory.createLineBorder(Color.BLACK,3));
+		// player_G_hand.setBorder(BorderFactory.createLineBorder(Color.BLACK,3));
 		
 		// test (시나리오 칸 만들기)
 		CardMaker.make_card_handField_scenario(4, "wild_west_show", "bavaglio");
@@ -981,13 +995,13 @@ public class UI {
 		CardMaker.make_card_handField_scenario(1, "a_fistful_of_cards", "per_un_pugno_di_carte");
 		Setter.setScenarioImageAvailable(1, true);
 		Setter.setScenarioImageAvailable(1, false);
-		CardMaker.make_card_handField_scenario(1, "high_noon", "mezzogiorno_di_fuoco");
+		CardMaker.make_card_handField_scenario(1, "a_fistful_of_cards", "cecchino");
 		Setter.setScenarioImageAvailable(1, true);
 		
 		// test (골드러시 칸 만들기)
 		CardMaker.make_card_handField_gold_rush(1, null, null, -1);
-		CardMaker.make_card_handField_gold_rush(2, "black", "calumet", 3);
-		CardMaker.make_card_handField_gold_rush(3, "black", "ricercato", 2);
+		CardMaker.make_card_handField_gold_rush(2, "black", "cinturone", 3);
+		CardMaker.make_card_handField_gold_rush(3, "brown", "union_pacific", 2);
 		CardMaker.make_card_handField_gold_rush(4, "black", "setaccio", 3);
 		Setter.setGoldRushImageAvailable(1, true);
 		Setter.setGoldRushImageAvailable(2, true);
