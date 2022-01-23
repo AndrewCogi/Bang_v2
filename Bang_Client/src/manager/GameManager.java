@@ -19,7 +19,6 @@ public class GameManager {
 	public GameManager(String myName, PrintWriter os) {
 		this.myName = myName;
 		this.os = os;
-
 	}
 	
 	public void request(String cmd) {

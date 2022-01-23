@@ -956,37 +956,37 @@ public class UI {
 		Setter.setPlayerCharacterImageAvailable(player_G_name.getText(), true);
 		
 		// test (플레이어 핸드 넣어보기)(A) (max: 11)
-		player_A_hand.add(CardMaker.make_card_handField_playing(player_A_name.getText(), "brown", "bang", 'D', 8, true));
+		player_A_hand.add(CardMaker.make_card_handField_playing(player_A_name.getText(), "brown", "bang", 'D', 13, true));
 		Setter.setPlayerHandImageAvailable(UI.player_A_name.getText(),true);
 		// player_A_hand.setBorder(BorderFactory.createLineBorder(Color.BLACK,3));
 		
 		// test (플레이어 핸드 넣어보기)(B) (max: 14)
-		player_B_hand.add(CardMaker.make_card_handField_playing(player_B_name.getText(), "brown", "bang", 'D', 8, true));
+		player_B_hand.add(CardMaker.make_card_handField_playing(player_B_name.getText(), "brown", "bang", 'D', 13, true));
 		Setter.setPlayerHandImageAvailable(UI.player_B_name.getText(),true);
 		// player_B_hand.setBorder(BorderFactory.createLineBorder(Color.BLACK,3));
 
 		// test (플레이어 핸드 넣어보기)(C) (max: 13)
-		player_C_hand.add(CardMaker.make_card_handField_playing(player_C_name.getText(), "brown", "bang", 'D', 8, true));
+		player_C_hand.add(CardMaker.make_card_handField_playing(player_C_name.getText(), "brown", "bang", 'D', 13, true));
 		Setter.setPlayerHandImageAvailable(player_C_name.getText(), true);
 		// player_C_hand.setBorder(BorderFactory.createLineBorder(Color.BLACK,3));
 		
 		// test (플레이어 핸드 넣어보기)(D) (max: 14)
-		player_D_hand.add(CardMaker.make_card_handField_playing(player_D_name.getText(), "brown", "bang", 'D', 8, true));
+		player_D_hand.add(CardMaker.make_card_handField_playing(player_D_name.getText(), "brown", "bang", 'D', 13, true));
 		Setter.setPlayerHandImageAvailable(player_D_name.getText(),true);
 		// player_D_hand.setBorder(BorderFactory.createLineBorder(Color.BLACK,3));
 		
 		// test (플레이어 핸드 넣어보기)(E) (max: 14)
-		player_E_hand.add(CardMaker.make_card_handField_playing(player_E_name.getText(), "brown", "bang", 'D', 8, true));
+		player_E_hand.add(CardMaker.make_card_handField_playing(player_E_name.getText(), "brown", "bang", 'D', 13, true));
 		Setter.setPlayerHandImageAvailable(player_E_name.getText(),true);
 		// player_E_hand.setBorder(BorderFactory.createLineBorder(Color.BLACK,3));
 		
 		// test (플레이어 핸드 넣어보기)(F) (max: 13)
-		player_F_hand.add(CardMaker.make_card_handField_playing(player_F_name.getText(), "brown", "bang", 'D', 8, true));
+		player_F_hand.add(CardMaker.make_card_handField_playing(player_F_name.getText(), "brown", "bang", 'D', 13, true));
 		Setter.setPlayerHandImageAvailable(player_F_name.getText(), true);
 		// player_F_hand.setBorder(BorderFactory.createLineBorder(Color.BLACK,3));
 		
 		// test (플레이어 핸드 넣어보기)(G) (max: 14)
-		player_G_hand.add(CardMaker.make_card_handField_playing(player_G_name.getText(), "brown", "bang", 'D', 8, true));
+		player_G_hand.add(CardMaker.make_card_handField_playing(player_G_name.getText(), "brown", "bang", 'D', 13, true));
 		Setter.setPlayerHandImageAvailable(player_G_name.getText(),true);
 		// player_G_hand.setBorder(BorderFactory.createLineBorder(Color.BLACK,3));
 		
