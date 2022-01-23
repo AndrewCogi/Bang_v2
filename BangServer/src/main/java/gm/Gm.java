@@ -33,6 +33,8 @@ public class Gm{
 	// main deck (playing deck)
 	private static MainDeck mainDeck_new;
 	private static MainDeck mainDeck_old;
+	// gold rush deck
+	GoldRushDeck goldRushDeck_new;
 	// respond members
 	private static int respond = 0;
 
@@ -57,7 +59,7 @@ public class Gm{
 	public void start(){
 		System.out.println("[System][Gm] > start Bang.");
 		// test
-		for(int i=10; i>0; i--){
+		for(int i=100; i>0; i--){
 			System.out.println("[Testing] > Bang end in "+i+"...");
 			try{Thread.sleep(1000);}
 			catch(InterruptedException e){System.out.println(e.getMessage());}
@@ -253,18 +255,14 @@ public class Gm{
 
 	// setting gold rush
 	private void setting_gold_rush(){
-		// makd gold_rush deck
-		GoldRushDeck goldRushDeck_new = new GoldRushDeck();
-		GoldRushDeck goldRushDeck_old = new GoldRushDeck();
+		// make gold_rush deck
+		goldRushDeck_new = new GoldRushDeck();
 		goldRushDeck_new.make_init_deck();
 		goldRushDeck_new.shuffle();
 		// get 3 cards & add openCards into goldRushDeck_old
 		GoldRushCard openCard1 = goldRushDeck_new.pop();
 		GoldRushCard openCard2 = goldRushDeck_new.pop();
 		GoldRushCard openCard3 = goldRushDeck_new.pop();
-		goldRushDeck_old.add(openCard1);
-		goldRushDeck_old.add(openCard2);
-		goldRushDeck_old.add(openCard3);
 
 		// broadcast game/INIT/GOLD_RUSH/[color1]/[name1]/[cost1]/[color2]/[name2]/[cost2]/[color3]/[name3]/[cost3]
 		server.App.broadcast("game/INIT/GOLD_RUSH/"+openCard1.getCardColor()+"/"+openCard1.getCardName()+"/"+openCard1.getCost()+
