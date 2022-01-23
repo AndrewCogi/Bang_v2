@@ -6,7 +6,7 @@ public class Select_button extends JButton{
 	private static final long serialVersionUID = 1L;
 	// card name
 	private String name;
-	// card number (of character hp)
+	// card number (or character hp)
 	private int num;
 	// card shape
 	private char shape;

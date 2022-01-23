@@ -11,6 +11,8 @@ import javax.swing.SwingConstants;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.Point;
+import java.awt.Toolkit;
 import java.io.PrintWriter;
 import java.awt.Color;
 import java.awt.FlowLayout;
@@ -202,6 +204,10 @@ public class UI {
 		};
 		// set no layout
 		mp.setLayout(null);
+		// set custom cursor
+		mp.setCursor(Toolkit.getDefaultToolkit().createCustomCursor(
+				new ImageIcon(".\\.\\resources\\cursor\\main_panel_cursor.png").getImage(),
+				new Point(0,0),"custom cursor"));
 		// add main panel into main frame
 		mf.setContentPane(mp);
 	}

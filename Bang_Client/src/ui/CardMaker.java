@@ -4,17 +4,14 @@ package ui;
 
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
-import java.awt.MouseInfo;
 import java.awt.event.*;
 import java.io.PrintWriter;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import client.App;
@@ -447,30 +444,20 @@ public class CardMaker {
 			UI.player_A_gun.setBounds(90,3,87,135);
 			// set border null
 			UI.player_A_gun.setBorder(null);
-			// set show
-			JPanel show = new JPanel() {
-				private static final long serialVersionUID = 1L;
-				Image background = new ImageIcon(".\\.\\resources\\card\\playing\\colt-45_155.png").getImage();
-				// drawing background
-				protected void paintComponent(Graphics g) {
-					g.drawImage(background, 0, 0, null);
-				}
-			};
 			// set mouse listener
 			UI.player_A_gun.addMouseListener(new MouseAdapter() {
 				public void mouseEntered(MouseEvent e) {
 					// add border painting
 					UI.player_A_gun.setBorder(BorderFactory.createLineBorder(Color.WHITE,2));
 					// show details
-					show.setBounds(1730,690,155,240);
-					UI.mp.add(show);
+					UI.show_detail_panel.setText(DetailReader.getDetail(".\\.\\resources\\card\\playing\\colt-45.txt"));
 					UI.mp.repaint();
 				}
 				public void mouseExited(MouseEvent e) {
 					// remove border painting
 					UI.player_A_gun.setBorder(null);
 					// remove details
-					UI.mp.remove(show);
+					UI.show_detail_panel.setText(null);
 					UI.mp.repaint();
 				}
 			});
@@ -491,30 +478,20 @@ public class CardMaker {
 			UI.player_B_gun.setBounds(90,3,87,135);
 			// set border null
 			UI.player_B_gun.setBorder(null);
-			// set show
-			JPanel show = new JPanel() {
-				private static final long serialVersionUID = 1L;
-				Image background = new ImageIcon(".\\.\\resources\\card\\playing\\colt-45_155.png").getImage();
-				// drawing background
-				protected void paintComponent(Graphics g) {
-					g.drawImage(background, 0, 0, null);
-				}
-			};
 			// set mouse listener
 			UI.player_B_gun.addMouseListener(new MouseAdapter() {
 				public void mouseEntered(MouseEvent e) {
 					// add border painting
 					UI.player_B_gun.setBorder(BorderFactory.createLineBorder(Color.WHITE,2));
 					// show details
-					show.setBounds(1730,690,155,240);
-					UI.mp.add(show);
+					UI.show_detail_panel.setText(DetailReader.getDetail(".\\.\\resources\\card\\playing\\colt-45.txt"));
 					UI.mp.repaint();
 				}
 				public void mouseExited(MouseEvent e) {
 					// remove border painting
 					UI.player_B_gun.setBorder(null);
 					// remove details
-					UI.mp.remove(show);
+					UI.show_detail_panel.setText(null);
 					UI.mp.repaint();
 				}
 			});
@@ -535,30 +512,20 @@ public class CardMaker {
 			UI.player_C_gun.setBounds(138,90,135,87);
 			// set border null
 			UI.player_C_gun.setBorder(null);
-			// set show
-			JPanel show = new JPanel() {
-				private static final long serialVersionUID = 1L;
-				Image background = new ImageIcon(".\\.\\resources\\card\\playing\\colt-45_155.png").getImage();
-				// drawing background
-				protected void paintComponent(Graphics g) {
-					g.drawImage(background, 0, 0, null);
-				}
-			};
 			// set mouse listener
 			UI.player_C_gun.addMouseListener(new MouseAdapter() {
 				public void mouseEntered(MouseEvent e) {
 					// add border painting
 					UI.player_C_gun.setBorder(BorderFactory.createLineBorder(Color.WHITE,2));
 					// show details
-					show.setBounds(1730,690,155,240);
-					UI.mp.add(show);
+					UI.show_detail_panel.setText(DetailReader.getDetail(".\\.\\resources\\card\\playing\\colt-45.txt"));
 					UI.mp.repaint();
 				}
 				public void mouseExited(MouseEvent e) {
 					// remove border painting
 					UI.player_C_gun.setBorder(null);
 					// remove details
-					UI.mp.remove(show);
+					UI.show_detail_panel.setText(null);
 					UI.mp.repaint();
 				}
 			});
@@ -579,30 +546,20 @@ public class CardMaker {
 			UI.player_D_gun.setBounds(293,138,87,135);
 			// set border null
 			UI.player_D_gun.setBorder(null);
-			// set show
-			JPanel show = new JPanel() {
-				private static final long serialVersionUID = 1L;
-				Image background = new ImageIcon(".\\.\\resources\\card\\playing\\colt-45_155.png").getImage();
-				// drawing background
-				protected void paintComponent(Graphics g) {
-					g.drawImage(background, 0, 0, null);
-				}
-			};
 			// set mouse listener
 			UI.player_D_gun.addMouseListener(new MouseAdapter() {
 				public void mouseEntered(MouseEvent e) {
 					// add border painting
 					UI.player_D_gun.setBorder(BorderFactory.createLineBorder(Color.WHITE,2));
 					// show details
-					show.setBounds(1730,690,155,240);
-					UI.mp.add(show);
+					UI.show_detail_panel.setText(DetailReader.getDetail(".\\.\\resources\\card\\playing\\colt-45.txt"));
 					UI.mp.repaint();
 				}
 				public void mouseExited(MouseEvent e) {
 					// remove border painting
 					UI.player_D_gun.setBorder(null);
 					// remove details
-					UI.mp.remove(show);
+					UI.show_detail_panel.setText(null);
 					UI.mp.repaint();
 				}
 			});
@@ -623,30 +580,20 @@ public class CardMaker {
 			UI.player_E_gun.setBounds(293,138,87,135);
 			// set border null
 			UI.player_E_gun.setBorder(null);
-			// set show
-			JPanel show = new JPanel() {
-				private static final long serialVersionUID = 1L;
-				Image background = new ImageIcon(".\\.\\resources\\card\\playing\\colt-45_155.png").getImage();
-				// drawing background
-				protected void paintComponent(Graphics g) {
-					g.drawImage(background, 0, 0, null);
-				}
-			};
 			// set mouse listener
 			UI.player_E_gun.addMouseListener(new MouseAdapter() {
 				public void mouseEntered(MouseEvent e) {
 					// add border painting
 					UI.player_E_gun.setBorder(BorderFactory.createLineBorder(Color.WHITE,2));
 					// show details
-					show.setBounds(1730,690,155,240);
-					UI.mp.add(show);
+					UI.show_detail_panel.setText(DetailReader.getDetail(".\\.\\resources\\card\\playing\\colt-45.txt"));
 					UI.mp.repaint();
 				}
 				public void mouseExited(MouseEvent e) {
 					// remove border painting
 					UI.player_E_gun.setBorder(null);
 					// remove details
-					UI.mp.remove(show);
+					UI.show_detail_panel.setText(null);
 					UI.mp.repaint();
 				}
 			});
@@ -667,30 +614,20 @@ public class CardMaker {
 			UI.player_F_gun.setBounds(3,293,135,87);
 			// set border null
 			UI.player_F_gun.setBorder(null);
-			// set show
-			JPanel show = new JPanel() {
-				private static final long serialVersionUID = 1L;
-				Image background = new ImageIcon(".\\.\\resources\\card\\playing\\colt-45_155.png").getImage();
-				// drawing background
-				protected void paintComponent(Graphics g) {
-					g.drawImage(background, 0, 0, null);
-				}
-			};
 			// set mouse listener
 			UI.player_F_gun.addMouseListener(new MouseAdapter() {
 				public void mouseEntered(MouseEvent e) {
 					// add border painting
 					UI.player_F_gun.setBorder(BorderFactory.createLineBorder(Color.WHITE,2));
 					// show details
-					show.setBounds(1730,690,155,240);
-					UI.mp.add(show);
+					UI.show_detail_panel.setText(DetailReader.getDetail(".\\.\\resources\\card\\playing\\colt-45.txt"));
 					UI.mp.repaint();
 				}
 				public void mouseExited(MouseEvent e) {
 					// remove border painting
 					UI.player_F_gun.setBorder(null);
 					// remove details
-					UI.mp.remove(show);
+					UI.show_detail_panel.setText(null);
 					UI.mp.repaint();
 				}
 			});
@@ -711,30 +648,20 @@ public class CardMaker {
 			UI.player_G_gun.setBounds(90,3,87,135);
 			// set border null
 			UI.player_G_gun.setBorder(null);
-			// set show
-			JPanel show = new JPanel() {
-				private static final long serialVersionUID = 1L;
-				Image background = new ImageIcon(".\\.\\resources\\card\\playing\\colt-45_155.png").getImage();
-				// drawing background
-				protected void paintComponent(Graphics g) {
-					g.drawImage(background, 0, 0, null);
-				}
-			};
 			// set mouse listener
 			UI.player_G_gun.addMouseListener(new MouseAdapter() {
 				public void mouseEntered(MouseEvent e) {
 					// add border painting
 					UI.player_G_gun.setBorder(BorderFactory.createLineBorder(Color.WHITE,2));
 					// show details
-					show.setBounds(1730,690,155,240);
-					UI.mp.add(show);
+					UI.show_detail_panel.setText(DetailReader.getDetail(".\\.\\resources\\card\\playing\\colt-45.txt"));
 					UI.mp.repaint();
 				}
 				public void mouseExited(MouseEvent e) {
 					// remove border painting
 					UI.player_G_gun.setBorder(null);
 					// remove details
-					UI.mp.remove(show);
+					UI.show_detail_panel.setText(null);
 					UI.mp.repaint();
 				}
 			});
@@ -1146,6 +1073,8 @@ public class CardMaker {
 			UI.player_A_character.setBounds(3,3,87,135);
 			// set border null
 			UI.player_A_character.setBorder(null);
+			// set disable
+			UI.player_A_character.setEnabled(false);
 			// set mouse listener
 			UI.player_A_character.addMouseListener(new MouseAdapter() {
 				public void mouseEntered(MouseEvent e) {
@@ -1180,6 +1109,8 @@ public class CardMaker {
 			UI.player_B_character.setBounds(3,3,87,135);
 			// set border null
 			UI.player_B_character.setBorder(null);
+			// set disable
+			UI.player_B_character.setEnabled(false);
 			// set mouse listener
 			UI.player_B_character.addMouseListener(new MouseAdapter() {
 				public void mouseEntered(MouseEvent e) {
@@ -1214,6 +1145,8 @@ public class CardMaker {
 			UI.player_C_character.setBounds(139,3,135,87);
 			// set border null
 			UI.player_C_character.setBorder(null);
+			// set disable
+			UI.player_C_character.setEnabled(false);
 			// set mouse listener
 			UI.player_C_character.addMouseListener(new MouseAdapter() {
 				public void mouseEntered(MouseEvent e) {
@@ -1248,6 +1181,8 @@ public class CardMaker {
 			UI.player_D_character.setBounds(380,139,87,135);
 			// set border null
 			UI.player_D_character.setBorder(null);
+			// set disable
+			UI.player_D_character.setEnabled(false);
 			// set mouse listener
 			UI.player_D_character.addMouseListener(new MouseAdapter() {
 				public void mouseEntered(MouseEvent e) {
@@ -1282,6 +1217,8 @@ public class CardMaker {
 			UI.player_E_character.setBounds(380,139,87,135);
 			// set border null
 			UI.player_E_character.setBorder(null);
+			// set disable
+			UI.player_E_character.setEnabled(false);
 			// set mouse listener
 			UI.player_E_character.addMouseListener(new MouseAdapter() {
 				public void mouseEntered(MouseEvent e) {
@@ -1316,6 +1253,8 @@ public class CardMaker {
 			UI.player_F_character.setBounds(3,380,135,87);
 			// set border null
 			UI.player_F_character.setBorder(null);
+			// set disable
+			UI.player_F_character.setEnabled(false);
 			// set mouse listener
 			UI.player_F_character.addMouseListener(new MouseAdapter() {
 				public void mouseEntered(MouseEvent e) {
@@ -1350,6 +1289,8 @@ public class CardMaker {
 			UI.player_G_character.setBounds(3,3,87,135);
 			// set border null
 			UI.player_G_character.setBorder(null);
+			// set disable
+			UI.player_G_character.setEnabled(false);
 			// set mouse listener
 			UI.player_G_character.addMouseListener(new MouseAdapter() {
 				public void mouseEntered(MouseEvent e) {
@@ -1851,7 +1792,7 @@ public class CardMaker {
 		// init select_panel_card image
 		Select_button select_temp_card = new Select_button(cardName, hp);
 		select_temp_card.setIcon(new ImageIcon(".\\.\\resources\\card\\character\\"+cardPack+"\\"+cardName+"_155.png"));
-		// set click event
+		// set events
 		select_temp_card.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -1869,6 +1810,14 @@ public class CardMaker {
 				// repaint
 				UI.mp.repaint();
 				App.u.setVisible(true);
+			}
+			public void mouseEntered(MouseEvent e) {
+				// show details
+				UI.show_detail_panel.setText(DetailReader.getDetail(".\\.\\resources\\card\\character\\"+cardPack+"\\"+cardName+".txt"));
+			}
+			public void mouseExited(MouseEvent e) {
+				// remove details
+				UI.show_detail_panel.setText(null);
 			}
 		});
 		
@@ -1896,6 +1845,8 @@ public class CardMaker {
 				// if you clicked, select_chance--, send result
 				UI.select_chance--;
 				os.println("game/SELECT/CHARACTER/"+myName+"/"+cardPack+"/"+cardName);
+				// set text in show_detail_panel
+				UI.show_detail_panel.setText(DetailReader.getDetail(".\\.\\resources\\card\\character\\"+cardPack+"\\"+cardName+".txt"));
 				// change image
 				select_temp_card.setIcon(new ImageIcon(".\\.\\resources\\card\\character\\"+cardPack+"\\"+cardName+"_155.png"));
 				// highlighting my choice
@@ -1920,7 +1871,7 @@ public class CardMaker {
 		Select_button select_temp_card = new Select_button(cardName, cardNum);
 		select_temp_card.setIcon(new ImageIcon(".\\.\\resources\\card\\role\\"+"role_back"+"_155.png"));
 		
-		// set click event
+		// set event
 		select_temp_card.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -1938,6 +1889,8 @@ public class CardMaker {
 				// if you clicked, select_chance--, send result
 				UI.select_chance--; 
 				os.println("game/SELECT/ROLE/"+myName+"/"+cardName+"/"+cardNum);
+				// set text in show_detail_panel
+				UI.show_detail_panel.setText(DetailReader.getDetail(".\\.\\resources\\card\\role\\"+cardName+".txt"));
 				// change image
 				select_temp_card.setIcon(new ImageIcon(".\\.\\resources\\card\\role\\"+cardName+"_155.png"));
 				// highlighting my choice
@@ -1960,7 +1913,7 @@ public class CardMaker {
 		Select_button select_temp_card = new Select_button(cardName, cardNum);
 		select_temp_card.setIcon(new ImageIcon(".\\.\\resources\\card\\scenario\\"+extension+"\\"+cardName+"_155.png"));
 		
-		// set click event
+		// set events
 		select_temp_card.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -1978,6 +1931,14 @@ public class CardMaker {
 				// repaint
 				UI.mp.repaint();
 				App.u.setVisible(true);
+			}
+			public void mouseEntered(MouseEvent e) {
+				// show details
+				UI.show_detail_panel.setText(DetailReader.getDetail(".\\.\\resources\\card\\scenario\\"+extension+"\\"+cardName+".txt"));
+			}
+			public void mouseExited(MouseEvent e) {
+				// remove details
+				UI.show_detail_panel.setText(null);
 			}
 		});
 		
