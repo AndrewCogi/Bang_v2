@@ -7,12 +7,18 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.*;
+import java.io.File;
+import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComponent;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 
 import client.App;
 import manager.DetailReader;
@@ -38,16 +44,32 @@ public class CardMaker {
 			UI.scenario_turn_back.addMouseListener(new MouseAdapter() {
 				public void mouseEntered(MouseEvent e) {
 					// add border painting
-					UI.scenario_turn_back.setBorder(BorderFactory.createLineBorder(Color.WHITE,2));
-					// show details
-					UI.show_detail_panel.setText(DetailReader.getDetail(".\\.\\resources\\card\\scenario\\"+extension+"\\"+cardName+".txt"));
+					UI.scenario_turn_back.setBorder(BorderFactory.createLineBorder(Color.GREEN,2));
+					// show detail (image)
+					try {UI.show_detail_panel.add(new JLabel(new ImageIcon(ImageIO.read(new File
+							(".\\.\\resources\\card\\scenario\\"+extension+"\\"+cardName+"_155.png")))));} catch (IOException e1) {}
 					UI.mp.repaint();
 				}
 				public void mouseExited(MouseEvent e) {
 					// remove border painting
 					UI.scenario_turn_back.setBorder(null);
 					// remove details
-					UI.show_detail_panel.setText(null);
+					UI.show_detail_panel.removeAll();
+					UI.show_detail_label.setText(null);
+					UI.mp.repaint();
+				}
+				public void mouseClicked(MouseEvent e) {
+					// right click
+					if(SwingUtilities.isRightMouseButton(e)) {
+						// remove detail (image)
+						UI.show_detail_panel.removeAll();
+						// add detail (text)
+						UI.show_detail_label.setText(DetailReader.getDetail(".\\.\\resources\\card\\scenario\\"+extension+"\\"+cardName+".txt"));
+					}
+					// left click
+					else if(SwingUtilities.isLeftMouseButton(e)) {
+						// TODO
+					}
 					UI.mp.repaint();
 				}
 			});
@@ -73,16 +95,33 @@ public class CardMaker {
 			UI.scenario_turn_front.addMouseListener(new MouseAdapter() {
 				public void mouseEntered(MouseEvent e) {
 					// add border painting
-					UI.scenario_turn_front.setBorder(BorderFactory.createLineBorder(Color.WHITE,2));
-					// show details
-					UI.show_detail_panel.setText(DetailReader.getDetail(".\\.\\resources\\card\\scenario\\"+extension+"\\"+cardName+".txt"));
+					UI.scenario_turn_front.setBorder(BorderFactory.createLineBorder(Color.GREEN,2));
+					// show detail (image)
+					try {UI.show_detail_panel.add(new JLabel(new ImageIcon(ImageIO.read(new File
+							(".\\.\\resources\\card\\scenario\\"+extension+"\\"+cardName+"_155.png")))));} catch (IOException e1) {}
 					UI.mp.repaint();
 				}
 				public void mouseExited(MouseEvent e) {
 					// remove border painting
 					UI.scenario_turn_front.setBorder(null);
 					// remove details
-					UI.show_detail_panel.setText(null);
+					UI.show_detail_panel.removeAll();
+					UI.show_detail_label.setText(null);
+					UI.mp.repaint();
+				}
+				public void mouseClicked(MouseEvent e) {
+					// right click
+					if(SwingUtilities.isRightMouseButton(e)) {
+						// remove detail (image)
+						UI.show_detail_panel.removeAll();
+						// add detail (text)
+						UI.show_detail_label.setText(DetailReader.getDetail(".\\.\\resources\\card\\scenario\\"+extension+"\\"+cardName+".txt"));
+						
+					}
+					// left click
+					else if(SwingUtilities.isLeftMouseButton(e)) {
+						// TODO
+					}
 					UI.mp.repaint();
 				}
 			});
@@ -108,7 +147,7 @@ public class CardMaker {
 			UI.scenario_wild_back.addMouseListener(new MouseAdapter() {
 				public void mouseEntered(MouseEvent e) {
 					// add border painting
-					UI.scenario_wild_back.setBorder(BorderFactory.createLineBorder(Color.WHITE,2));
+					UI.scenario_wild_back.setBorder(BorderFactory.createLineBorder(Color.GREEN,2));
 				}
 				public void mouseExited(MouseEvent e) {
 					// remove border painting
@@ -137,16 +176,32 @@ public class CardMaker {
 			UI.scenario_wild_front.addMouseListener(new MouseAdapter() {
 				public void mouseEntered(MouseEvent e) {
 					// add border painting
-					UI.scenario_wild_front.setBorder(BorderFactory.createLineBorder(Color.WHITE,2));
-					// show details
-					UI.show_detail_panel.setText(DetailReader.getDetail(".\\.\\resources\\card\\scenario\\"+extension+"\\"+cardName+".txt"));
+					UI.scenario_wild_front.setBorder(BorderFactory.createLineBorder(Color.GREEN,2));
+					// show detail (image)
+					try {UI.show_detail_panel.add(new JLabel(new ImageIcon(ImageIO.read(new File
+							(".\\.\\resources\\card\\scenario\\"+extension+"\\"+cardName+"_155.png")))));} catch (IOException e1) {}
 					UI.mp.repaint();
 				}
 				public void mouseExited(MouseEvent e) {
 					// remove border painting
 					UI.scenario_wild_front.setBorder(null);
 					// remove details
-					UI.show_detail_panel.setText(null);
+					UI.show_detail_panel.removeAll();
+					UI.show_detail_label.setText(null);
+					UI.mp.repaint();
+				}
+				public void mouseClicked(MouseEvent e) {
+					// right click
+					if(SwingUtilities.isRightMouseButton(e)) {
+						// remove detail (image)
+						UI.show_detail_panel.removeAll();
+						// add detail (text)
+						UI.show_detail_label.setText(DetailReader.getDetail(".\\.\\resources\\card\\scenario\\"+extension+"\\"+cardName+".txt"));
+					}
+					// left click
+					else if(SwingUtilities.isLeftMouseButton(e)) {
+						// TODO
+					}
 					UI.mp.repaint();
 				}
 			});
@@ -172,16 +227,32 @@ public class CardMaker {
 			UI.scenario_turn_back.addMouseListener(new MouseAdapter() {
 				public void mouseEntered(MouseEvent e) {
 					// add border painting
-					UI.scenario_turn_back.setBorder(BorderFactory.createLineBorder(Color.WHITE,2));
-					// show details
-					UI.show_detail_panel.setText(DetailReader.getDetail(".\\.\\resources\\card\\scenario\\a_fistful_of_cards\\per_un_pugno_di_carte.txt"));
+					UI.scenario_turn_back.setBorder(BorderFactory.createLineBorder(Color.GREEN,2));
+					// show detail (image)
+					try {UI.show_detail_panel.add(new JLabel(new ImageIcon(ImageIO.read(new File
+							(".\\.\\resources\\card\\scenario\\a_fistful_of_cards\\per_un_pugno_di_carte_155.png")))));} catch (IOException e1) {}
 					UI.mp.repaint();
 				}
 				public void mouseExited(MouseEvent e) {
 					// remove border painting
 					UI.scenario_turn_back.setBorder(null);
 					// remove details
-					UI.show_detail_panel.setText(null);
+					UI.show_detail_panel.removeAll();
+					UI.show_detail_label.setText(null);
+					UI.mp.repaint();
+				}
+				public void mouseClicked(MouseEvent e) {
+					// right click
+					if(SwingUtilities.isRightMouseButton(e)) {
+						// remove detail (image)
+						UI.show_detail_panel.removeAll();
+						// add detail (text)
+						UI.show_detail_label.setText(DetailReader.getDetail(".\\.\\resources\\card\\scenario\\a_fistful_of_cards\\per_un_pugno_di_carte.txt"));
+					}
+					// left click
+					else if(SwingUtilities.isLeftMouseButton(e)) {
+						// TODO
+					}
 					UI.mp.repaint();
 				}
 			});
@@ -201,16 +272,32 @@ public class CardMaker {
 			UI.scenario_turn_back.addMouseListener(new MouseAdapter() {
 				public void mouseEntered(MouseEvent e) {
 					// add border painting
-					UI.scenario_turn_back.setBorder(BorderFactory.createLineBorder(Color.WHITE,2));
-					// show details
-					UI.show_detail_panel.setText(DetailReader.getDetail(".\\.\\resources\\card\\scenario\\high_noon\\mezzogiorno_di_fuoco.txt"));
+					UI.scenario_turn_back.setBorder(BorderFactory.createLineBorder(Color.GREEN,2));
+					// show detail (image)
+					try {UI.show_detail_panel.add(new JLabel(new ImageIcon(ImageIO.read(new File
+							(".\\.\\resources\\card\\scenario\\high_noon\\mezzogiorno_di_fuoco_155.png")))));} catch (IOException e1) {}
 					UI.mp.repaint();
 				}
 				public void mouseExited(MouseEvent e) {
 					// remove border painting
 					UI.scenario_turn_back.setBorder(null);
 					// remove details
-					UI.show_detail_panel.setText(null);
+					UI.show_detail_panel.removeAll();
+					UI.show_detail_label.setText(null);
+					UI.mp.repaint();
+				}
+				public void mouseClicked(MouseEvent e) {
+					// right click
+					if(SwingUtilities.isRightMouseButton(e)) {
+						// remove detail (image)
+						UI.show_detail_panel.removeAll();
+						// add detail (text)
+						UI.show_detail_label.setText(DetailReader.getDetail(".\\.\\resources\\card\\scenario\\high_noon\\mezzogiorno_di_fuoco.txt"));
+					}
+					// left click
+					else if(SwingUtilities.isLeftMouseButton(e)) {
+						// TODO
+					}
 					UI.mp.repaint();
 				}
 			});
@@ -230,16 +317,32 @@ public class CardMaker {
 			UI.scenario_wild_back.addMouseListener(new MouseAdapter() {
 				public void mouseEntered(MouseEvent e) {
 					// add border painting
-					UI.scenario_wild_back.setBorder(BorderFactory.createLineBorder(Color.WHITE,2));
-					// show details
-					UI.show_detail_panel.setText(DetailReader.getDetail(".\\.\\resources\\card\\scenario\\wild_west_show\\wild_west_show.txt"));
+					UI.scenario_wild_back.setBorder(BorderFactory.createLineBorder(Color.GREEN,2));
+					// show detail (image)
+					try {UI.show_detail_panel.add(new JLabel(new ImageIcon(ImageIO.read(new File
+							(".\\.\\resources\\card\\scenario\\wild_west_show\\wild_west_show_155.png")))));} catch (IOException e1) {}
 					UI.mp.repaint();
 				}
 				public void mouseExited(MouseEvent e) {
 					// remove border painting
 					UI.scenario_wild_back.setBorder(null);
 					// remove details
-					UI.show_detail_panel.setText(null);
+					UI.show_detail_panel.removeAll();
+					UI.show_detail_label.setText(null);
+					UI.mp.repaint();
+				}
+				public void mouseClicked(MouseEvent e) {
+					// right click
+					if(SwingUtilities.isRightMouseButton(e)) {
+						// remove detail (image)
+						UI.show_detail_panel.removeAll();
+						// add detail (text)
+						UI.show_detail_label.setText(DetailReader.getDetail(".\\.\\resources\\card\\scenario\\wild_west_show\\wild_west_show.txt"));
+					}
+					// left click
+					else if(SwingUtilities.isLeftMouseButton(e)) {
+						// TODO
+					}
 					UI.mp.repaint();
 				}
 			});
@@ -300,7 +403,7 @@ public class CardMaker {
 			UI.gold_rush_new.addMouseListener(new MouseAdapter() {
 				public void mouseEntered(MouseEvent e) {
 					// add border painting
-					UI.gold_rush_new.setBorder(BorderFactory.createLineBorder(Color.WHITE,2));
+					UI.gold_rush_new.setBorder(BorderFactory.createLineBorder(Color.GREEN,2));
 					UI.mp.repaint();
 				}
 				public void mouseExited(MouseEvent e) {
@@ -334,16 +437,32 @@ public class CardMaker {
 			UI.gold_rush_open_1.addMouseListener(new MouseAdapter() {
 				public void mouseEntered(MouseEvent e) {
 					// add border painting
-					UI.gold_rush_open_1.setBorder(BorderFactory.createLineBorder(Color.WHITE,2));
-					// show details
-					UI.show_detail_panel.setText(DetailReader.getDetail(".\\.\\resources\\card\\gold_rush\\"+cardColor+"\\"+cardName+".txt"));
+					UI.gold_rush_open_1.setBorder(BorderFactory.createLineBorder(Color.GREEN,2));
+					// show detail (image)
+					try {UI.show_detail_panel.add(new JLabel(new ImageIcon(ImageIO.read(new File
+							(".\\.\\resources\\card\\gold_rush\\"+cardColor+"\\"+cardName+"_155.png")))));} catch (IOException e1) {}
 					UI.mp.repaint();
 				}
 				public void mouseExited(MouseEvent e) {
 					// remove border painting
 					UI.gold_rush_open_1.setBorder(null);
 					// remove details
-					UI.show_detail_panel.setText(null);
+					UI.show_detail_panel.removeAll();
+					UI.show_detail_label.setText(null);
+					UI.mp.repaint();
+				}
+				public void mouseClicked(MouseEvent e) {
+					// right click
+					if(SwingUtilities.isRightMouseButton(e)) {
+						// remove detail (image)
+						UI.show_detail_panel.removeAll();
+						// add detail (text)
+						UI.show_detail_label.setText(DetailReader.getDetail(".\\.\\resources\\card\\gold_rush\\"+cardColor+"\\"+cardName+".txt"));
+					}
+					// left click
+					else if(SwingUtilities.isLeftMouseButton(e)) {
+						// TODO
+					}
 					UI.mp.repaint();
 				}
 			});
@@ -372,16 +491,32 @@ public class CardMaker {
 			UI.gold_rush_open_2.addMouseListener(new MouseAdapter() {
 				public void mouseEntered(MouseEvent e) {
 					// add border painting
-					UI.gold_rush_open_2.setBorder(BorderFactory.createLineBorder(Color.WHITE,2));
-					// show details
-					UI.show_detail_panel.setText(DetailReader.getDetail(".\\.\\resources\\card\\gold_rush\\"+cardColor+"\\"+cardName+".txt"));
+					UI.gold_rush_open_2.setBorder(BorderFactory.createLineBorder(Color.GREEN,2));
+					// show detail (image)
+					try {UI.show_detail_panel.add(new JLabel(new ImageIcon(ImageIO.read(new File
+							(".\\.\\resources\\card\\gold_rush\\"+cardColor+"\\"+cardName+"_155.png")))));} catch (IOException e1) {}
 					UI.mp.repaint();
 				}
 				public void mouseExited(MouseEvent e) {
 					// remove border painting
 					UI.gold_rush_open_2.setBorder(null);
 					// remove details
-					UI.show_detail_panel.setText(null);
+					UI.show_detail_panel.removeAll();
+					UI.show_detail_label.setText(null);
+					UI.mp.repaint();
+				}
+				public void mouseClicked(MouseEvent e) {
+					// right click
+					if(SwingUtilities.isRightMouseButton(e)) {
+						// remove detail (image)
+						UI.show_detail_panel.removeAll();
+						// add detail (text)
+						UI.show_detail_label.setText(DetailReader.getDetail(".\\.\\resources\\card\\gold_rush\\"+cardColor+"\\"+cardName+".txt"));
+					}
+					// left click
+					else if(SwingUtilities.isLeftMouseButton(e)) {
+						// TODO
+					}
 					UI.mp.repaint();
 				}
 			});
@@ -410,16 +545,32 @@ public class CardMaker {
 			UI.gold_rush_open_3.addMouseListener(new MouseAdapter() {
 				public void mouseEntered(MouseEvent e) {
 					// add border painting
-					UI.gold_rush_open_3.setBorder(BorderFactory.createLineBorder(Color.WHITE,2));
-					// show details
-					UI.show_detail_panel.setText(DetailReader.getDetail(".\\.\\resources\\card\\gold_rush\\"+cardColor+"\\"+cardName+".txt"));
+					UI.gold_rush_open_3.setBorder(BorderFactory.createLineBorder(Color.GREEN,2));
+					// show detail (image)
+					try {UI.show_detail_panel.add(new JLabel(new ImageIcon(ImageIO.read(new File
+							(".\\.\\resources\\card\\gold_rush\\"+cardColor+"\\"+cardName+"_155.png")))));} catch (IOException e1) {}
 					UI.mp.repaint();
 				}
 				public void mouseExited(MouseEvent e) {
 					// remove border painting
 					UI.gold_rush_open_3.setBorder(null);
 					// remove details
-					UI.show_detail_panel.setText(null);
+					UI.show_detail_panel.removeAll();
+					UI.show_detail_label.setText(null);
+					UI.mp.repaint();
+				}
+				public void mouseClicked(MouseEvent e) {
+					// right click
+					if(SwingUtilities.isRightMouseButton(e)) {
+						// remove detail (image)
+						UI.show_detail_panel.removeAll();
+						// add detail (text)
+						UI.show_detail_label.setText(DetailReader.getDetail(".\\.\\resources\\card\\gold_rush\\"+cardColor+"\\"+cardName+".txt"));
+					}
+					// left click
+					else if(SwingUtilities.isLeftMouseButton(e)) {
+						// TODO
+					}
 					UI.mp.repaint();
 				}
 			});
@@ -448,16 +599,32 @@ public class CardMaker {
 			UI.player_A_gun.addMouseListener(new MouseAdapter() {
 				public void mouseEntered(MouseEvent e) {
 					// add border painting
-					UI.player_A_gun.setBorder(BorderFactory.createLineBorder(Color.WHITE,2));
-					// show details
-					UI.show_detail_panel.setText(DetailReader.getDetail(".\\.\\resources\\card\\playing\\colt-45.txt"));
+					UI.player_A_gun.setBorder(BorderFactory.createLineBorder(Color.GREEN,2));
+					// show detail (image)
+					try {UI.show_detail_panel.add(new JLabel(new ImageIcon(ImageIO.read(new File
+							(".\\.\\resources\\card\\playing\\colt-45_155.png")))));} catch (IOException e1) {}
 					UI.mp.repaint();
 				}
 				public void mouseExited(MouseEvent e) {
 					// remove border painting
 					UI.player_A_gun.setBorder(null);
 					// remove details
-					UI.show_detail_panel.setText(null);
+					UI.show_detail_panel.removeAll();
+					UI.show_detail_label.setText(null);
+					UI.mp.repaint();
+				}
+				public void mouseClicked(MouseEvent e) {
+					// right click
+					if(SwingUtilities.isRightMouseButton(e)) {
+						// remove detail (image)
+						UI.show_detail_panel.removeAll();
+						// add detail (text)
+						UI.show_detail_label.setText(DetailReader.getDetail(".\\.\\resources\\card\\playing\\colt-45.txt"));
+					}
+					// left click
+					else if(SwingUtilities.isLeftMouseButton(e)) {
+						// TODO
+					}
 					UI.mp.repaint();
 				}
 			});
@@ -482,16 +649,32 @@ public class CardMaker {
 			UI.player_B_gun.addMouseListener(new MouseAdapter() {
 				public void mouseEntered(MouseEvent e) {
 					// add border painting
-					UI.player_B_gun.setBorder(BorderFactory.createLineBorder(Color.WHITE,2));
-					// show details
-					UI.show_detail_panel.setText(DetailReader.getDetail(".\\.\\resources\\card\\playing\\colt-45.txt"));
+					UI.player_B_gun.setBorder(BorderFactory.createLineBorder(Color.GREEN,2));
+					// show detail (image)
+					try {UI.show_detail_panel.add(new JLabel(new ImageIcon(ImageIO.read(new File
+							(".\\.\\resources\\card\\playing\\colt-45_155.png")))));} catch (IOException e1) {}
 					UI.mp.repaint();
 				}
 				public void mouseExited(MouseEvent e) {
 					// remove border painting
 					UI.player_B_gun.setBorder(null);
 					// remove details
-					UI.show_detail_panel.setText(null);
+					UI.show_detail_panel.removeAll();
+					UI.show_detail_label.setText(null);
+					UI.mp.repaint();
+				}
+				public void mouseClicked(MouseEvent e) {
+					// right click
+					if(SwingUtilities.isRightMouseButton(e)) {
+						// remove detail (image)
+						UI.show_detail_panel.removeAll();
+						// add detail (text)
+						UI.show_detail_label.setText(DetailReader.getDetail(".\\.\\resources\\card\\playing\\colt-45.txt"));
+					}
+					// left click
+					else if(SwingUtilities.isLeftMouseButton(e)) {
+						// TODO
+					}
 					UI.mp.repaint();
 				}
 			});
@@ -516,16 +699,32 @@ public class CardMaker {
 			UI.player_C_gun.addMouseListener(new MouseAdapter() {
 				public void mouseEntered(MouseEvent e) {
 					// add border painting
-					UI.player_C_gun.setBorder(BorderFactory.createLineBorder(Color.WHITE,2));
-					// show details
-					UI.show_detail_panel.setText(DetailReader.getDetail(".\\.\\resources\\card\\playing\\colt-45.txt"));
+					UI.player_C_gun.setBorder(BorderFactory.createLineBorder(Color.GREEN,2));
+					// show detail (image)
+					try {UI.show_detail_panel.add(new JLabel(new ImageIcon(ImageIO.read(new File
+							(".\\.\\resources\\card\\playing\\colt-45_155.png")))));} catch (IOException e1) {}
 					UI.mp.repaint();
 				}
 				public void mouseExited(MouseEvent e) {
 					// remove border painting
 					UI.player_C_gun.setBorder(null);
 					// remove details
-					UI.show_detail_panel.setText(null);
+					UI.show_detail_panel.removeAll();
+					UI.show_detail_label.setText(null);
+					UI.mp.repaint();
+				}
+				public void mouseClicked(MouseEvent e) {
+					// right click
+					if(SwingUtilities.isRightMouseButton(e)) {
+						// remove detail (image)
+						UI.show_detail_panel.removeAll();
+						// add detail (text)
+						UI.show_detail_label.setText(DetailReader.getDetail(".\\.\\resources\\card\\playing\\colt-45.txt"));
+					}
+					// left click
+					else if(SwingUtilities.isLeftMouseButton(e)) {
+						// TODO
+					}
 					UI.mp.repaint();
 				}
 			});
@@ -550,16 +749,32 @@ public class CardMaker {
 			UI.player_D_gun.addMouseListener(new MouseAdapter() {
 				public void mouseEntered(MouseEvent e) {
 					// add border painting
-					UI.player_D_gun.setBorder(BorderFactory.createLineBorder(Color.WHITE,2));
-					// show details
-					UI.show_detail_panel.setText(DetailReader.getDetail(".\\.\\resources\\card\\playing\\colt-45.txt"));
+					UI.player_D_gun.setBorder(BorderFactory.createLineBorder(Color.GREEN,2));
+					// show detail (image)
+					try {UI.show_detail_panel.add(new JLabel(new ImageIcon(ImageIO.read(new File
+							(".\\.\\resources\\card\\playing\\colt-45_155.png")))));} catch (IOException e1) {}
 					UI.mp.repaint();
 				}
 				public void mouseExited(MouseEvent e) {
 					// remove border painting
 					UI.player_D_gun.setBorder(null);
 					// remove details
-					UI.show_detail_panel.setText(null);
+					UI.show_detail_panel.removeAll();
+					UI.show_detail_label.setText(null);
+					UI.mp.repaint();
+				}
+				public void mouseClicked(MouseEvent e) {
+					// right click
+					if(SwingUtilities.isRightMouseButton(e)) {
+						// remove detail (image)
+						UI.show_detail_panel.removeAll();
+						// add detail (text)
+						UI.show_detail_label.setText(DetailReader.getDetail(".\\.\\resources\\card\\playing\\colt-45.txt"));
+					}
+					// left click
+					else if(SwingUtilities.isLeftMouseButton(e)) {
+						// TODO
+					}
 					UI.mp.repaint();
 				}
 			});
@@ -584,16 +799,32 @@ public class CardMaker {
 			UI.player_E_gun.addMouseListener(new MouseAdapter() {
 				public void mouseEntered(MouseEvent e) {
 					// add border painting
-					UI.player_E_gun.setBorder(BorderFactory.createLineBorder(Color.WHITE,2));
-					// show details
-					UI.show_detail_panel.setText(DetailReader.getDetail(".\\.\\resources\\card\\playing\\colt-45.txt"));
+					UI.player_E_gun.setBorder(BorderFactory.createLineBorder(Color.GREEN,2));
+					// show detail (image)
+					try {UI.show_detail_panel.add(new JLabel(new ImageIcon(ImageIO.read(new File
+							(".\\.\\resources\\card\\playing\\colt-45_155.png")))));} catch (IOException e1) {}
 					UI.mp.repaint();
 				}
 				public void mouseExited(MouseEvent e) {
 					// remove border painting
 					UI.player_E_gun.setBorder(null);
 					// remove details
-					UI.show_detail_panel.setText(null);
+					UI.show_detail_panel.removeAll();
+					UI.show_detail_label.setText(null);
+					UI.mp.repaint();
+				}
+				public void mouseClicked(MouseEvent e) {
+					// right click
+					if(SwingUtilities.isRightMouseButton(e)) {
+						// remove detail (image)
+						UI.show_detail_panel.removeAll();
+						// add detail (text)
+						UI.show_detail_label.setText(DetailReader.getDetail(".\\.\\resources\\card\\playing\\colt-45.txt"));
+					}
+					// left click
+					else if(SwingUtilities.isLeftMouseButton(e)) {
+						// TODO
+					}
 					UI.mp.repaint();
 				}
 			});
@@ -618,16 +849,33 @@ public class CardMaker {
 			UI.player_F_gun.addMouseListener(new MouseAdapter() {
 				public void mouseEntered(MouseEvent e) {
 					// add border painting
-					UI.player_F_gun.setBorder(BorderFactory.createLineBorder(Color.WHITE,2));
-					// show details
-					UI.show_detail_panel.setText(DetailReader.getDetail(".\\.\\resources\\card\\playing\\colt-45.txt"));
+					UI.player_F_gun.setBorder(BorderFactory.createLineBorder(Color.GREEN,2));
+					// show detail (image)
+					try {UI.show_detail_panel.add(new JLabel(new ImageIcon(ImageIO.read(new File
+							(".\\.\\resources\\card\\playing\\colt-45_155.png")))));} catch (IOException e1) {}
+					UI.show_detail_label.setText(DetailReader.getDetail(".\\.\\resources\\card\\playing\\colt-45.txt"));
 					UI.mp.repaint();
 				}
 				public void mouseExited(MouseEvent e) {
 					// remove border painting
 					UI.player_F_gun.setBorder(null);
 					// remove details
-					UI.show_detail_panel.setText(null);
+					UI.show_detail_panel.removeAll();
+					UI.show_detail_label.setText(null);
+					UI.mp.repaint();
+				}
+				public void mouseClicked(MouseEvent e) {
+					// right click
+					if(SwingUtilities.isRightMouseButton(e)) {
+						// remove detail (image)
+						UI.show_detail_panel.removeAll();
+						// add detail (text)
+						UI.show_detail_label.setText(DetailReader.getDetail(".\\.\\resources\\card\\playing\\colt-45.txt"));
+					}
+					// left click
+					else if(SwingUtilities.isLeftMouseButton(e)) {
+						// TODO
+					}
 					UI.mp.repaint();
 				}
 			});
@@ -652,16 +900,33 @@ public class CardMaker {
 			UI.player_G_gun.addMouseListener(new MouseAdapter() {
 				public void mouseEntered(MouseEvent e) {
 					// add border painting
-					UI.player_G_gun.setBorder(BorderFactory.createLineBorder(Color.WHITE,2));
-					// show details
-					UI.show_detail_panel.setText(DetailReader.getDetail(".\\.\\resources\\card\\playing\\colt-45.txt"));
+					UI.player_G_gun.setBorder(BorderFactory.createLineBorder(Color.GREEN,2));
+					// show detail (image)
+					try {UI.show_detail_panel.add(new JLabel(new ImageIcon(ImageIO.read(new File
+							(".\\.\\resources\\card\\playing\\colt-45_155.png")))));} catch (IOException e1) {}
+					UI.show_detail_label.setText(DetailReader.getDetail(".\\.\\resources\\card\\playing\\colt-45.txt"));
 					UI.mp.repaint();
 				}
 				public void mouseExited(MouseEvent e) {
 					// remove border painting
 					UI.player_G_gun.setBorder(null);
 					// remove details
-					UI.show_detail_panel.setText(null);
+					UI.show_detail_panel.removeAll();
+					UI.show_detail_label.setText(null);
+					UI.mp.repaint();
+				}
+				public void mouseClicked(MouseEvent e) {
+					// right click
+					if(SwingUtilities.isRightMouseButton(e)) {
+						// remove detail (image)
+						UI.show_detail_panel.removeAll();
+						// add detail (text)
+						UI.show_detail_label.setText(DetailReader.getDetail(".\\.\\resources\\card\\playing\\colt-45.txt"));
+					}
+					// left click
+					else if(SwingUtilities.isLeftMouseButton(e)) {
+						// TODO
+					}
 					UI.mp.repaint();
 				}
 			});
@@ -705,10 +970,11 @@ public class CardMaker {
 			UI.player_A_role.addMouseListener(new MouseAdapter() {
 				public void mouseEntered(MouseEvent e) {
 					// add border painting
-					UI.player_A_role.setBorder(BorderFactory.createLineBorder(Color.WHITE, 2));
-					// isForward == true, show details
+					UI.player_A_role.setBorder(BorderFactory.createLineBorder(Color.GREEN, 2));
+					// isForward == true, show detail (image)
 					if(isForward == true) {
-						UI.show_detail_panel.setText(DetailReader.getDetail(".\\.\\resources\\card\\role\\"+roleName+".txt"));
+						try {UI.show_detail_panel.add(new JLabel(new ImageIcon(ImageIO.read(new File
+								(".\\.\\resources\\card\\role\\"+roleName+"_155.png")))));} catch (IOException e1) {}
 					}
 					UI.mp.repaint();
 				}
@@ -716,7 +982,22 @@ public class CardMaker {
 					// remove border painting
 					UI.player_A_role.setBorder(null);
 					// remove details
-					UI.show_detail_panel.setText(null);
+					UI.show_detail_panel.removeAll();
+					UI.show_detail_label.setText(null);
+					UI.mp.repaint();
+				}
+				public void mouseClicked(MouseEvent e) {
+					// right click
+					if(SwingUtilities.isRightMouseButton(e) && isForward == true) {
+						// remove detail (image)
+						UI.show_detail_panel.removeAll();
+						// add detail (text)
+						UI.show_detail_label.setText(DetailReader.getDetail(".\\.\\resources\\card\\role\\"+roleName+".txt"));
+					}
+					// left click
+					else if(SwingUtilities.isLeftMouseButton(e)) {
+						// TODO
+					}
 					UI.mp.repaint();
 				}
 			});
@@ -760,10 +1041,11 @@ public class CardMaker {
 			UI.player_B_role.addMouseListener(new MouseAdapter() {
 				public void mouseEntered(MouseEvent e) {
 					// add border painting
-					UI.player_B_role.setBorder(BorderFactory.createLineBorder(Color.WHITE, 2));
-					// isForward == true, show details
+					UI.player_B_role.setBorder(BorderFactory.createLineBorder(Color.GREEN, 2));
+					// isForward == true, show detail (image)
 					if(isForward == true) {
-						UI.show_detail_panel.setText(DetailReader.getDetail(".\\.\\resources\\card\\role\\"+roleName+".txt"));
+						try {UI.show_detail_panel.add(new JLabel(new ImageIcon(ImageIO.read(new File
+								(".\\.\\resources\\card\\role\\"+roleName+"_155.png")))));} catch (IOException e1) {}
 					}
 					UI.mp.repaint();
 				}
@@ -771,7 +1053,22 @@ public class CardMaker {
 					// remove border painting
 					UI.player_B_role.setBorder(null);
 					// remove details
-					UI.show_detail_panel.setText(null);
+					UI.show_detail_panel.removeAll();
+					UI.show_detail_label.setText(null);
+					UI.mp.repaint();
+				}
+				public void mouseClicked(MouseEvent e) {
+					// right click
+					if(SwingUtilities.isRightMouseButton(e) && isForward == true) {
+						// remove detail (image)
+						UI.show_detail_panel.removeAll();
+						// add detail (text)
+						UI.show_detail_label.setText(DetailReader.getDetail(".\\.\\resources\\card\\role\\"+roleName+".txt"));
+					}
+					// left click
+					else if(SwingUtilities.isLeftMouseButton(e)) {
+						// TODO
+					}
 					UI.mp.repaint();
 				}
 			});
@@ -815,10 +1112,11 @@ public class CardMaker {
 			UI.player_C_role.addMouseListener(new MouseAdapter() {
 				public void mouseEntered(MouseEvent e) {
 					// add border painting
-					UI.player_C_role.setBorder(BorderFactory.createLineBorder(Color.WHITE, 2));
-					// isForward == true, show details
+					UI.player_C_role.setBorder(BorderFactory.createLineBorder(Color.GREEN, 2));
+					// isForward == true, show detail (iamge)
 					if(isForward == true) {
-						UI.show_detail_panel.setText(DetailReader.getDetail(".\\.\\resources\\card\\role\\"+roleName+".txt"));
+						try {UI.show_detail_panel.add(new JLabel(new ImageIcon(ImageIO.read(new File
+								(".\\.\\resources\\card\\role\\"+roleName+"_155.png")))));} catch (IOException e1) {}
 					}
 					UI.mp.repaint();
 				}
@@ -826,7 +1124,22 @@ public class CardMaker {
 					// remove border painting
 					UI.player_C_role.setBorder(null);
 					// remove details
-					UI.show_detail_panel.setText(null);
+					UI.show_detail_panel.removeAll();
+					UI.show_detail_label.setText(null);
+					UI.mp.repaint();
+				}
+				public void mouseClicked(MouseEvent e) {
+					// right click
+					if(SwingUtilities.isRightMouseButton(e) && isForward == true) {
+						// remove detail (image)
+						UI.show_detail_panel.removeAll();
+						// add detail (text)
+						UI.show_detail_label.setText(DetailReader.getDetail(".\\.\\resources\\card\\role\\"+roleName+".txt"));
+					}
+					// left click
+					else if(SwingUtilities.isLeftMouseButton(e)) {
+						// TODO
+					}
 					UI.mp.repaint();
 				}
 			});
@@ -870,10 +1183,11 @@ public class CardMaker {
 			UI.player_D_role.addMouseListener(new MouseAdapter() {
 				public void mouseEntered(MouseEvent e) {
 					// add border painting
-					UI.player_D_role.setBorder(BorderFactory.createLineBorder(Color.WHITE, 2));
-					// isForward == true, show details
+					UI.player_D_role.setBorder(BorderFactory.createLineBorder(Color.GREEN, 2));
+					// isForward == true, show detail (image)
 					if(isForward == true) {
-						UI.show_detail_panel.setText(DetailReader.getDetail(".\\.\\resources\\card\\role\\"+roleName+".txt"));
+						try {UI.show_detail_panel.add(new JLabel(new ImageIcon(ImageIO.read(new File
+								(".\\.\\resources\\card\\role\\"+roleName+"_155.png")))));} catch (IOException e1) {}
 					}
 					UI.mp.repaint();
 				}
@@ -881,7 +1195,22 @@ public class CardMaker {
 					// remove border painting
 					UI.player_D_role.setBorder(null);
 					// remove details
-					UI.show_detail_panel.setText(null);
+					UI.show_detail_panel.removeAll();
+					UI.show_detail_label.setText(null);
+					UI.mp.repaint();
+				}
+				public void mouseClicked(MouseEvent e) {
+					// right click
+					if(SwingUtilities.isRightMouseButton(e) && isForward == true) {
+						// remove detail (image)
+						UI.show_detail_panel.removeAll();
+						// add detail (text)
+						UI.show_detail_label.setText(DetailReader.getDetail(".\\.\\resources\\card\\role\\"+roleName+".txt"));
+					}
+					// left click
+					else if(SwingUtilities.isLeftMouseButton(e)) {
+						// TODO
+					}
 					UI.mp.repaint();
 				}
 			});
@@ -925,10 +1254,11 @@ public class CardMaker {
 			UI.player_E_role.addMouseListener(new MouseAdapter() {
 				public void mouseEntered(MouseEvent e) {
 					// add border painting
-					UI.player_E_role.setBorder(BorderFactory.createLineBorder(Color.WHITE, 2));
-					// isForward == true, show details
+					UI.player_E_role.setBorder(BorderFactory.createLineBorder(Color.GREEN, 2));
+					// isForward == true, show detail (image)
 					if(isForward == true) {
-						UI.show_detail_panel.setText(DetailReader.getDetail(".\\.\\resources\\card\\role\\"+roleName+".txt"));
+						try {UI.show_detail_panel.add(new JLabel(new ImageIcon(ImageIO.read(new File
+								(".\\.\\resources\\card\\role\\"+roleName+"_155.png")))));} catch (IOException e1) {}
 					}
 					UI.mp.repaint();
 				}
@@ -936,7 +1266,22 @@ public class CardMaker {
 					// remove border painting
 					UI.player_E_role.setBorder(null);
 					// remove details
-					UI.show_detail_panel.setText(null);
+					UI.show_detail_panel.removeAll();
+					UI.show_detail_label.setText(null);
+					UI.mp.repaint();
+				}
+				public void mouseClicked(MouseEvent e) {
+					// right click
+					if(SwingUtilities.isRightMouseButton(e) && isForward == true) {
+						// remove detail (image)
+						UI.show_detail_panel.removeAll();
+						// add detail (text)
+						UI.show_detail_label.setText(DetailReader.getDetail(".\\.\\resources\\card\\role\\"+roleName+".txt"));
+					}
+					// left click
+					else if(SwingUtilities.isLeftMouseButton(e)) {
+						// TODO
+					}
 					UI.mp.repaint();
 				}
 			});
@@ -980,10 +1325,11 @@ public class CardMaker {
 			UI.player_F_role.addMouseListener(new MouseAdapter() {
 				public void mouseEntered(MouseEvent e) {
 					// add border painting
-					UI.player_F_role.setBorder(BorderFactory.createLineBorder(Color.WHITE, 2));
-					// isForward == true, show details
+					UI.player_F_role.setBorder(BorderFactory.createLineBorder(Color.GREEN, 2));
+					// isForward == true, show detail (image)
 					if(isForward == true) {
-						UI.show_detail_panel.setText(DetailReader.getDetail(".\\.\\resources\\card\\role\\"+roleName+".txt"));
+						try {UI.show_detail_panel.add(new JLabel(new ImageIcon(ImageIO.read(new File
+								(".\\.\\resources\\card\\role\\"+roleName+"_155.png")))));} catch (IOException e1) {}
 					}
 					UI.mp.repaint();
 				}
@@ -991,7 +1337,22 @@ public class CardMaker {
 					// add border painting
 					UI.player_F_role.setBorder(null);
 					// remove details
-					UI.show_detail_panel.setText(null);
+					UI.show_detail_panel.removeAll();
+					UI.show_detail_label.setText(null);
+					UI.mp.repaint();
+				}
+				public void mouseClicked(MouseEvent e) {
+					// right click
+					if(SwingUtilities.isRightMouseButton(e) && isForward == true) {
+						// remove detail (image)
+						UI.show_detail_panel.removeAll();
+						// add detail (text)
+						UI.show_detail_label.setText(DetailReader.getDetail(".\\.\\resources\\card\\role\\"+roleName+".txt"));
+					}
+					// left click
+					else if(SwingUtilities.isLeftMouseButton(e)) {
+						// TODO
+					}
 					UI.mp.repaint();
 				}
 			});
@@ -1035,10 +1396,11 @@ public class CardMaker {
 			UI.player_G_role.addMouseListener(new MouseAdapter() {
 				public void mouseEntered(MouseEvent e) {
 					// add border painting
-					UI.player_G_role.setBorder(BorderFactory.createLineBorder(Color.WHITE, 2));
-					// isForward == true, show details
+					UI.player_G_role.setBorder(BorderFactory.createLineBorder(Color.GREEN, 2));
+					// isForward == true, show detail (image)
 					if(isForward == true) {
-						UI.show_detail_panel.setText(DetailReader.getDetail(".\\.\\resources\\card\\role\\"+roleName+".txt"));
+						try {UI.show_detail_panel.add(new JLabel(new ImageIcon(ImageIO.read(new File
+								(".\\.\\resources\\card\\role\\"+roleName+"_155.png")))));} catch (IOException e1) {}
 					}
 					UI.mp.repaint();
 				}
@@ -1046,7 +1408,22 @@ public class CardMaker {
 					// remove border painting
 					UI.player_G_role.setBorder(null);
 					// remove details
-					UI.show_detail_panel.setText(null);
+					UI.show_detail_panel.removeAll();
+					UI.show_detail_label.setText(null);
+					UI.mp.repaint();
+				}
+				public void mouseClicked(MouseEvent e) {
+					// right click
+					if(SwingUtilities.isRightMouseButton(e) && isForward == true) {
+						// remove detail (image)
+						UI.show_detail_panel.removeAll();
+						// add detail (text)
+						UI.show_detail_label.setText(DetailReader.getDetail(".\\.\\resources\\card\\role\\"+roleName+".txt"));
+					}
+					// left click
+					else if(SwingUtilities.isLeftMouseButton(e)) {
+						// TODO
+					}
 					UI.mp.repaint();
 				}
 			});
@@ -1079,16 +1456,32 @@ public class CardMaker {
 			UI.player_A_character.addMouseListener(new MouseAdapter() {
 				public void mouseEntered(MouseEvent e) {
 					// add border painting
-					UI.player_A_character.setBorder(BorderFactory.createLineBorder(Color.WHITE, 2));
-					// show details
-					UI.show_detail_panel.setText(DetailReader.getDetail(".\\.\\resources\\card\\character\\"+cardPack+"\\"+cardName+".txt"));
+					UI.player_A_character.setBorder(BorderFactory.createLineBorder(Color.GREEN, 2));
+					// show detail (image)
+					try {UI.show_detail_panel.add(new JLabel(new ImageIcon(ImageIO.read(new File
+							(".\\.\\resources\\card\\character\\"+cardPack+"\\"+cardName+"_155.png")))));} catch (IOException e1) {}
 					UI.mp.repaint();
 				}
 				public void mouseExited(MouseEvent e) {
 					// remove border painting
 					UI.player_A_character.setBorder(null);
 					// remove details
-					UI.show_detail_panel.setText(null);
+					UI.show_detail_panel.removeAll();
+					UI.show_detail_label.setText(null);
+					UI.mp.repaint();
+				}
+				public void mouseClicked(MouseEvent e) {
+					// right click
+					if(SwingUtilities.isRightMouseButton(e)) {
+						// remove detail (image)
+						UI.show_detail_panel.removeAll();
+						// add detail (text)
+						UI.show_detail_label.setText(DetailReader.getDetail(".\\.\\resources\\card\\character\\"+cardPack+"\\"+cardName+".txt"));
+					}
+					// left click
+					else if(SwingUtilities.isLeftMouseButton(e)) {
+						// TODO
+					}
 					UI.mp.repaint();
 				}
 			});
@@ -1115,16 +1508,32 @@ public class CardMaker {
 			UI.player_B_character.addMouseListener(new MouseAdapter() {
 				public void mouseEntered(MouseEvent e) {
 					// add border painting
-					UI.player_B_character.setBorder(BorderFactory.createLineBorder(Color.WHITE, 2));
-					// show details
-					UI.show_detail_panel.setText(DetailReader.getDetail(".\\.\\resources\\card\\character\\"+cardPack+"\\"+cardName+".txt"));
+					UI.player_B_character.setBorder(BorderFactory.createLineBorder(Color.GREEN, 2));
+					// show detail (image)
+					try {UI.show_detail_panel.add(new JLabel(new ImageIcon(ImageIO.read(new File
+							(".\\.\\resources\\card\\character\\"+cardPack+"\\"+cardName+"_155.png")))));} catch (IOException e1) {}
 					UI.mp.repaint();
 				}
 				public void mouseExited(MouseEvent e) {
 					// remove border painting
 					UI.player_B_character.setBorder(null);
 					// remove details
-					UI.show_detail_panel.setText(null);
+					UI.show_detail_panel.removeAll();
+					UI.show_detail_label.setText(null);
+					UI.mp.repaint();
+				}
+				public void mouseClicked(MouseEvent e) {
+					// right click
+					if(SwingUtilities.isRightMouseButton(e)) {
+						// remove detail (image)
+						UI.show_detail_panel.removeAll();
+						// add detail (text)
+						UI.show_detail_label.setText(DetailReader.getDetail(".\\.\\resources\\card\\character\\"+cardPack+"\\"+cardName+".txt"));
+					}
+					// left click
+					else if(SwingUtilities.isLeftMouseButton(e)) {
+						// TODO
+					}
 					UI.mp.repaint();
 				}
 			});
@@ -1151,16 +1560,32 @@ public class CardMaker {
 			UI.player_C_character.addMouseListener(new MouseAdapter() {
 				public void mouseEntered(MouseEvent e) {
 					// add border painting
-					UI.player_C_character.setBorder(BorderFactory.createLineBorder(Color.WHITE, 2));
-					// show details
-					UI.show_detail_panel.setText(DetailReader.getDetail(".\\.\\resources\\card\\character\\"+cardPack+"\\"+cardName+".txt"));
+					UI.player_C_character.setBorder(BorderFactory.createLineBorder(Color.GREEN, 2));
+					// show detail (image)
+					try {UI.show_detail_panel.add(new JLabel(new ImageIcon(ImageIO.read(new File
+							(".\\.\\resources\\card\\character\\"+cardPack+"\\"+cardName+"_155.png")))));} catch (IOException e1) {}
 					UI.mp.repaint();
 				}
 				public void mouseExited(MouseEvent e) {
 					// remove border painting
 					UI.player_C_character.setBorder(null);
 					// remove details
-					UI.show_detail_panel.setText(null);
+					UI.show_detail_panel.removeAll();
+					UI.show_detail_label.setText(null);
+					UI.mp.repaint();
+				}
+				public void mouseClicked(MouseEvent e) {
+					// right click
+					if(SwingUtilities.isRightMouseButton(e)) {
+						// remove detail (image)
+						UI.show_detail_panel.removeAll();
+						// add detail (text)
+						UI.show_detail_label.setText(DetailReader.getDetail(".\\.\\resources\\card\\character\\"+cardPack+"\\"+cardName+".txt"));
+					}
+					// left click
+					else if(SwingUtilities.isLeftMouseButton(e)) {
+						// TODO
+					}
 					UI.mp.repaint();
 				}
 			});
@@ -1187,16 +1612,32 @@ public class CardMaker {
 			UI.player_D_character.addMouseListener(new MouseAdapter() {
 				public void mouseEntered(MouseEvent e) {
 					// add border painting
-					UI.player_D_character.setBorder(BorderFactory.createLineBorder(Color.WHITE, 2));
-					// show details
-					UI.show_detail_panel.setText(DetailReader.getDetail(".\\.\\resources\\card\\character\\"+cardPack+"\\"+cardName+".txt"));
+					UI.player_D_character.setBorder(BorderFactory.createLineBorder(Color.GREEN, 2));
+					// show detail (image)
+					try {UI.show_detail_panel.add(new JLabel(new ImageIcon(ImageIO.read(new File
+							(".\\.\\resources\\card\\character\\"+cardPack+"\\"+cardName+"_155.png")))));} catch (IOException e1) {}
 					UI.mp.repaint();
 				}
 				public void mouseExited(MouseEvent e) {
 					// remove border painting
 					UI.player_D_character.setBorder(null);
 					// remove details
-					UI.show_detail_panel.setText(null);
+					UI.show_detail_panel.removeAll();
+					UI.show_detail_label.setText(null);
+					UI.mp.repaint();
+				}
+				public void mouseClicked(MouseEvent e) {
+					// right click
+					if(SwingUtilities.isRightMouseButton(e)) {
+						// remove detail (image)
+						UI.show_detail_panel.removeAll();
+						// add detail (text)
+						UI.show_detail_label.setText(DetailReader.getDetail(".\\.\\resources\\card\\character\\"+cardPack+"\\"+cardName+".txt"));
+					}
+					// left click
+					else if(SwingUtilities.isLeftMouseButton(e)) {
+						// TODO
+					}
 					UI.mp.repaint();
 				}
 			});
@@ -1223,16 +1664,32 @@ public class CardMaker {
 			UI.player_E_character.addMouseListener(new MouseAdapter() {
 				public void mouseEntered(MouseEvent e) {
 					// add border painting
-					UI.player_E_character.setBorder(BorderFactory.createLineBorder(Color.WHITE, 2));
-					// show details
-					UI.show_detail_panel.setText(DetailReader.getDetail(".\\.\\resources\\card\\character\\"+cardPack+"\\"+cardName+".txt"));
+					UI.player_E_character.setBorder(BorderFactory.createLineBorder(Color.GREEN, 2));
+					// show detail (image)
+					try {UI.show_detail_panel.add(new JLabel(new ImageIcon(ImageIO.read(new File
+							(".\\.\\resources\\card\\character\\"+cardPack+"\\"+cardName+"_155.png")))));} catch (IOException e1) {}
 					UI.mp.repaint();
 				}
 				public void mouseExited(MouseEvent e) {
 					// remove border painting
 					UI.player_E_character.setBorder(null);
 					// remove details
-					UI.show_detail_panel.setText(null);
+					UI.show_detail_panel.removeAll();
+					UI.show_detail_label.setText(null);
+					UI.mp.repaint();
+				}
+				public void mouseClicked(MouseEvent e) {
+					// right click
+					if(SwingUtilities.isRightMouseButton(e)) {
+						// remove detail (image)
+						UI.show_detail_panel.removeAll();
+						// add detail (text)
+						UI.show_detail_label.setText(DetailReader.getDetail(".\\.\\resources\\card\\character\\"+cardPack+"\\"+cardName+".txt"));
+					}
+					// left click
+					else if(SwingUtilities.isLeftMouseButton(e)) {
+						// TODO
+					}
 					UI.mp.repaint();
 				}
 			});
@@ -1259,16 +1716,32 @@ public class CardMaker {
 			UI.player_F_character.addMouseListener(new MouseAdapter() {
 				public void mouseEntered(MouseEvent e) {
 					// add border painting
-					UI.player_F_character.setBorder(BorderFactory.createLineBorder(Color.WHITE, 2));
-					// show details
-					UI.show_detail_panel.setText(DetailReader.getDetail(".\\.\\resources\\card\\character\\"+cardPack+"\\"+cardName+".txt"));
+					UI.player_F_character.setBorder(BorderFactory.createLineBorder(Color.GREEN, 2));
+					// show detail (image)
+					try {UI.show_detail_panel.add(new JLabel(new ImageIcon(ImageIO.read(new File
+							(".\\.\\resources\\card\\character\\"+cardPack+"\\"+cardName+"_155.png")))));} catch (IOException e1) {}
 					UI.mp.repaint();
 				}
 				public void mouseExited(MouseEvent e) {
 					// remove border painting
 					UI.player_F_character.setBorder(null);
 					// remove details
-					UI.show_detail_panel.setText(null);
+					UI.show_detail_panel.removeAll();
+					UI.show_detail_label.setText(null);
+					UI.mp.repaint();
+				}
+				public void mouseClicked(MouseEvent e) {
+					// right click
+					if(SwingUtilities.isRightMouseButton(e)) {
+						// remove detail (image)
+						UI.show_detail_panel.removeAll();
+						// add detail (text)
+						UI.show_detail_label.setText(DetailReader.getDetail(".\\.\\resources\\card\\character\\"+cardPack+"\\"+cardName+".txt"));
+					}
+					// left click
+					else if(SwingUtilities.isLeftMouseButton(e)) {
+						// TODO
+					}
 					UI.mp.repaint();
 				}
 			});
@@ -1295,16 +1768,32 @@ public class CardMaker {
 			UI.player_G_character.addMouseListener(new MouseAdapter() {
 				public void mouseEntered(MouseEvent e) {
 					// add border painting
-					UI.player_G_character.setBorder(BorderFactory.createLineBorder(Color.WHITE, 2));
-					// show details
-					UI.show_detail_panel.setText(DetailReader.getDetail(".\\.\\resources\\card\\character\\"+cardPack+"\\"+cardName+".txt"));
+					UI.player_G_character.setBorder(BorderFactory.createLineBorder(Color.GREEN, 2));
+					// show detail (image)
+					try {UI.show_detail_panel.add(new JLabel(new ImageIcon(ImageIO.read(new File
+							(".\\.\\resources\\card\\character\\"+cardPack+"\\"+cardName+"_155.png")))));} catch (IOException e1) {}
 					UI.mp.repaint();
 				}
 				public void mouseExited(MouseEvent e) {
 					// remove border painting
 					UI.player_G_character.setBorder(null);
 					// remove details
-					UI.show_detail_panel.setText(null);
+					UI.show_detail_panel.removeAll();
+					UI.show_detail_label.setText(null);
+					UI.mp.repaint();
+				}
+				public void mouseClicked(MouseEvent e) {
+					// right click
+					if(SwingUtilities.isRightMouseButton(e)) {
+						// remove detail (image)
+						UI.show_detail_panel.removeAll();
+						// add detail (text)
+						UI.show_detail_label.setText(DetailReader.getDetail(".\\.\\resources\\card\\character\\"+cardPack+"\\"+cardName+".txt"));
+					}
+					// left click
+					else if(SwingUtilities.isLeftMouseButton(e)) {
+						// TODO
+					}
 					UI.mp.repaint();
 				}
 			});
@@ -1317,7 +1806,7 @@ public class CardMaker {
 	// make hand & field card button (playing card)
 	public static Select_button make_card_handField_playing(String id, String cardColor, String cardName, char cardShape, int cardNum, boolean isForward) {
 		// temp card button
-		Select_button temp_card = null;
+		Select_button temp_card = new Select_button();
 		
 		// id = player_A hand & field
 		if(UI.player_A_name.getText().equals(id)) {
@@ -1349,34 +1838,38 @@ public class CardMaker {
 			temp_card.setPreferredSize(new Dimension(87,135));
 			// set border null
 			temp_card.setBorder(null);
-			// set show
-			JPanel show = new JPanel() {
-				private static final long serialVersionUID = 1L;
-				Image background = new ImageIcon(".\\.\\resources\\card\\playing\\"+cardColor+"\\"+cardName+"_"+cardShape+"_"+cardNum+"_155.png").getImage();
-				// drawing background
-				protected void paintComponent(Graphics g) {
-					g.drawImage(background, 0, 0, null);
-				}
-			};
 			// set mouse listener
 			temp_card.addMouseListener(new MouseAdapter() {
 				public void mouseEntered(MouseEvent e) {
-					// only card is open, show details
+					// border painting
+					((Select_button)e.getComponent()).setBorder(BorderFactory.createLineBorder(Color.GREEN,2));
+					// only card is open, show detail (image)
 					if(isForward == true) {
-						show.setBounds(1730,690,155,240);
-						UI.mp.add(show);	
+						try {UI.show_detail_panel.add(new JLabel(new ImageIcon(ImageIO.read(new File
+								(".\\.\\resources\\card\\playing\\"+cardColor+"\\"+cardName+"_"+cardShape+"_"+cardNum+"_155.png")))));} catch (IOException e1) {}
 					}
-					// card up
-					Select_button this_card = (Select_button)e.getComponent();
-					e.getComponent().setBounds(this_card.getX(), this_card.getY()-30, this_card.getWidth(), this_card.getHeight());
 					UI.mp.repaint();
 				}
 				public void mouseExited(MouseEvent e) {
+					// remove border
+					((Select_button)e.getComponent()).setBorder(null);
 					// remove details
-					UI.mp.remove(show);
-					// card down
-					Select_button this_card = (Select_button)e.getComponent();
-					e.getComponent().setBounds(this_card.getX(), this_card.getY()+30, this_card.getWidth(), this_card.getHeight());
+					UI.show_detail_panel.removeAll();
+					UI.show_detail_label.setText(null);
+					UI.mp.repaint();
+				}
+				public void mouseClicked(MouseEvent e) {
+					// right click
+					if(SwingUtilities.isRightMouseButton(e) && isForward == true) {
+						// remove detail (image)
+						UI.show_detail_panel.removeAll();
+						// add detail (text)
+						UI.show_detail_label.setText(DetailReader.getDetail(".\\.\\resources\\card\\playing\\"+cardColor+"\\"+cardName+"_"+cardShape+"_"+cardNum+".txt"));
+					}
+					// left click
+					else if(SwingUtilities.isLeftMouseButton(e)) {
+						// TODO
+					}
 					UI.mp.repaint();
 				}
 			});
@@ -1412,34 +1905,38 @@ public class CardMaker {
 			temp_card.setPreferredSize(new Dimension(70,108));
 			// set border null
 			temp_card.setBorder(null);
-			// set show
-			JPanel show = new JPanel() {
-				private static final long serialVersionUID = 1L;
-				Image background = new ImageIcon(".\\.\\resources\\card\\playing\\"+cardColor+"\\"+cardName+"_"+cardShape+"_"+cardNum+"_155.png").getImage();
-				// drawing background
-				protected void paintComponent(Graphics g) {
-					g.drawImage(background, 0, 0, null);
-				}
-			};
 			// set mouse listener
 			temp_card.addMouseListener(new MouseAdapter() {
 				public void mouseEntered(MouseEvent e) {
-					// only card is open, show details
+					// border painting
+					((Select_button)e.getComponent()).setBorder(BorderFactory.createLineBorder(Color.GREEN,2));
+					// only card is open, show detail (image)
 					if(isForward == true) {
-						show.setBounds(1730,690,155,240);
-						UI.mp.add(show);	
+						try {UI.show_detail_panel.add(new JLabel(new ImageIcon(ImageIO.read(new File
+							(".\\.\\resources\\card\\playing\\"+cardColor+"\\"+cardName+"_"+cardShape+"_"+cardNum+"_155.png")))));} catch (IOException e1) {}
 					}
-					// card up
-					Select_button this_card = (Select_button)e.getComponent();
-					e.getComponent().setBounds(this_card.getX(), this_card.getY()-20, this_card.getWidth(), this_card.getHeight());
 					UI.mp.repaint();
 				}
 				public void mouseExited(MouseEvent e) {
+					// remove border
+					((Select_button)e.getComponent()).setBorder(null);
 					// remove details
-					UI.mp.remove(show);
-					// card down
-					Select_button this_card = (Select_button)e.getComponent();
-					e.getComponent().setBounds(this_card.getX(), this_card.getY()+20, this_card.getWidth(), this_card.getHeight());
+					UI.show_detail_panel.removeAll();
+					UI.show_detail_label.setText(null);
+					UI.mp.repaint();
+				}
+				public void mouseClicked(MouseEvent e) {
+					// right click
+					if(SwingUtilities.isRightMouseButton(e) && isForward == true) {
+						// remove detail (image)
+						UI.show_detail_panel.removeAll();
+						// add detail (text)
+						UI.show_detail_label.setText(DetailReader.getDetail(".\\.\\resources\\card\\playing\\"+cardColor+"\\"+cardName+"_"+cardShape+"_"+cardNum+".txt"));
+					}
+					// left click
+					else if(SwingUtilities.isLeftMouseButton(e)) {
+						// TODO
+					}
 					UI.mp.repaint();
 				}
 			});
@@ -1475,34 +1972,38 @@ public class CardMaker {
 			temp_card.setPreferredSize(new Dimension(108,70));
 			// set border null
 			temp_card.setBorder(null);
-			// set show
-			JPanel show = new JPanel() {
-				private static final long serialVersionUID = 1L;
-				Image background = new ImageIcon(".\\.\\resources\\card\\playing\\"+cardColor+"\\"+cardName+"_"+cardShape+"_"+cardNum+"_155.png").getImage();
-				// drawing background
-				protected void paintComponent(Graphics g) {
-					g.drawImage(background, 0, 0, null);
-				}
-			};
 			// set mouse listener
 			temp_card.addMouseListener(new MouseAdapter() {
 				public void mouseEntered(MouseEvent e) {
-					// only card is open, show details
+					// border painting
+					((Select_button)e.getComponent()).setBorder(BorderFactory.createLineBorder(Color.GREEN,2));
+					// only card is open, show detail (image)
 					if(isForward == true) {
-						show.setBounds(1730,690,155,240);
-						UI.mp.add(show);	
+						try {UI.show_detail_panel.add(new JLabel(new ImageIcon(ImageIO.read(new File
+								(".\\.\\resources\\card\\playing\\"+cardColor+"\\"+cardName+"_"+cardShape+"_"+cardNum+"_155.png")))));} catch (IOException e1) {}
 					}
-					// card up
-					Select_button this_card = (Select_button)e.getComponent();
-					e.getComponent().setBounds(this_card.getX()+20, this_card.getY(), this_card.getWidth(), this_card.getHeight());
 					UI.mp.repaint();
 				}
 				public void mouseExited(MouseEvent e) {
+					// remove border
+					((Select_button)e.getComponent()).setBorder(null);
 					// remove details
-					UI.mp.remove(show);
-					// card down
-					Select_button this_card = (Select_button)e.getComponent();
-					e.getComponent().setBounds(this_card.getX()-20, this_card.getY(), this_card.getWidth(), this_card.getHeight());
+					UI.show_detail_panel.removeAll();
+					UI.show_detail_label.setText(null);
+					UI.mp.repaint();
+				}
+				public void mouseClicked(MouseEvent e) {
+					// right click
+					if(SwingUtilities.isRightMouseButton(e) && isForward == true) {
+						// remove detail (image)
+						UI.show_detail_panel.removeAll();
+						// add detail (text)
+						UI.show_detail_label.setText(DetailReader.getDetail(".\\.\\resources\\card\\playing\\"+cardColor+"\\"+cardName+"_"+cardShape+"_"+cardNum+".txt"));
+					}
+					// left click
+					else if(SwingUtilities.isLeftMouseButton(e)) {
+						// TODO
+					}
 					UI.mp.repaint();
 				}
 			});
@@ -1538,34 +2039,38 @@ public class CardMaker {
 			temp_card.setPreferredSize(new Dimension(70,108));
 			// set border null
 			temp_card.setBorder(null);
-			// set show
-			JPanel show = new JPanel() {
-				private static final long serialVersionUID = 1L;
-				Image background = new ImageIcon(".\\.\\resources\\card\\playing\\"+cardColor+"\\"+cardName+"_"+cardShape+"_"+cardNum+"_155.png").getImage();
-				// drawing background
-				protected void paintComponent(Graphics g) {
-					g.drawImage(background, 0, 0, null);
-				}
-			};
 			// set mouse listener
 			temp_card.addMouseListener(new MouseAdapter() {
 				public void mouseEntered(MouseEvent e) {
-					// only card is open, show details
+					// border painting
+					((Select_button)e.getComponent()).setBorder(BorderFactory.createLineBorder(Color.GREEN,2));
+					// only card is open, show detail (image)
 					if(isForward == true) {
-						show.setBounds(1730,690,155,240);
-						UI.mp.add(show);	
+						try {UI.show_detail_panel.add(new JLabel(new ImageIcon(ImageIO.read(new File
+								(".\\.\\resources\\card\\playing\\"+cardColor+"\\"+cardName+"_"+cardShape+"_"+cardNum+"_155.png")))));} catch (IOException e1) {}
 					}
-					// card up
-					Select_button this_card = (Select_button)e.getComponent();
-					e.getComponent().setBounds(this_card.getX(), this_card.getY()+20, this_card.getWidth(), this_card.getHeight());
 					UI.mp.repaint();
 				}
 				public void mouseExited(MouseEvent e) {
+					// remove border
+					((Select_button)e.getComponent()).setBorder(null);
 					// remove details
-					UI.mp.remove(show);
-					// card down
-					Select_button this_card = (Select_button)e.getComponent();
-					e.getComponent().setBounds(this_card.getX(), this_card.getY()-20, this_card.getWidth(), this_card.getHeight());
+					UI.show_detail_panel.removeAll();
+					UI.show_detail_label.setText(null);
+					UI.mp.repaint();
+				}
+				public void mouseClicked(MouseEvent e) {
+					// right click
+					if(SwingUtilities.isRightMouseButton(e) && isForward == true) {
+						// remove detail (image)
+						UI.show_detail_panel.removeAll();
+						// add detail (text)
+						UI.show_detail_label.setText(DetailReader.getDetail(".\\.\\resources\\card\\playing\\"+cardColor+"\\"+cardName+"_"+cardShape+"_"+cardNum+".txt"));
+					}
+					// left click
+					else if(SwingUtilities.isLeftMouseButton(e)) {
+						// TODO
+					}
 					UI.mp.repaint();
 				}
 			});
@@ -1601,34 +2106,38 @@ public class CardMaker {
 			temp_card.setPreferredSize(new Dimension(70,108));
 			// set border null
 			temp_card.setBorder(null);
-			// set show
-			JPanel show = new JPanel() {
-				private static final long serialVersionUID = 1L;
-				Image background = new ImageIcon(".\\.\\resources\\card\\playing\\"+cardColor+"\\"+cardName+"_"+cardShape+"_"+cardNum+"_155.png").getImage();
-				// drawing background
-				protected void paintComponent(Graphics g) {
-					g.drawImage(background, 0, 0, null);
-				}
-			};
 			// set mouse listener
 			temp_card.addMouseListener(new MouseAdapter() {
 				public void mouseEntered(MouseEvent e) {
-					// only card is open, show details
+					// border painting
+					((Select_button)e.getComponent()).setBorder(BorderFactory.createLineBorder(Color.GREEN,2));
+					// only card is open, show detail (image)
 					if(isForward == true) {
-						show.setBounds(1730,690,155,240);
-						UI.mp.add(show);	
+						try {UI.show_detail_panel.add(new JLabel(new ImageIcon(ImageIO.read(new File
+								(".\\.\\resources\\card\\playing\\"+cardColor+"\\"+cardName+"_"+cardShape+"_"+cardNum+"_155.png")))));} catch (IOException e1) {}
 					}
-					// card up
-					Select_button this_card = (Select_button)e.getComponent();
-					e.getComponent().setBounds(this_card.getX(), this_card.getY()+20, this_card.getWidth(), this_card.getHeight());
 					UI.mp.repaint();
 				}
 				public void mouseExited(MouseEvent e) {
+					// remove border
+					((Select_button)e.getComponent()).setBorder(null);
 					// remove details
-					UI.mp.remove(show);
-					// card down
-					Select_button this_card = (Select_button)e.getComponent();
-					e.getComponent().setBounds(this_card.getX(), this_card.getY()-20, this_card.getWidth(), this_card.getHeight());
+					UI.show_detail_panel.removeAll();
+					UI.show_detail_label.setText(null);
+					UI.mp.repaint();
+				}
+				public void mouseClicked(MouseEvent e) {
+					// right click
+					if(SwingUtilities.isRightMouseButton(e) && isForward == true) {
+						// remove detail (image)
+						UI.show_detail_panel.removeAll();
+						// add detail (text)
+						UI.show_detail_label.setText(DetailReader.getDetail(".\\.\\resources\\card\\playing\\"+cardColor+"\\"+cardName+"_"+cardShape+"_"+cardNum+".txt"));
+					}
+					// left click
+					else if(SwingUtilities.isLeftMouseButton(e)) {
+						// TODO
+					}
 					UI.mp.repaint();
 				}
 			});
@@ -1664,34 +2173,38 @@ public class CardMaker {
 			temp_card.setPreferredSize(new Dimension(108,70));
 			// set border null
 			temp_card.setBorder(null);
-			// set show
-			JPanel show = new JPanel() {
-				private static final long serialVersionUID = 1L;
-				Image background = new ImageIcon(".\\.\\resources\\card\\playing\\"+cardColor+"\\"+cardName+"_"+cardShape+"_"+cardNum+"_155.png").getImage();
-				// drawing background
-				protected void paintComponent(Graphics g) {
-					g.drawImage(background, 0, 0, null);
-				}
-			};
 			// set mouse listener
 			temp_card.addMouseListener(new MouseAdapter() {
 				public void mouseEntered(MouseEvent e) {
-					// only card is open, show details
+					// border painting
+					((Select_button)e.getComponent()).setBorder(BorderFactory.createLineBorder(Color.GREEN,2));
+					// only card is open, show detail (image)
 					if(isForward == true) {
-						show.setBounds(1730,690,155,240);
-						UI.mp.add(show);	
+						try {UI.show_detail_panel.add(new JLabel(new ImageIcon(ImageIO.read(new File
+								(".\\.\\resources\\card\\playing\\"+cardColor+"\\"+cardName+"_"+cardShape+"_"+cardNum+"_155.png")))));} catch (IOException e1) {}
 					}
-					// card up
-					Select_button this_card = (Select_button)e.getComponent();
-					e.getComponent().setBounds(this_card.getX()-20, this_card.getY(), this_card.getWidth(), this_card.getHeight());
 					UI.mp.repaint();
 				}
 				public void mouseExited(MouseEvent e) {
+					// remove border
+					((Select_button)e.getComponent()).setBorder(null);
 					// remove details
-					UI.mp.remove(show);
-					// card down
-					Select_button this_card = (Select_button)e.getComponent();
-					e.getComponent().setBounds(this_card.getX()+20, this_card.getY(), this_card.getWidth(), this_card.getHeight());
+					UI.show_detail_panel.removeAll();
+					UI.show_detail_label.setText(null);
+					UI.mp.repaint();
+				}
+				public void mouseClicked(MouseEvent e) {
+					// right click
+					if(SwingUtilities.isRightMouseButton(e) && isForward == true) {
+						// remove detail (image)
+						UI.show_detail_panel.removeAll();
+						// add detail (text)
+						UI.show_detail_label.setText(DetailReader.getDetail(".\\.\\resources\\card\\playing\\"+cardColor+"\\"+cardName+"_"+cardShape+"_"+cardNum+".txt"));
+					}
+					// left click
+					else if(SwingUtilities.isLeftMouseButton(e)) {
+						// TODO
+					}
 					UI.mp.repaint();
 				}
 			});
@@ -1727,34 +2240,38 @@ public class CardMaker {
 			temp_card.setPreferredSize(new Dimension(70,108));
 			// set border null
 			temp_card.setBorder(null);
-			// set show
-			JPanel show = new JPanel() {
-				private static final long serialVersionUID = 1L;
-				Image background = new ImageIcon(".\\.\\resources\\card\\playing\\"+cardColor+"\\"+cardName+"_"+cardShape+"_"+cardNum+"_155.png").getImage();
-				// drawing background
-				protected void paintComponent(Graphics g) {
-					g.drawImage(background, 0, 0, null);
-				}
-			};
 			// set mouse listener
 			temp_card.addMouseListener(new MouseAdapter() {
 				public void mouseEntered(MouseEvent e) {
-					// only card is open, show details
+					// border painting
+					((Select_button)e.getComponent()).setBorder(BorderFactory.createLineBorder(Color.GREEN,2));
+					// only card is open, show detail (image)
 					if(isForward == true) {
-						show.setBounds(1730,690,155,240);
-						UI.mp.add(show);	
+						try {UI.show_detail_panel.add(new JLabel(new ImageIcon(ImageIO.read(new File
+								(".\\.\\resources\\card\\playing\\"+cardColor+"\\"+cardName+"_"+cardShape+"_"+cardNum+"_155.png")))));} catch (IOException e1) {}
 					}
-					// card up
-					Select_button this_card = (Select_button)e.getComponent();
-					e.getComponent().setBounds(this_card.getX(), this_card.getY()-20, this_card.getWidth(), this_card.getHeight());
 					UI.mp.repaint();
 				}
 				public void mouseExited(MouseEvent e) {
+					// remove border
+					((Select_button)e.getComponent()).setBorder(null);
 					// remove details
-					UI.mp.remove(show);
-					// card down
-					Select_button this_card = (Select_button)e.getComponent();
-					e.getComponent().setBounds(this_card.getX(), this_card.getY()+20, this_card.getWidth(), this_card.getHeight());
+					UI.show_detail_panel.removeAll();
+					UI.show_detail_label.setText(null);
+					UI.mp.repaint();
+				}
+				public void mouseClicked(MouseEvent e) {
+					// right click
+					if(SwingUtilities.isRightMouseButton(e) && isForward == true) {
+						// remove detail (image)
+						UI.show_detail_panel.removeAll();
+						// add detail (text)
+						UI.show_detail_label.setText(DetailReader.getDetail(".\\.\\resources\\card\\playing\\"+cardColor+"\\"+cardName+"_"+cardShape+"_"+cardNum+".txt"));
+					}
+					// left click
+					else if(SwingUtilities.isLeftMouseButton(e)) {
+						// TODO
+					}
 					UI.mp.repaint();
 				}
 			});
@@ -1813,11 +2330,11 @@ public class CardMaker {
 			}
 			public void mouseEntered(MouseEvent e) {
 				// show details
-				UI.show_detail_panel.setText(DetailReader.getDetail(".\\.\\resources\\card\\character\\"+cardPack+"\\"+cardName+".txt"));
+				UI.show_detail_label.setText(DetailReader.getDetail(".\\.\\resources\\card\\character\\"+cardPack+"\\"+cardName+".txt"));
 			}
 			public void mouseExited(MouseEvent e) {
 				// remove details
-				UI.show_detail_panel.setText(null);
+				UI.show_detail_label.setText(null);
 			}
 		});
 		
@@ -1846,7 +2363,7 @@ public class CardMaker {
 				UI.select_chance--;
 				os.println("game/SELECT/CHARACTER/"+myName+"/"+cardPack+"/"+cardName);
 				// set text in show_detail_panel
-				UI.show_detail_panel.setText(DetailReader.getDetail(".\\.\\resources\\card\\character\\"+cardPack+"\\"+cardName+".txt"));
+				UI.show_detail_label.setText(DetailReader.getDetail(".\\.\\resources\\card\\character\\"+cardPack+"\\"+cardName+".txt"));
 				// change image
 				select_temp_card.setIcon(new ImageIcon(".\\.\\resources\\card\\character\\"+cardPack+"\\"+cardName+"_155.png"));
 				// highlighting my choice
@@ -1890,7 +2407,7 @@ public class CardMaker {
 				UI.select_chance--; 
 				os.println("game/SELECT/ROLE/"+myName+"/"+cardName+"/"+cardNum);
 				// set text in show_detail_panel
-				UI.show_detail_panel.setText(DetailReader.getDetail(".\\.\\resources\\card\\role\\"+cardName+".txt"));
+				UI.show_detail_label.setText(DetailReader.getDetail(".\\.\\resources\\card\\role\\"+cardName+".txt"));
 				// change image
 				select_temp_card.setIcon(new ImageIcon(".\\.\\resources\\card\\role\\"+cardName+"_155.png"));
 				// highlighting my choice
@@ -1934,11 +2451,11 @@ public class CardMaker {
 			}
 			public void mouseEntered(MouseEvent e) {
 				// show details
-				UI.show_detail_panel.setText(DetailReader.getDetail(".\\.\\resources\\card\\scenario\\"+extension+"\\"+cardName+".txt"));
+				UI.show_detail_label.setText(DetailReader.getDetail(".\\.\\resources\\card\\scenario\\"+extension+"\\"+cardName+".txt"));
 			}
 			public void mouseExited(MouseEvent e) {
 				// remove details
-				UI.show_detail_panel.setText(null);
+				UI.show_detail_label.setText(null);
 			}
 		});
 		

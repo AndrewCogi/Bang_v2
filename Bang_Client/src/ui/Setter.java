@@ -827,6 +827,8 @@ public class Setter {
 		UI.mp.add(UI.select_panel_scenario);
 		UI.select_panel_scenario.setVisible(false);
 		// add detail label
+		UI.mp.add(UI.show_detail_label);
+		// add detail panel
 		UI.mp.add(UI.show_detail_panel);
 		// repaint
 		UI.mp.repaint();
