@@ -166,7 +166,7 @@ public class UI {
 		init_show_detail_panel();
 		
 		// test function TODO
-		// test_func();
+		test_func();
 	}
 	
 	// init show detail panel
@@ -918,12 +918,12 @@ public class UI {
 //		
 		// test (직업 선택 완료)
 		CardMaker.make_card_handField_role(player_A_name.getText(), "vice", true);
-		CardMaker.make_card_handField_role(player_B_name.getText(), "sceriffo", true);
-		CardMaker.make_card_handField_role(player_C_name.getText(), "vice", true);
-		CardMaker.make_card_handField_role(player_D_name.getText(), "fuorilegge", true);
-		CardMaker.make_card_handField_role(player_E_name.getText(), "fuorilegge", true);
-		CardMaker.make_card_handField_role(player_F_name.getText(), "fuorilegge", true);
-		CardMaker.make_card_handField_role(player_G_name.getText(), "rinnegato", true);
+		CardMaker.make_card_handField_role(player_B_name.getText(), "sceriffo", false);
+		CardMaker.make_card_handField_role(player_C_name.getText(), "vice", false);
+		CardMaker.make_card_handField_role(player_D_name.getText(), "fuorilegge", false);
+		CardMaker.make_card_handField_role(player_E_name.getText(), "fuorilegge", false);
+		CardMaker.make_card_handField_role(player_F_name.getText(), "fuorilegge", false);
+		CardMaker.make_card_handField_role(player_G_name.getText(), "rinnegato", false);
 		// test (직업 이미지 보이게)
 		Setter.setPlayerRoleImageAvailable(player_A_name.getText(), true);
 		Setter.setPlayerRoleImageAvailable(player_B_name.getText(), true);
@@ -968,11 +968,9 @@ public class UI {
 		Setter.setPlayerCharacterImageAvailable(player_G_name.getText(), true);
 		
 		// test (플레이어 핸드 넣어보기)(A) (max: 11)
-		player_A_hand.add(CardMaker.make_card_handField_playing(player_A_name.getText(), "brown", "bang", 'C', 2, true));
-		player_A_hand.add(CardMaker.make_card_handField_playing(player_A_name.getText(), "brown", "bang", 'C', 2, true));
-		player_A_hand.add(CardMaker.make_card_handField_playing(player_A_name.getText(), "brown", "bang", 'C', 2, true));
-		player_A_hand.add(CardMaker.make_card_handField_playing(player_A_name.getText(), "brown", "bang", 'C', 2, true));
-		player_A_hand.add(CardMaker.make_card_handField_playing(player_A_name.getText(), "brown", "bang", 'C', 2, true));
+		player_A_hand.add(CardMaker.make_card_handField_playing(player_A_name.getText(), "blue", "barile", 'S', 12, true));
+		player_A_hand.add(CardMaker.make_card_handField_playing(player_A_name.getText(), "blue", "barile", 'S', 13, true));
+		player_A_hand.add(CardMaker.make_card_handField_playing(player_A_name.getText(), "brown", "bang", 'S', 1, true));
 		Setter.setPlayerHandImageAvailable(UI.player_A_name.getText(),true);
 		// player_A_hand.setBorder(BorderFactory.createLineBorder(Color.BLACK,3));
 		
