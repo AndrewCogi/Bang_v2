@@ -57,15 +57,18 @@ public class LoginManager{
 				return;
 			}
 
-			// if you here, login success!
+			// send result
+			os.println("login/PLAYERNAME/TRUE/"+server.App.getPw());
+		}
+		// login/PLAYERLOGIN/[playerName]
+		else if(splitCmd[1].equals("PLAYERLOGIN")){
+			String tempName = splitCmd[2];
 			// init
 			this.playerName = tempName;
 			// add playerName into clients
 			server.App.getClients().put(socket,this.playerName);
 			// add os into clientsPrintWriter
 			server.App.getClientsPrintWriter().put(os,playerName);
-			// send result
-			os.println("login/PLAYERNAME/TRUE");
 			DateTime.showTime();
 			System.out.println("[LOGIN SUCCESSED] > PlayerName["+playerName+"] "+socket);
 			// broadcasting

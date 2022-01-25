@@ -9,6 +9,7 @@ import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.HashMap;
+import java.util.Random;
 import java.util.Scanner;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -25,6 +26,7 @@ public class App {
 	private static final int threadPoolNum = 10; // How many threads in pool
 	private static int accessAttempt = 0; // How many times access atteption
 	private static boolean gameStarted = false; // Check game is started
+	private static int pw; //password (6-digits)
 	private static Gm gm; // game dealer
 
 	public static void main(String[] args) throws IOException{
@@ -32,6 +34,7 @@ public class App {
 		sc = new Scanner(System.in);
 		clients = new HashMap<>();
 		clientsPrintWriter = new HashMap<>();
+		pw = make_pw();
 		gm = new Gm();
 
 		// server start
@@ -48,6 +51,9 @@ public class App {
 		// allocate 10 Threads
 		pool = Executors.newFixedThreadPool(threadPoolNum);
 		System.out.println("[System][App] > Make ThreadPools (" + threadPoolNum + ")");
+
+		// show password
+		System.out.println("[System][App] > password is ["+pw+"]");
 
 		// client waiting
 		System.out.println("[System][App] > Waiting for clients...");
@@ -166,5 +172,17 @@ public class App {
 	// get accessAttempt
 	public synchronized static int getAccessAttempt(){
 		return accessAttempt;
+	}
+
+	// get password
+	public static int getPw(){
+		return pw;
+	}
+
+	// making password
+	public static int make_pw(){
+		Random generator = new Random();
+		generator.setSeed(System.currentTimeMillis());
+		return generator.nextInt(1000000)%1000000;
 	}
 }
