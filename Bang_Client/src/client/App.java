@@ -6,6 +6,8 @@ import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.Scanner;
+
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 import manager.InputManager;
@@ -29,7 +31,8 @@ public class App {
 		String reason = "(Not allowed blank)";
 		while(true) {
 			// popup
-			String id = JOptionPane.showInputDialog("Enter ID "+reason);
+			String id = (String) JOptionPane.showInputDialog(null,"Enter ID "+reason,"Bang! the board game - login",
+					JOptionPane.INFORMATION_MESSAGE,new ImageIcon(".\\.\\resources\\icon\\bang_100.png"),null,"");
 			// cancel
 			if(id == null) System.exit(0);
 			// trimming id

@@ -235,6 +235,7 @@ public class GameManager {
 				else if(UI.player_E_name.getText().equals(id)) UI.player_E_hand.add(CardMaker.make_card_handField_playing(id, cardColor, cardName, cardShape, cardNumber, false));
 				else if(UI.player_F_name.getText().equals(id)) UI.player_F_hand.add(CardMaker.make_card_handField_playing(id, cardColor, cardName, cardShape, cardNumber, false));
 				else if(UI.player_G_name.getText().equals(id)) UI.player_G_hand.add(CardMaker.make_card_handField_playing(id, cardColor, cardName, cardShape, cardNumber, false));
+				// repaint
 				UI.mp.repaint();
 			}
 		}

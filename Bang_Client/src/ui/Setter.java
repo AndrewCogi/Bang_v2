@@ -700,6 +700,8 @@ public class Setter {
 			if(activate == true) UI.mp.add(UI.player_G_hand);
 			else UI.mp.remove(UI.player_G_hand);
 		}
+		// repaint
+		UI.mp.repaint();
 	}
 	
 	// set player_hp text

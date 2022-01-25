@@ -166,7 +166,7 @@ public class UI {
 		init_show_detail_panel();
 		
 		// test function TODO
-		test_func();
+		// test_func();
 	}
 	
 	// init show detail panel
@@ -193,6 +193,8 @@ public class UI {
 		mf = new JFrame("Bang! - Board Game ("+userName+")");
 		// set close operation
 		mf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		// set main icon
+		mf.setIconImage(new ImageIcon(".\\.\\resources\\icon\\bang_org.png").getImage());
 		// set screen size
 		mf.setSize(1920,1040);
 		// set resize false
