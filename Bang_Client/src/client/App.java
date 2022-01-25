@@ -56,7 +56,7 @@ public class App {
 			// send result
 			os.println("login/PLAYERNAME/"+id);
 			System.out.println("[App][send/App]: "+"login/PLAYERNAME/"+id);
-			// login/PLAYERNAME/TRUE
+			// login/PLAYERNAME/TRUE/[pw]
 			// login/PLAYERNAME/FALSE/[reason]
 			String result = is.nextLine();
 			loginResult = result.split("/");
@@ -66,8 +66,31 @@ public class App {
 			if(loginResult[2].equals("FALSE")) {
 				reason = " ("+loginResult[3]+")";
 			}
-			// if login successed, init UI, inputManager
+			// if login successed, check pw
 			else {
+				String serverPw = loginResult[3];
+				// re-init reason
+				reason = "(6-digit code)";
+				while(true) {
+					// popup
+					String pw = (String) JOptionPane.showInputDialog(null,"Enter PW "+reason, "Bang! the board game - login",
+							JOptionPane.INFORMATION_MESSAGE,new ImageIcon(".\\.\\resources\\icon\\bang_100.png"),null,"");
+					// cancel
+					if(pw == null) System.exit(0);
+					// trimming id
+					pw = pw.trim();
+					// pw incorrect
+					if(!pw.equals(serverPw)) {
+						reason = "(Incorrect password)";
+					}
+					// pw correct!
+					else {
+						os.println("login/PLAYERLOGIN/"+id);
+						break;
+					}
+				}
+				
+				// init UI, inputManager
 				im = new InputManager(is,os,id);
 				u = new UI(id,os);
 				break;
