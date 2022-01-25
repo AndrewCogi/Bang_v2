@@ -284,7 +284,7 @@ public class Gm{
 			if(role.get(playerID).equals("sceriffo")) isSceriffo = 1;
 			int characterHp = character.get(playerID).getHp();
 			int playerHp = isSceriffo+characterHp;
-			// broadcast game/INIT/PLAYER_HAND_ENABLE
+			// broadcast game/ENABLE/PLAYER_HAND/[id]
 			server.App.broadcast("game/ENABLE/PLAYER_HAND/"+playerID);
 			// broadcast game/INIT/PLAYER_HAND/[playerID]/[cardColor]/[cardName]/[cardShape]/[cardNumber]
 			for(int i=0; i<playerHp; i++){
