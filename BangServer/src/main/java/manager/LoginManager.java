@@ -63,14 +63,28 @@ public class LoginManager{
 		// login/PLAYERLOGIN/[playerName]
 		else if(splitCmd[1].equals("PLAYERLOGIN")){
 			String tempName = splitCmd[2];
+			// one more check (id duplicated)
+			if(!checkPlayerName(tempName)){
+				// send result
+				os.println("login/FALSE");
+				DateTime.showTime();
+				System.out.println("[LOGIN FAILED][Name Duplicated] > PlayerName["+playerName+"] "+socket);
+				return;
+			}
+			else{
+				// send result
+				os.println("login/TRUE");
+			DateTime.showTime();
+			System.out.println("[LOGIN SUCCESSED] > PlayerName["+playerName+"] "+socket);
+			}
+
+			// if you here, login success!
 			// init
 			this.playerName = tempName;
 			// add playerName into clients
 			server.App.getClients().put(socket,this.playerName);
 			// add os into clientsPrintWriter
 			server.App.getClientsPrintWriter().put(os,playerName);
-			DateTime.showTime();
-			System.out.println("[LOGIN SUCCESSED] > PlayerName["+playerName+"] "+socket);
 			// broadcasting
 			server.App.broadcast("player/PLAYERNUM/"+server.App.getPlayerNumber());
 		}

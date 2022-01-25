@@ -44,6 +44,10 @@ public class Commander extends Thread{
 				case "game start":
 					game_start();
 					break;
+					// show password
+				case "show pw":
+					System.out.println("[System][Commander] > ["+
+							server.App.getPw()+"]");
 					// nothing...
 				case "":
 					break;
@@ -65,7 +69,7 @@ public class Commander extends Thread{
 		}
 		// if not in 7 players,
 		if(App.getClientsPrintWriter().size() != 7){
-			System.out.println("[System][Commander] > We don't have enough players. (now: "+App.getClientsPrintWriter().size()+"/7)");
+			System.out.println("[System][Commander] > Only 7 players required. (now: "+App.getClientsPrintWriter().size()+"/7)");
 			return;
 		}
 		// broadcast game is begin
