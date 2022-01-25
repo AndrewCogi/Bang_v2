@@ -31,7 +31,7 @@ public class App {
 		String reason = "(Not allowed blank)";
 		while(true) {
 			// popup
-			String id = (String) JOptionPane.showInputDialog(null,"Enter ID "+reason,"Bang! the board game - login",
+			String id = (String) JOptionPane.showInputDialog(null,"Enter ID "+reason,"Bang! the board game - login (ID)",
 					JOptionPane.INFORMATION_MESSAGE,new ImageIcon(".\\.\\resources\\icon\\bang_100.png"),null,"");
 			// cancel
 			if(id == null) System.exit(0);
@@ -73,7 +73,7 @@ public class App {
 				reason = "(6-digit code)";
 				while(true) {
 					// popup
-					String pw = (String) JOptionPane.showInputDialog(null,"Enter PW "+reason, "Bang! the board game - login",
+					String pw = (String) JOptionPane.showInputDialog(null,"Enter PW "+reason, "Bang! the board game - login (PW)",
 							JOptionPane.INFORMATION_MESSAGE,new ImageIcon(".\\.\\resources\\icon\\bang_100.png"),null,"");
 					// cancel
 					if(pw == null) System.exit(0);
@@ -90,6 +90,15 @@ public class App {
 					}
 				}
 				
+				// one more check (id duplicated)
+				String oneMoreResult = is.nextLine().split("/")[1];
+				// if duplicated, go to first..
+				if(oneMoreResult.equals("FALSE")) {
+					reason = "(Name duplicated)";
+					continue;
+				}
+				
+				// if you here, login success!
 				// init UI, inputManager
 				im = new InputManager(is,os,id);
 				u = new UI(id,os);
@@ -97,7 +106,7 @@ public class App {
 			}
 		}
 		
-		// if you here, login success!
+		// set visible -> true
 		u.setVisible(true);
 		
 		// waiting server input
