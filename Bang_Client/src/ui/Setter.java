@@ -111,9 +111,9 @@ public class Setter {
 	
 	// set player character ability button available
 	public static void setPlayerCharacterAbilityButtonAvailable(boolean activate) {
-		UI.player_A_ability.setVisible(activate);
-		if(activate == true) UI.player_A.add(UI.player_A_ability);
-		else if(activate == false) UI.player_A.remove(UI.player_A_ability);
+		UI.player_multi_button.setVisible(activate);
+		if(activate == true) UI.player_A.add(UI.player_multi_button);
+		else if(activate == false) UI.player_A.remove(UI.player_multi_button);
 		
 		// repaint
 		UI.mp.repaint();

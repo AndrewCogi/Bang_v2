@@ -15,6 +15,7 @@ import java.awt.Point;
 import java.awt.Toolkit;
 import java.io.PrintWriter;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.MouseMotionAdapter;
 import java.awt.event.MouseEvent;
@@ -108,6 +109,14 @@ public class UI {
 	public static JPanel player_E_hand;
 	public static JPanel player_F_hand;
 	public static JPanel player_G_hand;
+	// player field in each seat
+	public static JPanel player_A_field;
+	public static JPanel player_B_field;
+	public static JPanel player_C_field;
+	public static JPanel player_D_field;
+	public static JPanel player_E_field;
+	public static JPanel player_F_field;
+	public static JPanel player_G_field;
 	// scenario(turn/wildWest)
 	public static JButton scenario_turn_back;
 	public static JButton scenario_turn_front;
@@ -124,8 +133,8 @@ public class UI {
 	// main deck (playing card) (new, old)
 	public static JButton main_deck_new;
 	public static JButton main_deck_old;
-	// character ability button TODO (not ability button)
-	public static JButton player_A_ability;
+	// character multi button
+	public static JButton player_multi_button;
 	// select panel (role)
 	public static JPanel select_panel_role;
 	// select panel (character)
@@ -152,8 +161,8 @@ public class UI {
 		init_select_panel_scenario();
 		// init scenario_notice
 		init_scenario_notice();
-		// init character ability button
-		init_character_ability_button();
+		// init player multi button
+		init_player_multi_button();
 		// init character hp & gold icon
 		init_character_hp_gold_icon();
 		// init character hp & gold text
@@ -164,9 +173,55 @@ public class UI {
 		init_show_detail_label();
 		// init show detail panel
 		init_show_detail_panel();
+		// init player field panel
+		init_player_field_panel();
 		
 		// test function TODO
-		// test_func();
+		test_func();
+	}
+	
+	// init player field panel TODO
+	private void init_player_field_panel() {
+		// init fields
+		player_A_field = new JPanel();
+		player_B_field = new JPanel();
+		player_C_field = new JPanel();
+		player_D_field = new JPanel();
+		player_E_field = new JPanel();
+		player_F_field = new JPanel();
+		player_G_field = new JPanel();
+		// set background empty
+		player_A_field.setBackground(new Color(0,0,0,0));
+		player_B_field.setBackground(new Color(0,0,0,0));
+		player_C_field.setBackground(new Color(0,0,0,0));
+		player_D_field.setBackground(new Color(0,0,0,0));
+		player_E_field.setBackground(new Color(0,0,0,0));
+		player_F_field.setBackground(new Color(0,0,0,0));
+		player_G_field.setBackground(new Color(0,0,0,0));
+		// set bounds
+		player_A_field.setBounds(180,3,287,270);
+		player_B_field.setBounds(180,3,287,270);
+		player_C_field.setBounds(3,180,270,287);
+		player_D_field.setBounds(3,3,287,270);
+		player_E_field.setBounds(3,3,287,270);
+		player_F_field.setBounds(3,3,270,287);
+		player_G_field.setBounds(180,3,287,270);
+		// set layout null
+		player_A_field.setLayout(null);
+		player_B_field.setLayout(null);
+		player_C_field.setLayout(null);
+		player_D_field.setLayout(null);
+		player_E_field.setLayout(null);
+		player_F_field.setLayout(null);
+		player_G_field.setLayout(null);
+		// add fields into each seat
+		player_A.add(player_A_field);
+		player_B.add(player_B_field);
+		player_C.add(player_C_field);
+		player_D.add(player_D_field);
+		player_E.add(player_E_field);
+		player_F.add(player_F_field);
+		player_G.add(player_G_field);
 	}
 	
 	// init show detail panel
@@ -557,14 +612,14 @@ public class UI {
 		player_G_gold_text.setVisible(false);
 	}
 	
-	// init character ability button
-	private void init_character_ability_button() {
+	// init player multi button
+	private void init_player_multi_button() {
 		// init button
-		player_A_ability = new JButton();
+		player_multi_button = new JButton();
 		// set bounds
-		player_A_ability.setBounds(3,138,87,50);
+		player_multi_button.setBounds(3,138,87,50);
 		// set visible = false
-		player_A_ability.setVisible(false);
+		player_multi_button.setVisible(false);
 	}
 	
 	// init scenario notice
@@ -897,27 +952,27 @@ public class UI {
 		player_E_name.setText("E");
 		player_F_name.setText("F");
 		player_G_name.setText("G");
-//		
-//		// test (체력 및 골드 이미지, 텍스트 확인)
-//		Setter.setPlayerHpText("A", 1, false);
-//		Setter.setPlayerHpText("B", 2, false);
-//		Setter.setPlayerHpText("C", 3, false);
-//		Setter.setPlayerHpText("D", 4, false);
-//		Setter.setPlayerHpText("E", 5, false);
-//		Setter.setPlayerHpText("F", 6, false);
-//		Setter.setPlayerHpText("G", 7, false);
-//		Setter.setPlayerHpImageAvailable(true);
-//		Setter.setPlayerHpTextAvailable(true);
-//		Setter.setPlayerGoldText("A", 1);
-//		Setter.setPlayerGoldText("B", 2);
-//		Setter.setPlayerGoldText("C", 3);
-//		Setter.setPlayerGoldText("D", 4);
-//		Setter.setPlayerGoldText("E", 5);
-//		Setter.setPlayerGoldText("F", 6);
-//		Setter.setPlayerGoldText("G", 7);
-//		Setter.setPlayerGoldImageAvailable(true);
-//		Setter.setPlayerGoldTextAvailable(true);
-//		
+		
+		// test (체력 및 골드 이미지, 텍스트 확인)
+		Setter.setPlayerHpText("A", 1, false);
+		Setter.setPlayerHpText("B", 2, false);
+		Setter.setPlayerHpText("C", 3, false);
+		Setter.setPlayerHpText("D", 4, false);
+		Setter.setPlayerHpText("E", 5, false);
+		Setter.setPlayerHpText("F", 6, false);
+		Setter.setPlayerHpText("G", 7, false);
+		Setter.setPlayerHpImageAvailable(true);
+		Setter.setPlayerHpTextAvailable(true);
+		Setter.setPlayerGoldText("A", 1);
+		Setter.setPlayerGoldText("B", 2);
+		Setter.setPlayerGoldText("C", 3);
+		Setter.setPlayerGoldText("D", 4);
+		Setter.setPlayerGoldText("E", 5);
+		Setter.setPlayerGoldText("F", 6);
+		Setter.setPlayerGoldText("G", 7);
+		Setter.setPlayerGoldImageAvailable(true);
+		Setter.setPlayerGoldTextAvailable(true);
+	
 		// test (직업 선택 완료)
 		CardMaker.make_card_handField_role(player_A_name.getText(), "vice", true);
 		CardMaker.make_card_handField_role(player_B_name.getText(), "sceriffo", false);
@@ -1007,24 +1062,24 @@ public class UI {
 		// player_G_hand.setBorder(BorderFactory.createLineBorder(Color.BLACK,3));
 		
 		// test (시나리오 칸 만들기)
-//		CardMaker.make_card_handField_scenario(4, "wild_west_show", "bavaglio");
-//		Setter.setScenarioImageAvailable(4, true);
-//		Setter.setScenarioImageAvailable(4, false);
-//		CardMaker.make_card_handField_scenario(4, "wild_west_show", "helena_zontero");
-//		Setter.setScenarioImageAvailable(4, true);
-//		CardMaker.make_card_handField_scenario(2, "high_noon", "sete");
-//		Setter.setScenarioImageAvailable(2, true);
-//		CardMaker.make_card_handField_scenario(1, "a_fistful_of_cards", "per_un_pugno_di_carte");
-//		Setter.setScenarioImageAvailable(1, true);
-//		Setter.setScenarioImageAvailable(1, false);
-//		CardMaker.make_card_handField_scenario(1, "a_fistful_of_cards", "cecchino");
-//		Setter.setScenarioImageAvailable(1, true);
-		
-		// test (시나리오 라스트 만들기)
-		CardMaker.make_card_handField_scenario_last("high_noon");
+		CardMaker.make_card_handField_scenario(4, "wild_west_show", "bavaglio");
+		Setter.setScenarioImageAvailable(4, true);
+		Setter.setScenarioImageAvailable(4, false);
+		CardMaker.make_card_handField_scenario(4, "wild_west_show", "helena_zontero");
+		Setter.setScenarioImageAvailable(4, true);
+		CardMaker.make_card_handField_scenario(2, "high_noon", "sete");
+		Setter.setScenarioImageAvailable(2, true);
+		CardMaker.make_card_handField_scenario(1, "a_fistful_of_cards", "per_un_pugno_di_carte");
 		Setter.setScenarioImageAvailable(1, true);
-		CardMaker.make_card_handField_scenario_last("wild_west_show");
-		Setter.setScenarioImageAvailable(3, true);
+		Setter.setScenarioImageAvailable(1, false);
+		CardMaker.make_card_handField_scenario(1, "a_fistful_of_cards", "cecchino");
+		Setter.setScenarioImageAvailable(1, true);
+		
+//		// test (시나리오 라스트 만들기)
+//		CardMaker.make_card_handField_scenario_last("high_noon");
+//		Setter.setScenarioImageAvailable(1, true);
+//		CardMaker.make_card_handField_scenario_last("wild_west_show");
+//		Setter.setScenarioImageAvailable(3, true);
 		
 		// test (골드러시 칸 만들기)
 		CardMaker.make_card_handField_gold_rush(1, null, null, -1);
@@ -1040,6 +1095,118 @@ public class UI {
 //		Setter.setGoldRushImageAvailable(4, false);
 //		CardMaker.make_card_handField_gold_rush(4, "black", "calumet", 3);
 //		Setter.setGoldRushImageAvailable(4, true);
+		
+		// test (필드 넣어보기)(A) (3장 이하: 87, 4장: 67, 5장: 50)
+		for(int i=0; i<4; i++) {
+			JButton temp = new JButton();
+			temp.setIcon(new ImageIcon(".\\.\\resources\\card\\playing\\blue\\barile_S_12_87.png"));
+			temp.setPreferredSize(new Dimension(87,135));
+			temp.setBounds(67*i,0,87,135);
+			player_A_field.add(temp);
+		}
+		for(int i=0; i<3; i++) {
+			JButton temp = new JButton();
+			temp.setIcon(new ImageIcon(".\\.\\resources\\card\\playing\\blue\\barile_S_12_87.png"));
+			temp.setPreferredSize(new Dimension(87,135));
+			temp.setBounds(87*i,135,87,135);
+			player_A_field.add(temp);
+		}
+		
+		// test (필드 넣어보기)(B)
+		for(int i=0; i<5; i++) {
+			JButton temp = new JButton();
+			temp.setIcon(new ImageIcon(".\\.\\resources\\card\\playing\\blue\\barile_S_12_87.png"));
+			temp.setPreferredSize(new Dimension(87,135));
+			temp.setBounds(50*i,0,87,135);
+			player_B_field.add(temp);
+		}
+		for(int i=0; i<5; i++) {
+			JButton temp = new JButton();
+			temp.setIcon(new ImageIcon(".\\.\\resources\\card\\playing\\blue\\barile_S_12_87.png"));
+			temp.setPreferredSize(new Dimension(87,135));
+			temp.setBounds(50*i,135,87,135);
+			player_B_field.add(temp);
+		}
+		
+		// test (필드 넣어보기)(C)
+		for(int i=0; i<5; i++) {
+			JButton temp = new JButton();
+			temp.setIcon(new ImageIcon(".\\.\\resources\\card\\playing\\blue\\barile_S_12_87_player_C.png"));
+			temp.setPreferredSize(new Dimension(135,87));
+			temp.setBounds(135,50*i,135,87);
+			player_C_field.add(temp);
+		}
+		for(int i=0; i<5; i++) {
+			JButton temp = new JButton();
+			temp.setIcon(new ImageIcon(".\\.\\resources\\card\\playing\\blue\\barile_S_12_87_player_C.png"));
+			temp.setPreferredSize(new Dimension(135,87));
+			temp.setBounds(0,50*i,135,87);
+			player_C_field.add(temp);
+		}
+		
+		// test (필드 넣어보기)(D)
+		for(int i=0; i<5; i++) {
+			JButton temp = new JButton();
+			temp.setIcon(new ImageIcon(".\\.\\resources\\card\\playing\\blue\\barile_S_12_87_player_DE.png"));
+			temp.setPreferredSize(new Dimension(87,135));
+			temp.setBounds(200-(50*i),135,87,135);
+			player_D_field.add(temp);
+		}
+		for(int i=0; i<5; i++) {
+			JButton temp = new JButton();
+			temp.setIcon(new ImageIcon(".\\.\\resources\\card\\playing\\blue\\barile_S_12_87_player_DE.png"));
+			temp.setPreferredSize(new Dimension(87,135));
+			temp.setBounds(200-(50*i),0,87,135);
+			player_D_field.add(temp);
+		}
+		
+		// test (필드 넣어보기)(E)
+		for(int i=0; i<5; i++) {
+			JButton temp = new JButton();
+			temp.setIcon(new ImageIcon(".\\.\\resources\\card\\playing\\blue\\barile_S_12_87_player_DE.png"));
+			temp.setPreferredSize(new Dimension(87,135));
+			temp.setBounds(200-(50*i),135,87,135);
+			player_E_field.add(temp);
+		}
+		for(int i=0; i<5; i++) {
+			JButton temp = new JButton();
+			temp.setIcon(new ImageIcon(".\\.\\resources\\card\\playing\\blue\\barile_S_12_87_player_DE.png"));
+			temp.setPreferredSize(new Dimension(87,135));
+			temp.setBounds(200-(50*i),0,87,135);
+			player_E_field.add(temp);
+		}
+		
+		// test (필드 넣어보기)(F)
+		for(int i=0; i<2; i++) {
+			JButton temp = new JButton();
+			temp.setIcon(new ImageIcon(".\\.\\resources\\card\\playing\\blue\\barile_S_12_87_player_F.png"));
+			temp.setPreferredSize(new Dimension(135,87));
+			temp.setBounds(0,200-(50*i),135,87);
+			player_F_field.add(temp);
+		}
+		for(int i=0; i<0; i++) {
+			JButton temp = new JButton();
+			temp.setIcon(new ImageIcon(".\\.\\resources\\card\\playing\\blue\\barile_S_12_87_player_F.png"));
+			temp.setPreferredSize(new Dimension(135,87));
+			temp.setBounds(135,200-(50*i),135,87);
+			player_F_field.add(temp);
+		}
+		
+		// test (필드 넣어보기)(G)
+		for(int i=0; i<5; i++) {
+			JButton temp = new JButton();
+			temp.setIcon(new ImageIcon(".\\.\\resources\\card\\playing\\blue\\barile_S_12_87.png"));
+			temp.setPreferredSize(new Dimension(87,135));
+			temp.setBounds(50*i,0,87,135);
+			player_G_field.add(temp);
+		}
+		for(int i=0; i<5; i++) {
+			JButton temp = new JButton();
+			temp.setIcon(new ImageIcon(".\\.\\resources\\card\\playing\\blue\\barile_S_12_87.png"));
+			temp.setPreferredSize(new Dimension(87,135));
+			temp.setBounds(50*i,135,87,135);
+			player_G_field.add(temp);
+		}
 	}
 
 }

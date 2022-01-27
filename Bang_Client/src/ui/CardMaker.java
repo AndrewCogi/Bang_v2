@@ -1807,6 +1807,10 @@ public class CardMaker {
 	public static Select_button make_card_handField_playing(String id, String cardColor, String cardName, char cardShape, int cardNum, boolean isForward) {
 		// temp card button
 		Select_button temp_card = new Select_button();
+		// set border null
+		temp_card.setBorder(null);
+		// set disable
+		temp_card.setEnabled(false);
 		
 		// id = player_A hand & field
 		if(UI.player_A_name.getText().equals(id)) {
@@ -1836,8 +1840,6 @@ public class CardMaker {
 			}
 			// set size
 			temp_card.setPreferredSize(new Dimension(87,135));
-			// set border null
-			temp_card.setBorder(null);
 			// set mouse listener
 			temp_card.addMouseListener(new MouseAdapter() {
 				public void mouseEntered(MouseEvent e) {
@@ -1903,8 +1905,6 @@ public class CardMaker {
 			}
 			// set size
 			temp_card.setPreferredSize(new Dimension(70,108));
-			// set border null
-			temp_card.setBorder(null);
 			// set mouse listener
 			temp_card.addMouseListener(new MouseAdapter() {
 				public void mouseEntered(MouseEvent e) {
@@ -1970,8 +1970,6 @@ public class CardMaker {
 			}
 			// set size
 			temp_card.setPreferredSize(new Dimension(108,70));
-			// set border null
-			temp_card.setBorder(null);
 			// set mouse listener
 			temp_card.addMouseListener(new MouseAdapter() {
 				public void mouseEntered(MouseEvent e) {
@@ -2037,8 +2035,6 @@ public class CardMaker {
 			}
 			// set size
 			temp_card.setPreferredSize(new Dimension(70,108));
-			// set border null
-			temp_card.setBorder(null);
 			// set mouse listener
 			temp_card.addMouseListener(new MouseAdapter() {
 				public void mouseEntered(MouseEvent e) {
@@ -2104,8 +2100,6 @@ public class CardMaker {
 			}
 			// set size
 			temp_card.setPreferredSize(new Dimension(70,108));
-			// set border null
-			temp_card.setBorder(null);
 			// set mouse listener
 			temp_card.addMouseListener(new MouseAdapter() {
 				public void mouseEntered(MouseEvent e) {
@@ -2171,8 +2165,6 @@ public class CardMaker {
 			}
 			// set size
 			temp_card.setPreferredSize(new Dimension(108,70));
-			// set border null
-			temp_card.setBorder(null);
 			// set mouse listener
 			temp_card.addMouseListener(new MouseAdapter() {
 				public void mouseEntered(MouseEvent e) {
@@ -2238,8 +2230,6 @@ public class CardMaker {
 			}
 			// set size
 			temp_card.setPreferredSize(new Dimension(70,108));
-			// set border null
-			temp_card.setBorder(null);
 			// set mouse listener
 			temp_card.addMouseListener(new MouseAdapter() {
 				public void mouseEntered(MouseEvent e) {
