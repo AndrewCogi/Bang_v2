@@ -1177,14 +1177,14 @@ public class UI {
 		}
 		
 		// test (필드 넣어보기)(F)
-		for(int i=0; i<2; i++) {
+		for(int i=0; i<5; i++) {
 			JButton temp = new JButton();
 			temp.setIcon(new ImageIcon(".\\.\\resources\\card\\playing\\blue\\barile_S_12_87_player_F.png"));
 			temp.setPreferredSize(new Dimension(135,87));
 			temp.setBounds(0,200-(50*i),135,87);
 			player_F_field.add(temp);
 		}
-		for(int i=0; i<0; i++) {
+		for(int i=0; i<5; i++) {
 			JButton temp = new JButton();
 			temp.setIcon(new ImageIcon(".\\.\\resources\\card\\playing\\blue\\barile_S_12_87_player_F.png"));
 			temp.setPreferredSize(new Dimension(135,87));
