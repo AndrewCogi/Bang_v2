@@ -179,10 +179,19 @@ public class App {
 		return pw;
 	}
 
+	// reset password
+	public static void resetPw(){
+		pw = make_pw();
+	}
+
 	// making password
 	public static int make_pw(){
 		Random generator = new Random();
 		generator.setSeed(System.currentTimeMillis());
-		return generator.nextInt(1000000)%1000000;
+		// until get 6-digit code
+		int newPw = -1;
+		do{ newPw = generator.nextInt(1000000)%1000000;
+		} while(newPw < 100000);
+		return newPw;
 	}
 }

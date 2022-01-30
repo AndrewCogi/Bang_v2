@@ -46,8 +46,12 @@ public class Commander extends Thread{
 					break;
 					// show password
 				case "show pw":
-					System.out.println("[System][Commander] > ["+
-							server.App.getPw()+"]");
+					show_pw();
+					break;
+					// change password
+				case "new pw":
+					new_pw();
+					break;
 					// nothing...
 				case "":
 					break;
@@ -58,6 +62,19 @@ public class Commander extends Thread{
 		}
 		// end of run
 		System.out.println("[System][Commander] > Thread(commandThread) is stopped.");
+	}
+
+	// set new password
+	private void new_pw(){
+		server.App.resetPw();
+		System.out.println("[System][Commander] > Password changed!");
+		show_pw();
+	}
+
+	// show password
+	private void show_pw(){
+		System.out.println("[System][Commander] > Password is ["+
+			server.App.getPw()+"]");
 	}
 
 	// game start!
@@ -108,6 +125,8 @@ public class Commander extends Thread{
 		System.out.println("[System][Commander] > stop server:\t Stops the server.");
 		System.out.println("[System][Commander] > show clients:\t Show clients info.");
 		System.out.println("[System][Commander] > game start:\t Start game.");
+		System.out.println("[System][Commander] > show pw:\t\t Show password.");
+		System.out.println("[System][Commander] > new pw:\t\t Reset password.");
 	}
 
 	// show online & logined clients
