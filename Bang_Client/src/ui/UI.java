@@ -1,6 +1,5 @@
 package ui;
 
-import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -180,7 +179,7 @@ public class UI {
 		test_func();
 	}
 	
-	// init player field panel TODO
+	// init player field panel
 	private void init_player_field_panel() {
 		// init fields
 		player_A_field = new JPanel();

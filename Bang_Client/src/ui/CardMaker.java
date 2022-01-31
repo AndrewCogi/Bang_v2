@@ -142,7 +142,7 @@ public class CardMaker {
 		else if(target == 3) {
 			// remove already setting
 			if(UI.scenario_wild_back != null) UI.mp.remove(UI.scenario_wild_back);
-			// re-init
+			// re-init, set image
 			UI.scenario_wild_back = new JButton() {
 				private static final long serialVersionUID = 1L;
 				Image background = new ImageIcon(".\\.\\resources\\card\\scenario\\back\\wild_west_show_87.png").getImage();
@@ -178,10 +178,15 @@ public class CardMaker {
 		else if(target == 4) {
 			// remove already setting
 			if(UI.scenario_wild_front != null) UI.mp.remove(UI.scenario_wild_front);
-			// re-init
-			UI.scenario_wild_front = new JButton();
-			// set image "extension/cardName"
-			UI.scenario_wild_front.setIcon(new ImageIcon(".\\.\\resources\\card\\scenario\\"+extension+"\\"+cardName+"_87.png"));
+			// re-init, set image
+			UI.scenario_wild_front = new JButton() {
+				private static final long serialVersionUID = 1L;
+				Image background = new ImageIcon(".\\.\\resources\\card\\scenario\\"+extension+"\\"+cardName+"_87.png").getImage();
+				// drawing background
+				protected void paintComponent(Graphics g) {
+					g.drawImage(background, 0, 0, null);
+				}
+			};
 			// set bounds
 			UI.scenario_wild_front.setBounds(730,435,87,135);
 			// set size
