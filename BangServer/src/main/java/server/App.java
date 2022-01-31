@@ -19,14 +19,14 @@ import gm.Gm;
 
 public class App {
 	private static Scanner sc; // Scanner for keyboard input
-	private static HashMap<Socket,String> clients; // Map of socket-clientName
-	private static HashMap<PrintWriter,String> clientsPrintWriter; // list of clients' PrintWriter & name
+	private static HashMap<Socket,String> clients; // Map of socket-clientName in public
+	private static HashMap<PrintWriter,String> clientsPrintWriter; // Map of clients' PrintWriter & name in public
 	private static ServerSocket listener; // ServerSocket
 	private static ExecutorService pool; // ThreadPool
 	private static final int threadPoolNum = 10; // How many threads in pool
 	private static int accessAttempt = 0; // How many times access atteption
 	private static boolean gameStarted = false; // Check game is started
-	private static int pw; //password (6-digits)
+	private static int pw; // password (6-digits)
 	private static Gm gm; // game dealer
 
 	public static void main(String[] args) throws IOException{
