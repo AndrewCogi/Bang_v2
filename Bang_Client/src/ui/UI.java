@@ -1008,13 +1008,13 @@ public class UI {
 		Setter.setPlayerGunImageAvailable(player_G_name.getText(), true);
 		
 		// test (캐릭터 선택 완료)
-		CardMaker.make_card_handField_character(player_A_name.getText(), "dodge_city", "vera_custer", 4);
-		CardMaker.make_card_handField_character(player_B_name.getText(), "original", "bart_cassidy", 4);
-		CardMaker.make_card_handField_character(player_C_name.getText(), "original", "bart_cassidy", 4);
-		CardMaker.make_card_handField_character(player_D_name.getText(), "original", "bart_cassidy", 4);
-		CardMaker.make_card_handField_character(player_E_name.getText(), "original", "bart_cassidy", 4);
-		CardMaker.make_card_handField_character(player_F_name.getText(), "original", "bart_cassidy", 4);
-		CardMaker.make_card_handField_character(player_G_name.getText(), "original", "bart_cassidy", 4);
+		CardMaker.make_card_handField_character(player_A_name.getText(), "wild_west_show", "big_spencer", 4);
+		CardMaker.make_card_handField_character(player_B_name.getText(), "wild_west_show", "big_spencer", 4);
+		CardMaker.make_card_handField_character(player_C_name.getText(), "wild_west_show", "big_spencer", 4);
+		CardMaker.make_card_handField_character(player_D_name.getText(), "wild_west_show", "big_spencer", 4);
+		CardMaker.make_card_handField_character(player_E_name.getText(), "wild_west_show", "big_spencer", 4);
+		CardMaker.make_card_handField_character(player_F_name.getText(), "wild_west_show", "big_spencer", 4);
+		CardMaker.make_card_handField_character(player_G_name.getText(), "wild_west_show", "big_spencer", 4);
 		// test (캐릭터 이미지 보이게)
 		Setter.setPlayerCharacterImageAvailable(player_A_name.getText(), true);
 		Setter.setPlayerCharacterImageAvailable(player_B_name.getText(), true);
@@ -1064,15 +1064,14 @@ public class UI {
 		// test (시나리오 칸 만들기)
 		CardMaker.make_card_handField_scenario(4, "wild_west_show", "bavaglio");
 		Setter.setScenarioImageAvailable(4, true);
-		Setter.setScenarioImageAvailable(4, false);
-		CardMaker.make_card_handField_scenario(4, "wild_west_show", "helena_zontero");
-		Setter.setScenarioImageAvailable(4, true);
+		CardMaker.make_card_handField_scenario(3, "back", "wild_west_show");
+		Setter.setScenarioImageAvailable(3, true);
 		CardMaker.make_card_handField_scenario(2, "high_noon", "sete");
 		Setter.setScenarioImageAvailable(2, true);
 		CardMaker.make_card_handField_scenario(1, "a_fistful_of_cards", "per_un_pugno_di_carte");
 		Setter.setScenarioImageAvailable(1, true);
 		Setter.setScenarioImageAvailable(1, false);
-		CardMaker.make_card_handField_scenario(1, "a_fistful_of_cards", "cecchino");
+		CardMaker.make_card_handField_scenario(1, "a_fistful_of_cards", "vendetta");
 		Setter.setScenarioImageAvailable(1, true);
 		
 //		// test (시나리오 라스트 만들기)
@@ -1099,7 +1098,7 @@ public class UI {
 		// test (필드 넣어보기)(A) (3장 이하: 87, 4장: 67, 5장: 50)
 		for(int i=0; i<4; i++) {
 			JButton temp = new JButton();
-			temp.setIcon(new ImageIcon(".\\.\\resources\\card\\playing\\blue\\barile_S_12_87.png"));
+			temp.setIcon(new ImageIcon(".\\.\\resources\\card\\gold_rush\\black\\calumet_87.png"));
 			temp.setPreferredSize(new Dimension(87,135));
 			temp.setBounds(67*i,0,87,135);
 			player_A_field.add(temp);

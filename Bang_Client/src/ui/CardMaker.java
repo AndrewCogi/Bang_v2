@@ -30,10 +30,15 @@ public class CardMaker {
 		if(target == 1) {
 			// remove already setting
 			if(UI.scenario_turn_back != null) UI.mp.remove(UI.scenario_turn_back);
-			// re-init
-			UI.scenario_turn_back = new JButton();
-			// set image "extension/cardName"
- 			UI.scenario_turn_back.setIcon(new ImageIcon(".\\.\\resources\\card\\scenario\\"+extension+"\\"+cardName+"_87.png"));
+			// re-init, set image
+			UI.scenario_turn_back = new JButton() {
+				private static final long serialVersionUID = 1L;
+				Image background = new ImageIcon(".\\.\\resources\\card\\scenario\\"+extension+"\\"+cardName+"_87.png").getImage();
+				// drawing background
+				protected void paintComponent(Graphics g) {
+					g.drawImage(background, 0, 0, null);
+				}
+			};
 			// set bounds
 			UI.scenario_turn_back.setBounds(460,435,87,135);
 			// set size
@@ -81,10 +86,15 @@ public class CardMaker {
 		else if(target == 2) {
 			// remove already setting
 			if(UI.scenario_turn_front != null) UI.mp.remove(UI.scenario_turn_front);
-			// re-init
-			UI.scenario_turn_front = new JButton();
-			// set image "extension/cardName"
-			UI.scenario_turn_front.setIcon(new ImageIcon(".\\.\\resources\\card\\scenario\\"+extension+"\\"+cardName+"_87.png"));
+			// re-init, set image
+			UI.scenario_turn_front = new JButton() {
+				private static final long serialVersionUID = 1L;
+				Image background = new ImageIcon(".\\.\\resources\\card\\scenario\\"+extension+"\\"+cardName+"_87.png").getImage();
+				// drawing background
+				protected void paintComponent(Graphics g) {
+					g.drawImage(background, 0, 0, null);
+				}
+			};
 			// set bounds
 			UI.scenario_turn_front.setBounds(550,435,87,135);
 			// set size
@@ -116,7 +126,6 @@ public class CardMaker {
 						UI.show_detail_panel.removeAll();
 						// add detail (text)
 						UI.show_detail_label.setText(DetailReader.getDetail(".\\.\\resources\\card\\scenario\\"+extension+"\\"+cardName+".txt"));
-						
 					}
 					// left click
 					else if(SwingUtilities.isLeftMouseButton(e)) {
@@ -134,9 +143,14 @@ public class CardMaker {
 			// remove already setting
 			if(UI.scenario_wild_back != null) UI.mp.remove(UI.scenario_wild_back);
 			// re-init
-			UI.scenario_wild_back = new JButton();
-			// set image "extension/cardName"
-			UI.scenario_wild_back.setIcon(new ImageIcon(".\\.\\resources\\card\\scenario\\"+extension+"\\"+cardName+"_87.png"));
+			UI.scenario_wild_back = new JButton() {
+				private static final long serialVersionUID = 1L;
+				Image background = new ImageIcon(".\\.\\resources\\card\\scenario\\back\\wild_west_show_87.png").getImage();
+				// drawing background
+				protected void paintComponent(Graphics g) {
+					g.drawImage(background, 0, 0, null);
+				}
+			};
 			// set bounds
 			UI.scenario_wild_back.setBounds(640,435,87,135);
 			// set size
@@ -148,10 +162,12 @@ public class CardMaker {
 				public void mouseEntered(MouseEvent e) {
 					// add border painting
 					UI.scenario_wild_back.setBorder(BorderFactory.createLineBorder(Color.GREEN,2));
+					UI.mp.repaint();
 				}
 				public void mouseExited(MouseEvent e) {
 					// remove border painting
 					UI.scenario_wild_back.setBorder(null);
+					UI.mp.repaint();
 				}
 			});
 			// set disable
