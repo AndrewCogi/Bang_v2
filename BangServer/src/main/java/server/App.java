@@ -26,7 +26,8 @@ public class App {
 	private static final int threadPoolNum = 10; // How many threads in pool
 	private static int accessAttempt = 0; // How many times access atteption
 	private static boolean gameStarted = false; // Check game is started
-	private static int pw; // password (6-digits)
+	private static int loginPw; // login password (6-digits)
+	private static int startPw; // game start password (6-digits)
 	private static Gm gm; // game dealer
 
 	public static void main(String[] args) throws IOException{
@@ -34,9 +35,8 @@ public class App {
 		sc = new Scanner(System.in);
 		clients = new HashMap<>();
 		clientsPrintWriter = new HashMap<>();
-		pw = make_pw();
 		gm = new Gm();
-
+		
 		// server start
 		System.out.println("[System][App] > Server Start");
 
@@ -52,8 +52,15 @@ public class App {
 		pool = Executors.newFixedThreadPool(threadPoolNum);
 		System.out.println("[System][App] > Make ThreadPools (" + threadPoolNum + ")");
 
+		// make passwords
+		do{
+			loginPw = make_pw();
+			startPw = make_pw();
+		} while(loginPw == startPw);
+
 		// show password
-		System.out.println("[System][App] > password is ["+pw+"]");
+		System.out.println("[System][App] > Login password is ["+loginPw+"]");
+		System.out.println("[System][App] > Start password is ["+startPw+"]");
 
 		// client waiting
 		System.out.println("[System][App] > Waiting for clients...");
@@ -174,23 +181,30 @@ public class App {
 		return accessAttempt;
 	}
 
-	// get password
-	public static int getPw(){
-		return pw;
+	// get login password
+	public static int getLoginPw(){
+		return loginPw;
 	}
 
-	// reset password
-	public static void resetPw(){
-		pw = make_pw();
+	// get start password
+	public static int getStartPw(){
+		return startPw;
+	}
+
+	// reset login password
+	public static void resetPw(String target){
+		if(target.equals("login")) loginPw = make_pw();
+		else if(target.equals("start")) startPw = make_pw();
 	}
 
 	// making password
 	public static int make_pw(){
-		Random generator = new Random();
-		generator.setSeed(System.currentTimeMillis());
 		// until get 6-digit code
 		int newPw = -1;
-		do{ newPw = generator.nextInt(1000000)%1000000;
+		do{
+			Random generator = new Random();
+			generator.setSeed(System.currentTimeMillis());
+			newPw = generator.nextInt(1000000)%1000000;
 		} while(newPw < 100000);
 		return newPw;
 	}

@@ -46,11 +46,16 @@ public class Commander extends Thread{
 					break;
 					// show password
 				case "show pw":
-					show_pw();
+					show_pw("login");
+					show_pw("start");
 					break;
-					// change password
-				case "new pw":
-					new_pw();
+					// change login password
+				case "new login pw":
+					new_pw("login");
+					break;
+					// change start password
+				case "new start pw":
+					new_pw("start");
 					break;
 					// nothing...
 				case "":
@@ -65,16 +70,16 @@ public class Commander extends Thread{
 	}
 
 	// set new password
-	private void new_pw(){
-		server.App.resetPw();
-		System.out.println("[System][Commander] > Password changed!");
-		show_pw();
+	private void new_pw(String target){
+		server.App.resetPw(target);
+		System.out.println("[System][Commander] > "+target.toUpperCase()+" password changed!");
+		show_pw(target);
 	}
 
 	// show password
-	private void show_pw(){
-		System.out.println("[System][Commander] > Password is ["+
-			server.App.getPw()+"]");
+	private void show_pw(String target){
+		if(target.equals("login")) System.out.println("[System][Commander] > Login password is ["+server.App.getLoginPw()+"]");
+		else if(target.equals("start")) System.out.println("[System][Commander] > Start password is ["+server.App.getStartPw()+"]");
 	}
 
 	// game start!
@@ -89,6 +94,9 @@ public class Commander extends Thread{
 			System.out.println("[System][Commander] > Only 7 players required. (now: "+App.getClientsPrintWriter().size()+"/7)");
 			return;
 		}
+		// game start == true
+		App.setGameStarted(true);
+		System.out.println("[System][Commander] > setGameStarted: ["+App.getGameStarted()+"]");
 		// broadcast game is begin
 		for(int cnt=5; cnt>0; cnt--){
 			System.out.println("[System][Commander] > Game start in "+cnt+"...");
@@ -100,10 +108,7 @@ public class Commander extends Thread{
 		System.out.println("[System][Commander] > Game start!");
 		// broadcast the game is started
 		App.broadcast("game/STATE/START");
-		// game start == true
-		App.setGameStarted(true);
-		System.out.println("[System][Commander] > setGameStarted: ["+App.getGameStarted()+"]");
-		// init gm(setting seat, select role, select scenario, select character)
+		// init gm(setting seat, select role, select scenario, select character, etc)
 		App.getGm().init();
 		// start gm(start turn until game is ended)
 		App.getGm().start();
@@ -125,8 +130,9 @@ public class Commander extends Thread{
 		System.out.println("[System][Commander] > stop server:\t Stops the server.");
 		System.out.println("[System][Commander] > show clients:\t Show clients info.");
 		System.out.println("[System][Commander] > game start:\t Start game.");
-		System.out.println("[System][Commander] > show pw:\t\t Show password.");
-		System.out.println("[System][Commander] > new pw:\t\t Reset password.");
+		System.out.println("[System][Commander] > show pw:\t\t Show passwords.");
+		System.out.println("[System][Commander] > new login pw:\t Reset login password.");
+		System.out.println("[System][Commander] > new start pw:\t Reset start password.");
 	}
 
 	// show online & logined clients

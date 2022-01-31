@@ -58,7 +58,7 @@ public class LoginManager{
 			}
 
 			// send result
-			os.println("login/PLAYERNAME/TRUE/"+server.App.getPw());
+			os.println("login/PLAYERNAME/TRUE/"+server.App.getLoginPw());
 		}
 		// login/PLAYERLOGIN/[playerName]
 		else if(splitCmd[1].equals("PLAYERLOGIN")){
