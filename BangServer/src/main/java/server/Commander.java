@@ -9,6 +9,7 @@ import java.net.Socket;
 import java.util.Scanner;
 
 import debug.DateTime;
+import manager.GameManager;
 
 public class Commander extends Thread{
 	// Scanner for command
@@ -91,12 +92,28 @@ public class Commander extends Thread{
 		}
 		// if not in 7 players,
 		if(App.getClientsPrintWriter().size() != 7){
-			System.out.println("[System][Commander] > Only 7 players required. (now: "+App.getClientsPrintWriter().size()+"/7)");
+			System.out.println("[System][Commander] > Only 7 players required. (now: "+App.getClientsPrintWriter().size()+" / 7)");
+			return;
+		}
+		// if not ready all
+		if(GameManager.getReadyPlayer() != 7){
+			System.out.println("[System][Commander] > Everyone ready required. (now: "+GameManager.getReadyPlayer()+" / 7)");
+			return;
+		}
+		// check startPw
+		System.out.print("[System][Commander] > Starting PW: ");
+		String input = sc.nextLine();
+		if(!input.equals(Integer.toString(App.getStartPw()))) {
+			System.out.println("[System][Commander] > Wrong Password. ABORT.");
 			return;
 		}
 		// game start == true
 		App.setGameStarted(true);
 		System.out.println("[System][Commander] > setGameStarted: ["+App.getGameStarted()+"]");
+		// reset readyPlayer count
+		GameManager.setReadyPlayer(0);
+		// delete ready button
+		App.broadcast("game/DISABLE/READYBUTTON");
 		// broadcast game is begin
 		for(int cnt=5; cnt>0; cnt--){
 			System.out.println("[System][Commander] > Game start in "+cnt+"...");

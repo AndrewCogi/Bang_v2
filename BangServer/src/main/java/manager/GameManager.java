@@ -7,11 +7,15 @@ package manager;
 import java.io.PrintWriter;
 
 import card.CharactersCard;
+import debug.DateTime;
 import gm.Gm;
+import server.Commander;
 
 public class GameManager{
 	// output stream
 	private PrintWriter os;
+	// ready player number
+	private static int readyPlayer = 0;
 
 	// constructor
 	public GameManager(PrintWriter os){
@@ -21,8 +25,15 @@ public class GameManager{
 	public void request(String cmd){
 		// game/[??]
 		String[] splitCmd = cmd.split("/");
+		// game/READYBUTTON/[ON|OFF]/[who]
+		if(splitCmd[1].equals("READYBUTTON")){
+			// add(remove) readyPlayer
+			if(splitCmd[2].equals("ON")) setReadyPlayer(getReadyPlayer()+1);
+			else if(splitCmd[2].equals("OFF")) setReadyPlayer(getReadyPlayer()-1);
+			System.out.println("[System][GameManager] > Ready "+splitCmd[2].toUpperCase()+" ["+splitCmd[3]+"], ("+getReadyPlayer()+" / 7)");
+		}
 		// game/SELECT/[??]
-		if(splitCmd[1].equals("SELECT")){
+		else if(splitCmd[1].equals("SELECT")){
 			// game/SELECT/ROLE/[id]/[role name]/[cardNum]
 			if(splitCmd[2].equals("ROLE")){
 				// add Gm.role
@@ -67,6 +78,15 @@ public class GameManager{
 		else{
 			System.out.println("[Unknown_message]: "+cmd);
 		}
+	}
+
+	// set ready player
+	public synchronized static void setReadyPlayer(int n){
+		readyPlayer = n;
+	}
+	// get ready player
+	public synchronized static int getReadyPlayer(){
+		return readyPlayer;
 	}
 	
 }

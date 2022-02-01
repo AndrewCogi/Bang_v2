@@ -87,6 +87,8 @@ public class LoginManager{
 			server.App.getClientsPrintWriter().put(os,playerName);
 			// broadcasting
 			server.App.broadcast("player/PLAYERNUM/"+server.App.getPlayerNumber());
+			// reset readyPlayer = 0
+			GameManager.setReadyPlayer(0);
 		}
 	}
 
