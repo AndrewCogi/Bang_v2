@@ -17,9 +17,14 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.MouseMotionAdapter;
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 public class UI {
+	// output stream
+	private PrintWriter os;
+	// user name
+	private String userName;
 	// main frame
 	public static JFrame mf;
 	// main panel
@@ -144,10 +149,15 @@ public class UI {
 	public static JLabel show_detail_label;
 	// show detail (image)
 	public static JPanel show_detail_panel;
+	// game ready button
+	public static JButton game_ready_button;
 	// select remain
 	public static int select_chance = 0;
 	
 	public UI(String userName, PrintWriter os) {
+		// init variables
+		this.userName = userName;
+		this.os = os;
 		// init main frame & main panel
 		init_main(userName);
 		// init notices
@@ -174,9 +184,43 @@ public class UI {
 		init_show_detail_panel();
 		// init player field panel
 		init_player_field_panel();
+		// init game ready button
+		init_game_ready_button();
 		
 		// test function TODO
 		test_func();
+	}
+	
+	// init game ready button
+	private void init_game_ready_button() {
+		// init
+		game_ready_button = new JButton("Ready?");
+		// set background color
+		game_ready_button.setBackground(Color.GRAY);
+		// add mouse listener
+		game_ready_button.addMouseListener(new MouseAdapter(){
+			@Override
+			public void mouseClicked(MouseEvent e) {
+					// if ready on, set color, set text, send ready on
+					if(((JButton)e.getComponent()).getText().equals("Ready?")) {
+						((JButton)e.getComponent()).setBackground(Color.GREEN);
+						((JButton)e.getComponent()).setText("Ready!");
+						os.println("game/READYBUTTON/ON/"+userName);
+					}
+					// if ready off, set color, send ready off
+					else if(((JButton)e.getComponent()).getText().equals("Ready!")) {
+						((JButton)e.getComponent()).setBackground(Color.GRAY);
+						((JButton)e.getComponent()).setText("Ready?");
+						os.println("game/READYBUTTON/OFF/"+userName);
+					}
+			}
+		});
+		// set bounds
+		game_ready_button.setBounds(mf.getWidth()/2-50,mf.getHeight()/2+100,100,50);
+		// set invisible
+		game_ready_button.setVisible(false);
+		// add into main panel
+		mp.add(game_ready_button);
 	}
 	
 	// init player field panel

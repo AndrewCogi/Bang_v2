@@ -1,8 +1,22 @@
 package ui;
 
+import java.awt.Color;
+
 import client.App;
 
 public class Setter {
+	// set ready button available
+	public static void setReadyButtonAvailable(boolean activate) {
+		// reset button
+		UI.game_ready_button.setBackground(Color.GRAY);
+		UI.game_ready_button.setText("Ready?");
+		// available
+		UI.game_ready_button.setVisible(activate);
+		// repaint
+		UI.mp.repaint();
+		// force repaint
+		App.u.setVisible(true);
+	}
 	// set select_panel_role available
 	public static void setSelectPanelRoleAvailable(boolean activate) {
 		UI.select_panel_role.setVisible(activate);
@@ -798,6 +812,9 @@ public class Setter {
 	
 	// main panel re-initialize for game start & end
 	public static void reInit_mainPanel() {
+		// card info label & panel clear
+		UI.show_detail_panel.removeAll();
+		UI.show_detail_label.setText(null);
 		// player_[A~G] panel clear
 		UI.player_A.removeAll();
 		UI.player_B.removeAll();

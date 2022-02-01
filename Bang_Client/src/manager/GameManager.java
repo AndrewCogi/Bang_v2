@@ -1,11 +1,13 @@
 package manager;
 
+import java.awt.Color;
 import java.awt.Component;
 import java.io.PrintWriter;
 import java.util.LinkedList;
 import java.util.List;
 
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 
 import ui.CardMaker;
 import ui.Select_button;
@@ -28,8 +30,12 @@ public class GameManager {
 		// game/STATE/[game state]
 		if(splitCmd[1].equals("STATE")) {
 			// game/STATE/[START|END]
-			if(splitCmd[2].equals("START") || splitCmd[2].equals("END")) {
+			if(splitCmd[2].equals("START")) {
 				Setter.reInit_mainPanel();
+			}
+			else if(splitCmd[2].equals("END")) {
+				Setter.reInit_mainPanel();
+				UI.mp.add(UI.game_ready_button);
 			}
 		}
 		
@@ -64,8 +70,15 @@ public class GameManager {
 		
 		// game/DISABLE/[target]
 		else if(splitCmd[1].equals("DISABLE")) {
+			// game/DISABLE/READYBUTTON
+			if(splitCmd[2].equals("READYBUTTON")) {
+				Setter.setReadyButtonAvailable(false);
+				// reset button
+				UI.game_ready_button.setBackground(Color.GRAY);
+				UI.game_ready_button.setText("Ready?");
+			}
 			// game/DISABLE/TOP_NOTICE
-			if(splitCmd[2].equals("TOP_NOTICE")) {
+			else if(splitCmd[2].equals("TOP_NOTICE")) {
 				Setter.setNoticeAvailable(1,false);
 			}
 			// game/DISABLE/MIDDLE_NOTICE
