@@ -72,9 +72,7 @@ public class CardMaker {
 						UI.show_detail_label.setText(DetailReader.getDetail(".\\.\\resources\\card\\scenario\\"+extension+"\\"+cardName+".txt"));
 					}
 					// left click
-					else if(SwingUtilities.isLeftMouseButton(e)) {
-						// TODO
-					}
+					else if(SwingUtilities.isLeftMouseButton(e)) {}
 					UI.mp.repaint();
 				}
 			});
@@ -128,9 +126,7 @@ public class CardMaker {
 						UI.show_detail_label.setText(DetailReader.getDetail(".\\.\\resources\\card\\scenario\\"+extension+"\\"+cardName+".txt"));
 					}
 					// left click
-					else if(SwingUtilities.isLeftMouseButton(e)) {
-						// TODO
-					}
+					else if(SwingUtilities.isLeftMouseButton(e)) {}
 					UI.mp.repaint();
 				}
 			});
@@ -220,9 +216,7 @@ public class CardMaker {
 						UI.show_detail_label.setText(DetailReader.getDetail(".\\.\\resources\\card\\scenario\\"+extension+"\\"+cardName+".txt"));
 					}
 					// left click
-					else if(SwingUtilities.isLeftMouseButton(e)) {
-						// TODO
-					}
+					else if(SwingUtilities.isLeftMouseButton(e)) {}
 					UI.mp.repaint();
 				}
 			});
@@ -271,9 +265,7 @@ public class CardMaker {
 						UI.show_detail_label.setText(DetailReader.getDetail(".\\.\\resources\\card\\scenario\\a_fistful_of_cards\\per_un_pugno_di_carte.txt"));
 					}
 					// left click
-					else if(SwingUtilities.isLeftMouseButton(e)) {
-						// TODO
-					}
+					else if(SwingUtilities.isLeftMouseButton(e)) {}
 					UI.mp.repaint();
 				}
 			});
@@ -316,9 +308,7 @@ public class CardMaker {
 						UI.show_detail_label.setText(DetailReader.getDetail(".\\.\\resources\\card\\scenario\\high_noon\\mezzogiorno_di_fuoco.txt"));
 					}
 					// left click
-					else if(SwingUtilities.isLeftMouseButton(e)) {
-						// TODO
-					}
+					else if(SwingUtilities.isLeftMouseButton(e)) {}
 					UI.mp.repaint();
 				}
 			});
@@ -361,9 +351,7 @@ public class CardMaker {
 						UI.show_detail_label.setText(DetailReader.getDetail(".\\.\\resources\\card\\scenario\\wild_west_show\\wild_west_show.txt"));
 					}
 					// left click
-					else if(SwingUtilities.isLeftMouseButton(e)) {
-						// TODO
-					}
+					else if(SwingUtilities.isLeftMouseButton(e)) {}
 					UI.mp.repaint();
 				}
 			});
@@ -481,9 +469,7 @@ public class CardMaker {
 						UI.show_detail_label.setText(DetailReader.getDetail(".\\.\\resources\\card\\gold_rush\\"+cardColor+"\\"+cardName+".txt"));
 					}
 					// left click
-					else if(SwingUtilities.isLeftMouseButton(e)) {
-						// TODO
-					}
+					else if(SwingUtilities.isLeftMouseButton(e)) {}
 					UI.mp.repaint();
 				}
 			});
@@ -535,9 +521,7 @@ public class CardMaker {
 						UI.show_detail_label.setText(DetailReader.getDetail(".\\.\\resources\\card\\gold_rush\\"+cardColor+"\\"+cardName+".txt"));
 					}
 					// left click
-					else if(SwingUtilities.isLeftMouseButton(e)) {
-						// TODO
-					}
+					else if(SwingUtilities.isLeftMouseButton(e)) {}
 					UI.mp.repaint();
 				}
 			});
@@ -589,9 +573,7 @@ public class CardMaker {
 						UI.show_detail_label.setText(DetailReader.getDetail(".\\.\\resources\\card\\gold_rush\\"+cardColor+"\\"+cardName+".txt"));
 					}
 					// left click
-					else if(SwingUtilities.isLeftMouseButton(e)) {
-						// TODO
-					}
+					else if(SwingUtilities.isLeftMouseButton(e)) {}
 					UI.mp.repaint();
 				}
 			});
@@ -643,9 +625,7 @@ public class CardMaker {
 						UI.show_detail_label.setText(DetailReader.getDetail(".\\.\\resources\\card\\playing\\colt-45.txt"));
 					}
 					// left click
-					else if(SwingUtilities.isLeftMouseButton(e)) {
-						// TODO
-					}
+					else if(SwingUtilities.isLeftMouseButton(e)) {}
 					UI.mp.repaint();
 				}
 			});
@@ -693,9 +673,7 @@ public class CardMaker {
 						UI.show_detail_label.setText(DetailReader.getDetail(".\\.\\resources\\card\\playing\\colt-45.txt"));
 					}
 					// left click
-					else if(SwingUtilities.isLeftMouseButton(e)) {
-						// TODO
-					}
+					else if(SwingUtilities.isLeftMouseButton(e)) {}
 					UI.mp.repaint();
 				}
 			});
@@ -743,9 +721,7 @@ public class CardMaker {
 						UI.show_detail_label.setText(DetailReader.getDetail(".\\.\\resources\\card\\playing\\colt-45.txt"));
 					}
 					// left click
-					else if(SwingUtilities.isLeftMouseButton(e)) {
-						// TODO
-					}
+					else if(SwingUtilities.isLeftMouseButton(e)) {}
 					UI.mp.repaint();
 				}
 			});
@@ -793,9 +769,7 @@ public class CardMaker {
 						UI.show_detail_label.setText(DetailReader.getDetail(".\\.\\resources\\card\\playing\\colt-45.txt"));
 					}
 					// left click
-					else if(SwingUtilities.isLeftMouseButton(e)) {
-						// TODO
-					}
+					else if(SwingUtilities.isLeftMouseButton(e)) {}
 					UI.mp.repaint();
 				}
 			});
@@ -843,9 +817,7 @@ public class CardMaker {
 						UI.show_detail_label.setText(DetailReader.getDetail(".\\.\\resources\\card\\playing\\colt-45.txt"));
 					}
 					// left click
-					else if(SwingUtilities.isLeftMouseButton(e)) {
-						// TODO
-					}
+					else if(SwingUtilities.isLeftMouseButton(e)) {}
 					UI.mp.repaint();
 				}
 			});
@@ -894,9 +866,7 @@ public class CardMaker {
 						UI.show_detail_label.setText(DetailReader.getDetail(".\\.\\resources\\card\\playing\\colt-45.txt"));
 					}
 					// left click
-					else if(SwingUtilities.isLeftMouseButton(e)) {
-						// TODO
-					}
+					else if(SwingUtilities.isLeftMouseButton(e)) {}
 					UI.mp.repaint();
 				}
 			});
@@ -945,9 +915,7 @@ public class CardMaker {
 						UI.show_detail_label.setText(DetailReader.getDetail(".\\.\\resources\\card\\playing\\colt-45.txt"));
 					}
 					// left click
-					else if(SwingUtilities.isLeftMouseButton(e)) {
-						// TODO
-					}
+					else if(SwingUtilities.isLeftMouseButton(e)) {}
 					UI.mp.repaint();
 				}
 			});
@@ -1016,9 +984,7 @@ public class CardMaker {
 						UI.show_detail_label.setText(DetailReader.getDetail(".\\.\\resources\\card\\role\\"+roleName+".txt"));
 					}
 					// left click
-					else if(SwingUtilities.isLeftMouseButton(e)) {
-						// TODO
-					}
+					else if(SwingUtilities.isLeftMouseButton(e)) {}
 					UI.mp.repaint();
 				}
 			});
@@ -1087,9 +1053,7 @@ public class CardMaker {
 						UI.show_detail_label.setText(DetailReader.getDetail(".\\.\\resources\\card\\role\\"+roleName+".txt"));
 					}
 					// left click
-					else if(SwingUtilities.isLeftMouseButton(e)) {
-						// TODO
-					}
+					else if(SwingUtilities.isLeftMouseButton(e)) {}
 					UI.mp.repaint();
 				}
 			});
@@ -1158,9 +1122,7 @@ public class CardMaker {
 						UI.show_detail_label.setText(DetailReader.getDetail(".\\.\\resources\\card\\role\\"+roleName+".txt"));
 					}
 					// left click
-					else if(SwingUtilities.isLeftMouseButton(e)) {
-						// TODO
-					}
+					else if(SwingUtilities.isLeftMouseButton(e)) {}
 					UI.mp.repaint();
 				}
 			});
@@ -1229,9 +1191,7 @@ public class CardMaker {
 						UI.show_detail_label.setText(DetailReader.getDetail(".\\.\\resources\\card\\role\\"+roleName+".txt"));
 					}
 					// left click
-					else if(SwingUtilities.isLeftMouseButton(e)) {
-						// TODO
-					}
+					else if(SwingUtilities.isLeftMouseButton(e)) {}
 					UI.mp.repaint();
 				}
 			});
@@ -1300,9 +1260,7 @@ public class CardMaker {
 						UI.show_detail_label.setText(DetailReader.getDetail(".\\.\\resources\\card\\role\\"+roleName+".txt"));
 					}
 					// left click
-					else if(SwingUtilities.isLeftMouseButton(e)) {
-						// TODO
-					}
+					else if(SwingUtilities.isLeftMouseButton(e)) {}
 					UI.mp.repaint();
 				}
 			});
@@ -1371,9 +1329,7 @@ public class CardMaker {
 						UI.show_detail_label.setText(DetailReader.getDetail(".\\.\\resources\\card\\role\\"+roleName+".txt"));
 					}
 					// left click
-					else if(SwingUtilities.isLeftMouseButton(e)) {
-						// TODO
-					}
+					else if(SwingUtilities.isLeftMouseButton(e)) {}
 					UI.mp.repaint();
 				}
 			});
@@ -1442,9 +1398,7 @@ public class CardMaker {
 						UI.show_detail_label.setText(DetailReader.getDetail(".\\.\\resources\\card\\role\\"+roleName+".txt"));
 					}
 					// left click
-					else if(SwingUtilities.isLeftMouseButton(e)) {
-						// TODO
-					}
+					else if(SwingUtilities.isLeftMouseButton(e)) {}
 					UI.mp.repaint();
 				}
 			});
@@ -1500,9 +1454,7 @@ public class CardMaker {
 						UI.show_detail_label.setText(DetailReader.getDetail(".\\.\\resources\\card\\character\\"+cardPack+"\\"+cardName+".txt"));
 					}
 					// left click
-					else if(SwingUtilities.isLeftMouseButton(e)) {
-						// TODO
-					}
+					else if(SwingUtilities.isLeftMouseButton(e)) {}
 					UI.mp.repaint();
 				}
 			});
@@ -1552,9 +1504,7 @@ public class CardMaker {
 						UI.show_detail_label.setText(DetailReader.getDetail(".\\.\\resources\\card\\character\\"+cardPack+"\\"+cardName+".txt"));
 					}
 					// left click
-					else if(SwingUtilities.isLeftMouseButton(e)) {
-						// TODO
-					}
+					else if(SwingUtilities.isLeftMouseButton(e)) {}
 					UI.mp.repaint();
 				}
 			});
@@ -1604,9 +1554,7 @@ public class CardMaker {
 						UI.show_detail_label.setText(DetailReader.getDetail(".\\.\\resources\\card\\character\\"+cardPack+"\\"+cardName+".txt"));
 					}
 					// left click
-					else if(SwingUtilities.isLeftMouseButton(e)) {
-						// TODO
-					}
+					else if(SwingUtilities.isLeftMouseButton(e)) {}
 					UI.mp.repaint();
 				}
 			});
@@ -1656,9 +1604,7 @@ public class CardMaker {
 						UI.show_detail_label.setText(DetailReader.getDetail(".\\.\\resources\\card\\character\\"+cardPack+"\\"+cardName+".txt"));
 					}
 					// left click
-					else if(SwingUtilities.isLeftMouseButton(e)) {
-						// TODO
-					}
+					else if(SwingUtilities.isLeftMouseButton(e)) {}
 					UI.mp.repaint();
 				}
 			});
@@ -1708,9 +1654,7 @@ public class CardMaker {
 						UI.show_detail_label.setText(DetailReader.getDetail(".\\.\\resources\\card\\character\\"+cardPack+"\\"+cardName+".txt"));
 					}
 					// left click
-					else if(SwingUtilities.isLeftMouseButton(e)) {
-						// TODO
-					}
+					else if(SwingUtilities.isLeftMouseButton(e)) {}
 					UI.mp.repaint();
 				}
 			});
@@ -1760,9 +1704,7 @@ public class CardMaker {
 						UI.show_detail_label.setText(DetailReader.getDetail(".\\.\\resources\\card\\character\\"+cardPack+"\\"+cardName+".txt"));
 					}
 					// left click
-					else if(SwingUtilities.isLeftMouseButton(e)) {
-						// TODO
-					}
+					else if(SwingUtilities.isLeftMouseButton(e)) {}
 					UI.mp.repaint();
 				}
 			});
@@ -1812,9 +1754,7 @@ public class CardMaker {
 						UI.show_detail_label.setText(DetailReader.getDetail(".\\.\\resources\\card\\character\\"+cardPack+"\\"+cardName+".txt"));
 					}
 					// left click
-					else if(SwingUtilities.isLeftMouseButton(e)) {
-						// TODO
-					}
+					else if(SwingUtilities.isLeftMouseButton(e)) {}
 					UI.mp.repaint();
 				}
 			});
@@ -1824,8 +1764,8 @@ public class CardMaker {
 		UI.mp.repaint();
 	}
 	
-	// make hand & field card button (playing card)
-	public static Select_button make_card_handField_playing(String id, String cardColor, String cardName, char cardShape, int cardNum, boolean isForward) {
+	// make field card button (gold rush card)
+	public static Select_button make_card_field_goldRush(String id, String cardColor, String cardName) {
 		// temp card button
 		Select_button temp_card = new Select_button();
 		// set border null
@@ -1833,11 +1773,375 @@ public class CardMaker {
 		// set disable
 		temp_card.setEnabled(false);
 		
-		// id = player_A hand & field
+		// TODO
+		
+		// return card
+		return temp_card;
+	}
+	
+	// make field card button (playing card)
+	public static Select_button make_card_field_playing(int fieldCardCnt, String id, String cardColor, String cardName, char cardShape, int cardNum) {
+		// temp card button
+		Select_button temp_card = new Select_button();
+		// set border null
+		temp_card.setBorder(null);
+		// set disable
+		temp_card.setEnabled(false);
+		
+		// id = player_A field
+		if(UI.player_A_name.getText().equals(id)) {
+			// set field card image
+			temp_card = new Select_button(cardColor, cardName, cardShape, cardNum) {
+				private static final long serialVersionUID = 1L;
+				Image background = new ImageIcon(".\\.\\resources\\card\\playing\\"+cardColor+"\\"+cardName+"_"+cardShape+"_"+cardNum+"_87.png").getImage();
+				// drawing background
+				protected void paintComponent(Graphics g) {
+					g.drawImage(background, 0, 0, null);
+				}
+			};
+			// set size
+			temp_card.setPreferredSize(new Dimension(87,135));
+			// set bounds
+			temp_card.setBounds(67*(fieldCardCnt/2),(fieldCardCnt%2==0)?0:135,87,135);
+			// set mouse listener
+			temp_card.addMouseListener(new MouseAdapter() {
+				public void mouseEntered(MouseEvent e) {
+					// border painting
+					((Select_button)e.getComponent()).setBorder(BorderFactory.createLineBorder(Color.GREEN,2));
+					// show detail (image)
+					try {UI.show_detail_panel.add(new JLabel(new ImageIcon(ImageIO.read(new File
+							(".\\.\\resources\\card\\playing\\"+cardColor+"\\"+cardName+"_"+cardShape+"_"+cardNum+"_155.png")))));} catch (IOException e1) {}
+					UI.mp.repaint();
+				}
+				public void mouseExited(MouseEvent e) {
+					// remove border
+					((Select_button)e.getComponent()).setBorder(null);
+					// remove details
+					UI.show_detail_panel.removeAll();
+					UI.show_detail_label.setText(null);
+					UI.mp.repaint();
+				}
+				public void mouseClicked(MouseEvent e) {
+					// right click
+					if(SwingUtilities.isRightMouseButton(e)) {
+						// remove detail (image)
+						UI.show_detail_panel.removeAll();
+						// add detail (text)
+						UI.show_detail_label.setText(DetailReader.getDetail(".\\.\\resources\\card\\playing\\"+cardColor+"\\"+cardName+"_"+cardShape+"_"+cardNum+".txt"));
+					}
+					// left click
+					else if(SwingUtilities.isLeftMouseButton(e)) {}
+					UI.mp.repaint();
+				}
+			});
+		}
+		
+		// id = player_B field
+		if(UI.player_B_name.getText().equals(id)) {
+			// set field card image
+			temp_card = new Select_button(cardColor, cardName, cardShape, cardNum) {
+				private static final long serialVersionUID = 1L;
+				Image background = new ImageIcon(".\\.\\resources\\card\\playing\\"+cardColor+"\\"+cardName+"_"+cardShape+"_"+cardNum+"_87.png").getImage();
+				// drawing background
+				protected void paintComponent(Graphics g) {
+					g.drawImage(background, 0, 0, null);
+				}
+			};
+			// set size
+			temp_card.setPreferredSize(new Dimension(87,135));
+			// set bounds
+			temp_card.setBounds(67*(fieldCardCnt/2),(fieldCardCnt%2==0)?0:135,87,135);
+			// set mouse listener
+			temp_card.addMouseListener(new MouseAdapter() {
+				public void mouseEntered(MouseEvent e) {
+					// border painting
+					((Select_button)e.getComponent()).setBorder(BorderFactory.createLineBorder(Color.GREEN,2));
+					// show detail (image)
+					try {UI.show_detail_panel.add(new JLabel(new ImageIcon(ImageIO.read(new File
+							(".\\.\\resources\\card\\playing\\"+cardColor+"\\"+cardName+"_"+cardShape+"_"+cardNum+"_155.png")))));} catch (IOException e1) {}
+					UI.mp.repaint();
+				}
+				public void mouseExited(MouseEvent e) {
+					// remove border
+					((Select_button)e.getComponent()).setBorder(null);
+					// remove details
+					UI.show_detail_panel.removeAll();
+					UI.show_detail_label.setText(null);
+					UI.mp.repaint();
+				}
+				public void mouseClicked(MouseEvent e) {
+					// right click
+					if(SwingUtilities.isRightMouseButton(e)) {
+						// remove detail (image)
+						UI.show_detail_panel.removeAll();
+						// add detail (text)
+						UI.show_detail_label.setText(DetailReader.getDetail(".\\.\\resources\\card\\playing\\"+cardColor+"\\"+cardName+"_"+cardShape+"_"+cardNum+".txt"));
+					}
+					// left click
+					else if(SwingUtilities.isLeftMouseButton(e)) {}
+					UI.mp.repaint();
+				}
+			});
+		}
+
+		// id = player_C field
+		if(UI.player_C_name.getText().equals(id)) {
+			// set field card image
+			temp_card = new Select_button(cardColor, cardName, cardShape, cardNum) {
+				private static final long serialVersionUID = 1L;
+				Image background = new ImageIcon(".\\.\\resources\\card\\playing\\"+cardColor+"\\"+cardName+"_"+cardShape+"_"+cardNum+"_87_player_C.png").getImage();
+				// drawing background
+				protected void paintComponent(Graphics g) {
+					g.drawImage(background, 0, 0, null);
+				}
+			};
+			// set size
+			temp_card.setPreferredSize(new Dimension(135,87));
+			// set bounds
+			temp_card.setBounds((fieldCardCnt%2==0)?135:0,67*(fieldCardCnt/2),135,87);
+			// set mouse listener
+			temp_card.addMouseListener(new MouseAdapter() {
+				public void mouseEntered(MouseEvent e) {
+					// border painting
+					((Select_button)e.getComponent()).setBorder(BorderFactory.createLineBorder(Color.GREEN,2));
+					// show detail (image)
+					try {UI.show_detail_panel.add(new JLabel(new ImageIcon(ImageIO.read(new File
+							(".\\.\\resources\\card\\playing\\"+cardColor+"\\"+cardName+"_"+cardShape+"_"+cardNum+"_155.png")))));} catch (IOException e1) {}
+					UI.mp.repaint();
+				}
+				public void mouseExited(MouseEvent e) {
+					// remove border
+					((Select_button)e.getComponent()).setBorder(null);
+					// remove details
+					UI.show_detail_panel.removeAll();
+					UI.show_detail_label.setText(null);
+					UI.mp.repaint();
+				}
+				public void mouseClicked(MouseEvent e) {
+					// right click
+					if(SwingUtilities.isRightMouseButton(e)) {
+						// remove detail (image)
+						UI.show_detail_panel.removeAll();
+						// add detail (text)
+						UI.show_detail_label.setText(DetailReader.getDetail(".\\.\\resources\\card\\playing\\"+cardColor+"\\"+cardName+"_"+cardShape+"_"+cardNum+".txt"));
+					}
+					// left click
+					else if(SwingUtilities.isLeftMouseButton(e)) {}
+					UI.mp.repaint();
+				}
+			});
+		}
+
+		// id = player_D field
+		if(UI.player_D_name.getText().equals(id)) {
+			// set field card image
+			temp_card = new Select_button(cardColor, cardName, cardShape, cardNum) {
+				private static final long serialVersionUID = 1L;
+				Image background = new ImageIcon(".\\.\\resources\\card\\playing\\"+cardColor+"\\"+cardName+"_"+cardShape+"_"+cardNum+"_87_player_DE.png").getImage();
+				// drawing background
+				protected void paintComponent(Graphics g) {
+					g.drawImage(background, 0, 0, null);
+				}
+			};
+			// set size
+			temp_card.setPreferredSize(new Dimension(87,135));
+			// set bounds
+			temp_card.setBounds(200-(67*(fieldCardCnt/2)),(fieldCardCnt%2==0)?135:0,87,135);
+			// set mouse listener
+			temp_card.addMouseListener(new MouseAdapter() {
+				public void mouseEntered(MouseEvent e) {
+					// border painting
+					((Select_button)e.getComponent()).setBorder(BorderFactory.createLineBorder(Color.GREEN,2));
+					// show detail (image)
+					try {UI.show_detail_panel.add(new JLabel(new ImageIcon(ImageIO.read(new File
+							(".\\.\\resources\\card\\playing\\"+cardColor+"\\"+cardName+"_"+cardShape+"_"+cardNum+"_155.png")))));} catch (IOException e1) {}
+					UI.mp.repaint();
+				}
+				public void mouseExited(MouseEvent e) {
+					// remove border
+					((Select_button)e.getComponent()).setBorder(null);
+					// remove details
+					UI.show_detail_panel.removeAll();
+					UI.show_detail_label.setText(null);
+					UI.mp.repaint();
+				}
+				public void mouseClicked(MouseEvent e) {
+					// right click
+					if(SwingUtilities.isRightMouseButton(e)) {
+						// remove detail (image)
+						UI.show_detail_panel.removeAll();
+						// add detail (text)
+						UI.show_detail_label.setText(DetailReader.getDetail(".\\.\\resources\\card\\playing\\"+cardColor+"\\"+cardName+"_"+cardShape+"_"+cardNum+".txt"));
+					}
+					// left click
+					else if(SwingUtilities.isLeftMouseButton(e)) {}
+					UI.mp.repaint();
+				}
+			});
+		}
+
+		// id = player_E field
+		if(UI.player_E_name.getText().equals(id)) {
+			// set field card image
+			temp_card = new Select_button(cardColor, cardName, cardShape, cardNum) {
+				private static final long serialVersionUID = 1L;
+				Image background = new ImageIcon(".\\.\\resources\\card\\playing\\"+cardColor+"\\"+cardName+"_"+cardShape+"_"+cardNum+"_87_player_DE.png").getImage();
+				// drawing background
+				protected void paintComponent(Graphics g) {
+					g.drawImage(background, 0, 0, null);
+				}
+			};
+			// set size
+			temp_card.setPreferredSize(new Dimension(87,135));
+			// set bounds
+			temp_card.setBounds(200-(67*(fieldCardCnt/2)),(fieldCardCnt%2==0)?135:0,87,135);
+			// set mouse listener
+			temp_card.addMouseListener(new MouseAdapter() {
+				public void mouseEntered(MouseEvent e) {
+					// border painting
+					((Select_button)e.getComponent()).setBorder(BorderFactory.createLineBorder(Color.GREEN,2));
+					// show detail (image)
+					try {UI.show_detail_panel.add(new JLabel(new ImageIcon(ImageIO.read(new File
+							(".\\.\\resources\\card\\playing\\"+cardColor+"\\"+cardName+"_"+cardShape+"_"+cardNum+"_155.png")))));} catch (IOException e1) {}
+					UI.mp.repaint();
+				}
+				public void mouseExited(MouseEvent e) {
+					// remove border
+					((Select_button)e.getComponent()).setBorder(null);
+					// remove details
+					UI.show_detail_panel.removeAll();
+					UI.show_detail_label.setText(null);
+					UI.mp.repaint();
+				}
+				public void mouseClicked(MouseEvent e) {
+					// right click
+					if(SwingUtilities.isRightMouseButton(e)) {
+						// remove detail (image)
+						UI.show_detail_panel.removeAll();
+						// add detail (text)
+						UI.show_detail_label.setText(DetailReader.getDetail(".\\.\\resources\\card\\playing\\"+cardColor+"\\"+cardName+"_"+cardShape+"_"+cardNum+".txt"));
+					}
+					// left click
+					else if(SwingUtilities.isLeftMouseButton(e)) {}
+					UI.mp.repaint();
+				}
+			});
+		}
+
+		// id = player_F field
+		if(UI.player_F_name.getText().equals(id)) {
+			// set field card image
+			temp_card = new Select_button(cardColor, cardName, cardShape, cardNum) {
+				private static final long serialVersionUID = 1L;
+				Image background = new ImageIcon(".\\.\\resources\\card\\playing\\"+cardColor+"\\"+cardName+"_"+cardShape+"_"+cardNum+"_87_player_F.png").getImage();
+				// drawing background
+				protected void paintComponent(Graphics g) {
+					g.drawImage(background, 0, 0, null);
+				}
+			};
+			// set size
+			temp_card.setPreferredSize(new Dimension(135,87));
+			// set bounds
+			temp_card.setBounds((fieldCardCnt%2==0)?0:135,200-(67*(fieldCardCnt/2)),135,87);
+			// set mouse listener
+			temp_card.addMouseListener(new MouseAdapter() {
+				public void mouseEntered(MouseEvent e) {
+					// border painting
+					((Select_button)e.getComponent()).setBorder(BorderFactory.createLineBorder(Color.GREEN,2));
+					// show detail (image)
+					try {UI.show_detail_panel.add(new JLabel(new ImageIcon(ImageIO.read(new File
+							(".\\.\\resources\\card\\playing\\"+cardColor+"\\"+cardName+"_"+cardShape+"_"+cardNum+"_155.png")))));} catch (IOException e1) {}
+					UI.mp.repaint();
+				}
+				public void mouseExited(MouseEvent e) {
+					// remove border
+					((Select_button)e.getComponent()).setBorder(null);
+					// remove details
+					UI.show_detail_panel.removeAll();
+					UI.show_detail_label.setText(null);
+					UI.mp.repaint();
+				}
+				public void mouseClicked(MouseEvent e) {
+					// right click
+					if(SwingUtilities.isRightMouseButton(e)) {
+						// remove detail (image)
+						UI.show_detail_panel.removeAll();
+						// add detail (text)
+						UI.show_detail_label.setText(DetailReader.getDetail(".\\.\\resources\\card\\playing\\"+cardColor+"\\"+cardName+"_"+cardShape+"_"+cardNum+".txt"));
+					}
+					// left click
+					else if(SwingUtilities.isLeftMouseButton(e)) {}
+					UI.mp.repaint();
+				}
+			});
+		}
+
+		// id = player_G field
+		if(UI.player_G_name.getText().equals(id)) {
+			// set field card image
+			temp_card = new Select_button(cardColor, cardName, cardShape, cardNum) {
+				private static final long serialVersionUID = 1L;
+				Image background = new ImageIcon(".\\.\\resources\\card\\playing\\"+cardColor+"\\"+cardName+"_"+cardShape+"_"+cardNum+"_87.png").getImage();
+				// drawing background
+				protected void paintComponent(Graphics g) {
+					g.drawImage(background, 0, 0, null);
+				}
+			};
+			// set size
+			temp_card.setPreferredSize(new Dimension(87,135));
+			// set bounds
+			temp_card.setBounds(67*(fieldCardCnt/2),(fieldCardCnt%2==0)?0:135,87,135);
+			// set mouse listener
+			temp_card.addMouseListener(new MouseAdapter() {
+				public void mouseEntered(MouseEvent e) {
+					// border painting
+					((Select_button)e.getComponent()).setBorder(BorderFactory.createLineBorder(Color.GREEN,2));
+					// show detail (image)
+					try {UI.show_detail_panel.add(new JLabel(new ImageIcon(ImageIO.read(new File
+							(".\\.\\resources\\card\\playing\\"+cardColor+"\\"+cardName+"_"+cardShape+"_"+cardNum+"_155.png")))));} catch (IOException e1) {}
+					UI.mp.repaint();
+				}
+				public void mouseExited(MouseEvent e) {
+					// remove border
+					((Select_button)e.getComponent()).setBorder(null);
+					// remove details
+					UI.show_detail_panel.removeAll();
+					UI.show_detail_label.setText(null);
+					UI.mp.repaint();
+				}
+				public void mouseClicked(MouseEvent e) {
+					// right click
+					if(SwingUtilities.isRightMouseButton(e)) {
+						// remove detail (image)
+						UI.show_detail_panel.removeAll();
+						// add detail (text)
+						UI.show_detail_label.setText(DetailReader.getDetail(".\\.\\resources\\card\\playing\\"+cardColor+"\\"+cardName+"_"+cardShape+"_"+cardNum+".txt"));
+					}
+					// left click
+					else if(SwingUtilities.isLeftMouseButton(e)) {}
+					UI.mp.repaint();
+				}
+			});
+		}
+
+		// return card
+		return temp_card;
+	}
+	
+	// make hand card button (playing card)
+	public static Select_button make_card_hand_playing(String id, String cardColor, String cardName, char cardShape, int cardNum, boolean isForward) {
+		// temp card button
+		Select_button temp_card = new Select_button();
+		// set border null
+		temp_card.setBorder(null);
+		// set disable
+		temp_card.setEnabled(false);
+		
+		// id = player_A hand
 		if(UI.player_A_name.getText().equals(id)) {
 			// forward?
 			if(isForward == true) {
-				// set handField card image
+				// set hand card image
 				temp_card = new Select_button(cardColor, cardName, cardShape, cardNum) {
 					private static final long serialVersionUID = 1L;
 					Image background = new ImageIcon(".\\.\\resources\\card\\playing\\"+cardColor+"\\"+cardName+"_"+cardShape+"_"+cardNum+"_87.png").getImage();
@@ -1849,7 +2153,7 @@ public class CardMaker {
 			}
 			// backward?
 			else if(isForward == false) {
-				// set handField card image
+				// set hand card image
 				temp_card = new Select_button(cardColor, cardName, cardShape, cardNum) {
 					private static final long serialVersionUID = 1L;
 					Image background = new ImageIcon(".\\.\\resources\\card\\playing\\back_87.png").getImage();
@@ -1891,18 +2195,21 @@ public class CardMaker {
 					}
 					// left click
 					else if(SwingUtilities.isLeftMouseButton(e)) {
-						// TODO
+						// remove details & this card
+						UI.show_detail_panel.removeAll();
+						UI.show_detail_label.setText(null);
+						UI.player_A_hand.remove(e.getComponent());
 					}
 					UI.mp.repaint();
 				}
 			});
 		}
 		
-		// id = player_B hand & field
+		// id = player_B hand
 		if(UI.player_B_name.getText().equals(id)) {
 			// forward?
 			if(isForward == true) {
-				// set handField card image
+				// set hand card image
 				temp_card = new Select_button(cardColor, cardName, cardShape, cardNum) {
 					private static final long serialVersionUID = 1L;
 					Image background = new ImageIcon(".\\.\\resources\\card\\playing\\"+cardColor+"\\"+cardName+"_"+cardShape+"_"+cardNum+"_70.png").getImage();
@@ -1914,7 +2221,7 @@ public class CardMaker {
 			}
 			// backward?
 			else if(isForward == false) {
-				// set handField card image
+				// set hand card image
 				temp_card = new Select_button(cardColor, cardName, cardShape, cardNum) {
 					private static final long serialVersionUID = 1L;
 					Image background = new ImageIcon(".\\.\\resources\\card\\playing\\back_70.png").getImage();
@@ -1955,19 +2262,17 @@ public class CardMaker {
 						UI.show_detail_label.setText(DetailReader.getDetail(".\\.\\resources\\card\\playing\\"+cardColor+"\\"+cardName+"_"+cardShape+"_"+cardNum+".txt"));
 					}
 					// left click
-					else if(SwingUtilities.isLeftMouseButton(e)) {
-						// TODO
-					}
+					else if(SwingUtilities.isLeftMouseButton(e)) {}
 					UI.mp.repaint();
 				}
 			});
 		}
 		
-		// id = player_C hand & field
+		// id = player_C hand
 		if(UI.player_C_name.getText().equals(id)) {
 			// forward?
 			if(isForward == true) {
-				// set handField card image
+				// set hand card image
 				temp_card = new Select_button(cardColor, cardName, cardShape, cardNum) {
 					private static final long serialVersionUID = 1L;
 					Image background = new ImageIcon(".\\.\\resources\\card\\playing\\"+cardColor+"\\"+cardName+"_"+cardShape+"_"+cardNum+"_70_player_C.png").getImage();
@@ -1979,7 +2284,7 @@ public class CardMaker {
 			}
 			// backward?
 			else if(isForward == false) {
-				// set handField card image
+				// set hand card image
 				temp_card = new Select_button(cardColor, cardName, cardShape, cardNum) {
 					private static final long serialVersionUID = 1L;
 					Image background = new ImageIcon(".\\.\\resources\\card\\playing\\back_70_player_C.png").getImage();
@@ -2020,19 +2325,17 @@ public class CardMaker {
 						UI.show_detail_label.setText(DetailReader.getDetail(".\\.\\resources\\card\\playing\\"+cardColor+"\\"+cardName+"_"+cardShape+"_"+cardNum+".txt"));
 					}
 					// left click
-					else if(SwingUtilities.isLeftMouseButton(e)) {
-						// TODO
-					}
+					else if(SwingUtilities.isLeftMouseButton(e)) {}
 					UI.mp.repaint();
 				}
 			});
 		}
 		
-		// id = player_D hand & field
+		// id = player_D hand
 		if(UI.player_D_name.getText().equals(id)) {
 			// forward?
 			if(isForward == true) {
-				// set handField card image
+				// set hand card image
 				temp_card = new Select_button(cardColor, cardName, cardShape, cardNum) {
 					private static final long serialVersionUID = 1L;
 					Image background = new ImageIcon(".\\.\\resources\\card\\playing\\"+cardColor+"\\"+cardName+"_"+cardShape+"_"+cardNum+"_70_player_DE.png").getImage();
@@ -2044,7 +2347,7 @@ public class CardMaker {
 			}
 			// backward?
 			else if(isForward == false) {
-				// set handField card image
+				// set hand card image
 				temp_card = new Select_button(cardColor, cardName, cardShape, cardNum) {
 					private static final long serialVersionUID = 1L;
 					Image background = new ImageIcon(".\\.\\resources\\card\\playing\\back_70_player_DE.png").getImage();
@@ -2085,19 +2388,17 @@ public class CardMaker {
 						UI.show_detail_label.setText(DetailReader.getDetail(".\\.\\resources\\card\\playing\\"+cardColor+"\\"+cardName+"_"+cardShape+"_"+cardNum+".txt"));
 					}
 					// left click
-					else if(SwingUtilities.isLeftMouseButton(e)) {
-						// TODO
-					}
+					else if(SwingUtilities.isLeftMouseButton(e)) {}
 					UI.mp.repaint();
 				}
 			});
 		}
 		
-		// id = player_E hand & field
+		// id = player_E hand
 		if(UI.player_E_name.getText().equals(id)) {
 			// forward?
 			if(isForward == true) {
-				// set handField card image
+				// set hand card image
 				temp_card = new Select_button(cardColor, cardName, cardShape, cardNum) {
 					private static final long serialVersionUID = 1L;
 					Image background = new ImageIcon(".\\.\\resources\\card\\playing\\"+cardColor+"\\"+cardName+"_"+cardShape+"_"+cardNum+"_70_player_DE.png").getImage();
@@ -2109,7 +2410,7 @@ public class CardMaker {
 			}
 			// backward?
 			else if(isForward == false) {
-				// set handField card image
+				// set hand card image
 				temp_card = new Select_button(cardColor, cardName, cardShape, cardNum) {
 					private static final long serialVersionUID = 1L;
 					Image background = new ImageIcon(".\\.\\resources\\card\\playing\\back_70_player_DE.png").getImage();
@@ -2150,19 +2451,17 @@ public class CardMaker {
 						UI.show_detail_label.setText(DetailReader.getDetail(".\\.\\resources\\card\\playing\\"+cardColor+"\\"+cardName+"_"+cardShape+"_"+cardNum+".txt"));
 					}
 					// left click
-					else if(SwingUtilities.isLeftMouseButton(e)) {
-						// TODO
-					}
+					else if(SwingUtilities.isLeftMouseButton(e)) {}
 					UI.mp.repaint();
 				}
 			});
 		}
 		
-		// id = player_F hand & field
+		// id = player_F hand
 		if(UI.player_F_name.getText().equals(id)) {
 			// forward?
 			if(isForward == true) {
-				// set handField card image
+				// set hand card image
 				temp_card = new Select_button(cardColor, cardName, cardShape, cardNum) {
 					private static final long serialVersionUID = 1L;
 					Image background = new ImageIcon(".\\.\\resources\\card\\playing\\"+cardColor+"\\"+cardName+"_"+cardShape+"_"+cardNum+"_70_player_F.png").getImage();
@@ -2174,7 +2473,7 @@ public class CardMaker {
 			}
 			// backward?
 			else if(isForward == false) {
-				// set handField card image
+				// set hand card image
 				temp_card = new Select_button(cardColor, cardName, cardShape, cardNum) {
 					private static final long serialVersionUID = 1L;
 					Image background = new ImageIcon(".\\.\\resources\\card\\playing\\back_70_player_F.png").getImage();
@@ -2215,19 +2514,17 @@ public class CardMaker {
 						UI.show_detail_label.setText(DetailReader.getDetail(".\\.\\resources\\card\\playing\\"+cardColor+"\\"+cardName+"_"+cardShape+"_"+cardNum+".txt"));
 					}
 					// left click
-					else if(SwingUtilities.isLeftMouseButton(e)) {
-						// TODO
-					}
+					else if(SwingUtilities.isLeftMouseButton(e)) {}
 					UI.mp.repaint();
 				}
 			});
 		}
 		
-		// id = player_G hand & field
+		// id = player_G hand
 		if(UI.player_G_name.getText().equals(id)) {
 			// forward?
 			if(isForward == true) {
-				// set handField card image
+				// set hand card image
 				temp_card = new Select_button(cardColor, cardName, cardShape, cardNum) {
 					private static final long serialVersionUID = 1L;
 					Image background = new ImageIcon(".\\.\\resources\\card\\playing\\"+cardColor+"\\"+cardName+"_"+cardShape+"_"+cardNum+"_70.png").getImage();
@@ -2239,7 +2536,7 @@ public class CardMaker {
 			}
 			// backward?
 			else if(isForward == false) {
-				// set handField card image
+				// set hand card image
 				temp_card = new Select_button(cardColor, cardName, cardShape, cardNum) {
 					private static final long serialVersionUID = 1L;
 					Image background = new ImageIcon(".\\.\\resources\\card\\playing\\back_70.png").getImage();
@@ -2280,15 +2577,13 @@ public class CardMaker {
 						UI.show_detail_label.setText(DetailReader.getDetail(".\\.\\resources\\card\\playing\\"+cardColor+"\\"+cardName+"_"+cardShape+"_"+cardNum+".txt"));
 					}
 					// left click
-					else if(SwingUtilities.isLeftMouseButton(e)) {
-						// TODO
-					}
+					else if(SwingUtilities.isLeftMouseButton(e)) {}
 					UI.mp.repaint();
 				}
 			});
 		}
 		
-		// return made button
+		// return button
 		return temp_card;
 	}
 	

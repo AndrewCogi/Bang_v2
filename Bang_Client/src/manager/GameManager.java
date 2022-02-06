@@ -241,13 +241,13 @@ public class GameManager {
 				char cardShape = splitCmd[6].charAt(0);
 				int cardNumber = Integer.parseInt(splitCmd[7]);
 				// make hand & field card, add into [id]'s card (if myName -> forward / not myName ->backward)
-				if(myName.equals(id)) UI.player_A_hand.add(CardMaker.make_card_handField_playing(id, cardColor, cardName, cardShape, cardNumber, true));	
-				else if(UI.player_B_name.getText().equals(id)) UI.player_B_hand.add(CardMaker.make_card_handField_playing(id, cardColor, cardName, cardShape, cardNumber, false));
-				else if(UI.player_C_name.getText().equals(id)) UI.player_C_hand.add(CardMaker.make_card_handField_playing(id, cardColor, cardName, cardShape, cardNumber, false));
-				else if(UI.player_D_name.getText().equals(id)) UI.player_D_hand.add(CardMaker.make_card_handField_playing(id, cardColor, cardName, cardShape, cardNumber, false));
-				else if(UI.player_E_name.getText().equals(id)) UI.player_E_hand.add(CardMaker.make_card_handField_playing(id, cardColor, cardName, cardShape, cardNumber, false));
-				else if(UI.player_F_name.getText().equals(id)) UI.player_F_hand.add(CardMaker.make_card_handField_playing(id, cardColor, cardName, cardShape, cardNumber, false));
-				else if(UI.player_G_name.getText().equals(id)) UI.player_G_hand.add(CardMaker.make_card_handField_playing(id, cardColor, cardName, cardShape, cardNumber, false));
+				if(myName.equals(id)) UI.player_A_hand.add(CardMaker.make_card_hand_playing(id, cardColor, cardName, cardShape, cardNumber, true));	
+				else if(UI.player_B_name.getText().equals(id)) UI.player_B_hand.add(CardMaker.make_card_hand_playing(id, cardColor, cardName, cardShape, cardNumber, false));
+				else if(UI.player_C_name.getText().equals(id)) UI.player_C_hand.add(CardMaker.make_card_hand_playing(id, cardColor, cardName, cardShape, cardNumber, false));
+				else if(UI.player_D_name.getText().equals(id)) UI.player_D_hand.add(CardMaker.make_card_hand_playing(id, cardColor, cardName, cardShape, cardNumber, false));
+				else if(UI.player_E_name.getText().equals(id)) UI.player_E_hand.add(CardMaker.make_card_hand_playing(id, cardColor, cardName, cardShape, cardNumber, false));
+				else if(UI.player_F_name.getText().equals(id)) UI.player_F_hand.add(CardMaker.make_card_hand_playing(id, cardColor, cardName, cardShape, cardNumber, false));
+				else if(UI.player_G_name.getText().equals(id)) UI.player_G_hand.add(CardMaker.make_card_hand_playing(id, cardColor, cardName, cardShape, cardNumber, false));
 				// repaint
 				UI.mp.repaint();
 			}

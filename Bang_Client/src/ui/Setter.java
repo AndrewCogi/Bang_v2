@@ -1,6 +1,7 @@
 package ui;
 
 import java.awt.Color;
+import java.awt.Component;
 
 import client.App;
 
@@ -805,6 +806,28 @@ public class Setter {
 		}
 		else {
 			System.out.println("[Unknown][setTextNotice] > Unknown notice.");
+		}
+		// repaint
+		UI.mp.repaint();
+	}
+	
+	// refresh player's field cards
+	public static void setFieldRefresh(String id) {
+		// find seat
+		if(UI.player_A_name.getText().equals(id)) {
+			// extract cards
+			Component[] cards = UI.player_A_field.getComponents();
+			// delete all components
+			UI.player_A_field.removeAll();
+			// re-add
+			int idx = 0;
+			for(Component c : cards) {
+				Select_button card = (Select_button)c;
+				// re-set bounds
+				card.setBounds(67*(idx/2),(idx%2==0)?0:135,87,135);
+				UI.player_A_field.add(card);
+				idx++;
+			}
 		}
 		// repaint
 		UI.mp.repaint();

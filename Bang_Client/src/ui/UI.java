@@ -1068,39 +1068,39 @@ public class UI {
 		Setter.setPlayerCharacterImageAvailable(player_G_name.getText(), true);
 		
 		// test (플레이어 핸드 넣어보기)(A) (max: 11)
-		player_A_hand.add(CardMaker.make_card_handField_playing(player_A_name.getText(), "blue", "barile", 'S', 12, true));
-		player_A_hand.add(CardMaker.make_card_handField_playing(player_A_name.getText(), "blue", "barile", 'S', 13, true));
-		player_A_hand.add(CardMaker.make_card_handField_playing(player_A_name.getText(), "brown", "bang", 'S', 1, true));
+		player_A_hand.add(CardMaker.make_card_hand_playing(player_A_name.getText(), "blue", "barile", 'S', 12, true));
+		player_A_hand.add(CardMaker.make_card_hand_playing(player_A_name.getText(), "blue", "barile", 'S', 13, true));
+		player_A_hand.add(CardMaker.make_card_hand_playing(player_A_name.getText(), "brown", "bang", 'S', 1, true));
 		Setter.setPlayerHandImageAvailable(UI.player_A_name.getText(),true);
 		// player_A_hand.setBorder(BorderFactory.createLineBorder(Color.BLACK,3));
 		
 		// test (플레이어 핸드 넣어보기)(B) (max: 14)
-		player_B_hand.add(CardMaker.make_card_handField_playing(player_B_name.getText(), "brown", "bang", 'C', 2, false));
+		player_B_hand.add(CardMaker.make_card_hand_playing(player_B_name.getText(), "brown", "bang", 'C', 2, false));
 		Setter.setPlayerHandImageAvailable(UI.player_B_name.getText(),true);
 		// player_B_hand.setBorder(BorderFactory.createLineBorder(Color.BLACK,3));
 
 		// test (플레이어 핸드 넣어보기)(C) (max: 13)
-		player_C_hand.add(CardMaker.make_card_handField_playing(player_C_name.getText(), "brown", "bang", 'C', 2, false));
+		player_C_hand.add(CardMaker.make_card_hand_playing(player_C_name.getText(), "brown", "bang", 'C', 2, false));
 		Setter.setPlayerHandImageAvailable(player_C_name.getText(), true);
 		// player_C_hand.setBorder(BorderFactory.createLineBorder(Color.BLACK,3));
 		
 		// test (플레이어 핸드 넣어보기)(D) (max: 14)
-		player_D_hand.add(CardMaker.make_card_handField_playing(player_D_name.getText(), "brown", "bang", 'C', 2, false));
+		player_D_hand.add(CardMaker.make_card_hand_playing(player_D_name.getText(), "brown", "bang", 'C', 2, false));
 		Setter.setPlayerHandImageAvailable(player_D_name.getText(),true);
 		// player_D_hand.setBorder(BorderFactory.createLineBorder(Color.BLACK,3));
 		
 		// test (플레이어 핸드 넣어보기)(E) (max: 14)
-		player_E_hand.add(CardMaker.make_card_handField_playing(player_E_name.getText(), "brown", "bang", 'C', 2, false));
+		player_E_hand.add(CardMaker.make_card_hand_playing(player_E_name.getText(), "brown", "bang", 'C', 2, false));
 		Setter.setPlayerHandImageAvailable(player_E_name.getText(),true);
 		// player_E_hand.setBorder(BorderFactory.createLineBorder(Color.BLACK,3));
 		
 		// test (플레이어 핸드 넣어보기)(F) (max: 13)
-		player_F_hand.add(CardMaker.make_card_handField_playing(player_F_name.getText(), "brown", "bang", 'C', 2, false));
+		player_F_hand.add(CardMaker.make_card_hand_playing(player_F_name.getText(), "brown", "bang", 'C', 2, false));
 		Setter.setPlayerHandImageAvailable(player_F_name.getText(), true);
 		// player_F_hand.setBorder(BorderFactory.createLineBorder(Color.BLACK,3));
 		
 		// test (플레이어 핸드 넣어보기)(G) (max: 14)
-		player_G_hand.add(CardMaker.make_card_handField_playing(player_G_name.getText(), "brown", "bang", 'C', 2, false));
+		player_G_hand.add(CardMaker.make_card_hand_playing(player_G_name.getText(), "brown", "bang", 'C', 2, false));
 		Setter.setPlayerHandImageAvailable(player_G_name.getText(),true);
 		// player_G_hand.setBorder(BorderFactory.createLineBorder(Color.BLACK,3));
 		
@@ -1138,117 +1138,43 @@ public class UI {
 //		CardMaker.make_card_handField_gold_rush(4, "black", "calumet", 3);
 //		Setter.setGoldRushImageAvailable(4, true);
 		
-		// test (필드 넣어보기)(A) (3장 이하: 87, 4장: 67, 5장: 50)
-		for(int i=0; i<4; i++) {
-			JButton temp = new JButton();
-			temp.setIcon(new ImageIcon(".\\.\\resources\\card\\gold_rush\\black\\calumet_87.png"));
-			temp.setPreferredSize(new Dimension(87,135));
-			temp.setBounds(67*i,0,87,135);
-			player_A_field.add(temp);
-		}
-		for(int i=0; i<3; i++) {
-			JButton temp = new JButton();
-			temp.setIcon(new ImageIcon(".\\.\\resources\\card\\playing\\blue\\barile_S_12_87.png"));
-			temp.setPreferredSize(new Dimension(87,135));
-			temp.setBounds(87*i,135,87,135);
-			player_A_field.add(temp);
-		}
+		// test (필드 넣어보기)(A) (최대 8장 고정)
+		player_A_field.add(CardMaker.make_card_field_playing(UI.player_A_field.getComponentCount(),UI.player_A_name.getText(), "blue", "barile", 'S', 13));
+		player_A_field.add(CardMaker.make_card_field_playing(UI.player_A_field.getComponentCount(),UI.player_A_name.getText(), "blue", "barile", 'S', 13));
+		player_A_field.add(CardMaker.make_card_field_playing(UI.player_A_field.getComponentCount(),UI.player_A_name.getText(), "blue", "barile", 'S', 13));
 		
 		// test (필드 넣어보기)(B)
-		for(int i=0; i<5; i++) {
-			JButton temp = new JButton();
-			temp.setIcon(new ImageIcon(".\\.\\resources\\card\\playing\\blue\\barile_S_12_87.png"));
-			temp.setPreferredSize(new Dimension(87,135));
-			temp.setBounds(50*i,0,87,135);
-			player_B_field.add(temp);
-		}
-		for(int i=0; i<5; i++) {
-			JButton temp = new JButton();
-			temp.setIcon(new ImageIcon(".\\.\\resources\\card\\playing\\blue\\barile_S_12_87.png"));
-			temp.setPreferredSize(new Dimension(87,135));
-			temp.setBounds(50*i,135,87,135);
-			player_B_field.add(temp);
-		}
+		player_B_field.add(CardMaker.make_card_field_playing(UI.player_B_field.getComponentCount(), UI.player_B_name.getText(), "blue", "barile", 'S', 12));
+		player_B_field.add(CardMaker.make_card_field_playing(UI.player_B_field.getComponentCount(), UI.player_B_name.getText(), "blue", "barile", 'S', 12));
+		player_B_field.add(CardMaker.make_card_field_playing(UI.player_B_field.getComponentCount(), UI.player_B_name.getText(), "blue", "barile", 'S', 12));
 		
 		// test (필드 넣어보기)(C)
-		for(int i=0; i<5; i++) {
-			JButton temp = new JButton();
-			temp.setIcon(new ImageIcon(".\\.\\resources\\card\\playing\\blue\\barile_S_12_87_player_C.png"));
-			temp.setPreferredSize(new Dimension(135,87));
-			temp.setBounds(135,50*i,135,87);
-			player_C_field.add(temp);
-		}
-		for(int i=0; i<5; i++) {
-			JButton temp = new JButton();
-			temp.setIcon(new ImageIcon(".\\.\\resources\\card\\playing\\blue\\barile_S_12_87_player_C.png"));
-			temp.setPreferredSize(new Dimension(135,87));
-			temp.setBounds(0,50*i,135,87);
-			player_C_field.add(temp);
-		}
+		player_C_field.add(CardMaker.make_card_field_playing(UI.player_C_field.getComponentCount(), UI.player_C_name.getText(), "blue", "barile", 'S', 12));
+		player_C_field.add(CardMaker.make_card_field_playing(UI.player_C_field.getComponentCount(), UI.player_C_name.getText(), "blue", "barile", 'S', 12));
+		player_C_field.add(CardMaker.make_card_field_playing(UI.player_C_field.getComponentCount(), UI.player_C_name.getText(), "blue", "barile", 'S', 12));
 		
 		// test (필드 넣어보기)(D)
-		for(int i=0; i<5; i++) {
-			JButton temp = new JButton();
-			temp.setIcon(new ImageIcon(".\\.\\resources\\card\\playing\\blue\\barile_S_12_87_player_DE.png"));
-			temp.setPreferredSize(new Dimension(87,135));
-			temp.setBounds(200-(50*i),135,87,135);
-			player_D_field.add(temp);
-		}
-		for(int i=0; i<5; i++) {
-			JButton temp = new JButton();
-			temp.setIcon(new ImageIcon(".\\.\\resources\\card\\playing\\blue\\barile_S_12_87_player_DE.png"));
-			temp.setPreferredSize(new Dimension(87,135));
-			temp.setBounds(200-(50*i),0,87,135);
-			player_D_field.add(temp);
-		}
+		player_D_field.add(CardMaker.make_card_field_playing(UI.player_D_field.getComponentCount(), UI.player_D_name.getText(), "blue", "barile", 'S', 12));
+		player_D_field.add(CardMaker.make_card_field_playing(UI.player_D_field.getComponentCount(), UI.player_D_name.getText(), "blue", "barile", 'S', 12));
+		player_D_field.add(CardMaker.make_card_field_playing(UI.player_D_field.getComponentCount(), UI.player_D_name.getText(), "blue", "barile", 'S', 12));
+
 		
 		// test (필드 넣어보기)(E)
-		for(int i=0; i<5; i++) {
-			JButton temp = new JButton();
-			temp.setIcon(new ImageIcon(".\\.\\resources\\card\\playing\\blue\\barile_S_12_87_player_DE.png"));
-			temp.setPreferredSize(new Dimension(87,135));
-			temp.setBounds(200-(50*i),135,87,135);
-			player_E_field.add(temp);
-		}
-		for(int i=0; i<5; i++) {
-			JButton temp = new JButton();
-			temp.setIcon(new ImageIcon(".\\.\\resources\\card\\playing\\blue\\barile_S_12_87_player_DE.png"));
-			temp.setPreferredSize(new Dimension(87,135));
-			temp.setBounds(200-(50*i),0,87,135);
-			player_E_field.add(temp);
-		}
+		player_E_field.add(CardMaker.make_card_field_playing(UI.player_E_field.getComponentCount(), UI.player_E_name.getText(), "blue", "barile", 'S', 12));
+		player_E_field.add(CardMaker.make_card_field_playing(UI.player_E_field.getComponentCount(), UI.player_E_name.getText(), "blue", "barile", 'S', 12));
+		player_E_field.add(CardMaker.make_card_field_playing(UI.player_E_field.getComponentCount(), UI.player_E_name.getText(), "blue", "barile", 'S', 12));
 		
 		// test (필드 넣어보기)(F)
-		for(int i=0; i<5; i++) {
-			JButton temp = new JButton();
-			temp.setIcon(new ImageIcon(".\\.\\resources\\card\\playing\\blue\\barile_S_12_87_player_F.png"));
-			temp.setPreferredSize(new Dimension(135,87));
-			temp.setBounds(0,200-(50*i),135,87);
-			player_F_field.add(temp);
-		}
-		for(int i=0; i<5; i++) {
-			JButton temp = new JButton();
-			temp.setIcon(new ImageIcon(".\\.\\resources\\card\\playing\\blue\\barile_S_12_87_player_F.png"));
-			temp.setPreferredSize(new Dimension(135,87));
-			temp.setBounds(135,200-(50*i),135,87);
-			player_F_field.add(temp);
-		}
+		player_F_field.add(CardMaker.make_card_field_playing(UI.player_F_field.getComponentCount(), UI.player_F_name.getText(), "blue", "barile", 'S', 12));
+		player_F_field.add(CardMaker.make_card_field_playing(UI.player_F_field.getComponentCount(), UI.player_F_name.getText(), "blue", "barile", 'S', 12));
+		player_F_field.add(CardMaker.make_card_field_playing(UI.player_F_field.getComponentCount(), UI.player_F_name.getText(), "blue", "barile", 'S', 12));
+		
 		
 		// test (필드 넣어보기)(G)
-		for(int i=0; i<5; i++) {
-			JButton temp = new JButton();
-			temp.setIcon(new ImageIcon(".\\.\\resources\\card\\playing\\blue\\barile_S_12_87.png"));
-			temp.setPreferredSize(new Dimension(87,135));
-			temp.setBounds(50*i,0,87,135);
-			player_G_field.add(temp);
-		}
-		for(int i=0; i<5; i++) {
-			JButton temp = new JButton();
-			temp.setIcon(new ImageIcon(".\\.\\resources\\card\\playing\\blue\\barile_S_12_87.png"));
-			temp.setPreferredSize(new Dimension(87,135));
-			temp.setBounds(50*i,135,87,135);
-			player_G_field.add(temp);
-		}
+		player_G_field.add(CardMaker.make_card_field_playing(UI.player_G_field.getComponentCount(), UI.player_G_name.getText(), "blue", "barile", 'S', 12));
+		player_G_field.add(CardMaker.make_card_field_playing(UI.player_G_field.getComponentCount(), UI.player_G_name.getText(), "blue", "barile", 'S', 12));
+		player_G_field.add(CardMaker.make_card_field_playing(UI.player_G_field.getComponentCount(), UI.player_G_name.getText(), "blue", "barile", 'S', 12));
+		
 	}
 
 }
