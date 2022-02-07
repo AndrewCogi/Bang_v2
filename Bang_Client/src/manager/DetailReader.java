@@ -5,15 +5,16 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class DetailReader {
-	public static Scanner sc;
+	public static Scanner scn;
 	
 	public static String getDetail(String dir) {
 		// connect file
-		try {sc = new Scanner(new File(dir));} catch (FileNotFoundException e) {System.out.println(e.getMessage());}
+		try {scn = new Scanner(new File(dir),"UTF-8");} catch (FileNotFoundException e) {
+			System.out.println(e.getMessage());}
 		// get contents
-		String cardName = sc.nextLine();
-		sc.nextLine();
-		String cardExp = sc.nextLine();
+		String cardName = scn.nextLine();
+		scn.nextLine();
+		String cardExp = scn.nextLine();
 		// make string
 		StringBuilder detail = new StringBuilder();
 		detail.append("<html><body style='text-align:center;'>"+cardName+"<br /><br />"+cardExp+"</body></html>");

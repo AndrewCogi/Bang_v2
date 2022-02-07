@@ -846,7 +846,6 @@ public class CardMaker {
 					// show detail (image)
 					try {UI.show_detail_panel.add(new JLabel(new ImageIcon(ImageIO.read(new File
 							(".\\.\\resources\\card\\playing\\colt-45_155.png")))));} catch (IOException e1) {}
-					UI.show_detail_label.setText(DetailReader.getDetail(".\\.\\resources\\card\\playing\\colt-45.txt"));
 					UI.mp.repaint();
 				}
 				public void mouseExited(MouseEvent e) {
@@ -895,7 +894,6 @@ public class CardMaker {
 					// show detail (image)
 					try {UI.show_detail_panel.add(new JLabel(new ImageIcon(ImageIO.read(new File
 							(".\\.\\resources\\card\\playing\\colt-45_155.png")))));} catch (IOException e1) {}
-					UI.show_detail_label.setText(DetailReader.getDetail(".\\.\\resources\\card\\playing\\colt-45.txt"));
 					UI.mp.repaint();
 				}
 				public void mouseExited(MouseEvent e) {

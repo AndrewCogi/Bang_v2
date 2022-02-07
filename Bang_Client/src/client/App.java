@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.net.UnknownHostException;
 import java.util.Scanner;
 
 import javax.swing.ImageIcon;
@@ -20,11 +21,19 @@ public class App {
 	private static InputManager im; // manage client's input
 	public static UI u; // main UI
 	
-	public static void main(String[] args) throws IOException{
+	public static void main(String[] args) {
 		// init
-		socket = new Socket("58.127.238.25",2222);
-		is = new Scanner(socket.getInputStream(),"UTF-8");
-		os = new PrintWriter(new BufferedWriter(new OutputStreamWriter(socket.getOutputStream(),"UTF-8")),true);
+		try {
+			socket = new Socket("58.127.238.25",2222);
+			is = new Scanner(socket.getInputStream(),"UTF-8");
+			os = new PrintWriter(new BufferedWriter(new OutputStreamWriter(socket.getOutputStream(),"UTF-8")),true);
+		} catch (UnknownHostException e) {
+			JOptionPane.showMessageDialog(null, e.getMessage(), null, JOptionPane.ERROR_MESSAGE);
+			System.exit(0);
+		} catch (IOException e) {
+			JOptionPane.showMessageDialog(null, e.getMessage(), null, JOptionPane.ERROR_MESSAGE);
+			System.exit(0);
+		}
 		
 		// login
 		String[] loginResult = new String[] {"login","PLAYERNAME","FALSE",""};
