@@ -111,7 +111,7 @@ public class GameManager {
 				for(int i=3; i<=9; i++) { seat.add(splitCmd[i]); }
 				// find my seat
 				while(!seat.get(0).equals(myName)) {
-					// first member -> next last member
+					// first member -> last member
 					String moveName = seat.get(0); 
 					seat.remove(0);
 					seat.add(moveName);
@@ -121,7 +121,7 @@ public class GameManager {
 				for(String s : seat) { System.out.print(" > "+s); }
 				System.out.println();
 				// add seats & playerName into mainUI
-				// with 1 sec delay
+				// with 0.7 second delay
 				char alphabet = 'A';
 				for(String s : seat) {
 					// set playerName

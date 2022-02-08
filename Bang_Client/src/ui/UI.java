@@ -1,5 +1,6 @@
 package ui;
 
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -10,6 +11,7 @@ import javax.swing.SwingConstants;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.Paint;
 import java.awt.Point;
 import java.awt.Toolkit;
 import java.io.PrintWriter;
@@ -1158,7 +1160,6 @@ public class UI {
 		player_D_field.add(CardMaker.make_card_field_playing(UI.player_D_field.getComponentCount(), UI.player_D_name.getText(), "blue", "barile", 'S', 12));
 		player_D_field.add(CardMaker.make_card_field_playing(UI.player_D_field.getComponentCount(), UI.player_D_name.getText(), "blue", "barile", 'S', 12));
 
-		
 		// test (필드 넣어보기)(E)
 		player_E_field.add(CardMaker.make_card_field_playing(UI.player_E_field.getComponentCount(), UI.player_E_name.getText(), "blue", "barile", 'S', 12));
 		player_E_field.add(CardMaker.make_card_field_playing(UI.player_E_field.getComponentCount(), UI.player_E_name.getText(), "blue", "barile", 'S', 12));
@@ -1168,7 +1169,6 @@ public class UI {
 		player_F_field.add(CardMaker.make_card_field_playing(UI.player_F_field.getComponentCount(), UI.player_F_name.getText(), "blue", "barile", 'S', 12));
 		player_F_field.add(CardMaker.make_card_field_playing(UI.player_F_field.getComponentCount(), UI.player_F_name.getText(), "blue", "barile", 'S', 12));
 		player_F_field.add(CardMaker.make_card_field_playing(UI.player_F_field.getComponentCount(), UI.player_F_name.getText(), "blue", "barile", 'S', 12));
-		
 		
 		// test (필드 넣어보기)(G)
 		player_G_field.add(CardMaker.make_card_field_playing(UI.player_G_field.getComponentCount(), UI.player_G_name.getText(), "blue", "barile", 'S', 12));
