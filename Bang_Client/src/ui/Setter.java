@@ -3,6 +3,8 @@ package ui;
 import java.awt.Color;
 import java.awt.Component;
 
+import javax.swing.BorderFactory;
+
 import client.App;
 
 public class Setter {
@@ -761,6 +763,110 @@ public class Setter {
 		UI.mp.repaint();
 	}
 	
+	// set player_hp update (+@), if hp <= 0 send message to server
+	public static void setPlayerHpTextUpdate(String name, int size) {
+		// find seat (A)
+		if(UI.player_A_name.getText().equals(name)) {
+			int updateHp = Integer.parseInt(Character.toString(UI.player_A_hp_text.getText().charAt(3)))+size;
+			UI.player_A_hp_text.setText(" x "+updateHp);
+			// if hp <= 0, send message to server
+			if(updateHp <= 0) {
+				// setting hp = 0
+				UI.player_A_hp_text.setText(" x "+0);
+				// set role card open
+				Setter.setPlayerRoleImageAvailable(name, false);
+				CardMaker.make_card_handField_role(name, UI.player_A_role.getText(), true);
+				Setter.setPlayerRoleImageAvailable(name, true);
+			}
+		}
+		// find seat (B)
+		else if(UI.player_B_name.getText().equals(name)) {
+			int updateHp = Integer.parseInt(Character.toString(UI.player_B_hp_text.getText().charAt(3)))+size;
+			UI.player_B_hp_text.setText(" x "+updateHp);
+			// if hp <= 0, send message to server
+			if(updateHp <= 0) {
+				// setting hp = 0
+				UI.player_B_hp_text.setText(" x "+0);
+				// set role card open
+				Setter.setPlayerRoleImageAvailable(name, false);
+				CardMaker.make_card_handField_role(name, UI.player_B_role.getText(), true);
+				Setter.setPlayerRoleImageAvailable(name, true);
+			}
+		}
+		// find seat (C)
+		else if(UI.player_C_name.getText().equals(name)) {
+			int updateHp = Integer.parseInt(Character.toString(UI.player_C_hp_text.getText().charAt(3)))+size;
+			UI.player_C_hp_text.setText(" x "+updateHp);
+			// if hp <= 0, send message to server
+			if(updateHp <= 0) {
+				// setting hp = 0
+				UI.player_C_hp_text.setText(" x "+0);
+				// set role card open
+				Setter.setPlayerRoleImageAvailable(name, false);
+				CardMaker.make_card_handField_role(name, UI.player_C_role.getText(), true);
+				Setter.setPlayerRoleImageAvailable(name, true);
+			}
+		}
+		// find seat (D)
+		else if(UI.player_D_name.getText().equals(name)) {
+			int updateHp = Integer.parseInt(Character.toString(UI.player_D_hp_text.getText().charAt(3)))+size;
+			UI.player_D_hp_text.setText(" x "+updateHp);
+			// if hp <= 0, send message to server
+			if(updateHp <= 0) {
+				// setting hp = 0
+				UI.player_D_hp_text.setText(" x "+0);
+				// set role card open
+				Setter.setPlayerRoleImageAvailable(name, false);
+				CardMaker.make_card_handField_role(name, UI.player_D_role.getText(), true);
+				Setter.setPlayerRoleImageAvailable(name, true);
+			}
+		}
+		// find seat (E)
+		else if(UI.player_E_name.getText().equals(name)) {
+			int updateHp = Integer.parseInt(Character.toString(UI.player_E_hp_text.getText().charAt(3)))+size;
+			UI.player_E_hp_text.setText(" x "+updateHp);
+			// if hp <= 0, send message to server
+			if(updateHp <= 0) {
+				// setting hp = 0
+				UI.player_E_hp_text.setText(" x "+0);
+				// set role card open
+				Setter.setPlayerRoleImageAvailable(name, false);
+				CardMaker.make_card_handField_role(name, UI.player_E_role.getText(), true);
+				Setter.setPlayerRoleImageAvailable(name, true);
+			}
+		}
+		// find seat (F)
+		else if(UI.player_F_name.getText().equals(name)) {
+			int updateHp = Integer.parseInt(Character.toString(UI.player_F_hp_text.getText().charAt(3)))+size;
+			UI.player_F_hp_text.setText(" x "+updateHp);
+			// if hp <= 0, send message to server
+			if(updateHp <= 0) {
+				// setting hp = 0
+				UI.player_F_hp_text.setText(" x "+0);
+				// set role card open
+				Setter.setPlayerRoleImageAvailable(name, false);
+				CardMaker.make_card_handField_role(name, UI.player_F_role.getText(), true);
+				Setter.setPlayerRoleImageAvailable(name, true);
+			}
+		}
+		// find seat (G)
+		else if(UI.player_G_name.getText().equals(name)) {
+			int updateHp = Integer.parseInt(Character.toString(UI.player_G_hp_text.getText().charAt(3)))+size;
+			UI.player_G_hp_text.setText(" x "+updateHp);
+			// if hp <= 0, send message to server
+			if(updateHp <= 0) {
+				// setting hp = 0
+				UI.player_G_hp_text.setText(" x "+0);
+				// set role card open
+				Setter.setPlayerRoleImageAvailable(name, false);
+				CardMaker.make_card_handField_role(name, UI.player_G_role.getText(), true);
+				Setter.setPlayerRoleImageAvailable(name, true);	
+			}
+		}
+		// repaint
+		UI.mp.repaint();
+	}
+	
 	// set player_gold text
 	public static void setPlayerGoldText(String name, int gold) {
 		// find seat (A)
@@ -833,11 +939,82 @@ public class Setter {
 		UI.mp.repaint();
 	}
 	
+	// set turn player painting
+	public static void setPhasePainter(String name, int phase) {
+		// remove all border
+		UI.player_A.setBorder(null);
+		UI.player_B.setBorder(null);
+		UI.player_C.setBorder(null);
+		UI.player_D.setBorder(null);
+		UI.player_E.setBorder(null);
+		UI.player_F.setBorder(null);
+		UI.player_G.setBorder(null);
+		// find seat (A)
+		if(UI.player_A_name.getText().equals(name)) {
+			if(phase == 0) UI.player_A.setBorder(BorderFactory.createLineBorder(new Color(255,255,0),3));
+			if(phase == 1) UI.player_A.setBorder(BorderFactory.createLineBorder(new Color(0,255,0),3));
+			if(phase == 2) UI.player_A.setBorder(BorderFactory.createLineBorder(new Color(0,255,255),3));
+			if(phase == 3) UI.player_A.setBorder(BorderFactory.createLineBorder(new Color(0,0,255),3));
+		}
+		// find seat (B)
+		else if(UI.player_B_name.getText().equals(name)) {
+			if(phase == 0) UI.player_B.setBorder(BorderFactory.createLineBorder(new Color(255,255,0),3));
+			if(phase == 1) UI.player_B.setBorder(BorderFactory.createLineBorder(new Color(0,255,0),3));
+			if(phase == 2) UI.player_B.setBorder(BorderFactory.createLineBorder(new Color(0,255,255),3));
+			if(phase == 3) UI.player_B.setBorder(BorderFactory.createLineBorder(new Color(0,0,255),3));
+		}
+		// find seat (C)
+		else if(UI.player_C_name.getText().equals(name)) {
+			if(phase == 0) UI.player_C.setBorder(BorderFactory.createLineBorder(new Color(255,255,0),3));
+			if(phase == 1) UI.player_C.setBorder(BorderFactory.createLineBorder(new Color(0,255,0),3));
+			if(phase == 2) UI.player_C.setBorder(BorderFactory.createLineBorder(new Color(0,255,255),3));
+			if(phase == 3) UI.player_C.setBorder(BorderFactory.createLineBorder(new Color(0,0,255),3));
+		}
+		// find seat (D)
+		else if(UI.player_D_name.getText().equals(name)) {
+			if(phase == 0) UI.player_D.setBorder(BorderFactory.createLineBorder(new Color(255,255,0),3));
+			if(phase == 1) UI.player_D.setBorder(BorderFactory.createLineBorder(new Color(0,255,0),3));
+			if(phase == 2) UI.player_D.setBorder(BorderFactory.createLineBorder(new Color(0,255,255),3));
+			if(phase == 3) UI.player_D.setBorder(BorderFactory.createLineBorder(new Color(0,0,255),3));
+		}
+		// find seat (E)
+		else if(UI.player_E_name.getText().equals(name)) {
+			if(phase == 0) UI.player_E.setBorder(BorderFactory.createLineBorder(new Color(255,255,0),3));
+			if(phase == 1) UI.player_E.setBorder(BorderFactory.createLineBorder(new Color(0,255,0),3));
+			if(phase == 2) UI.player_E.setBorder(BorderFactory.createLineBorder(new Color(0,255,255),3));
+			if(phase == 3) UI.player_E.setBorder(BorderFactory.createLineBorder(new Color(0,0,255),3));
+		}
+		// find seat (F)
+		else if(UI.player_F_name.getText().equals(name)) {
+			if(phase == 0) UI.player_F.setBorder(BorderFactory.createLineBorder(new Color(255,255,0),3));
+			if(phase == 1) UI.player_F.setBorder(BorderFactory.createLineBorder(new Color(0,255,0),3));
+			if(phase == 2) UI.player_F.setBorder(BorderFactory.createLineBorder(new Color(0,255,255),3));
+			if(phase == 3) UI.player_F.setBorder(BorderFactory.createLineBorder(new Color(0,0,255),3));
+		}
+		// find seat (G)
+		else if(UI.player_G_name.getText().equals(name)) {
+			if(phase == 0) UI.player_G.setBorder(BorderFactory.createLineBorder(new Color(255,255,0),3));
+			if(phase == 1) UI.player_G.setBorder(BorderFactory.createLineBorder(new Color(0,255,0),3));
+			if(phase == 2) UI.player_G.setBorder(BorderFactory.createLineBorder(new Color(0,255,255),3));
+			if(phase == 3) UI.player_G.setBorder(BorderFactory.createLineBorder(new Color(0,0,255),3));
+		}
+		// repaint
+		UI.mp.repaint();
+	}
+	
 	// main panel re-initialize for game start & end
 	public static void reInit_mainPanel() {
 		// card info label & panel clear
 		UI.show_detail_panel.removeAll();
 		UI.show_detail_label.setText(null);
+		// player_[A~G] panel border clear
+		UI.player_A.setBorder(null);
+		UI.player_B.setBorder(null);
+		UI.player_C.setBorder(null);
+		UI.player_D.setBorder(null);
+		UI.player_E.setBorder(null);
+		UI.player_F.setBorder(null);
+		UI.player_G.setBorder(null);
 		// player_[A~G] panel clear
 		UI.player_A.removeAll();
 		UI.player_B.removeAll();

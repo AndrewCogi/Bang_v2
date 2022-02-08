@@ -7,7 +7,6 @@ import java.util.LinkedList;
 import java.util.List;
 
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 
 import ui.CardMaker;
 import ui.Select_button;
@@ -17,10 +16,13 @@ import ui.UI;
 public class GameManager {
 	private String myName;
 	private PrintWriter os;
+	// check send (i'm dead!) message
+	private boolean deadACK;
 	
 	public GameManager(String myName, PrintWriter os) {
 		this.myName = myName;
 		this.os = os;
+		this.deadACK = false;
 	}
 	
 	public void request(String cmd) {
@@ -32,10 +34,15 @@ public class GameManager {
 			// game/STATE/[START|END]
 			if(splitCmd[2].equals("START")) {
 				Setter.reInit_mainPanel();
+				//re-init variables
+				deadACK = false;
 			}
 			else if(splitCmd[2].equals("END")) {
 				Setter.reInit_mainPanel();
+				// add ready button
 				UI.mp.add(UI.game_ready_button);
+				//re-init variables
+				deadACK = false;
 			}
 		}
 		
@@ -339,6 +346,24 @@ public class GameManager {
 				// available
 				Setter.setScenarioImageAvailable(1, true);
 				Setter.setScenarioImageAvailable(3, true);
+			}
+		}
+		
+		// game/PHASE/[number]/[player]
+		else if(splitCmd[1].equals("PHASE")) {
+			String playerName = splitCmd[3];
+			// painting phase border
+			Setter.setPhasePainter(playerName, Integer.parseInt(splitCmd[2]));
+			// set text topNotice
+			Setter.setTextNotice(1, "playing - phase "+splitCmd[2]+"...");
+			
+			// test
+			// if phase 0, hp--;
+			if(splitCmd[2].equals("0")) Setter.setPlayerHpTextUpdate(playerName,-1);
+			// if hp <= 0 send message, send message to server
+			if(Character.toString(UI.player_A_hp_text.getText().charAt(3)).equals("0") && deadACK == false) {
+				os.println("game/DIED/"+UI.player_A_role.getText());
+				deadACK = true;
 			}
 		}
 		

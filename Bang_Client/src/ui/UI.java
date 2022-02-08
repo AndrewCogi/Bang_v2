@@ -1,6 +1,5 @@
 package ui;
 
-import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -11,12 +10,10 @@ import javax.swing.SwingConstants;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
-import java.awt.Paint;
 import java.awt.Point;
 import java.awt.Toolkit;
 import java.io.PrintWriter;
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.MouseMotionAdapter;
 import java.awt.event.MouseAdapter;
@@ -155,6 +152,8 @@ public class UI {
 	public static JButton game_ready_button;
 	// select remain
 	public static int select_chance = 0;
+	// turn variables (phase 0,1,2,3)
+	public static boolean[] turnVar = new boolean[] {false,false,false,false};
 	
 	public UI(String userName, PrintWriter os) {
 		// init variables
