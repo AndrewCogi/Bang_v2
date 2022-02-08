@@ -37,6 +37,8 @@ public class Gm{
 	GoldRushDeck goldRushDeck_new;
 	// respond members
 	private static int respond = 0;
+	// alive player role numbers {sceriffo,vice,fuorilegge,rinnegato}
+	public static int[] alivePlayerRole = {1,2,3,1};
 
 	public Gm(){
 		this.turn = new LinkedList<>();
@@ -56,15 +58,67 @@ public class Gm{
 		setting_remains();
 	}
 
+	// check game ended
+	public int checkGameEnd(){
+		// check
+		System.out.println("ALIVECHECK: "+alivePlayerRole[0]+", "+alivePlayerRole[1]+", "+alivePlayerRole[2]+", "+alivePlayerRole[3]);
+		// if sceriffo & vice win, return 1
+		if(alivePlayerRole[2]== 0 && alivePlayerRole[3] == 0 && alivePlayerRole[0] != 0) return 1;
+		// if fuorilegge win, return 2
+		if(alivePlayerRole[0] == 0 && alivePlayerRole[2] != 0) return 2;
+		// if rinnegato win, return 3
+		if(alivePlayerRole[0] == 0 && alivePlayerRole[1] == 0 && alivePlayerRole[2] == 0 && alivePlayerRole[3] != 0) return 3;
+		// game is going
+		else return 0;
+	}
+
+	// phase 0 in thisTurn player
+	public void phase0(String player){
+		// broadcast phase 0
+		server.App.broadcast("game/PHASE/0/"+player);
+		try{Thread.sleep(1000);} catch(InterruptedException e){}
+	}
+	// phase 1 in thisTurn player
+	public void phase1(String player){
+		// broadcast phase 1
+		server.App.broadcast("game/PHASE/1/"+player);
+		try{Thread.sleep(1000);} catch(InterruptedException e){}
+	}
+	// phase 2 in thisTurn player
+	public void phase2(String player){
+		// broadcast phase 2
+		server.App.broadcast("game/PHASE/2/"+player);
+		try{Thread.sleep(1000);} catch(InterruptedException e){}
+	}
+	// phase 3 in thisTurn player
+	public void phase3(String player){
+		// broadcast phase 3
+		server.App.broadcast("game/PHASE/3/"+player);
+		try{Thread.sleep(1000);} catch(InterruptedException e){}
+	}
+	// game start while game ended
 	public void start(){
 		System.out.println("[System][Gm] > start Bang.");
-		// test
-		for(int i=100; i>0; i--){
-			System.out.println("[Testing] > Bang end in "+i+"...");
-			try{Thread.sleep(1000);}
-			catch(InterruptedException e){System.out.println(e.getMessage());}
+		// re-init alivePlayerRole
+		alivePlayerRole = new int[]{1,2,3,1};
+		// game start
+		while(checkGameEnd() == 0){
+			// this turn player setting
+			String thisTurn = turn.get(0);
+			phase0(thisTurn);
+			if(checkGameEnd() != 0) break;
+			phase1(thisTurn);
+			if(checkGameEnd() != 0) break;
+			phase2(thisTurn);
+			if(checkGameEnd() != 0) break;
+			phase3(thisTurn);
+			// lotate turn variable
+			turn.remove(0); turn.add(thisTurn);
 		}
+
 		System.out.println("[System][Gm] > end Bang.");
+		server.App.broadcast("game/SETTEXT/TOP_NOTICE/"+checkGameEnd()+" win!!");
+		try{Thread.sleep(3000);} catch(InterruptedException e){}
 		// disable TOP_NOTICE
 		server.App.broadcast("game/SETTEXT/TOP_NOTICE/ ");
 	}
@@ -128,6 +182,20 @@ public class Gm{
 			// game/INIT/ROLE/[name]/[roleName]
 			server.App.broadcast("game/INIT/ROLE/"+name+"/"+roleName);
 			try{ Thread.sleep(1000/2); } catch(InterruptedException e){};
+		}
+		// re-setting turn variable
+		for(String name : role.keySet()){
+			String roleName = role.get(name);
+			// find sceriffo
+			if(roleName.equals("sceriffo")){
+				while(!turn.get(0).equals(name)){
+					String moveName = turn.get(0);
+					turn.remove(0);
+					turn.add(moveName);
+				}
+				System.out.println("[System][Gm] > RESET TURN: "+turn);
+				break;
+			}
 		}
 	}
 

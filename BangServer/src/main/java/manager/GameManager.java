@@ -7,9 +7,7 @@ package manager;
 import java.io.PrintWriter;
 
 import card.CharactersCard;
-import debug.DateTime;
 import gm.Gm;
-import server.Commander;
 
 public class GameManager{
 	// output stream
@@ -25,6 +23,8 @@ public class GameManager{
 	public void request(String cmd){
 		// game/[??]
 		String[] splitCmd = cmd.split("/");
+		// check
+		System.out.println("[System][GameManager][Get] > "+cmd);
 		// game/READYBUTTON/[ON|OFF]/[who]
 		if(splitCmd[1].equals("READYBUTTON")){
 			// add(remove) readyPlayer
@@ -72,6 +72,16 @@ public class GameManager{
 				// broadcast how many players picked
 				// server.App.broadcast("game/SETTEXT/TOP_NOTICE/Select your character...("+Gm.getRespond()+" | 7)");
 			}
+		}
+		// game/DIED/[playerRole]
+		else if(splitCmd[1].equals("DIED")){
+			int diedPlayerRole = -1;
+			if(splitCmd[2].equals("sceriffo")) diedPlayerRole = 0;
+			else if(splitCmd[2].equals("vice")) diedPlayerRole = 1;
+			else if(splitCmd[2].equals("fuorilegge")) diedPlayerRole = 2;
+			else if(splitCmd[2].equals("rinnegato")) diedPlayerRole = 3;
+			// remove this name in alivePlayer
+			Gm.alivePlayerRole[diedPlayerRole]--;
 		}
 
 		// unknown message

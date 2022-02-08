@@ -144,7 +144,7 @@ public class Commander extends Thread{
 
 	// helper
 	private void help(){
-		System.out.println("[System][Commander] > stop server:\t Stops the server.");
+		System.out.println("[System][Commander] > stop server:\t Stop the server.");
 		System.out.println("[System][Commander] > show clients:\t Show clients info.");
 		System.out.println("[System][Commander] > game start:\t Start game.");
 		System.out.println("[System][Commander] > show pw:\t\t Show passwords.");
