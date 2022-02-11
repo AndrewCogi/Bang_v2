@@ -1496,8 +1496,9 @@ public class CardMaker {
 						if(UI.getSetTarget()==true) {
 							// target purpose == bang
 							if(UI.targetCommand[0].equals("bang")) {
-								// send result
-								os.println("game/CARDABILITY/BANG/"+cardPack+"/"+cardName);
+								// send result (game/CARDABILITY/BANG/[target(cardPack/cardName)]/[user(cardPack/cardName)]
+								os.println("game/CARDABILITY/BANG/"+cardPack+"/"+cardName+"/"+
+										UI.player_A_character.getText().split("/")[0]+"/"+UI.player_A_character.getText().split("/")[1]);
 								
 								// ability card ended,
 								// unlock phase2 card use.
@@ -1585,8 +1586,9 @@ public class CardMaker {
 						if(UI.getSetTarget()==true) {
 							// target purpose == bang
 							if(UI.targetCommand[1].equals("bang")) {
-								// send result
-								os.println("game/CARDABILITY/BANG/"+cardPack+"/"+cardName);
+								// send result (game/CARDABILITY/BANG/[target(cardPack/cardName)]/[user(cardPack/cardName)]
+								os.println("game/CARDABILITY/BANG/"+cardPack+"/"+cardName+"/"+
+										UI.player_A_character.getText().split("/")[0]+"/"+UI.player_A_character.getText().split("/")[1]);
 								
 								// ability card ended,
 								// unlock phase2 card use.
@@ -1674,8 +1676,9 @@ public class CardMaker {
 						if(UI.getSetTarget()==true) {
 							// target purpose == bang
 							if(UI.targetCommand[2].equals("bang")) {
-								// send result
-								os.println("game/CARDABILITY/BANG/"+cardPack+"/"+cardName);
+								// send result (game/CARDABILITY/BANG/[target(cardPack/cardName)]/[user(cardPack/cardName)]
+								os.println("game/CARDABILITY/BANG/"+cardPack+"/"+cardName+"/"+
+										UI.player_A_character.getText().split("/")[0]+"/"+UI.player_A_character.getText().split("/")[1]);
 								
 								// ability card ended,
 								// unlock phase2 card use.
@@ -1763,8 +1766,9 @@ public class CardMaker {
 						if(UI.getSetTarget()==true) {
 							// target purpose == bang
 							if(UI.targetCommand[3].equals("bang")) {
-								// send result
-								os.println("game/CARDABILITY/BANG/"+cardPack+"/"+cardName);
+								// send result (game/CARDABILITY/BANG/[target(cardPack/cardName)]/[user(cardPack/cardName)]
+								os.println("game/CARDABILITY/BANG/"+cardPack+"/"+cardName+"/"+
+										UI.player_A_character.getText().split("/")[0]+"/"+UI.player_A_character.getText().split("/")[1]);
 								
 								// ability card ended,
 								// unlock phase2 card use.
@@ -1852,8 +1856,9 @@ public class CardMaker {
 						if(UI.getSetTarget()==true) {
 							// target purpose == bang
 							if(UI.targetCommand[4].equals("bang")) {
-								// send result
-								os.println("game/CARDABILITY/BANG/"+cardPack+"/"+cardName);
+								// send result (game/CARDABILITY/BANG/[target(cardPack/cardName)]/[user(cardPack/cardName)]
+								os.println("game/CARDABILITY/BANG/"+cardPack+"/"+cardName+"/"+
+										UI.player_A_character.getText().split("/")[0]+"/"+UI.player_A_character.getText().split("/")[1]);
 								
 								// ability card ended,
 								// unlock phase2 card use.
@@ -1941,8 +1946,9 @@ public class CardMaker {
 						if(UI.getSetTarget()==true) {
 							// target purpose == bang
 							if(UI.targetCommand[5].equals("bang")) {
-								// send result
-								os.println("game/CARDABILITY/BANG/"+cardPack+"/"+cardName);
+								// send result (game/CARDABILITY/BANG/[target(cardPack/cardName)]/[user(cardPack/cardName)]
+								os.println("game/CARDABILITY/BANG/"+cardPack+"/"+cardName+"/"+
+										UI.player_A_character.getText().split("/")[0]+"/"+UI.player_A_character.getText().split("/")[1]);
 								
 								// ability card ended,
 								// unlock phase2 card use.
@@ -2030,8 +2036,9 @@ public class CardMaker {
 						if(UI.getSetTarget()==true) {
 							// target purpose == bang
 							if(UI.targetCommand[6].equals("bang")) {
-								// send result
-								os.println("game/CARDABILITY/BANG/"+cardPack+"/"+cardName);
+								// send result (game/CARDABILITY/BANG/[target(cardPack/cardName)]/[user(cardPack/cardName)]
+								os.println("game/CARDABILITY/BANG/"+cardPack+"/"+cardName+"/"+
+										UI.player_A_character.getText().split("/")[0]+"/"+UI.player_A_character.getText().split("/")[1]);
 								
 								// ability card ended,
 								// unlock phase2 card use.
