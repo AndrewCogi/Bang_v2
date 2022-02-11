@@ -37,6 +37,9 @@ public class Gm{
 	GoldRushDeck goldRushDeck_new;
 	// respond members
 	private static int respond = 0;
+	// check phase is over (if this false, go next phase!)
+	// when thisTurn player push endTurn button, this will [false]
+	private static boolean phaseAlive = false;
 	// alive player role numbers {sceriffo,vice,fuorilegge,rinnegato}
 	public static int[] alivePlayerRole = {1,2,3,1};
 
@@ -76,25 +79,50 @@ public class Gm{
 	public void phase0(String player){
 		// broadcast phase 0
 		server.App.broadcast("game/PHASE/0/"+player);
+		// check player's dynamite,,etc
+		// TODO
 		try{Thread.sleep(1000);} catch(InterruptedException e){}
 	}
 	// phase 1 in thisTurn player
 	public void phase1(String player){
 		// broadcast phase 1
 		server.App.broadcast("game/PHASE/1/"+player);
+		// give 2 cards to thisTurn player
+		for(int i=0; i<2; i++){
+			// extract card info
+			String cardInfo = mainDeck_new.pop();
+			String cardColor = cardInfo.split("/")[0];
+			String cardName = cardInfo.split("/")[1];
+			String cardShape = cardInfo.split("/")[2];
+			String cardNumber = cardInfo.split("/")[3];
+			// broadcast game/ADD/PLAYER_HAND/[playerID]/[cardColor]/[cardName]/[cardShape]/[cardNumber]
+			server.App.broadcast("game/ADD/PLAYER_HAND/"+player+"/"+cardColor+"/"+cardName+"/"+cardShape+"/"+cardNumber);
+		}
 		try{Thread.sleep(1000);} catch(InterruptedException e){}
 	}
 	// phase 2 in thisTurn player
 	public void phase2(String player){
 		// broadcast phase 2
 		server.App.broadcast("game/PHASE/2/"+player);
-		try{Thread.sleep(1000);} catch(InterruptedException e){}
+		// give chance to use hand card
+		server.App.broadcast_within(player,"game/USECARD/TRUE");
+		// phaseAlive -> true
+		setPhaseAlive(true);
+		// wait until client push button
+		while(getPhaseAlive() == true){}
+		server.App.broadcast_within(player,"game/USECARD/FALSE");
 	}
 	// phase 3 in thisTurn player
 	public void phase3(String player){
 		// broadcast phase 3
 		server.App.broadcast("game/PHASE/3/"+player);
-		try{Thread.sleep(1000);} catch(InterruptedException e){}
+		// give chance to discard hand card
+		server.App.broadcast_within(player,"game/DISCARDCARD/TRUE");
+		// phaseAlive -> true
+		setPhaseAlive(true);
+		// wait until client push button
+		while(getPhaseAlive() == true){}
+		server.App.broadcast_within(player,"game/DISCARDCARD/FALSE");
 	}
 	// game start while game ended
 	public void start(){
@@ -407,5 +435,19 @@ public class Gm{
 		// cardNum == 1 (a fistful of cards)
 		// cardNum == 2 (high noon)
 		vote_last_scenario[cardNum-1]++;
+	}
+	// set phaseAlive
+	public static synchronized void setPhaseAlive(boolean b){
+		phaseAlive = b;
+	}
+	// get phaseAlive
+	public static synchronized boolean getPhaseAlive(){
+		return phaseAlive;
+	}
+	// add card into main deck (old)
+	public static synchronized void addCardIntoMainDeck_old(String cardColor, String cardName, String cardShape, String cardNum){
+		String cardInfo = cardColor+"/"+cardName+"/"+cardShape+"/"+cardNum;
+		mainDeck_old.add(cardInfo);
+		System.out.println("[System][Check] > DISCARDCARD: "+cardInfo);
 	}
 }

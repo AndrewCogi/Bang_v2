@@ -83,6 +83,39 @@ public class GameManager{
 			// remove this name in alivePlayer
 			Gm.alivePlayerRole[diedPlayerRole]--;
 		}
+		// game/ENDPHASE
+		else if(splitCmd[1].equals("ENDPHASE")){
+			Gm.setPhaseAlive(false);
+		}
+		// game/USEHANDCARD/[id]/[cardColor]/[cardName]/[cardShape]/[cardNum]
+		else if(splitCmd[1].equals("USEHANDCARD")){
+			String id = splitCmd[2];
+			String cardColor = splitCmd[3];
+			String cardName = splitCmd[4];
+			String cardShape = splitCmd[5];
+			String cardNum = splitCmd[6];
+			// boradcast this player use this card
+			server.App.broadcast_without(id,"game/REMOVE/PLAYER_HAND/"+id+"/"+cardColor+"/"+cardName+"/"+cardShape+"/"+cardNum);
+			// if card color is brown, add into main deck (old), broadcasting it
+			if(cardColor.equals("brown")){
+				Gm.addCardIntoMainDeck_old(cardColor,cardName,cardShape,cardNum);
+				server.App.broadcast_without(id,"game/ADD/MAIN_DECK_OLD/"+cardColor+"/"+cardName+"/"+cardShape+"/"+cardNum);
+			} 		
+		}
+		// game/DISCARDHANDCARD/[id]/[cardColor]/[cardName]/[cardShape]/[cardNum]
+		else if(splitCmd[1].equals("DISCARDHANDCARD")){
+			String id = splitCmd[2];
+			String cardColor = splitCmd[3];
+			String cardName = splitCmd[4];
+			String cardShape = splitCmd[5];
+			String cardNum = splitCmd[6];
+			// boradcast this player use this card
+			server.App.broadcast_without(id,"game/REMOVE/PLAYER_HAND/"+id+"/"+cardColor+"/"+cardName+"/"+cardShape+"/"+cardNum);
+			// add into main deck (old) because of discard it, and also broadcasting it
+			Gm.addCardIntoMainDeck_old(cardColor,cardName,cardShape,cardNum);
+			server.App.broadcast_without(id,"game/ADD/MAIN_DECK_OLD/"+cardColor+"/"+cardName+"/"+cardShape+"/"+cardNum);
+		}
+
 
 		// unknown message
 		else{
