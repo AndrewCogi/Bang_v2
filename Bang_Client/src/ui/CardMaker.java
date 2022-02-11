@@ -19,6 +19,7 @@ import javax.swing.JLabel;
 import javax.swing.SwingUtilities;
 
 import client.App;
+import manager.CardManager;
 import manager.DetailReader;
 
 public class CardMaker {
@@ -366,6 +367,9 @@ public class CardMaker {
 		// init buttons
 		UI.main_deck_new = new JButton();
 		UI.main_deck_old = new JButton();
+		// set border null
+		UI.main_deck_new.setBorder(null);
+		UI.main_deck_old.setBorder(null);
 		// set bounds
 		UI.main_deck_new.setBounds(852,405,87,135);
 		UI.main_deck_old.setBounds(955,405,87,135);
@@ -2125,7 +2129,7 @@ public class CardMaker {
 	}
 	
 	// make hand card button (playing card)
-	public static Select_button make_card_hand_playing(String id, String cardColor, String cardName, char cardShape, int cardNum, boolean isForward) {
+	public static Select_button make_card_hand_playing(PrintWriter os, String id, String cardColor, String cardName, char cardShape, int cardNum, boolean isForward) {
 		// temp card button
 		Select_button temp_card = new Select_button();
 		// set border null
@@ -2191,10 +2195,34 @@ public class CardMaker {
 					}
 					// left click
 					else if(SwingUtilities.isLeftMouseButton(e)) {
-						// remove details & this card
-						UI.show_detail_panel.removeAll();
-						UI.show_detail_label.setText(null);
-						UI.player_A_hand.remove(e.getComponent());
+						// check can card use in phase2
+						if(UI.cardUse2 == true) {
+							// card ability
+							CardManager.cardAbility(cardName);
+							// send use message
+							os.println("game/USEHANDCARD/"+id+"/"+cardColor+"/"+cardName+"/"+cardShape+"/"+cardNum);
+							// if cardColor == brown, add into main deck (old)
+							if(cardColor.equals("brown")) CardManager.addIntoMainDeck_old(cardColor, cardName, cardShape, cardNum);
+							// remove details & this card
+							UI.show_detail_panel.removeAll();
+							UI.show_detail_label.setText(null);
+							UI.player_A_hand.remove(e.getComponent());
+						}
+						// check can card discard in phase3
+						if(UI.cardUse3 == true && UI.discardNum > 0) {
+							// discardNum--
+							UI.discardNum--;
+							// if discardNum == 0, show end button
+							if(UI.discardNum == 0) Setter.setPlayerButtonAvailable(true);
+							// send discard message
+							os.println("game/DISCARDHANDCARD/"+id+"/"+cardColor+"/"+cardName+"/"+cardShape+"/"+cardNum);
+							// add into main deck (old) because of discard it
+							CardManager.addIntoMainDeck_old(cardColor, cardName, cardShape, cardNum);
+							// remove details & this card
+							UI.show_detail_panel.removeAll();
+							UI.show_detail_label.setText(null);
+							UI.player_A_hand.remove(e.getComponent());
+						}
 					}
 					UI.mp.repaint();
 				}

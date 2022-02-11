@@ -159,10 +159,10 @@ public class GameManager {
 			}
 			// game/INIT/CHARACTER/[id]/[characterExtension]/[characterName]/[characterHp]
 			else if(splitCmd[2].equals("CHARACTER")) {
-				// if [id] == myName, activate ability button
-				if(splitCmd[3].equals(myName)) {
-					Setter.setPlayerCharacterAbilityButtonAvailable(true);
-				}
+//				// if [id] == myName, activate ability button
+//				if(splitCmd[3].equals(myName)) {
+//					Setter.setPlayerButtonAvailable(true);
+//				}
 				// make card
 				CardMaker.make_card_handField_character(splitCmd[3], splitCmd[4], splitCmd[5],Integer.parseInt(splitCmd[6]));
 				// available(->true) card
@@ -247,14 +247,14 @@ public class GameManager {
 				String cardName = splitCmd[5];
 				char cardShape = splitCmd[6].charAt(0);
 				int cardNumber = Integer.parseInt(splitCmd[7]);
-				// make hand & field card, add into [id]'s card (if myName -> forward / not myName ->backward)
-				if(myName.equals(id)) UI.player_A_hand.add(CardMaker.make_card_hand_playing(id, cardColor, cardName, cardShape, cardNumber, true));	
-				else if(UI.player_B_name.getText().equals(id)) UI.player_B_hand.add(CardMaker.make_card_hand_playing(id, cardColor, cardName, cardShape, cardNumber, false));
-				else if(UI.player_C_name.getText().equals(id)) UI.player_C_hand.add(CardMaker.make_card_hand_playing(id, cardColor, cardName, cardShape, cardNumber, false));
-				else if(UI.player_D_name.getText().equals(id)) UI.player_D_hand.add(CardMaker.make_card_hand_playing(id, cardColor, cardName, cardShape, cardNumber, false));
-				else if(UI.player_E_name.getText().equals(id)) UI.player_E_hand.add(CardMaker.make_card_hand_playing(id, cardColor, cardName, cardShape, cardNumber, false));
-				else if(UI.player_F_name.getText().equals(id)) UI.player_F_hand.add(CardMaker.make_card_hand_playing(id, cardColor, cardName, cardShape, cardNumber, false));
-				else if(UI.player_G_name.getText().equals(id)) UI.player_G_hand.add(CardMaker.make_card_hand_playing(id, cardColor, cardName, cardShape, cardNumber, false));
+				// make hand card, add into [id]'s card (if myName -> forward / not myName ->backward)
+				if(myName.equals(id)) UI.player_A_hand.add(CardMaker.make_card_hand_playing(os, id, cardColor, cardName, cardShape, cardNumber, true));	
+				else if(UI.player_B_name.getText().equals(id)) UI.player_B_hand.add(CardMaker.make_card_hand_playing(os, id, cardColor, cardName, cardShape, cardNumber, false));
+				else if(UI.player_C_name.getText().equals(id)) UI.player_C_hand.add(CardMaker.make_card_hand_playing(os, id, cardColor, cardName, cardShape, cardNumber, false));
+				else if(UI.player_D_name.getText().equals(id)) UI.player_D_hand.add(CardMaker.make_card_hand_playing(os, id, cardColor, cardName, cardShape, cardNumber, false));
+				else if(UI.player_E_name.getText().equals(id)) UI.player_E_hand.add(CardMaker.make_card_hand_playing(os, id, cardColor, cardName, cardShape, cardNumber, false));
+				else if(UI.player_F_name.getText().equals(id)) UI.player_F_hand.add(CardMaker.make_card_hand_playing(os, id, cardColor, cardName, cardShape, cardNumber, false));
+				else if(UI.player_G_name.getText().equals(id)) UI.player_G_hand.add(CardMaker.make_card_hand_playing(os, id, cardColor, cardName, cardShape, cardNumber, false));
 				// repaint
 				UI.mp.repaint();
 			}
@@ -364,6 +364,162 @@ public class GameManager {
 			if(Character.toString(UI.player_A_hp_text.getText().charAt(3)).equals("0") && deadACK == false) {
 				os.println("game/DIED/"+UI.player_A_role.getText());
 				deadACK = true;
+			}
+		}
+		
+		// game/ADD/[??]
+		else if(splitCmd[1].equals("ADD")) {
+			// game/ADD/PLAYER_HAND/[id]/[cardColor]/[cardName]/[cardShape]/[cardNumber]
+			if(splitCmd[2].equals("PLAYER_HAND")) {
+				String id = splitCmd[3];
+				String cardColor = splitCmd[4];
+				String cardName = splitCmd[5];
+				char cardShape = splitCmd[6].charAt(0);
+				int cardNumber = Integer.parseInt(splitCmd[7]);
+				// make hand card, add into [id]'s card (if myName -> forward / not myName ->backward)
+				if(myName.equals(id)) UI.player_A_hand.add(CardMaker.make_card_hand_playing(os, id, cardColor, cardName, cardShape, cardNumber, true));	
+				else if(UI.player_B_name.getText().equals(id)) UI.player_B_hand.add(CardMaker.make_card_hand_playing(os, id, cardColor, cardName, cardShape, cardNumber, false));
+				else if(UI.player_C_name.getText().equals(id)) UI.player_C_hand.add(CardMaker.make_card_hand_playing(os, id, cardColor, cardName, cardShape, cardNumber, false));
+				else if(UI.player_D_name.getText().equals(id)) UI.player_D_hand.add(CardMaker.make_card_hand_playing(os, id, cardColor, cardName, cardShape, cardNumber, false));
+				else if(UI.player_E_name.getText().equals(id)) UI.player_E_hand.add(CardMaker.make_card_hand_playing(os, id, cardColor, cardName, cardShape, cardNumber, false));
+				else if(UI.player_F_name.getText().equals(id)) UI.player_F_hand.add(CardMaker.make_card_hand_playing(os, id, cardColor, cardName, cardShape, cardNumber, false));
+				else if(UI.player_G_name.getText().equals(id)) UI.player_G_hand.add(CardMaker.make_card_hand_playing(os, id, cardColor, cardName, cardShape, cardNumber, false));
+				// repaint
+				UI.mp.repaint();
+			}
+			// game/ADD/MAIN_DECK_OLD/[cardColor]/[cardName]/[cardShape]/[cardNumber]
+			else if(splitCmd[2].equals("MAIN_DECK_OLD")) {
+				String cardColor = splitCmd[3];
+				String cardName = splitCmd[4];
+				char cardShape = splitCmd[5].charAt(0);
+				int cardNumber = Integer.parseInt(splitCmd[6]);
+				// add into main deck (old)
+				Setter.setMainDeckImageAvailable(false);
+				UI.main_deck_old.setIcon(new ImageIcon(".\\.\\resources\\card\\playing\\"+cardColor+"\\"+cardName+"_"+cardShape+"_"+cardNumber+"_87.png"));
+				Setter.setMainDeckImageAvailable(true);
+			}
+		}
+		
+		// game/REMOVE/[??]
+		else if(splitCmd[1].equals("REMOVE")) {
+			// game/REMOVE/PLAYER_HAND/[id]/[cardColor]/[cardName]/[cardShape]/[cardNumber]
+			if(splitCmd[2].equals("PLAYER_HAND")) {
+				String id = splitCmd[3];
+				String cardColor = splitCmd[4];
+				String cardName = splitCmd[5];
+				char cardShape = splitCmd[6].charAt(0);
+				int cardNumber = Integer.parseInt(splitCmd[7]);
+				// remove hand card in [id]'s card (except myName)
+				if(UI.player_B_name.getText().equals(id)) {
+					// find card, remove that card
+					for(Component card : UI.player_B_hand.getComponents()) {
+						if(((Select_button)card).getColor().equals(cardColor) && 
+								((Select_button)card).getName().equals(cardName) && 
+								((Select_button)card).getShape() == cardShape && 
+								((Select_button)card).getNum() == cardNumber) {
+							UI.player_B_hand.remove(card);
+							break;
+						}
+					}
+				}
+				else if(UI.player_C_name.getText().equals(id)) {
+					// find card, remove that card
+					for(Component card : UI.player_C_hand.getComponents()) {
+						if(((Select_button)card).getColor().equals(cardColor) && 
+								((Select_button)card).getName().equals(cardName) && 
+								((Select_button)card).getShape() == cardShape && 
+								((Select_button)card).getNum() == cardNumber) {
+							UI.player_C_hand.remove(card);
+							break;
+						}
+					}
+				}
+				else if(UI.player_D_name.getText().equals(id)) {
+					// find card, remove that card
+					for(Component card : UI.player_D_hand.getComponents()) {
+						if(((Select_button)card).getColor().equals(cardColor) && 
+								((Select_button)card).getName().equals(cardName) && 
+								((Select_button)card).getShape() == cardShape && 
+								((Select_button)card).getNum() == cardNumber) {
+							UI.player_D_hand.remove(card);
+							break;
+						}
+					}
+				}
+				else if(UI.player_E_name.getText().equals(id)) {
+					// find card, remove that card
+					for(Component card : UI.player_E_hand.getComponents()) {
+						if(((Select_button)card).getColor().equals(cardColor) && 
+								((Select_button)card).getName().equals(cardName) && 
+								((Select_button)card).getShape() == cardShape && 
+								((Select_button)card).getNum() == cardNumber) {
+							UI.player_E_hand.remove(card);
+							break;
+						}
+					}
+				}
+				else if(UI.player_F_name.getText().equals(id)) {
+					// find card, remove that card
+					for(Component card : UI.player_F_hand.getComponents()) {
+						if(((Select_button)card).getColor().equals(cardColor) && 
+								((Select_button)card).getName().equals(cardName) && 
+								((Select_button)card).getShape() == cardShape && 
+								((Select_button)card).getNum() == cardNumber) {
+							UI.player_F_hand.remove(card);
+							break;
+						}
+					}
+				}
+				else if(UI.player_G_name.getText().equals(id)) {
+					// find card, remove that card
+					for(Component card : UI.player_G_hand.getComponents()) {
+						if(((Select_button)card).getColor().equals(cardColor) && 
+								((Select_button)card).getName().equals(cardName) && 
+								((Select_button)card).getShape() == cardShape && 
+								((Select_button)card).getNum() == cardNumber) {
+							UI.player_G_hand.remove(card);
+							break;
+						}
+					}
+				}
+				// repaint
+				UI.mp.repaint();
+			}
+		}
+		
+		// game/USECARD/[TRUE | FALSE]
+		else if(splitCmd[1].equals("USECARD")) {
+			if(splitCmd[2].equals("TRUE")) {
+				// accept phase2 card use
+				UI.cardUse2 = true;
+				// enable phase2 end button
+				Setter.setPlayerButtonAvailable(true);
+			}
+			else if(splitCmd[2].equals("FALSE")) {
+				// lock phase2 card use
+				UI.cardUse2 = false;
+				// disable phase2 end button
+				Setter.setPlayerButtonAvailable(false);
+			}
+		}
+		
+		// game/DISCARDCARD/[TRUE | FALSE]
+		else if(splitCmd[1].equals("DISCARDCARD")) {
+			if(splitCmd[2].equals("TRUE")) {
+				// accept phase3 card use
+				UI.cardUse3 = true;
+				// set discard number
+				UI.discardNum = UI.player_A_hand.getComponentCount() - (UI.player_A_hp_text.getText().charAt(3)-48);
+				// if discardNum <= 0 show end button
+				if(UI.discardNum <= 0) Setter.setPlayerButtonAvailable(true);
+			}
+			else if(splitCmd[2].equals("FALSE")) {
+				// lock phase3 card use
+				UI.cardUse3 = false;
+				// init discardNum = 0
+				UI.discardNum = 0;
+				// disable phase3 end button
+				Setter.setPlayerButtonAvailable(false);
 			}
 		}
 		

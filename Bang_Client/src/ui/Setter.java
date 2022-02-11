@@ -127,7 +127,8 @@ public class Setter {
 	}
 	
 	// set player character ability button available
-	public static void setPlayerCharacterAbilityButtonAvailable(boolean activate) {
+	public static void setPlayerButtonAvailable(boolean activate) {
+		UI.player_multi_button.setEnabled(activate);
 		UI.player_multi_button.setVisible(activate);
 		if(activate == true) UI.player_A.add(UI.player_multi_button);
 		else if(activate == false) UI.player_A.remove(UI.player_multi_button);
@@ -1049,6 +1050,9 @@ public class Setter {
 		UI.mp.add(UI.show_detail_label);
 		// add detail panel
 		UI.mp.add(UI.show_detail_panel);
+		// card use = false
+		UI.cardUse2 = false;
+		UI.cardUse3 = false;
 		// repaint
 		UI.mp.repaint();
 		App.u.setVisible(true);

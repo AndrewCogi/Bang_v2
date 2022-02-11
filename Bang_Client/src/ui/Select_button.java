@@ -13,8 +13,13 @@ public class Select_button extends JButton{
 	// card color
 	private String color;
 	
-	// constructor
-	public Select_button() {}
+	// constructor (fake_card)
+	public Select_button() {
+		this.name = "";
+		this.num = -1;
+		this.shape = 0;
+		this.color = "";
+	}
 	
 	// constructor
 	public Select_button(String name, int num) {
