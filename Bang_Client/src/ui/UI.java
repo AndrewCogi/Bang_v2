@@ -171,7 +171,7 @@ public class UI {
 	public static String[] targetCommand = new String[]{"","","","","","",""};
 	// command string (which card you attacked)
 	// 누군가에게 어떠한 공격을 받았는지 저장해두는 변수 (예: 뱅!:"bang", 강탈!:"panico")
-	public static String attackedCommand = null; // TODO
+	public static String attackedCommand = ""; // TODO
 	// how many card you must discard
 	public static int discardNum = 0;
 	
@@ -690,9 +690,18 @@ public class UI {
 		player_multi_button.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				// is enabled, do it
 				if(player_multi_button.isEnabled() == true) {
-					os.println("game/ENDPHASE");
-					Setter.setPlayerButtonAvailable(false);
+					// if phase2 == true || phase3 == true
+					if(getCardUse2() == true || getCardUse3() == true) {
+						os.println("game/ENDPHASE");
+						Setter.setPlayerButtonAvailable(false);	
+					}
+					// if attacked == true
+					else if(attacked == true) {
+						os.println("game/NOUSECARD");
+						Setter.setPlayerButtonAvailable(false);
+					}
 				}
 			}
 		});
