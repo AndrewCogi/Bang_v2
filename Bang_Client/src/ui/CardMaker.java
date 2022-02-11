@@ -17,6 +17,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.SwingUtilities;
+import javax.swing.border.Border;
 
 import client.App;
 import manager.CardManager;
@@ -380,6 +381,32 @@ public class CardMaker {
 		UI.main_deck_new.setIcon(new ImageIcon(".\\.\\resources\\card\\playing\\back_87.png"));
 		// main_deck_old (empty image)
 		UI.main_deck_old.setIcon(new ImageIcon(".\\.\\resources\\card\\empty_87.png"));
+		// main_deck_new add mouse listener
+		UI.main_deck_new.addMouseListener(new MouseAdapter() {
+			public void mouseEntered(MouseEvent e) {
+				// set border
+				UI.main_deck_new.setBorder(BorderFactory.createLineBorder(Color.GREEN,2));
+				UI.mp.repaint();
+			}
+			public void mouseExited(MouseEvent e) {
+				// remove border
+				UI.main_deck_new.setBorder(null);
+				UI.mp.repaint();
+			}
+		});
+		// main_deck_old add mouse listener
+		UI.main_deck_old.addMouseListener(new MouseAdapter() {
+			public void mouseEntered(MouseEvent e) {
+				// add border painting
+				UI.main_deck_old.setBorder(BorderFactory.createLineBorder(Color.GREEN,2));
+				UI.mp.repaint();
+			}
+			public void mouseExited(MouseEvent e) {
+				// remove border
+				UI.main_deck_old.setBorder(null);
+				UI.mp.repaint();
+			}
+		});
 		// set invisible
 		UI.main_deck_new.setVisible(false);
 		UI.main_deck_old.setVisible(false);
@@ -1409,7 +1436,7 @@ public class CardMaker {
 	}
 	
 	// make hand & field card button (character card)
-	public static void make_card_handField_character(String playerName, String cardPack, String cardName, int cardHp) {
+	public static void make_card_handField_character(String playerName, String cardPack, String cardName, int cardHp, PrintWriter os) {
 		// seatLocation = player_A_character
 		if(UI.player_A_name.getText().equals(playerName)) {
 			// init player_A_character image
@@ -1429,7 +1456,11 @@ public class CardMaker {
 			UI.player_A_character.setEnabled(false);
 			// set mouse listener
 			UI.player_A_character.addMouseListener(new MouseAdapter() {
+				// before border
+				Border beforeBorder = null;
 				public void mouseEntered(MouseEvent e) {
+					// save before border
+					beforeBorder = UI.player_A_character.getBorder();
 					// add border painting
 					UI.player_A_character.setBorder(BorderFactory.createLineBorder(Color.GREEN, 2));
 					// show detail (image)
@@ -1438,8 +1469,14 @@ public class CardMaker {
 					UI.mp.repaint();
 				}
 				public void mouseExited(MouseEvent e) {
-					// remove border painting
-					UI.player_A_character.setBorder(null);
+					// if beforeBorder not null, return before border
+					if(beforeBorder != null) {
+						UI.player_A_character.setBorder(beforeBorder);
+					}
+					// else, remove border painting
+					else {
+						UI.player_A_character.setBorder(null);	
+					}
 					// remove details
 					UI.show_detail_panel.removeAll();
 					UI.show_detail_label.setText(null);
@@ -1454,7 +1491,36 @@ public class CardMaker {
 						UI.show_detail_label.setText(DetailReader.getDetail(".\\.\\resources\\card\\character\\"+cardPack+"\\"+cardName+".txt"));
 					}
 					// left click
-					else if(SwingUtilities.isLeftMouseButton(e)) {}
+					else if(SwingUtilities.isLeftMouseButton(e)) {
+						// if setTarget == true, (you have to set target)
+						if(UI.getSetTarget()==true) {
+							// target purpose == bang
+							if(UI.targetCommand[0].equals("bang")) {
+								// send result
+								os.println("game/CARDABILITY/BANG/"+cardPack+"/"+cardName);
+								
+								// ability card ended,
+								// unlock phase2 card use.
+								UI.setCardUse2(true);
+								// lock setTarget
+								UI.setSetTarget(false);
+								// unlock end button
+								Setter.setPlayerButtonAvailable(true);
+								// set top notice
+								Setter.setTextNotice(1, "playing - phase 2...");
+								// remove all characters border
+								UI.player_A_character.setBorder(null);
+								UI.player_B_character.setBorder(null);
+								UI.player_C_character.setBorder(null);
+								UI.player_D_character.setBorder(null);
+								UI.player_E_character.setBorder(null);
+								UI.player_F_character.setBorder(null);
+								UI.player_G_character.setBorder(null);
+								// set beforeBorder = null
+								beforeBorder = null;	
+							}
+						}
+					}
 					UI.mp.repaint();
 				}
 			});
@@ -1479,7 +1545,11 @@ public class CardMaker {
 			UI.player_B_character.setEnabled(false);
 			// set mouse listener
 			UI.player_B_character.addMouseListener(new MouseAdapter() {
+				// before border
+				Border beforeBorder = null;
 				public void mouseEntered(MouseEvent e) {
+					// save before border
+					beforeBorder = UI.player_B_character.getBorder();
 					// add border painting
 					UI.player_B_character.setBorder(BorderFactory.createLineBorder(Color.GREEN, 2));
 					// show detail (image)
@@ -1488,8 +1558,14 @@ public class CardMaker {
 					UI.mp.repaint();
 				}
 				public void mouseExited(MouseEvent e) {
-					// remove border painting
-					UI.player_B_character.setBorder(null);
+					// if beforeBorder not null, return before border
+					if(beforeBorder != null) {
+						UI.player_B_character.setBorder(beforeBorder);
+					}
+					// else, remove border painting
+					else {
+						UI.player_B_character.setBorder(null);	
+					}
 					// remove details
 					UI.show_detail_panel.removeAll();
 					UI.show_detail_label.setText(null);
@@ -1504,7 +1580,36 @@ public class CardMaker {
 						UI.show_detail_label.setText(DetailReader.getDetail(".\\.\\resources\\card\\character\\"+cardPack+"\\"+cardName+".txt"));
 					}
 					// left click
-					else if(SwingUtilities.isLeftMouseButton(e)) {}
+					else if(SwingUtilities.isLeftMouseButton(e)) {
+						// if setTarget == true, (you have to set target)
+						if(UI.getSetTarget()==true) {
+							// target purpose == bang
+							if(UI.targetCommand[1].equals("bang")) {
+								// send result
+								os.println("game/CARDABILITY/BANG/"+cardPack+"/"+cardName);
+								
+								// ability card ended,
+								// unlock phase2 card use.
+								UI.setCardUse2(true);
+								// lock setTarget
+								UI.setSetTarget(false);
+								// unlock end button
+								Setter.setPlayerButtonAvailable(true);
+								// set top notice
+								Setter.setTextNotice(1, "playing - phase 2...");
+								// remove all characters border
+								UI.player_A_character.setBorder(null);
+								UI.player_B_character.setBorder(null);
+								UI.player_C_character.setBorder(null);
+								UI.player_D_character.setBorder(null);
+								UI.player_E_character.setBorder(null);
+								UI.player_F_character.setBorder(null);
+								UI.player_G_character.setBorder(null);
+								// set beforeBorder = null
+								beforeBorder = null;	
+							}
+						}
+					}
 					UI.mp.repaint();
 				}
 			});
@@ -1529,7 +1634,11 @@ public class CardMaker {
 			UI.player_C_character.setEnabled(false);
 			// set mouse listener
 			UI.player_C_character.addMouseListener(new MouseAdapter() {
+				// before border
+				Border beforeBorder = null;
 				public void mouseEntered(MouseEvent e) {
+					// save before border
+					beforeBorder = UI.player_C_character.getBorder();
 					// add border painting
 					UI.player_C_character.setBorder(BorderFactory.createLineBorder(Color.GREEN, 2));
 					// show detail (image)
@@ -1538,8 +1647,14 @@ public class CardMaker {
 					UI.mp.repaint();
 				}
 				public void mouseExited(MouseEvent e) {
-					// remove border painting
-					UI.player_C_character.setBorder(null);
+					// if beforeBorder not null, return before border
+					if(beforeBorder != null) {
+						UI.player_C_character.setBorder(beforeBorder);
+					}
+					// else, remove border painting
+					else {
+						UI.player_C_character.setBorder(null);	
+					}
 					// remove details
 					UI.show_detail_panel.removeAll();
 					UI.show_detail_label.setText(null);
@@ -1554,7 +1669,36 @@ public class CardMaker {
 						UI.show_detail_label.setText(DetailReader.getDetail(".\\.\\resources\\card\\character\\"+cardPack+"\\"+cardName+".txt"));
 					}
 					// left click
-					else if(SwingUtilities.isLeftMouseButton(e)) {}
+					else if(SwingUtilities.isLeftMouseButton(e)) {
+						// if setTarget == true, (you have to set target)
+						if(UI.getSetTarget()==true) {
+							// target purpose == bang
+							if(UI.targetCommand[2].equals("bang")) {
+								// send result
+								os.println("game/CARDABILITY/BANG/"+cardPack+"/"+cardName);
+								
+								// ability card ended,
+								// unlock phase2 card use.
+								UI.setCardUse2(true);
+								// lock setTarget
+								UI.setSetTarget(false);
+								// unlock end button
+								Setter.setPlayerButtonAvailable(true);
+								// set top notice
+								Setter.setTextNotice(1, "playing - phase 2...");
+								// remove all characters border
+								UI.player_A_character.setBorder(null);
+								UI.player_B_character.setBorder(null);
+								UI.player_C_character.setBorder(null);
+								UI.player_D_character.setBorder(null);
+								UI.player_E_character.setBorder(null);
+								UI.player_F_character.setBorder(null);
+								UI.player_G_character.setBorder(null);
+								// set beforeBorder = null
+								beforeBorder = null;	
+							}
+						}
+					}
 					UI.mp.repaint();
 				}
 			});
@@ -1579,7 +1723,11 @@ public class CardMaker {
 			UI.player_D_character.setEnabled(false);
 			// set mouse listener
 			UI.player_D_character.addMouseListener(new MouseAdapter() {
+				// before border
+				Border beforeBorder = null;
 				public void mouseEntered(MouseEvent e) {
+					// save before border
+					beforeBorder = UI.player_D_character.getBorder();
 					// add border painting
 					UI.player_D_character.setBorder(BorderFactory.createLineBorder(Color.GREEN, 2));
 					// show detail (image)
@@ -1588,8 +1736,14 @@ public class CardMaker {
 					UI.mp.repaint();
 				}
 				public void mouseExited(MouseEvent e) {
-					// remove border painting
-					UI.player_D_character.setBorder(null);
+					// if beforeBorder not null, return before border
+					if(beforeBorder != null) {
+						UI.player_D_character.setBorder(beforeBorder);
+					}
+					// else, remove border painting
+					else {
+						UI.player_D_character.setBorder(null);	
+					}
 					// remove details
 					UI.show_detail_panel.removeAll();
 					UI.show_detail_label.setText(null);
@@ -1604,7 +1758,36 @@ public class CardMaker {
 						UI.show_detail_label.setText(DetailReader.getDetail(".\\.\\resources\\card\\character\\"+cardPack+"\\"+cardName+".txt"));
 					}
 					// left click
-					else if(SwingUtilities.isLeftMouseButton(e)) {}
+					else if(SwingUtilities.isLeftMouseButton(e)) {
+						// if setTarget == true, (you have to set target)
+						if(UI.getSetTarget()==true) {
+							// target purpose == bang
+							if(UI.targetCommand[3].equals("bang")) {
+								// send result
+								os.println("game/CARDABILITY/BANG/"+cardPack+"/"+cardName);
+								
+								// ability card ended,
+								// unlock phase2 card use.
+								UI.setCardUse2(true);
+								// lock setTarget
+								UI.setSetTarget(false);
+								// unlock end button
+								Setter.setPlayerButtonAvailable(true);
+								// set top notice
+								Setter.setTextNotice(1, "playing - phase 2...");
+								// remove all characters border
+								UI.player_A_character.setBorder(null);
+								UI.player_B_character.setBorder(null);
+								UI.player_C_character.setBorder(null);
+								UI.player_D_character.setBorder(null);
+								UI.player_E_character.setBorder(null);
+								UI.player_F_character.setBorder(null);
+								UI.player_G_character.setBorder(null);
+								// set beforeBorder = null
+								beforeBorder = null;	
+							}
+						}
+					}
 					UI.mp.repaint();
 				}
 			});
@@ -1629,7 +1812,11 @@ public class CardMaker {
 			UI.player_E_character.setEnabled(false);
 			// set mouse listener
 			UI.player_E_character.addMouseListener(new MouseAdapter() {
+				// before border
+				Border beforeBorder = null;
 				public void mouseEntered(MouseEvent e) {
+					// save before border
+					beforeBorder = UI.player_E_character.getBorder();
 					// add border painting
 					UI.player_E_character.setBorder(BorderFactory.createLineBorder(Color.GREEN, 2));
 					// show detail (image)
@@ -1638,8 +1825,14 @@ public class CardMaker {
 					UI.mp.repaint();
 				}
 				public void mouseExited(MouseEvent e) {
-					// remove border painting
-					UI.player_E_character.setBorder(null);
+					// if beforeBorder not null, return before border
+					if(beforeBorder != null) {
+						UI.player_E_character.setBorder(beforeBorder);
+					}
+					// else, remove border painting
+					else {
+						UI.player_E_character.setBorder(null);	
+					}
 					// remove details
 					UI.show_detail_panel.removeAll();
 					UI.show_detail_label.setText(null);
@@ -1654,7 +1847,36 @@ public class CardMaker {
 						UI.show_detail_label.setText(DetailReader.getDetail(".\\.\\resources\\card\\character\\"+cardPack+"\\"+cardName+".txt"));
 					}
 					// left click
-					else if(SwingUtilities.isLeftMouseButton(e)) {}
+					else if(SwingUtilities.isLeftMouseButton(e)) {
+						// if setTarget == true, (you have to set target)
+						if(UI.getSetTarget()==true) {
+							// target purpose == bang
+							if(UI.targetCommand[4].equals("bang")) {
+								// send result
+								os.println("game/CARDABILITY/BANG/"+cardPack+"/"+cardName);
+								
+								// ability card ended,
+								// unlock phase2 card use.
+								UI.setCardUse2(true);
+								// lock setTarget
+								UI.setSetTarget(false);
+								// unlock end button
+								Setter.setPlayerButtonAvailable(true);
+								// set top notice
+								Setter.setTextNotice(1, "playing - phase 2...");
+								// remove all characters border
+								UI.player_A_character.setBorder(null);
+								UI.player_B_character.setBorder(null);
+								UI.player_C_character.setBorder(null);
+								UI.player_D_character.setBorder(null);
+								UI.player_E_character.setBorder(null);
+								UI.player_F_character.setBorder(null);
+								UI.player_G_character.setBorder(null);
+								// set beforeBorder = null
+								beforeBorder = null;	
+							}
+						}
+					}
 					UI.mp.repaint();
 				}
 			});
@@ -1679,7 +1901,11 @@ public class CardMaker {
 			UI.player_F_character.setEnabled(false);
 			// set mouse listener
 			UI.player_F_character.addMouseListener(new MouseAdapter() {
+				// before border
+				Border beforeBorder = null;
 				public void mouseEntered(MouseEvent e) {
+					// save before border
+					beforeBorder = UI.player_F_character.getBorder();
 					// add border painting
 					UI.player_F_character.setBorder(BorderFactory.createLineBorder(Color.GREEN, 2));
 					// show detail (image)
@@ -1688,8 +1914,14 @@ public class CardMaker {
 					UI.mp.repaint();
 				}
 				public void mouseExited(MouseEvent e) {
-					// remove border painting
-					UI.player_F_character.setBorder(null);
+					// if beforeBorder not null, return before border
+					if(beforeBorder != null) {
+						UI.player_F_character.setBorder(beforeBorder);
+					}
+					// else, remove border painting
+					else {
+						UI.player_F_character.setBorder(null);	
+					}
 					// remove details
 					UI.show_detail_panel.removeAll();
 					UI.show_detail_label.setText(null);
@@ -1704,7 +1936,36 @@ public class CardMaker {
 						UI.show_detail_label.setText(DetailReader.getDetail(".\\.\\resources\\card\\character\\"+cardPack+"\\"+cardName+".txt"));
 					}
 					// left click
-					else if(SwingUtilities.isLeftMouseButton(e)) {}
+					else if(SwingUtilities.isLeftMouseButton(e)) {
+						// if setTarget == true, (you have to set target)
+						if(UI.getSetTarget()==true) {
+							// target purpose == bang
+							if(UI.targetCommand[5].equals("bang")) {
+								// send result
+								os.println("game/CARDABILITY/BANG/"+cardPack+"/"+cardName);
+								
+								// ability card ended,
+								// unlock phase2 card use.
+								UI.setCardUse2(true);
+								// lock setTarget
+								UI.setSetTarget(false);
+								// unlock end button
+								Setter.setPlayerButtonAvailable(true);
+								// set top notice
+								Setter.setTextNotice(1, "playing - phase 2...");
+								// remove all characters border
+								UI.player_A_character.setBorder(null);
+								UI.player_B_character.setBorder(null);
+								UI.player_C_character.setBorder(null);
+								UI.player_D_character.setBorder(null);
+								UI.player_E_character.setBorder(null);
+								UI.player_F_character.setBorder(null);
+								UI.player_G_character.setBorder(null);
+								// set beforeBorder = null
+								beforeBorder = null;	
+							}
+						}
+					}
 					UI.mp.repaint();
 				}
 			});
@@ -1729,7 +1990,11 @@ public class CardMaker {
 			UI.player_G_character.setEnabled(false);
 			// set mouse listener
 			UI.player_G_character.addMouseListener(new MouseAdapter() {
+				// before border
+				Border beforeBorder = null;
 				public void mouseEntered(MouseEvent e) {
+					// save before border
+					beforeBorder = UI.player_G_character.getBorder();
 					// add border painting
 					UI.player_G_character.setBorder(BorderFactory.createLineBorder(Color.GREEN, 2));
 					// show detail (image)
@@ -1738,8 +2003,14 @@ public class CardMaker {
 					UI.mp.repaint();
 				}
 				public void mouseExited(MouseEvent e) {
-					// remove border painting
-					UI.player_G_character.setBorder(null);
+					// if beforeBorder not null, return before border
+					if(beforeBorder != null) {
+						UI.player_G_character.setBorder(beforeBorder);
+					}
+					// else, remove border painting
+					else {
+						UI.player_G_character.setBorder(null);	
+					}
 					// remove details
 					UI.show_detail_panel.removeAll();
 					UI.show_detail_label.setText(null);
@@ -1754,7 +2025,36 @@ public class CardMaker {
 						UI.show_detail_label.setText(DetailReader.getDetail(".\\.\\resources\\card\\character\\"+cardPack+"\\"+cardName+".txt"));
 					}
 					// left click
-					else if(SwingUtilities.isLeftMouseButton(e)) {}
+					else if(SwingUtilities.isLeftMouseButton(e)) {
+						// if setTarget == true, (you have to set target)
+						if(UI.getSetTarget()==true) {
+							// target purpose == bang
+							if(UI.targetCommand[6].equals("bang")) {
+								// send result
+								os.println("game/CARDABILITY/BANG/"+cardPack+"/"+cardName);
+								
+								// ability card ended,
+								// unlock phase2 card use.
+								UI.setCardUse2(true);
+								// lock setTarget
+								UI.setSetTarget(false);
+								// unlock end button
+								Setter.setPlayerButtonAvailable(true);
+								// set top notice
+								Setter.setTextNotice(1, "playing - phase 2...");
+								// remove all characters border
+								UI.player_A_character.setBorder(null);
+								UI.player_B_character.setBorder(null);
+								UI.player_C_character.setBorder(null);
+								UI.player_D_character.setBorder(null);
+								UI.player_E_character.setBorder(null);
+								UI.player_F_character.setBorder(null);
+								UI.player_G_character.setBorder(null);
+								// set beforeBorder = null
+								beforeBorder = null;	
+							}
+						}
+					}
 					UI.mp.repaint();
 				}
 			});
@@ -2196,9 +2496,7 @@ public class CardMaker {
 					// left click
 					else if(SwingUtilities.isLeftMouseButton(e)) {
 						// check can card use in phase2
-						if(UI.cardUse2 == true) {
-							// card ability
-							CardManager.cardAbility(cardName);
+						if(UI.getCardUse2() == true) {
 							// send use message
 							os.println("game/USEHANDCARD/"+id+"/"+cardColor+"/"+cardName+"/"+cardShape+"/"+cardNum);
 							// if cardColor == brown, add into main deck (old)
@@ -2207,9 +2505,11 @@ public class CardMaker {
 							UI.show_detail_panel.removeAll();
 							UI.show_detail_label.setText(null);
 							UI.player_A_hand.remove(e.getComponent());
+							// card ability
+							CardManager.cardAbility(cardName);
 						}
 						// check can card discard in phase3
-						if(UI.cardUse3 == true && UI.discardNum > 0) {
+						if(UI.getCardUse3() == true && UI.discardNum > 0) {
 							// discardNum--
 							UI.discardNum--;
 							// if discardNum == 0, show end button

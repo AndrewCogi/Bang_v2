@@ -152,15 +152,28 @@ public class UI {
 	public static JButton game_ready_button;
 	// select remain
 	public static int select_chance = 0;
+	
 	// card use checker (phase2 card use)
-	public static boolean cardUse2 = false;
+	// 2페이즈 카드사용가능 확인변수
+	private static boolean cardUse2 = false;
 	// card use checker (phase3 card use)
-	public static boolean cardUse3 = false;
+	// 3페이즈 카드사용가능 확인변수
+	private static boolean cardUse3 = false;
+	// set target card (ex: you shoot bang! someone)
+	// 타겟을 설정할 수 있도록 허용해주는 변수 (예: 뱅! 을 쓰고 사용할 타겟을 고를 때 true)
+	private static boolean setTarget = false;
+	// you attacked someone (ex: you get bang! someone, you can use missed!..)
+	// 누군가에게 공격을 당했을 때 카드가용가능 확인변수 (예: 뱅! 에 맞아서 빗나감! 등을 사용할 수 있도록 할 때 true)
+	private static boolean attacked = false;
+	// command string (which card you use with target)
+	// [?]에게 어떠한 카드가 사용가능한지 체크해주는 변수들 (예: 뱅! 사정거리 안 변수:"bang" / 밖 변수:"")
+	// "" = can't use, {A,B,C,D,E,F,G}
+	public static String[] targetCommand = new String[]{"","","","","","",""};
+	// command string (which card you attacked)
+	// 누군가에게 어떠한 공격을 받았는지 저장해두는 변수 (예: 뱅!:"bang", 강탈!:"panico")
+	public static String attackedCommand = null; // TODO
 	// how many card you must discard
 	public static int discardNum = 0;
-	// card 
-	// turn variables (phase 0,1,2,3)
-	public static boolean[] turnar = new boolean[] {false,false,false,false};
 	
 	public UI(String userName, PrintWriter os) {
 		// init variables
@@ -1071,13 +1084,13 @@ public class UI {
 		Setter.setPlayerGunImageAvailable(player_G_name.getText(), true);
 		
 		// test (캐릭터 선택 완료)
-		CardMaker.make_card_handField_character(player_A_name.getText(), "wild_west_show", "big_spencer", 4);
-		CardMaker.make_card_handField_character(player_B_name.getText(), "wild_west_show", "big_spencer", 4);
-		CardMaker.make_card_handField_character(player_C_name.getText(), "wild_west_show", "big_spencer", 4);
-		CardMaker.make_card_handField_character(player_D_name.getText(), "wild_west_show", "big_spencer", 4);
-		CardMaker.make_card_handField_character(player_E_name.getText(), "wild_west_show", "big_spencer", 4);
-		CardMaker.make_card_handField_character(player_F_name.getText(), "wild_west_show", "big_spencer", 4);
-		CardMaker.make_card_handField_character(player_G_name.getText(), "wild_west_show", "big_spencer", 4);
+		CardMaker.make_card_handField_character(player_A_name.getText(), "wild_west_show", "big_spencer", 4, os);
+		CardMaker.make_card_handField_character(player_B_name.getText(), "wild_west_show", "big_spencer", 4, os);
+		CardMaker.make_card_handField_character(player_C_name.getText(), "wild_west_show", "big_spencer", 4, os);
+		CardMaker.make_card_handField_character(player_D_name.getText(), "wild_west_show", "big_spencer", 4, os);
+		CardMaker.make_card_handField_character(player_E_name.getText(), "wild_west_show", "big_spencer", 4, os);
+		CardMaker.make_card_handField_character(player_F_name.getText(), "wild_west_show", "big_spencer", 4, os);
+		CardMaker.make_card_handField_character(player_G_name.getText(), "wild_west_show", "big_spencer", 4, os);
 		// test (캐릭터 이미지 보이게)
 		Setter.setPlayerCharacterImageAvailable(player_A_name.getText(), true);
 		Setter.setPlayerCharacterImageAvailable(player_B_name.getText(), true);
@@ -1195,4 +1208,36 @@ public class UI {
 		
 	}
 
+	// get cardUse2
+	public static synchronized boolean getCardUse2() {
+		return cardUse2;
+	}
+	// get cardUse3
+	public static synchronized boolean getCardUse3() {
+		return cardUse3;
+	}
+	// get attacked
+	public static synchronized boolean getAttacked() {
+		return attacked;
+	}
+	// get setTarget
+	public static synchronized boolean getSetTarget() {
+		return setTarget;
+	}
+	// set cardUse2
+	public static synchronized void setCardUse2(boolean b) {
+		cardUse2 = b;
+	}
+	// set cardUse3
+	public static synchronized void setCardUse3(boolean b) {
+		cardUse3 = b;
+	}
+	// set attacked
+	public static synchronized void setAttacked(boolean b) {
+		attacked = b;
+	}
+	// set setTarget
+	public static synchronized void setSetTarget(boolean b) {
+		setTarget = b;
+	}
 }

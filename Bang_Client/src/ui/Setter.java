@@ -1050,9 +1050,14 @@ public class Setter {
 		UI.mp.add(UI.show_detail_label);
 		// add detail panel
 		UI.mp.add(UI.show_detail_panel);
-		// card use = false
-		UI.cardUse2 = false;
-		UI.cardUse3 = false;
+		// card use = false, setTarget = false, attacked = false
+		// targetCommand = null, attackedCommand = null
+		UI.setCardUse2(false);
+		UI.setCardUse3(false);
+		UI.setSetTarget(false);
+		UI.setAttacked(false);
+		UI.targetCommand = new String[] {"","","","","","",""};
+		UI.attackedCommand = null;
 		// repaint
 		UI.mp.repaint();
 		App.u.setVisible(true);

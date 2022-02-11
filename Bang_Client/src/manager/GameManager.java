@@ -159,12 +159,8 @@ public class GameManager {
 			}
 			// game/INIT/CHARACTER/[id]/[characterExtension]/[characterName]/[characterHp]
 			else if(splitCmd[2].equals("CHARACTER")) {
-//				// if [id] == myName, activate ability button
-//				if(splitCmd[3].equals(myName)) {
-//					Setter.setPlayerButtonAvailable(true);
-//				}
 				// make card
-				CardMaker.make_card_handField_character(splitCmd[3], splitCmd[4], splitCmd[5],Integer.parseInt(splitCmd[6]));
+				CardMaker.make_card_handField_character(splitCmd[3], splitCmd[4], splitCmd[5],Integer.parseInt(splitCmd[6]), os);
 				// available(->true) card
 				Setter.setPlayerCharacterImageAvailable(splitCmd[3], true);
 			}
@@ -391,8 +387,8 @@ public class GameManager {
 			else if(splitCmd[2].equals("MAIN_DECK_OLD")) {
 				String cardColor = splitCmd[3];
 				String cardName = splitCmd[4];
-				char cardShape = splitCmd[5].charAt(0);
-				int cardNumber = Integer.parseInt(splitCmd[6]);
+				String cardShape = splitCmd[5];
+				String cardNumber = splitCmd[6];
 				// add into main deck (old)
 				Setter.setMainDeckImageAvailable(false);
 				UI.main_deck_old.setIcon(new ImageIcon(".\\.\\resources\\card\\playing\\"+cardColor+"\\"+cardName+"_"+cardShape+"_"+cardNumber+"_87.png"));
@@ -491,13 +487,13 @@ public class GameManager {
 		else if(splitCmd[1].equals("USECARD")) {
 			if(splitCmd[2].equals("TRUE")) {
 				// accept phase2 card use
-				UI.cardUse2 = true;
+				UI.setCardUse2(true);
 				// enable phase2 end button
 				Setter.setPlayerButtonAvailable(true);
 			}
 			else if(splitCmd[2].equals("FALSE")) {
 				// lock phase2 card use
-				UI.cardUse2 = false;
+				UI.setCardUse2(false);
 				// disable phase2 end button
 				Setter.setPlayerButtonAvailable(false);
 			}
@@ -507,7 +503,7 @@ public class GameManager {
 		else if(splitCmd[1].equals("DISCARDCARD")) {
 			if(splitCmd[2].equals("TRUE")) {
 				// accept phase3 card use
-				UI.cardUse3 = true;
+				UI.setCardUse3(true);
 				// set discard number
 				UI.discardNum = UI.player_A_hand.getComponentCount() - (UI.player_A_hp_text.getText().charAt(3)-48);
 				// if discardNum <= 0 show end button
@@ -515,7 +511,7 @@ public class GameManager {
 			}
 			else if(splitCmd[2].equals("FALSE")) {
 				// lock phase3 card use
-				UI.cardUse3 = false;
+				UI.setCardUse3(false);
 				// init discardNum = 0
 				UI.discardNum = 0;
 				// disable phase3 end button
