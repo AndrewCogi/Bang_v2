@@ -115,7 +115,25 @@ public class GameManager{
 			Gm.addCardIntoMainDeck_old(cardColor,cardName,cardShape,cardNum);
 			server.App.broadcast_without(id,"game/ADD/MAIN_DECK_OLD/"+cardColor+"/"+cardName+"/"+cardShape+"/"+cardNum);
 		}
-
+		// game/CARDABILITY/[??]
+		else if(splitCmd[1].equals("CARDABILITY")){
+			// game/CARDABILITY/BANG/[targetCardExtension]/[targetCardName]/[userCardExtension]/[userCardName]
+			if(splitCmd[2].equals("BANG")){
+				String targetCardExtension = splitCmd[3];
+				String targetCardName = splitCmd[4];
+				String userCardExtension = splitCmd[5];
+				String userCardName = splitCmd[6];
+				// broadcast
+				server.App.broadcast("game/CARDABILITY/BANG/"+targetCardExtension+"/"+targetCardName+"/"+userCardExtension+"/"+userCardName);
+			}
+		}
+		// game/HPSET/[targetCardName]/[hp+]
+		else if(splitCmd[1].equals("HPSET")){
+			String targetCardName = splitCmd[2];
+			int hpSize = Integer.parseInt(splitCmd[3]);
+			// broadcast
+			server.App.broadcast("game/HPSET/"+targetCardName+"/"+hpSize);
+		}
 
 		// unknown message
 		else{
