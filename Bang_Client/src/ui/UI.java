@@ -13,6 +13,8 @@ import java.awt.Image;
 import java.awt.Point;
 import java.awt.Toolkit;
 import java.io.PrintWriter;
+import java.util.LinkedList;
+import java.util.List;
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.event.MouseMotionAdapter;
@@ -172,6 +174,9 @@ public class UI {
 	// command string (which card you attacked)
 	// 누군가에게 어떠한 공격을 받았는지 저장해두는 변수 (예: 뱅!:"bang", 강탈!:"panico")
 	public static String attackedCommand = ""; // TODO
+	// mancato reservation counting
+	// 빗나감, 회피, 철판 등 예약해놓는 배열(최대 2칸)
+	public static List<String> mancatoRev = new LinkedList<>();
 	// how many card you must discard
 	public static int discardNum = 0;
 	

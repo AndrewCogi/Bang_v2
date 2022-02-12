@@ -1,6 +1,7 @@
 package manager;
 
 import java.awt.Color;
+import java.io.PrintWriter;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
@@ -98,4 +99,22 @@ public class CardManager {
 		UI.main_deck_old.setIcon(new ImageIcon(".\\.\\resources\\card\\playing\\"+cardColor+"\\"+cardName+"_"+cardShape+"_"+cardNum+"_87.png"));
 		Setter.setMainDeckImageAvailable(true);
 	}
+
+	// check dodge, mancato etc reservation
+	public static void checkMancato(PrintWriter os, String targetCardName) {
+		// check mancato
+		if(!UI.mancatoRev.isEmpty()) {
+			// TODO
+			// 카드 손에서 없애기 (broadcast)
+			// 메인 덱에 버려주기 (broadcast)
+		}
+		else {
+			// hit 1 damage (broadcast)
+			os.println("game/HPSET/"+targetCardName+"/-1");
+			// check game over
+			
+		}
+	}
+	
+	
 }

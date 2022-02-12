@@ -6,7 +6,9 @@ import java.io.PrintWriter;
 import java.util.LinkedList;
 import java.util.List;
 
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
+import javax.swing.border.Border;
 
 import ui.CardMaker;
 import ui.Select_button;
@@ -480,6 +482,158 @@ public class GameManager {
 				}
 				// repaint
 				UI.mp.repaint();
+			}
+		}
+		
+		// game/CARDABILITY/[??]
+		else if(splitCmd[1].equals("CARDABILITY")) {
+			// game/CARDABILITY/BANG/[targetCardExtension]/[targetCardName]/[userCardExtension]/[userCardName]
+			if(splitCmd[2].equals("BANG")) {
+				String targetCardExtension = splitCmd[3];
+				String targetCardName = splitCmd[4];
+				String userCardExtension = splitCmd[5];
+				String userCardName = splitCmd[6];
+				
+				// set target user marking
+				if(UI.player_A_character.getText().split("/")[1].equals(targetCardName)) {
+					// save before border
+					Border beforeBorder = UI.player_A.getBorder();
+					// marking target
+					UI.player_A.setBorder(BorderFactory.createLineBorder(Color.RED,3));
+					UI.mp.repaint();
+					
+					// if target is me, 
+					// unlock attacked
+					UI.setAttacked(true);
+					// set attackCommand
+					UI.attackedCommand = "bang";
+					// check mancato & set hp
+					CardManager.checkMancato(os, targetCardName);
+					// lock attacked
+					UI.setAttacked(false);
+					// reset attackCommand
+					UI.attackedCommand = "";
+					
+					// delay
+					try {Thread.sleep(1000);}catch(InterruptedException e) {}
+					
+					// return before border
+					UI.player_A.setBorder(beforeBorder);
+					UI.mp.repaint();
+				}
+				else if(UI.player_B_character.getText().split("/")[1].equals(targetCardName)) {
+					// save before border
+					Border beforeBorder = UI.player_B.getBorder();
+					// marking target
+					UI.player_B.setBorder(BorderFactory.createLineBorder(Color.RED,3));
+					UI.mp.repaint();
+					
+					// delay
+					try {Thread.sleep(1000);}catch(InterruptedException e) {}
+					
+					// return before border
+					UI.player_B.setBorder(beforeBorder);
+					UI.mp.repaint();
+				}
+				else if(UI.player_C_character.getText().split("/")[1].equals(targetCardName)) {
+					// save before border
+					Border beforeBorder = UI.player_C.getBorder();
+					// marking target
+					UI.player_C.setBorder(BorderFactory.createLineBorder(Color.RED,3));
+					UI.mp.repaint();
+					
+					// delay
+					try {Thread.sleep(1000);}catch(InterruptedException e) {}
+					
+					// return before border
+					UI.player_C.setBorder(beforeBorder);
+					UI.mp.repaint();
+				}
+				else if(UI.player_D_character.getText().split("/")[1].equals(targetCardName)) {
+					// save before border
+					Border beforeBorder = UI.player_D.getBorder();
+					// marking target
+					UI.player_D.setBorder(BorderFactory.createLineBorder(Color.RED,3));
+					UI.mp.repaint();
+					
+					// delay
+					try {Thread.sleep(1000);}catch(InterruptedException e) {}
+					
+					// return before border
+					UI.player_D.setBorder(beforeBorder);
+					UI.mp.repaint();
+				}
+				else if(UI.player_E_character.getText().split("/")[1].equals(targetCardName)) {
+					// save before border
+					Border beforeBorder = UI.player_E.getBorder();
+					// marking target
+					UI.player_E.setBorder(BorderFactory.createLineBorder(Color.RED,3));
+					UI.mp.repaint();
+					
+					// delay
+					try {Thread.sleep(1000);}catch(InterruptedException e) {}
+					
+					// return before border
+					UI.player_E.setBorder(beforeBorder);
+					UI.mp.repaint();
+				}
+				else if(UI.player_F_character.getText().split("/")[1].equals(targetCardName)) {
+					// save before border
+					Border beforeBorder = UI.player_F.getBorder();
+					// marking target
+					UI.player_F.setBorder(BorderFactory.createLineBorder(Color.RED,3));
+					UI.mp.repaint();
+					
+					// delay
+					try {Thread.sleep(1000);}catch(InterruptedException e) {}
+					
+					// return before border
+					UI.player_F.setBorder(beforeBorder);
+					UI.mp.repaint();
+				}
+				else if(UI.player_G_character.getText().split("/")[1].equals(targetCardName)) {
+					// save before border
+					Border beforeBorder = UI.player_G.getBorder();
+					// marking target
+					UI.player_G.setBorder(BorderFactory.createLineBorder(Color.RED,3));
+					UI.mp.repaint();
+					
+					// delay
+					try {Thread.sleep(1000);}catch(InterruptedException e) {}
+					
+					// return before border
+					UI.player_G.setBorder(beforeBorder);
+					UI.mp.repaint();
+				}
+				UI.mp.repaint();
+			}
+		}
+		
+		// game/HPSET/[targetCardName]/[hpSize]
+		else if(splitCmd[1].equals("HPSET")) {
+			String targetCardName = splitCmd[2];
+			int hpSize = Integer.parseInt(splitCmd[3]);
+			// update hp
+			if(UI.player_A_character.getText().split("/")[1].equals(targetCardName)) {
+				Setter.setPlayerHpTextUpdate(UI.player_A_name.getText(), hpSize);
+			}
+			else if(UI.player_B_character.getText().split("/")[1].equals(targetCardName)) {
+				Setter.setPlayerHpTextUpdate(UI.player_B_name.getText(), hpSize);
+			}
+			else if(UI.player_C_character.getText().split("/")[1].equals(targetCardName)) {
+				Setter.setPlayerHpTextUpdate(UI.player_C_name.getText(), hpSize);
+			}
+			else if(UI.player_D_character.getText().split("/")[1].equals(targetCardName)) {
+				Setter.setPlayerHpTextUpdate(UI.player_D_name.getText(), hpSize);
+			}
+			else if(UI.player_E_character.getText().split("/")[1].equals(targetCardName)) {
+				Setter.setPlayerHpTextUpdate(UI.player_E_name.getText(), hpSize);
+			}
+			else if(UI.player_F_character.getText().split("/")[1].equals(targetCardName)) {
+				Setter.setPlayerHpTextUpdate(UI.player_F_name.getText(), hpSize);
+			}
+			else if(UI.player_G_character.getText().split("/")[1].equals(targetCardName)) {
+				Setter.setPlayerHpTextUpdate(UI.player_G_name.getText(), hpSize);
 			}
 		}
 		
