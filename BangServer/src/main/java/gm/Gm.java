@@ -20,7 +20,7 @@ import deck.ScenarioDeck;
 
 public class Gm{
 	// player's turn(== init seat)
-	private List<String> turn;
+	public static List<String> turn;
 	// player's role(== init role) <ID,Role>
 	private static HashMap<String,String> role;
 	// player's character(== init character) <ID,character>
@@ -31,20 +31,19 @@ public class Gm{
 	private static ScenarioDeck scenarioTurnDeck;
 	private static ScenarioDeck scenarioWildDeck;
 	// main deck (playing deck)
-	private static MainDeck mainDeck_new;
+	public static MainDeck mainDeck_new;
 	private static MainDeck mainDeck_old;
 	// gold rush deck
 	GoldRushDeck goldRushDeck_new;
 	// respond members
 	private static int respond = 0;
-	// check phase is over (if this false, go next phase!)
-	// when thisTurn player push endTurn button, this will [false]
-	private static boolean phaseAlive = false;
 	// alive player role numbers {sceriffo,vice,fuorilegge,rinnegato}
 	public static int[] alivePlayerRole = {1,2,3,1};
+	// game end checker
+	private static boolean thisGameIsOver = false;
 
 	public Gm(){
-		this.turn = new LinkedList<>();
+		Gm.turn = new LinkedList<>();
 	}
 
 	// init (setting seat, select role, select scenario, select character)
@@ -62,7 +61,7 @@ public class Gm{
 	}
 
 	// check game ended
-	public int checkGameEnd(){
+	public static int checkGameEnd(){
 		// check
 		System.out.println("ALIVECHECK: "+alivePlayerRole[0]+", "+alivePlayerRole[1]+", "+alivePlayerRole[2]+", "+alivePlayerRole[3]);
 		// if sceriffo & vice win, return 1
@@ -75,77 +74,23 @@ public class Gm{
 		else return 0;
 	}
 
-	// phase 0 in thisTurn player
-	public void phase0(String player){
-		// broadcast phase 0
-		server.App.broadcast("game/PHASE/0/"+player);
-		// check player's dynamite,,etc
-		// TODO
-		try{Thread.sleep(1000);} catch(InterruptedException e){}
-	}
-	// phase 1 in thisTurn player
-	public void phase1(String player){
-		// broadcast phase 1
-		server.App.broadcast("game/PHASE/1/"+player);
-		// give 2 cards to thisTurn player
-		for(int i=0; i<2; i++){
-			// extract card info
-			String cardInfo = mainDeck_new.pop();
-			String cardColor = cardInfo.split("/")[0];
-			String cardName = cardInfo.split("/")[1];
-			String cardShape = cardInfo.split("/")[2];
-			String cardNumber = cardInfo.split("/")[3];
-			// broadcast game/ADD/PLAYER_HAND/[playerID]/[cardColor]/[cardName]/[cardShape]/[cardNumber]
-			server.App.broadcast("game/ADD/PLAYER_HAND/"+player+"/"+cardColor+"/"+cardName+"/"+cardShape+"/"+cardNumber);
-		}
-		try{Thread.sleep(1000);} catch(InterruptedException e){}
-	}
-	// phase 2 in thisTurn player
-	public void phase2(String player){
-		// broadcast phase 2
-		server.App.broadcast("game/PHASE/2/"+player);
-		// give chance to use hand card
-		server.App.broadcast_within(player,"game/USECARD/TRUE");
-		// phaseAlive -> true
-		setPhaseAlive(true);
-		// wait until client push button
-		while(getPhaseAlive() == true){}
-		server.App.broadcast_within(player,"game/USECARD/FALSE");
-	}
-	// phase 3 in thisTurn player
-	public void phase3(String player){
-		// broadcast phase 3
-		server.App.broadcast("game/PHASE/3/"+player);
-		// give chance to discard hand card
-		server.App.broadcast_within(player,"game/DISCARDCARD/TRUE");
-		// phaseAlive -> true
-		setPhaseAlive(true);
-		// wait until client push button
-		while(getPhaseAlive() == true){}
-		server.App.broadcast_within(player,"game/DISCARDCARD/FALSE");
-	}
 	// game start while game ended
 	public void start(){
 		System.out.println("[System][Gm] > start Bang.");
 		// re-init alivePlayerRole
 		alivePlayerRole = new int[]{1,2,3,1};
+		// set thisGameIsOver -> false
+		setThisGameIsOver(false);
+		// set phase1 start to sceriffo player
+		server.App.broadcast("game/PHASE/0/"+turn.get(0));
 		// game start
-		while(checkGameEnd() == 0){
-			// this turn player setting
-			String thisTurn = turn.get(0);
-			phase0(thisTurn);
-			if(checkGameEnd() != 0) break;
-			phase1(thisTurn);
-			if(checkGameEnd() != 0) break;
-			phase2(thisTurn);
-			if(checkGameEnd() != 0) break;
-			phase3(thisTurn);
-			// lotate turn variable
-			turn.remove(0); turn.add(thisTurn);
-		}
-
-		System.out.println("[System][Gm] > end Bang.");
-		server.App.broadcast("game/SETTEXT/TOP_NOTICE/"+checkGameEnd()+" win!!");
+		while(getThisGameIsOver() == false){}
+		// game over!
+		System.out.println("[System][Gm] > Game Over!!");
+		// broadcast result
+		if(checkGameEnd() == 1) server.App.broadcast("game/SETTEXT/TOP_NOTICE/"+"\"Sceriffo team\""+" win!!");
+		else if(checkGameEnd() == 2) server.App.broadcast("game/SETTEXT/TOP_NOTICE/"+"\"Fuorilegge team\""+" win!!");
+		else if(checkGameEnd() == 3) server.App.broadcast("game/SETTEXT/TOP_NOTICE/"+"\"Rinnegato\""+" win!!");
 		try{Thread.sleep(3000);} catch(InterruptedException e){}
 		// disable TOP_NOTICE
 		server.App.broadcast("game/SETTEXT/TOP_NOTICE/ ");
@@ -159,17 +104,17 @@ public class Gm{
 		server.App.broadcast("game/SETTEXT/MIDDLE_NOTICE/ ");
 		server.App.broadcast("game/ENABLE/MIDDLE_NOTICE");
 		// re-init turn list
-		this.turn = new LinkedList<>();
+		turn = new LinkedList<>();
 		// make turn list & shuffle
-		for(String s : server.App.getClientsPrintWriter().values()){ this.turn.add(s); }
-		Collections.shuffle(this.turn);
+		for(String s : server.App.getClientsPrintWriter().values()){ turn.add(s); }
+		Collections.shuffle(turn);
 		// check
 		System.out.print("[System][Gm] > SEAT(TURN): ");
-		for(String s : this.turn){ System.out.print(" > "+s); }
+		for(String s : turn){ System.out.print(" > "+s); }
 		System.out.println();
 		// broadcasting turn
 		StringBuilder turns = new StringBuilder("");
-		for(String s : this.turn){ turns.append(s+"/"); }
+		for(String s : turn){ turns.append(s+"/"); }
 		turns.deleteCharAt(turns.length()-1);
 		server.App.broadcast("game/INIT/SEAT/"+turns);
 		// waiting for setting seats
@@ -436,18 +381,18 @@ public class Gm{
 		// cardNum == 2 (high noon)
 		vote_last_scenario[cardNum-1]++;
 	}
-	// set phaseAlive
-	public static synchronized void setPhaseAlive(boolean b){
-		phaseAlive = b;
-	}
-	// get phaseAlive
-	public static synchronized boolean getPhaseAlive(){
-		return phaseAlive;
-	}
 	// add card into main deck (old)
 	public static synchronized void addCardIntoMainDeck_old(String cardColor, String cardName, String cardShape, String cardNum){
 		String cardInfo = cardColor+"/"+cardName+"/"+cardShape+"/"+cardNum;
 		mainDeck_old.add(cardInfo);
 		System.out.println("[System][Check] > DISCARDCARD: "+cardInfo);
+	}
+	// set thisGameIsOver
+	public static synchronized void setThisGameIsOver(boolean b){
+		thisGameIsOver = b;
+	}
+	// get thisGameIsOver
+	public static synchronized boolean getThisGameIsOver(){
+		return thisGameIsOver;
 	}
 }

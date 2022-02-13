@@ -73,6 +73,24 @@ public class GameManager{
 				// server.App.broadcast("game/SETTEXT/TOP_NOTICE/Select your character...("+Gm.getRespond()+" | 7)");
 			}
 		}
+		// game/DRAWCARD/[player]/[cardNum]
+		else if(splitCmd[1].equals("DRAWCARD")){
+			String player = splitCmd[2];
+			int cardNum = Integer.parseInt(splitCmd[3]);
+			// give [cardNum] cards to player
+			for(int i=0; i<cardNum; i++){
+				// extract card info
+				String cardInfo = Gm.mainDeck_new.pop();
+				String cardColor = cardInfo.split("/")[0];
+				String cardName = cardInfo.split("/")[1];
+				String cardShape = cardInfo.split("/")[2];
+				String cardNumber = cardInfo.split("/")[3];
+				// broadcast game/ADD/PLAYER_HAND/[playerID]/[cardColor]/[cardName]/[cardShape]/[cardNumber]
+				server.App.broadcast("game/ADD/PLAYER_HAND/"+player+"/"+cardColor+"/"+cardName+"/"+cardShape+"/"+cardNumber);
+			}
+			// delay
+			try{Thread.sleep(1000);}catch(InterruptedException e){}
+		}
 		// game/DIED/[playerRole]
 		else if(splitCmd[1].equals("DIED")){
 			int diedPlayerRole = -1;
@@ -82,10 +100,37 @@ public class GameManager{
 			else if(splitCmd[2].equals("rinnegato")) diedPlayerRole = 3;
 			// remove this name in alivePlayer
 			Gm.alivePlayerRole[diedPlayerRole]--;
+			// check
+			System.out.println("[GameManager][DIED] > "+splitCmd[2]+" is dead! , Now surviver is: "+Gm.alivePlayerRole.toString());
+			// check game is over
+			if(Gm.checkGameEnd() != 0) Gm.setThisGameIsOver(true);
 		}
-		// game/ENDPHASE
+		// game/ENDPHASE/[player]/[num]
 		else if(splitCmd[1].equals("ENDPHASE")){
-			Gm.setPhaseAlive(false);
+			String player = splitCmd[2];
+			int phaseNum = Integer.parseInt(splitCmd[3]);
+			// if phase == 0
+			if(phaseNum == 0){
+				// send phase1
+				server.App.broadcast("game/PHASE/1/"+player);
+			}
+			// if phase == 1
+			else if(phaseNum == 1){
+				// send phase2
+				server.App.broadcast("game/PHASE/2/"+player);
+			}
+			// if phase == 2
+			else if(phaseNum == 2){
+				// send phase3
+				server.App.broadcast("game/PHASE/3/"+player);
+			}
+			// if phase == 3
+			else if(phaseNum == 3){
+				// change turn
+				Gm.turn.add(Gm.turn.remove(0));
+				// set next turn player
+				server.App.broadcast("game/PHASE/0/"+Gm.turn.get(0));
+			}
 		}
 		// game/USEHANDCARD/[id]/[cardColor]/[cardName]/[cardShape]/[cardNum]
 		else if(splitCmd[1].equals("USEHANDCARD")){
@@ -149,5 +194,4 @@ public class GameManager{
 	public synchronized static int getReadyPlayer(){
 		return readyPlayer;
 	}
-	
 }
