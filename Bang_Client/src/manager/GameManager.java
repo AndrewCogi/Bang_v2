@@ -353,20 +353,11 @@ public class GameManager {
 				// phase == 0
 				if(splitCmd[2].equals("0")) {
 					// TODO check 다이너마이트, 감옥, 방울뱀
-					// 사망처리는 Setter.hpUpdate에서 일괄처리함!
+					// 사망처리는 Setter.setPlayerHpTextUpdate()에서 일괄처리함!
 					
 					
 					// 모든 과정이 끝났음을 서버에 알려주기
 					os.println("game/ENDPHASE/"+UI.player_A_name.getText()+"/"+0);
-					
-//					// test
-//					// if phase 0, hp--;
-//					if(splitCmd[2].equals("0")) Setter.setPlayerHpTextUpdate(playerName,-1);
-//					// if hp <= 0 send message, send message to server
-//					if(Character.toString(UI.player_A_hp_text.getText().charAt(3)).equals("0") && deadACK == false) {
-//						os.println("game/DIED/"+UI.player_A_role.getText());
-//						deadACK = true;
-//					}	
 				}
 				// phase == 1
 				else if(splitCmd[2].equals("1")) {
@@ -665,42 +656,6 @@ public class GameManager {
 				Setter.setPlayerHpTextUpdate(os, UI.player_G_name.getText(), hpSize);
 			}
 		}
-		
-//		// game/USECARD/[TRUE | FALSE]
-//		else if(splitCmd[1].equals("USECARD")) {
-//			if(splitCmd[2].equals("TRUE")) {
-//				// accept phase2 card use
-//				UI.setCardUse2(true);
-//				// enable phase2 end button
-//				Setter.setPlayerButtonAvailable(true);
-//			}
-//			else if(splitCmd[2].equals("FALSE")) {
-//				// lock phase2 card use
-//				UI.setCardUse2(false);
-//				// disable phase2 end button
-//				Setter.setPlayerButtonAvailable(false);
-//			}
-//		}
-		
-//		// game/DISCARDCARD/[TRUE | FALSE]
-//		else if(splitCmd[1].equals("DISCARDCARD")) {
-//			if(splitCmd[2].equals("TRUE")) {
-//				// accept phase3 card use
-//				UI.setCardUse3(true);
-//				// set discard number
-//				UI.discardNum = UI.player_A_hand.getComponentCount() - (UI.player_A_hp_text.getText().charAt(3)-48);
-//				// if discardNum <= 0 show end button
-//				if(UI.discardNum <= 0) Setter.setPlayerButtonAvailable(true);
-//			}
-//			else if(splitCmd[2].equals("FALSE")) {
-//				// lock phase3 card use
-//				UI.setCardUse3(false);
-//				// init discardNum = 0
-//				UI.discardNum = 0;
-//				// disable phase3 end button
-//				Setter.setPlayerButtonAvailable(false);
-//			}
-//		}
 		
 		else {
 			System.out.println("[Unknown command]: "+cmd);
