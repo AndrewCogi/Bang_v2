@@ -2,6 +2,7 @@ package ui;
 
 import java.awt.Color;
 import java.awt.Component;
+import java.io.PrintWriter;
 
 import javax.swing.BorderFactory;
 
@@ -764,8 +765,8 @@ public class Setter {
 		UI.mp.repaint();
 	}
 	
-	// set player_hp update (+@), if hp <= 0 send message to server
-	public static void setPlayerHpTextUpdate(String name, int size) {
+	// set player_hp update (+@), if hp <= 0 send message to server <- TODO
+	public static void setPlayerHpTextUpdate(PrintWriter os, String name, int size) {
 		// find seat (A)
 		if(UI.player_A_name.getText().equals(name)) {
 			int updateHp = Integer.parseInt(Character.toString(UI.player_A_hp_text.getText().charAt(3)))+size;
@@ -778,6 +779,13 @@ public class Setter {
 				Setter.setPlayerRoleImageAvailable(name, false);
 				CardMaker.make_card_handField_role(name, UI.player_A_role.getText(), true);
 				Setter.setPlayerRoleImageAvailable(name, true);
+				// if deadACK == false, 
+				if(UI.deadACK == false) {
+					// send message to server
+					os.println("game/DIED/"+UI.player_A_role.getText());
+					// set deadACK == true
+					UI.deadACK = true;	
+				}
 			}
 		}
 		// find seat (B)
@@ -861,7 +869,7 @@ public class Setter {
 				// set role card open
 				Setter.setPlayerRoleImageAvailable(name, false);
 				CardMaker.make_card_handField_role(name, UI.player_G_role.getText(), true);
-				Setter.setPlayerRoleImageAvailable(name, true);	
+				Setter.setPlayerRoleImageAvailable(name, true);
 			}
 		}
 		// repaint
@@ -1051,13 +1059,14 @@ public class Setter {
 		// add detail panel
 		UI.mp.add(UI.show_detail_panel);
 		// card use = false, setTarget = false, attacked = false
-		// targetCommand = null, attackedCommand = null
+		// targetCommand = {"",}, attackedCommand = null, deadACK = false
 		UI.setCardUse2(false);
 		UI.setCardUse3(false);
 		UI.setSetTarget(false);
 		UI.setAttacked(false);
 		UI.targetCommand = new String[] {"","","","","","",""};
 		UI.attackedCommand = null;
+		UI.deadACK = false;
 		// repaint
 		UI.mp.repaint();
 		App.u.setVisible(true);

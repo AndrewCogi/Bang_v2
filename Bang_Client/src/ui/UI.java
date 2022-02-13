@@ -179,6 +179,8 @@ public class UI {
 	public static List<String> mancatoRev = new LinkedList<>();
 	// how many card you must discard
 	public static int discardNum = 0;
+	// check send (i'm dead!) message / false = not dead, true = dead!
+	public static boolean deadACK = false;
 	
 	public UI(String userName, PrintWriter os) {
 		// init variables
@@ -697,10 +699,27 @@ public class UI {
 			public void mouseClicked(MouseEvent e) {
 				// is enabled, do it
 				if(player_multi_button.isEnabled() == true) {
-					// if phase2 == true || phase3 == true
-					if(getCardUse2() == true || getCardUse3() == true) {
-						os.println("game/ENDPHASE");
-						Setter.setPlayerButtonAvailable(false);	
+					// if phase2 == true
+					if(getCardUse2() == true) {
+						os.println("game/ENDPHASE/"+userName+"/"+2);
+						Setter.setPlayerButtonAvailable(false);
+						
+						// lock phase2 card use
+						setCardUse2(false);
+						// disable phase2 end button
+						Setter.setPlayerButtonAvailable(false);
+					}
+					// if phase3 == true
+					else if(getCardUse3() == true) {
+						os.println("game/ENDPHASE/"+userName+"/"+3);
+						Setter.setPlayerButtonAvailable(false);
+						
+						// lock phase3 card use
+						UI.setCardUse3(false);
+						// init discardNum = 0
+						UI.discardNum = 0;
+						// disable phase3 end button
+						Setter.setPlayerButtonAvailable(false);
 					}
 					// if attacked == true
 					else if(attacked == true) {

@@ -18,13 +18,10 @@ import ui.UI;
 public class GameManager {
 	private String myName;
 	private PrintWriter os;
-	// check send (i'm dead!) message
-	private boolean deadACK;
 	
 	public GameManager(String myName, PrintWriter os) {
 		this.myName = myName;
 		this.os = os;
-		this.deadACK = false;
 	}
 	
 	public void request(String cmd) {
@@ -36,15 +33,11 @@ public class GameManager {
 			// game/STATE/[START|END]
 			if(splitCmd[2].equals("START")) {
 				Setter.reInit_mainPanel();
-				//re-init variables
-				deadACK = false;
 			}
 			else if(splitCmd[2].equals("END")) {
 				Setter.reInit_mainPanel();
 				// add ready button
 				UI.mp.add(UI.game_ready_button);
-				//re-init variables
-				deadACK = false;
 			}
 		}
 		
@@ -355,13 +348,49 @@ public class GameManager {
 			// set text topNotice
 			Setter.setTextNotice(1, "playing - phase "+splitCmd[2]+"...");
 			
-			// test
-			// if phase 0, hp--;
-			if(splitCmd[2].equals("0")) Setter.setPlayerHpTextUpdate(playerName,-1);
-			// if hp <= 0 send message, send message to server
-			if(Character.toString(UI.player_A_hp_text.getText().charAt(3)).equals("0") && deadACK == false) {
-				os.println("game/DIED/"+UI.player_A_role.getText());
-				deadACK = true;
+			// check my turn
+			if(playerName.equals(UI.player_A_name.getText())) {
+				// phase == 0
+				if(splitCmd[2].equals("0")) {
+					// TODO check 다이너마이트, 감옥, 방울뱀
+					// 사망처리는 Setter.hpUpdate에서 일괄처리함!
+					
+					
+					// 모든 과정이 끝났음을 서버에 알려주기
+					os.println("game/ENDPHASE/"+UI.player_A_name.getText()+"/"+0);
+					
+//					// test
+//					// if phase 0, hp--;
+//					if(splitCmd[2].equals("0")) Setter.setPlayerHpTextUpdate(playerName,-1);
+//					// if hp <= 0 send message, send message to server
+//					if(Character.toString(UI.player_A_hp_text.getText().charAt(3)).equals("0") && deadACK == false) {
+//						os.println("game/DIED/"+UI.player_A_role.getText());
+//						deadACK = true;
+//					}	
+				}
+				// phase == 1
+				else if(splitCmd[2].equals("1")) {
+					// 카드 가져오기 단계 요청하기 (n장)
+					os.println("game/DRAWCARD/"+UI.player_A_name.getText()+"/"+2);
+					// 모든 과정이 끝났음을 서버에 알려주기
+					os.println("game/ENDPHASE/"+UI.player_A_name.getText()+"/"+1);
+				}
+				// phase == 2
+				else if(splitCmd[2].equals("2")) {
+					// accept phase2 card use
+					UI.setCardUse2(true);
+					// enable phase2 end button
+					Setter.setPlayerButtonAvailable(true);
+				}
+				// phase == 3
+				else if(splitCmd[2].equals("3")) {
+					// accept phase3 card use
+					UI.setCardUse3(true);
+					// set discard number
+					UI.discardNum = UI.player_A_hand.getComponentCount() - (UI.player_A_hp_text.getText().charAt(3)-48);
+					// if discardNum <= 0 show end button
+					if(UI.discardNum <= 0) Setter.setPlayerButtonAvailable(true);
+				}	
 			}
 		}
 		
@@ -615,63 +644,63 @@ public class GameManager {
 			int hpSize = Integer.parseInt(splitCmd[3]);
 			// update hp
 			if(UI.player_A_character.getText().split("/")[1].equals(targetCardName)) {
-				Setter.setPlayerHpTextUpdate(UI.player_A_name.getText(), hpSize);
+				Setter.setPlayerHpTextUpdate(os, UI.player_A_name.getText(), hpSize);
 			}
 			else if(UI.player_B_character.getText().split("/")[1].equals(targetCardName)) {
-				Setter.setPlayerHpTextUpdate(UI.player_B_name.getText(), hpSize);
+				Setter.setPlayerHpTextUpdate(os, UI.player_B_name.getText(), hpSize);
 			}
 			else if(UI.player_C_character.getText().split("/")[1].equals(targetCardName)) {
-				Setter.setPlayerHpTextUpdate(UI.player_C_name.getText(), hpSize);
+				Setter.setPlayerHpTextUpdate(os, UI.player_C_name.getText(), hpSize);
 			}
 			else if(UI.player_D_character.getText().split("/")[1].equals(targetCardName)) {
-				Setter.setPlayerHpTextUpdate(UI.player_D_name.getText(), hpSize);
+				Setter.setPlayerHpTextUpdate(os, UI.player_D_name.getText(), hpSize);
 			}
 			else if(UI.player_E_character.getText().split("/")[1].equals(targetCardName)) {
-				Setter.setPlayerHpTextUpdate(UI.player_E_name.getText(), hpSize);
+				Setter.setPlayerHpTextUpdate(os, UI.player_E_name.getText(), hpSize);
 			}
 			else if(UI.player_F_character.getText().split("/")[1].equals(targetCardName)) {
-				Setter.setPlayerHpTextUpdate(UI.player_F_name.getText(), hpSize);
+				Setter.setPlayerHpTextUpdate(os, UI.player_F_name.getText(), hpSize);
 			}
 			else if(UI.player_G_character.getText().split("/")[1].equals(targetCardName)) {
-				Setter.setPlayerHpTextUpdate(UI.player_G_name.getText(), hpSize);
+				Setter.setPlayerHpTextUpdate(os, UI.player_G_name.getText(), hpSize);
 			}
 		}
 		
-		// game/USECARD/[TRUE | FALSE]
-		else if(splitCmd[1].equals("USECARD")) {
-			if(splitCmd[2].equals("TRUE")) {
-				// accept phase2 card use
-				UI.setCardUse2(true);
-				// enable phase2 end button
-				Setter.setPlayerButtonAvailable(true);
-			}
-			else if(splitCmd[2].equals("FALSE")) {
-				// lock phase2 card use
-				UI.setCardUse2(false);
-				// disable phase2 end button
-				Setter.setPlayerButtonAvailable(false);
-			}
-		}
+//		// game/USECARD/[TRUE | FALSE]
+//		else if(splitCmd[1].equals("USECARD")) {
+//			if(splitCmd[2].equals("TRUE")) {
+//				// accept phase2 card use
+//				UI.setCardUse2(true);
+//				// enable phase2 end button
+//				Setter.setPlayerButtonAvailable(true);
+//			}
+//			else if(splitCmd[2].equals("FALSE")) {
+//				// lock phase2 card use
+//				UI.setCardUse2(false);
+//				// disable phase2 end button
+//				Setter.setPlayerButtonAvailable(false);
+//			}
+//		}
 		
-		// game/DISCARDCARD/[TRUE | FALSE]
-		else if(splitCmd[1].equals("DISCARDCARD")) {
-			if(splitCmd[2].equals("TRUE")) {
-				// accept phase3 card use
-				UI.setCardUse3(true);
-				// set discard number
-				UI.discardNum = UI.player_A_hand.getComponentCount() - (UI.player_A_hp_text.getText().charAt(3)-48);
-				// if discardNum <= 0 show end button
-				if(UI.discardNum <= 0) Setter.setPlayerButtonAvailable(true);
-			}
-			else if(splitCmd[2].equals("FALSE")) {
-				// lock phase3 card use
-				UI.setCardUse3(false);
-				// init discardNum = 0
-				UI.discardNum = 0;
-				// disable phase3 end button
-				Setter.setPlayerButtonAvailable(false);
-			}
-		}
+//		// game/DISCARDCARD/[TRUE | FALSE]
+//		else if(splitCmd[1].equals("DISCARDCARD")) {
+//			if(splitCmd[2].equals("TRUE")) {
+//				// accept phase3 card use
+//				UI.setCardUse3(true);
+//				// set discard number
+//				UI.discardNum = UI.player_A_hand.getComponentCount() - (UI.player_A_hp_text.getText().charAt(3)-48);
+//				// if discardNum <= 0 show end button
+//				if(UI.discardNum <= 0) Setter.setPlayerButtonAvailable(true);
+//			}
+//			else if(splitCmd[2].equals("FALSE")) {
+//				// lock phase3 card use
+//				UI.setCardUse3(false);
+//				// init discardNum = 0
+//				UI.discardNum = 0;
+//				// disable phase3 end button
+//				Setter.setPlayerButtonAvailable(false);
+//			}
+//		}
 		
 		else {
 			System.out.println("[Unknown command]: "+cmd);
