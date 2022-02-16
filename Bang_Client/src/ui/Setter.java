@@ -765,7 +765,7 @@ public class Setter {
 		UI.mp.repaint();
 	}
 	
-	// set player_hp update (+@), if hp <= 0 send message to server <- TODO
+	// set player_hp update (+@), if hp <= 0 send message to server
 	public static void setPlayerHpTextUpdate(PrintWriter os, String name, int size) {
 		// find seat (A)
 		if(UI.player_A_name.getText().equals(name)) {
@@ -1060,6 +1060,7 @@ public class Setter {
 		UI.mp.add(UI.show_detail_panel);
 		// card use = false, setTarget = false, attacked = false
 		// targetCommand = {"",}, attackedCommand = null, deadACK = false
+		// useBang = false
 		UI.setCardUse2(false);
 		UI.setCardUse3(false);
 		UI.setSetTarget(false);
@@ -1067,6 +1068,7 @@ public class Setter {
 		UI.targetCommand = new String[] {"","","","","","",""};
 		UI.attackedCommand = null;
 		UI.deadACK = false;
+		UI.useBang = false;
 		// repaint
 		UI.mp.repaint();
 		App.u.setVisible(true);

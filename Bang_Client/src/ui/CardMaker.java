@@ -609,12 +609,12 @@ public class CardMaker {
 		}
 	}
 	
-	// make hand & field card button (init gun card)
-	public static void make_card_handField_gun_init(String userName) {
+	// make hand & field card button (gun card init)
+	public static void make_card_field_gun_init(String userName) {
 		// find seat (A)
 		if(UI.player_A_name.getText().equals(userName)) {
 			// init player_A_gun image
-			UI.player_A_gun = new JButton("colt-45") {
+			UI.player_A_gun = new JButton(""+"/"+"colt-45"+"/"+""+"/"+"") {
 				private static final long serialVersionUID = 1L;
 				Image background = new ImageIcon(".\\.\\resources\\card\\playing\\colt-45_87.png").getImage();
 				// drawing background
@@ -662,7 +662,7 @@ public class CardMaker {
 		// find seat (B)
 		else if(UI.player_B_name.getText().equals(userName)) {
 			// init player_B_gun image
-			UI.player_B_gun = new JButton("colt-45") {
+			UI.player_B_gun = new JButton(""+"/"+"colt-45"+"/"+""+"/"+"") {
 				private static final long serialVersionUID = 1L;
 				Image background = new ImageIcon(".\\.\\resources\\card\\playing\\colt-45_87.png").getImage();
 				// drawing background
@@ -710,7 +710,7 @@ public class CardMaker {
 		// find seat (C)
 		else if(UI.player_C_name.getText().equals(userName)) {
 			// init player_C_gun image
-			UI.player_C_gun = new JButton("colt-45") {
+			UI.player_C_gun = new JButton(""+"/"+"colt-45"+"/"+""+"/"+"") {
 				private static final long serialVersionUID = 1L;
 				Image background = new ImageIcon(".\\.\\resources\\card\\playing\\colt-45_87_player_C.png").getImage();
 				// drawing background
@@ -758,7 +758,7 @@ public class CardMaker {
 		// find seat (D)
 		else if(UI.player_D_name.getText().equals(userName)) {
 			// init player_D_gun image
-			UI.player_D_gun = new JButton("colt-45") {
+			UI.player_D_gun = new JButton(""+"/"+"colt-45"+"/"+""+"/"+"") {
 				private static final long serialVersionUID = 1L;
 				Image background = new ImageIcon(".\\.\\resources\\card\\playing\\colt-45_87_player_DE.png").getImage();
 				// drawing background
@@ -806,7 +806,7 @@ public class CardMaker {
 		// find seat (E)
 		else if(UI.player_E_name.getText().equals(userName)) {
 			// init player_E_gun image
-			UI.player_E_gun = new JButton("colt-45") {
+			UI.player_E_gun = new JButton(""+"/"+"colt-45"+"/"+""+"/"+"") {
 				private static final long serialVersionUID = 1L;
 				Image background = new ImageIcon(".\\.\\resources\\card\\playing\\colt-45_87_player_DE.png").getImage();
 				// drawing background
@@ -854,7 +854,7 @@ public class CardMaker {
 		// find seat (F)
 		else if(UI.player_F_name.getText().equals(userName)) {
 			// init player_F_gun image
-			UI.player_F_gun = new JButton("colt-45") {
+			UI.player_F_gun = new JButton(""+"/"+"colt-45"+"/"+""+"/"+"") {
 				private static final long serialVersionUID = 1L;
 				Image background = new ImageIcon(".\\.\\resources\\card\\playing\\colt-45_87_player_F.png").getImage();
 				// drawing background
@@ -902,7 +902,7 @@ public class CardMaker {
 		// find seat (G)
 		else if(UI.player_G_name.getText().equals(userName)) {
 			// init player_G_gun image
-			UI.player_G_gun = new JButton("colt-45") {
+			UI.player_G_gun = new JButton(""+"/"+"colt-45"+"/"+""+"/"+"") {
 				private static final long serialVersionUID = 1L;
 				Image background = new ImageIcon(".\\.\\resources\\card\\playing\\colt-45_87.png").getImage();
 				// drawing background
@@ -940,6 +940,346 @@ public class CardMaker {
 						UI.show_detail_panel.removeAll();
 						// add detail (text)
 						UI.show_detail_label.setText(DetailReader.getDetail(".\\.\\resources\\card\\playing\\colt-45.txt"));
+					}
+					// left click
+					else if(SwingUtilities.isLeftMouseButton(e)) {}
+					UI.mp.repaint();
+				}
+			});
+		}
+	}
+	
+	// make field card button (gun card)
+	public static void make_card_field_gun(String userName, String cardColor, String cardName, char cardShape, int cardNum) {
+		// find seat (A)
+		if(UI.player_A_name.getText().equals(userName)) {
+			// init player_A_gun image
+			UI.player_A_gun = new JButton(cardColor+"/"+cardName+"/"+cardShape+"/"+cardNum) {
+				private static final long serialVersionUID = 1L;
+				Image background = new ImageIcon(".\\.\\resources\\card\\playing\\"+cardColor+"\\"+cardName+"_"+cardShape+"_"+cardNum+"_87.png").getImage();
+				// drawing background
+				protected void paintComponent(Graphics g) {
+					g.drawImage(background, 0, 0, null);
+				}
+			};
+			
+			// set bounds
+			UI.player_A_gun.setBounds(90,3,87,135);
+			// set border null
+			UI.player_A_gun.setBorder(null);
+			// set mouse listener
+			UI.player_A_gun.addMouseListener(new MouseAdapter() {
+				public void mouseEntered(MouseEvent e) {
+					// add border painting
+					UI.player_A_gun.setBorder(BorderFactory.createLineBorder(Color.GREEN,2));
+					// show detail (image)
+					try {UI.show_detail_panel.add(new JLabel(new ImageIcon(ImageIO.read(new File
+							(".\\.\\resources\\card\\playing\\"+cardColor+"\\"+cardName+"_"+cardShape+"_"+cardNum+"_155.png")))));} catch (IOException e1) {}
+					UI.mp.repaint();
+				}
+				public void mouseExited(MouseEvent e) {
+					// remove border painting
+					UI.player_A_gun.setBorder(null);
+					// remove details
+					UI.show_detail_panel.removeAll();
+					UI.show_detail_label.setText(null);
+					UI.mp.repaint();
+				}
+				public void mouseClicked(MouseEvent e) {
+					// right click
+					if(SwingUtilities.isRightMouseButton(e)) {
+						// remove detail (image)
+						UI.show_detail_panel.removeAll();
+						// add detail (text)
+						UI.show_detail_label.setText(DetailReader.getDetail(".\\.\\resources\\card\\playing\\"+cardColor+"\\"+cardName+"_"+cardShape+"_"+cardNum+".txt"));
+					}
+					// left click
+					else if(SwingUtilities.isLeftMouseButton(e)) {}
+					UI.mp.repaint();
+				}
+			});
+		}
+		// find seat (B)
+		else if(UI.player_B_name.getText().equals(userName)) {
+			// init player_B_gun image
+			UI.player_B_gun = new JButton(cardColor+"/"+cardName+"/"+cardShape+"/"+cardNum) {
+				private static final long serialVersionUID = 1L;
+				Image background = new ImageIcon(".\\.\\resources\\card\\playing\\"+cardColor+"\\"+cardName+"_"+cardShape+"_"+cardNum+"_87.png").getImage();
+				// drawing background
+				protected void paintComponent(Graphics g) {
+					g.drawImage(background, 0, 0, null);
+				}
+			};
+			
+			// set bounds
+			UI.player_B_gun.setBounds(90,3,87,135);
+			// set border null
+			UI.player_B_gun.setBorder(null);
+			// set mouse listener
+			UI.player_B_gun.addMouseListener(new MouseAdapter() {
+				public void mouseEntered(MouseEvent e) {
+					// add border painting
+					UI.player_B_gun.setBorder(BorderFactory.createLineBorder(Color.GREEN,2));
+					// show detail (image)
+					try {UI.show_detail_panel.add(new JLabel(new ImageIcon(ImageIO.read(new File
+							(".\\.\\resources\\card\\playing\\"+cardColor+"\\"+cardName+"_"+cardShape+"_"+cardNum+"_155.png")))));} catch (IOException e1) {}
+					UI.mp.repaint();
+				}
+				public void mouseExited(MouseEvent e) {
+					// remove border painting
+					UI.player_B_gun.setBorder(null);
+					// remove details
+					UI.show_detail_panel.removeAll();
+					UI.show_detail_label.setText(null);
+					UI.mp.repaint();
+				}
+				public void mouseClicked(MouseEvent e) {
+					// right click
+					if(SwingUtilities.isRightMouseButton(e)) {
+						// remove detail (image)
+						UI.show_detail_panel.removeAll();
+						// add detail (text)
+						UI.show_detail_label.setText(DetailReader.getDetail(".\\.\\resources\\card\\playing\\"+cardColor+"\\"+cardName+"_"+cardShape+"_"+cardNum+".txt"));
+					}
+					// left click
+					else if(SwingUtilities.isLeftMouseButton(e)) {}
+					UI.mp.repaint();
+				}
+			});
+		}
+		// find seat (C)
+		else if(UI.player_C_name.getText().equals(userName)) {
+			// init player_C_gun image
+			UI.player_C_gun = new JButton(cardColor+"/"+cardName+"/"+cardShape+"/"+cardNum) {
+				private static final long serialVersionUID = 1L;
+				Image background = new ImageIcon(".\\.\\resources\\card\\playing\\"+cardColor+"\\"+cardName+"_"+cardShape+"_"+cardNum+"_87_player_C.png").getImage();
+				// drawing background
+				protected void paintComponent(Graphics g) {
+					g.drawImage(background, 0, 0, null);
+				}
+			};
+			
+			// set bounds
+			UI.player_C_gun.setBounds(138,90,135,87);
+			// set border null
+			UI.player_C_gun.setBorder(null);
+			// set mouse listener
+			UI.player_C_gun.addMouseListener(new MouseAdapter() {
+				public void mouseEntered(MouseEvent e) {
+					// add border painting
+					UI.player_C_gun.setBorder(BorderFactory.createLineBorder(Color.GREEN,2));
+					// show detail (image)
+					try {UI.show_detail_panel.add(new JLabel(new ImageIcon(ImageIO.read(new File
+							(".\\.\\resources\\card\\playing\\"+cardColor+"\\"+cardName+"_"+cardShape+"_"+cardNum+"_155.png")))));} catch (IOException e1) {}
+					UI.mp.repaint();
+				}
+				public void mouseExited(MouseEvent e) {
+					// remove border painting
+					UI.player_C_gun.setBorder(null);
+					// remove details
+					UI.show_detail_panel.removeAll();
+					UI.show_detail_label.setText(null);
+					UI.mp.repaint();
+				}
+				public void mouseClicked(MouseEvent e) {
+					// right click
+					if(SwingUtilities.isRightMouseButton(e)) {
+						// remove detail (image)
+						UI.show_detail_panel.removeAll();
+						// add detail (text)
+						UI.show_detail_label.setText(DetailReader.getDetail(".\\.\\resources\\card\\playing\\"+cardColor+"\\"+cardName+"_"+cardShape+"_"+cardNum+".txt"));
+					}
+					// left click
+					else if(SwingUtilities.isLeftMouseButton(e)) {}
+					UI.mp.repaint();
+				}
+			});
+		}
+		// find seat (D)
+		else if(UI.player_D_name.getText().equals(userName)) {
+			// init player_D_gun image
+			UI.player_D_gun = new JButton(cardColor+"/"+cardName+"/"+cardShape+"/"+cardNum) {
+				private static final long serialVersionUID = 1L;
+				Image background = new ImageIcon(".\\.\\resources\\card\\playing\\"+cardColor+"\\"+cardName+"_"+cardShape+"_"+cardNum+"_87_player_DE.png").getImage();
+				// drawing background
+				protected void paintComponent(Graphics g) {
+					g.drawImage(background, 0, 0, null);
+				}
+			};
+			
+			// set bounds
+			UI.player_D_gun.setBounds(293,138,87,135);
+			// set border null
+			UI.player_D_gun.setBorder(null);
+			// set mouse listener
+			UI.player_D_gun.addMouseListener(new MouseAdapter() {
+				public void mouseEntered(MouseEvent e) {
+					// add border painting
+					UI.player_D_gun.setBorder(BorderFactory.createLineBorder(Color.GREEN,2));
+					// show detail (image)
+					try {UI.show_detail_panel.add(new JLabel(new ImageIcon(ImageIO.read(new File
+							(".\\.\\resources\\card\\playing\\"+cardColor+"\\"+cardName+"_"+cardShape+"_"+cardNum+"_155.png")))));} catch (IOException e1) {}
+					UI.mp.repaint();
+				}
+				public void mouseExited(MouseEvent e) {
+					// remove border painting
+					UI.player_D_gun.setBorder(null);
+					// remove details
+					UI.show_detail_panel.removeAll();
+					UI.show_detail_label.setText(null);
+					UI.mp.repaint();
+				}
+				public void mouseClicked(MouseEvent e) {
+					// right click
+					if(SwingUtilities.isRightMouseButton(e)) {
+						// remove detail (image)
+						UI.show_detail_panel.removeAll();
+						// add detail (text)
+						UI.show_detail_label.setText(DetailReader.getDetail(".\\.\\resources\\card\\playing\\"+cardColor+"\\"+cardName+"_"+cardShape+"_"+cardNum+".txt"));
+					}
+					// left click
+					else if(SwingUtilities.isLeftMouseButton(e)) {}
+					UI.mp.repaint();
+				}
+			});
+		}
+		// find seat (E)
+		else if(UI.player_E_name.getText().equals(userName)) {
+			// init player_E_gun image
+			UI.player_E_gun = new JButton(cardColor+"/"+cardName+"/"+cardShape+"/"+cardNum) {
+				private static final long serialVersionUID = 1L;
+				Image background = new ImageIcon(".\\.\\resources\\card\\playing\\"+cardColor+"\\"+cardName+"_"+cardShape+"_"+cardNum+"_87_player_DE.png").getImage();
+				// drawing background
+				protected void paintComponent(Graphics g) {
+					g.drawImage(background, 0, 0, null);
+				}
+			};
+			
+			// set bounds
+			UI.player_E_gun.setBounds(293,138,87,135);
+			// set border null
+			UI.player_E_gun.setBorder(null);
+			// set mouse listener
+			UI.player_E_gun.addMouseListener(new MouseAdapter() {
+				public void mouseEntered(MouseEvent e) {
+					// add border painting
+					UI.player_E_gun.setBorder(BorderFactory.createLineBorder(Color.GREEN,2));
+					// show detail (image)
+					try {UI.show_detail_panel.add(new JLabel(new ImageIcon(ImageIO.read(new File
+							(".\\.\\resources\\card\\playing\\"+cardColor+"\\"+cardName+"_"+cardShape+"_"+cardNum+"_155.png")))));} catch (IOException e1) {}
+					UI.mp.repaint();
+				}
+				public void mouseExited(MouseEvent e) {
+					// remove border painting
+					UI.player_E_gun.setBorder(null);
+					// remove details
+					UI.show_detail_panel.removeAll();
+					UI.show_detail_label.setText(null);
+					UI.mp.repaint();
+				}
+				public void mouseClicked(MouseEvent e) {
+					// right click
+					if(SwingUtilities.isRightMouseButton(e)) {
+						// remove detail (image)
+						UI.show_detail_panel.removeAll();
+						// add detail (text)
+						UI.show_detail_label.setText(DetailReader.getDetail(".\\.\\resources\\card\\playing\\"+cardColor+"\\"+cardName+"_"+cardShape+"_"+cardNum+".txt"));
+					}
+					// left click
+					else if(SwingUtilities.isLeftMouseButton(e)) {}
+					UI.mp.repaint();
+				}
+			});
+		}
+		// find seat (F)
+		else if(UI.player_F_name.getText().equals(userName)) {
+			// init player_F_gun image
+			UI.player_F_gun = new JButton(cardColor+"/"+cardName+"/"+cardShape+"/"+cardNum) {
+				private static final long serialVersionUID = 1L;
+				Image background = new ImageIcon(".\\.\\resources\\card\\playing\\"+cardColor+"\\"+cardName+"_"+cardShape+"_"+cardNum+"_87_player_F.png").getImage();
+				// drawing background
+				protected void paintComponent(Graphics g) {
+					g.drawImage(background, 0, 0, null);
+				}
+			};
+			
+			// set bounds
+			UI.player_F_gun.setBounds(3,293,135,87);
+			// set border null
+			UI.player_F_gun.setBorder(null);
+			// set mouse listener
+			UI.player_F_gun.addMouseListener(new MouseAdapter() {
+				public void mouseEntered(MouseEvent e) {
+					// add border painting
+					UI.player_F_gun.setBorder(BorderFactory.createLineBorder(Color.GREEN,2));
+					// show detail (image)
+					try {UI.show_detail_panel.add(new JLabel(new ImageIcon(ImageIO.read(new File
+							(".\\.\\resources\\card\\playing\\"+cardColor+"\\"+cardName+"_"+cardShape+"_"+cardNum+"_155.png")))));} catch (IOException e1) {}
+					UI.mp.repaint();
+				}
+				public void mouseExited(MouseEvent e) {
+					// remove border painting
+					UI.player_F_gun.setBorder(null);
+					// remove details
+					UI.show_detail_panel.removeAll();
+					UI.show_detail_label.setText(null);
+					UI.mp.repaint();
+				}
+				public void mouseClicked(MouseEvent e) {
+					// right click
+					if(SwingUtilities.isRightMouseButton(e)) {
+						// remove detail (image)
+						UI.show_detail_panel.removeAll();
+						// add detail (text)
+						UI.show_detail_label.setText(DetailReader.getDetail(".\\.\\resources\\card\\playing\\"+cardColor+"\\"+cardName+"_"+cardShape+"_"+cardNum+".txt"));
+					}
+					// left click
+					else if(SwingUtilities.isLeftMouseButton(e)) {}
+					UI.mp.repaint();
+				}
+			});
+		}
+		// find seat (G)
+		else if(UI.player_G_name.getText().equals(userName)) {
+			// init player_G_gun image
+			UI.player_G_gun = new JButton(cardColor+"/"+cardName+"/"+cardShape+"/"+cardNum) {
+				private static final long serialVersionUID = 1L;
+				Image background = new ImageIcon(".\\.\\resources\\card\\playing\\"+cardColor+"\\"+cardName+"_"+cardShape+"_"+cardNum+"_87.png").getImage();
+				// drawing background
+				protected void paintComponent(Graphics g) {
+					g.drawImage(background, 0, 0, null);
+				}
+			};
+			
+			// set bounds
+			UI.player_G_gun.setBounds(90,3,87,135);
+			// set border null
+			UI.player_G_gun.setBorder(null);
+			// set mouse listener
+			UI.player_G_gun.addMouseListener(new MouseAdapter() {
+				public void mouseEntered(MouseEvent e) {
+					// add border painting
+					UI.player_G_gun.setBorder(BorderFactory.createLineBorder(Color.GREEN,2));
+					// show detail (image)
+					try {UI.show_detail_panel.add(new JLabel(new ImageIcon(ImageIO.read(new File
+							(".\\.\\resources\\card\\playing\\"+cardColor+"\\"+cardName+"_"+cardShape+"_"+cardNum+"_155.png")))));} catch (IOException e1) {}
+					UI.mp.repaint();
+				}
+				public void mouseExited(MouseEvent e) {
+					// remove border painting
+					UI.player_G_gun.setBorder(null);
+					// remove details
+					UI.show_detail_panel.removeAll();
+					UI.show_detail_label.setText(null);
+					UI.mp.repaint();
+				}
+				public void mouseClicked(MouseEvent e) {
+					// right click
+					if(SwingUtilities.isRightMouseButton(e)) {
+						// remove detail (image)
+						UI.show_detail_panel.removeAll();
+						// add detail (text)
+						UI.show_detail_label.setText(DetailReader.getDetail(".\\.\\resources\\card\\playing\\"+cardColor+"\\"+cardName+"_"+cardShape+"_"+cardNum+".txt"));
 					}
 					// left click
 					else if(SwingUtilities.isLeftMouseButton(e)) {}
@@ -2504,6 +2844,15 @@ public class CardMaker {
 					else if(SwingUtilities.isLeftMouseButton(e)) {
 						// check can card use in phase2
 						if(UI.getCardUse2() == true) {
+							// if you used bang this turn, abort it.
+							if(cardName.equals("bang") && UI.useBang == true) {
+								// if useBangCount <= 0, abort it.
+								if(UI.useBangCount <= 0) {
+									Setter.setTextNotice(1, "You already use <Bang!>");
+									return;	
+								}
+								// else useBangCount > 0, you can use <Bang!>
+							}
 							// send use message
 							os.println("game/USEHANDCARD/"+id+"/"+cardColor+"/"+cardName+"/"+cardShape+"/"+cardNum);
 							// if cardColor == brown, add into main deck (old)
@@ -2513,7 +2862,7 @@ public class CardMaker {
 							UI.show_detail_label.setText(null);
 							UI.player_A_hand.remove(e.getComponent());
 							// card ability
-							CardManager.cardAbility(cardName);
+							CardManager.cardAbility(os, id, cardColor, cardName, cardShape, cardNum);
 						}
 						// check can card discard in phase3
 						if(UI.getCardUse3() == true && UI.discardNum > 0) {

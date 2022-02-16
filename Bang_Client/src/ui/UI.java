@@ -175,12 +175,16 @@ public class UI {
 	// 누군가에게 어떠한 공격을 받았는지 저장해두는 변수 (예: 뱅!:"bang", 강탈!:"panico")
 	public static String attackedCommand = ""; // TODO
 	// mancato reservation counting
-	// 빗나감, 회피, 철판 등 예약해놓는 배열(최대 2칸)
+	// 빗나감, 회피, 철판 등 예약해놓는 배열
 	public static List<String> mancatoRev = new LinkedList<>();
 	// how many card you must discard
 	public static int discardNum = 0;
 	// check send (i'm dead!) message / false = not dead, true = dead!
 	public static boolean deadACK = false;
+	// how many <Bang!> you can use
+	public static int useBangCount = 1;
+	// check you already use <bang!>
+	public static boolean useBang = false;
 	
 	public UI(String userName, PrintWriter os) {
 		// init variables
@@ -1100,13 +1104,13 @@ public class UI {
 		Setter.setPlayerRoleImageAvailable(player_G_name.getText(), true);
 		
 		// test (기본 총 세팅)
-		CardMaker.make_card_handField_gun_init(player_A_name.getText());
-		CardMaker.make_card_handField_gun_init(player_B_name.getText());
-		CardMaker.make_card_handField_gun_init(player_C_name.getText());
-		CardMaker.make_card_handField_gun_init(player_D_name.getText());
-		CardMaker.make_card_handField_gun_init(player_E_name.getText());
-		CardMaker.make_card_handField_gun_init(player_F_name.getText());
-		CardMaker.make_card_handField_gun_init(player_G_name.getText());
+		CardMaker.make_card_field_gun_init(player_A_name.getText());
+		CardMaker.make_card_field_gun_init(player_B_name.getText());
+		CardMaker.make_card_field_gun_init(player_C_name.getText());
+		CardMaker.make_card_field_gun_init(player_D_name.getText());
+		CardMaker.make_card_field_gun_init(player_E_name.getText());
+		CardMaker.make_card_field_gun_init(player_F_name.getText());
+		CardMaker.make_card_field_gun_init(player_G_name.getText());
 		// test (총 보이게)
 		Setter.setPlayerGunImageAvailable(player_A_name.getText(), true);
 		Setter.setPlayerGunImageAvailable(player_B_name.getText(), true);
@@ -1114,6 +1118,29 @@ public class UI {
 		Setter.setPlayerGunImageAvailable(player_D_name.getText(), true);
 		Setter.setPlayerGunImageAvailable(player_E_name.getText(), true);
 		Setter.setPlayerGunImageAvailable(player_F_name.getText(), true);
+		Setter.setPlayerGunImageAvailable(player_G_name.getText(), true);
+		
+		// test (총 교체)
+		Setter.setPlayerGunImageAvailable(player_A_name.getText(), false);
+		CardMaker.make_card_field_gun(player_A_name.getText(),"blue","volcanic",'C',10);
+		Setter.setPlayerGunImageAvailable(player_A_name.getText(), true);
+		Setter.setPlayerGunImageAvailable(player_B_name.getText(), false);
+		CardMaker.make_card_field_gun(player_B_name.getText(),"blue","volcanic",'C',10);
+		Setter.setPlayerGunImageAvailable(player_B_name.getText(), true);
+		Setter.setPlayerGunImageAvailable(player_C_name.getText(), false);
+		CardMaker.make_card_field_gun(player_C_name.getText(),"blue","volcanic",'C',10);
+		Setter.setPlayerGunImageAvailable(player_C_name.getText(), true);
+		Setter.setPlayerGunImageAvailable(player_D_name.getText(), false);
+		CardMaker.make_card_field_gun(player_D_name.getText(),"blue","volcanic",'C',10);
+		Setter.setPlayerGunImageAvailable(player_D_name.getText(), true);
+		Setter.setPlayerGunImageAvailable(player_E_name.getText(), false);
+		CardMaker.make_card_field_gun(player_E_name.getText(),"blue","volcanic",'C',10);
+		Setter.setPlayerGunImageAvailable(player_E_name.getText(), true);
+		Setter.setPlayerGunImageAvailable(player_F_name.getText(), false);
+		CardMaker.make_card_field_gun(player_F_name.getText(),"blue","volcanic",'C',10);
+		Setter.setPlayerGunImageAvailable(player_F_name.getText(), true);
+		Setter.setPlayerGunImageAvailable(player_G_name.getText(), false);
+		CardMaker.make_card_field_gun(player_G_name.getText(),"blue","volcanic",'C',10);
 		Setter.setPlayerGunImageAvailable(player_G_name.getText(), true);
 		
 		// test (캐릭터 선택 완료)

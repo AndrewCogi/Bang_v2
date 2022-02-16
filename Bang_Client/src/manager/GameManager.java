@@ -162,7 +162,7 @@ public class GameManager {
 			// game/INIT/GUN/[id]
 			else if(splitCmd[2].equals("GUN")) {
 				// make card
-				CardMaker.make_card_handField_gun_init(splitCmd[3]);
+				CardMaker.make_card_field_gun_init(splitCmd[3]);
 				// available(->true) card
 				Setter.setPlayerGunImageAvailable(splitCmd[3],true);
 			}
@@ -368,6 +368,10 @@ public class GameManager {
 				}
 				// phase == 2
 				else if(splitCmd[2].equals("2")) {
+					// setting useBangCount
+					UI.useBangCount = 1;
+					// setting useBang = false
+					UI.useBang = false;
 					// accept phase2 card use
 					UI.setCardUse2(true);
 					// enable phase2 end button
@@ -528,7 +532,7 @@ public class GameManager {
 					// set attackCommand
 					UI.attackedCommand = "bang";
 					// check mancato & set hp
-					CardManager.checkMancato(os, targetCardName);
+					CardManager.checkDefensive(os, targetCardName);
 					// lock attacked
 					UI.setAttacked(false);
 					// reset attackCommand
@@ -626,6 +630,19 @@ public class GameManager {
 					UI.mp.repaint();
 				}
 				UI.mp.repaint();
+			}
+			//game/CARDABILITY/VOLCANIC/[id]/[cardColor]/[cardName]/[cardShape]/[cardNum]
+			else if(splitCmd[2].equals("VOLCANIC")) {
+				String id = splitCmd[3];
+				String cardColor = splitCmd[4];
+				String cardName = splitCmd[5];
+				char cardShape = splitCmd[6].charAt(0);
+				int cardNum = Integer.parseInt(splitCmd[7]);
+				
+				// add volcanic in [id]'s field
+				Setter.setPlayerGunImageAvailable(id, false);
+				CardMaker.make_card_field_gun(id, cardColor, cardName, cardShape, cardNum);
+				Setter.setPlayerGunImageAvailable(id, true);
 			}
 		}
 		

@@ -11,9 +11,22 @@ import ui.UI;
 
 public class CardManager {
 	// card ability implementation, return target
-	public static void cardAbility(String cardName) {
+	public static void cardAbility(PrintWriter os, String id, String cardColor, String cardName, char cardShape, int cardNum) {
 		// bang
 		if(cardName.equals("bang")) {
+			// useBangCount--
+			UI.useBangCount--;
+			// useBang = true
+			UI.useBang = true;
+			// if you have willy_the_kid, set 1
+			if(UI.player_A_character.getText().split("/")[1].equals("willy_the_kid")) {
+				UI.useBangCount = 1;
+			}
+			// if you have volcanic, set 1
+			if(UI.player_A_gun.getText().split("/")[1].equals("volcanic")){
+				UI.useBangCount = 1;
+			}
+			
 			// lock end button
 			Setter.setPlayerButtonAvailable(false);
 			// lock phase2 card use.
@@ -25,6 +38,7 @@ public class CardManager {
 
 			// check distance
 			boolean[] canShoot = checkDistance();
+			
 			// set target (border painting)
 			if(canShoot[0] == true) {
 				// set targetCommand
@@ -71,6 +85,41 @@ public class CardManager {
 		// barile
 		// birra
 		// ...
+		// volcanic
+		else if(cardName.equals("volcanic")) {
+			// set 1
+			UI.useBangCount = 1;
+			// broadcast "add this card in gun field"
+			os.println("game/CARDABILITY/VOLCANIC/"+id+"/"+cardColor+"/"+cardName+"/"+cardShape+"/"+cardNum);
+		}
+		// schofield
+		else if(cardName.equals("schofield")) {
+			// if you used <Bang!> this turn, useBangCount = 0
+			if(UI.useBang == true) UI.useBangCount = 0;
+			// broadcast "add this card in gun field"
+			os.println("game/CARDABILITY/SCHOFIELD/"+id+"/"+cardColor+"/"+cardName+"/"+cardShape+"/"+cardNum);
+		}
+		// remington
+		else if(cardName.equals("remington")) {
+			// if you used <Bang!> this turn, useBangCount = 0
+			if(UI.useBang == true) UI.useBangCount = 0;
+			// broadcast "add this card in gun field"
+			os.println("game/CARDABILITY/REMINGTON/"+id+"/"+cardColor+"/"+cardName+"/"+cardShape+"/"+cardNum);
+		}
+		// rev_carbine
+		else if(cardName.equals("rev_carbine")) {
+			// if you used <Bang!> this turn, useBangCount = 0
+			if(UI.useBang == true) UI.useBangCount = 0;
+			// broadcast "add this card in gun field"
+			os.println("game/CARDABILITY/REV_CARBINE/"+id+"/"+cardColor+"/"+cardName+"/"+cardShape+"/"+cardNum);
+		}
+		// winchester
+		else if(cardName.equals("winchester")) {
+			// if you used <Bang!> this turn, useBangCount = 0
+			if(UI.useBang == true) UI.useBangCount = 0;
+			// broadcast "add this card in gun field"
+			os.println("game/CARDABILITY/WINCHESTER/"+id+"/"+cardColor+"/"+cardName+"/"+cardShape+"/"+cardNum);
+		}
 	}
 	
 	// check distance
@@ -81,7 +130,12 @@ public class CardManager {
 		// set myRange (default = 1)
 		int myRange = 1;
 		// check my distance
-		if(UI.player_A_gun.getText().equals("colt-45")) myRange = 1;
+		if(UI.player_A_gun.getText().split("/")[1].equals("colt-45")) myRange = 1;
+		if(UI.player_A_gun.getText().split("/")[1].equals("volcanic")) myRange = 1;
+		if(UI.player_A_gun.getText().split("/")[1].equals("schofield")) myRange = 2;
+		if(UI.player_A_gun.getText().split("/")[1].equals("remington")) myRange = 3;
+		if(UI.player_A_gun.getText().split("/")[1].equals("rev_carbine")) myRange = 4;
+		if(UI.player_A_gun.getText().split("/")[1].equals("winchester")) myRange = 5;
 		// TODO : add guns (you should make gun card with gun name!)
 		
 		// calculate canShoot
@@ -101,7 +155,9 @@ public class CardManager {
 	}
 
 	// check dodge, mancato etc reservation
-	public static void checkMancato(PrintWriter os, String targetCardName) {
+	public static void checkDefensive(PrintWriter os, String targetCardName) {
+		// check barile TODO
+		
 		// check mancato
 		if(!UI.mancatoRev.isEmpty()) {
 			// TODO
@@ -111,8 +167,6 @@ public class CardManager {
 		else {
 			// hit 1 damage (broadcast)
 			os.println("game/HPSET/"+targetCardName+"/-1");
-			// check game over
-			
 		}
 	}
 	
