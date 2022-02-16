@@ -145,7 +145,7 @@ public class GameManager{
 			if(cardColor.equals("brown")){
 				Gm.addCardIntoMainDeck_old(cardColor,cardName,cardShape,cardNum);
 				server.App.broadcast_without(id,"game/ADD/MAIN_DECK_OLD/"+cardColor+"/"+cardName+"/"+cardShape+"/"+cardNum);
-			} 		
+			}
 		}
 		// game/DISCARDHANDCARD/[id]/[cardColor]/[cardName]/[cardShape]/[cardNum]
 		else if(splitCmd[1].equals("DISCARDHANDCARD")){
@@ -170,6 +170,16 @@ public class GameManager{
 				String userCardName = splitCmd[6];
 				// broadcast
 				server.App.broadcast("game/CARDABILITY/BANG/"+targetCardExtension+"/"+targetCardName+"/"+userCardExtension+"/"+userCardName);
+			}
+			// game/CARDABILITY/VOLCANIC/[id]/[cardColor]/[cardName]/[cardShape]/[cardNum]
+			else if(splitCmd[2].equals("VOLCANIC")){
+				String id = splitCmd[3];
+				String cardColor = splitCmd[4];
+				String cardName = splitCmd[5];
+				String cardShape = splitCmd[6];
+				String cardNum = splitCmd[7];
+				//broadcast
+				server.App.broadcast("game/CARDABILITY/VOLCANIC/"+id+"/"+cardColor+"/"+cardName+"/"+cardShape+"/"+cardNum);
 			}
 		}
 		// game/HPSET/[targetCardName]/[hp+]
