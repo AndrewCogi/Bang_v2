@@ -181,6 +181,46 @@ public class GameManager{
 				//broadcast
 				server.App.broadcast("game/CARDABILITY/VOLCANIC/"+id+"/"+cardColor+"/"+cardName+"/"+cardShape+"/"+cardNum);
 			}
+			// game/CARDABILITY/SCHOFIELD/[id]/[cardColor]/[cardName]/[cardShape]/[cardNum]
+			else if(splitCmd[2].equals("SCHOFIELD")){
+				String id = splitCmd[3];
+				String cardColor = splitCmd[4];
+				String cardName = splitCmd[5];
+				String cardShape = splitCmd[6];
+				String cardNum = splitCmd[7];
+				//broadcast
+				server.App.broadcast("game/CARDABILITY/SCHOFIELD/"+id+"/"+cardColor+"/"+cardName+"/"+cardShape+"/"+cardNum);
+			}
+			// game/CARDABILITY/REMINGTON/[id]/[cardColor]/[cardName]/[cardShape]/[cardNum]
+			else if(splitCmd[2].equals("REMINGTON")){
+				String id = splitCmd[3];
+				String cardColor = splitCmd[4];
+				String cardName = splitCmd[5];
+				String cardShape = splitCmd[6];
+				String cardNum = splitCmd[7];
+				//broadcast
+				server.App.broadcast("game/CARDABILITY/REMINGTON/"+id+"/"+cardColor+"/"+cardName+"/"+cardShape+"/"+cardNum);
+			}
+			// game/CARDABILITY/REV_CARBINE/[id]/[cardColor]/[cardName]/[cardShape]/[cardNum]
+			else if(splitCmd[2].equals("REV_CARBINE")){
+				String id = splitCmd[3];
+				String cardColor = splitCmd[4];
+				String cardName = splitCmd[5];
+				String cardShape = splitCmd[6];
+				String cardNum = splitCmd[7];
+				//broadcast
+				server.App.broadcast("game/CARDABILITY/REV_CARBINE/"+id+"/"+cardColor+"/"+cardName+"/"+cardShape+"/"+cardNum);
+			}
+			// game/CARDABILITY/WINCHESTER/[id]/[cardColor]/[cardName]/[cardShape]/[cardNum]
+			else if(splitCmd[2].equals("WINCHESTER")){
+				String id = splitCmd[3];
+				String cardColor = splitCmd[4];
+				String cardName = splitCmd[5];
+				String cardShape = splitCmd[6];
+				String cardNum = splitCmd[7];
+				//broadcast
+				server.App.broadcast("game/CARDABILITY/WINCHESTER/"+id+"/"+cardColor+"/"+cardName+"/"+cardShape+"/"+cardNum);
+			}
 		}
 		// game/HPSET/[targetCardName]/[hp+]
 		else if(splitCmd[1].equals("HPSET")){
