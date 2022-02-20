@@ -631,8 +631,60 @@ public class GameManager {
 				}
 				UI.mp.repaint();
 			}
-			//game/CARDABILITY/VOLCANIC/[id]/[cardColor]/[cardName]/[cardShape]/[cardNum]
+			// game/CARDABILITY/VOLCANIC/[id]/[cardColor]/[cardName]/[cardShape]/[cardNum]
 			else if(splitCmd[2].equals("VOLCANIC")) {
+				String id = splitCmd[3];
+				String cardColor = splitCmd[4];
+				String cardName = splitCmd[5];
+				char cardShape = splitCmd[6].charAt(0);
+				int cardNum = Integer.parseInt(splitCmd[7]);
+				
+				// add volcanic in [id]'s field
+				Setter.setPlayerGunImageAvailable(id, false);
+				CardMaker.make_card_field_gun(id, cardColor, cardName, cardShape, cardNum);
+				Setter.setPlayerGunImageAvailable(id, true);
+			}
+			// game/CARDABILITY/SCHOFIELD/[id]/[cardColor]/[cardName]/[cardShape]/[cardNum]
+			else if(splitCmd[2].equals("SCHOFIELD")) {
+				String id = splitCmd[3];
+				String cardColor = splitCmd[4];
+				String cardName = splitCmd[5];
+				char cardShape = splitCmd[6].charAt(0);
+				int cardNum = Integer.parseInt(splitCmd[7]);
+				
+				// add volcanic in [id]'s field
+				Setter.setPlayerGunImageAvailable(id, false);
+				CardMaker.make_card_field_gun(id, cardColor, cardName, cardShape, cardNum);
+				Setter.setPlayerGunImageAvailable(id, true);
+			}
+			// game/CARDABILITY/REMINGTON/[id]/[cardColor]/[cardName]/[cardShape]/[cardNum]
+			else if(splitCmd[2].equals("REMINGTON")) {
+				String id = splitCmd[3];
+				String cardColor = splitCmd[4];
+				String cardName = splitCmd[5];
+				char cardShape = splitCmd[6].charAt(0);
+				int cardNum = Integer.parseInt(splitCmd[7]);
+				
+				// add volcanic in [id]'s field
+				Setter.setPlayerGunImageAvailable(id, false);
+				CardMaker.make_card_field_gun(id, cardColor, cardName, cardShape, cardNum);
+				Setter.setPlayerGunImageAvailable(id, true);
+			}
+			// game/CARDABILITY/REV_CARBINE/[id]/[cardColor]/[cardName]/[cardShape]/[cardNum]
+			else if(splitCmd[2].equals("REV_CARBINE")) {
+				String id = splitCmd[3];
+				String cardColor = splitCmd[4];
+				String cardName = splitCmd[5];
+				char cardShape = splitCmd[6].charAt(0);
+				int cardNum = Integer.parseInt(splitCmd[7]);
+				
+				// add volcanic in [id]'s field
+				Setter.setPlayerGunImageAvailable(id, false);
+				CardMaker.make_card_field_gun(id, cardColor, cardName, cardShape, cardNum);
+				Setter.setPlayerGunImageAvailable(id, true);
+			}
+			// game/CARDABILITY/WINCHESTER/[id]/[cardColor]/[cardName]/[cardShape]/[cardNum]
+			else if(splitCmd[2].equals("WINCHESTER")) {
 				String id = splitCmd[3];
 				String cardColor = splitCmd[4];
 				String cardName = splitCmd[5];

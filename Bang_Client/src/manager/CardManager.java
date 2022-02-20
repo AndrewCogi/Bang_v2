@@ -2,6 +2,9 @@ package manager;
 
 import java.awt.Color;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
@@ -125,8 +128,42 @@ public class CardManager {
 	// check distance
 	private static boolean[] checkDistance() {
 		// {A,B,C,D,E,F,G}
-		boolean[] canShoot = new boolean[] {true,false,false,false,false,false,false};
-		int[] distance = new int[] {1,1,2,3,3,2,1};
+		boolean[] canShoot = new boolean[7];
+		
+		//check died player (except me)
+		int[] diedPlayer = new int[] {0,0,0,0,0,0,0};
+		if(Integer.parseInt(Character.toString(UI.player_B_hp_text.getText().charAt(3))) == 0) diedPlayer[1] = 1;
+		if(Integer.parseInt(Character.toString(UI.player_C_hp_text.getText().charAt(3))) == 0) diedPlayer[2] = 1;
+		if(Integer.parseInt(Character.toString(UI.player_D_hp_text.getText().charAt(3))) == 0) diedPlayer[3] = 1;
+		if(Integer.parseInt(Character.toString(UI.player_E_hp_text.getText().charAt(3))) == 0) diedPlayer[4] = 1;
+		if(Integer.parseInt(Character.toString(UI.player_F_hp_text.getText().charAt(3))) == 0) diedPlayer[5] = 1;
+		if(Integer.parseInt(Character.toString(UI.player_G_hp_text.getText().charAt(3))) == 0) diedPlayer[6] = 1;
+		
+		// count died player & check distance array
+		int diedPlayerNumber = Arrays.stream(diedPlayer).filter(i -> i==1).toArray().length;
+		int[] distanceArray = new int[] {1,1,2,3,3,2,1};
+		if(diedPlayerNumber == 1) distanceArray = new int[] {1,1,2,3,2,1};
+		if(diedPlayerNumber == 2) distanceArray = new int[] {1,1,2,2,1};
+		if(diedPlayerNumber == 3) distanceArray = new int[] {1,1,2,1};
+		if(diedPlayerNumber == 4) distanceArray = new int[] {1,1,1};
+		if(diedPlayerNumber == 5) distanceArray = new int[] {1,1};
+		
+		// calculate distance
+		List<Integer> distance = new ArrayList<>();
+		int idx = 0;
+		for(int i=0; i<7; i++) {
+			if(diedPlayer[i] == 1) distance.add(1000000);
+			else {
+				distance.add(distanceArray[idx]);
+				idx++;
+			}
+		}
+		
+		// check can I shoot myself
+		if(Integer.parseInt(Character.toString(UI.player_A_hp_text.getText().charAt(3))) == 0) {
+			distance.remove(0); distance.add(0,1000000);
+		}
+		
 		// set myRange (default = 1)
 		int myRange = 1;
 		// check my distance (gun)
@@ -142,8 +179,8 @@ public class CardManager {
 		// TODO
 		
 		// calculate canShoot
-		for(int i=1; i<7; i++) {
-			if(distance[i] > myRange) canShoot[i] = false;
+		for(int i=0; i<7; i++) {
+			if(distance.get(i) > myRange) canShoot[i] = false;
 			else canShoot[i] = true;
 		}
 		

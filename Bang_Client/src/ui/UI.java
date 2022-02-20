@@ -221,6 +221,7 @@ public class UI {
 		
 		// test function TODO
 		// test_func();
+		// TODO 총 갈아끼면 총 버려지는거 되도록 해주기
 	}
 	
 	// init game ready button
@@ -1122,25 +1123,25 @@ public class UI {
 		
 		// test (총 교체)
 		Setter.setPlayerGunImageAvailable(player_A_name.getText(), false);
-		CardMaker.make_card_field_gun(player_A_name.getText(),"blue","volcanic",'C',10);
+		CardMaker.make_card_field_gun(player_A_name.getText(),"blue","winchester",'S',8);
 		Setter.setPlayerGunImageAvailable(player_A_name.getText(), true);
 		Setter.setPlayerGunImageAvailable(player_B_name.getText(), false);
-		CardMaker.make_card_field_gun(player_B_name.getText(),"blue","volcanic",'C',10);
+		CardMaker.make_card_field_gun(player_B_name.getText(),"blue","winchester",'S',8);
 		Setter.setPlayerGunImageAvailable(player_B_name.getText(), true);
 		Setter.setPlayerGunImageAvailable(player_C_name.getText(), false);
-		CardMaker.make_card_field_gun(player_C_name.getText(),"blue","volcanic",'C',10);
+		CardMaker.make_card_field_gun(player_C_name.getText(),"blue","winchester",'S',8);
 		Setter.setPlayerGunImageAvailable(player_C_name.getText(), true);
 		Setter.setPlayerGunImageAvailable(player_D_name.getText(), false);
-		CardMaker.make_card_field_gun(player_D_name.getText(),"blue","volcanic",'C',10);
+		CardMaker.make_card_field_gun(player_D_name.getText(),"blue","winchester",'S',8);
 		Setter.setPlayerGunImageAvailable(player_D_name.getText(), true);
 		Setter.setPlayerGunImageAvailable(player_E_name.getText(), false);
-		CardMaker.make_card_field_gun(player_E_name.getText(),"blue","volcanic",'C',10);
+		CardMaker.make_card_field_gun(player_E_name.getText(),"blue","winchester",'S',8);
 		Setter.setPlayerGunImageAvailable(player_E_name.getText(), true);
 		Setter.setPlayerGunImageAvailable(player_F_name.getText(), false);
-		CardMaker.make_card_field_gun(player_F_name.getText(),"blue","volcanic",'C',10);
+		CardMaker.make_card_field_gun(player_F_name.getText(),"blue","winchester",'S',8);
 		Setter.setPlayerGunImageAvailable(player_F_name.getText(), true);
 		Setter.setPlayerGunImageAvailable(player_G_name.getText(), false);
-		CardMaker.make_card_field_gun(player_G_name.getText(),"blue","volcanic",'C',10);
+		CardMaker.make_card_field_gun(player_G_name.getText(),"blue","winchester",'S',8);
 		Setter.setPlayerGunImageAvailable(player_G_name.getText(), true);
 		
 		// test (캐릭터 선택 완료)
