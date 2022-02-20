@@ -129,7 +129,7 @@ public class CardManager {
 		int[] distance = new int[] {1,1,2,3,3,2,1};
 		// set myRange (default = 1)
 		int myRange = 1;
-		// check my distance
+		// check my distance (gun)
 		if(UI.player_A_gun.getText().split("/")[1].equals("colt-45")) myRange = 1;
 		if(UI.player_A_gun.getText().split("/")[1].equals("volcanic")) myRange = 1;
 		if(UI.player_A_gun.getText().split("/")[1].equals("schofield")) myRange = 2;
@@ -137,6 +137,9 @@ public class CardManager {
 		if(UI.player_A_gun.getText().split("/")[1].equals("rev_carbine")) myRange = 4;
 		if(UI.player_A_gun.getText().split("/")[1].equals("winchester")) myRange = 5;
 		// TODO : add guns (you should make gun card with gun name!)
+		
+		// check distance cards
+		// TODO
 		
 		// calculate canShoot
 		for(int i=1; i<7; i++) {

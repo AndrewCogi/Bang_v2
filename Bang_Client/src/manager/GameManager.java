@@ -139,7 +139,7 @@ public class GameManager {
 				if(splitCmd[3].equals(myName) || splitCmd[4].equals("sceriffo")) {
 					System.out.println("[GameManager][forward]: Setting "+splitCmd[4]+" at "+splitCmd[3]+". ");
 					// make card
-					CardMaker.make_card_handField_role(splitCmd[3], splitCmd[4], true);
+					CardMaker.make_card_handField_role(splitCmd[3], splitCmd[4], true, false);
 					// available(->true) card
 					Setter.setPlayerRoleImageAvailable(splitCmd[3], true);
 				}
@@ -147,7 +147,7 @@ public class GameManager {
 				else {
 					System.out.println("[GameManager][backward]: Setting "+splitCmd[4]+" at "+splitCmd[3]+". ");
 					// make card
-					CardMaker.make_card_handField_role(splitCmd[3], splitCmd[4], false);
+					CardMaker.make_card_handField_role(splitCmd[3], splitCmd[4], false, false);
 					// available(->true) card
 					Setter.setPlayerRoleImageAvailable(splitCmd[3], true);
 				}

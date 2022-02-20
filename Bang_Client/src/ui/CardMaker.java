@@ -1290,20 +1290,35 @@ public class CardMaker {
 	}
 	
 	// make hand & field card button (role card)
-	public static void make_card_handField_role(String userName, String roleName, boolean isForward) {
+	public static void make_card_handField_role(String userName, String roleName, boolean isForward, boolean isDied) {
 		// find seat (seat is 'A')
 		if(UI.player_A_name.getText().equals(userName)) {
 			// forward?
 			if(isForward == true) {
-				// init player_A_role image
-				UI.player_A_role = new JButton(roleName){
-					private static final long serialVersionUID = 1L;
-					Image background = new ImageIcon(".\\.\\resources\\card\\role\\"+roleName+"_87.png").getImage();
-					// drawing background
-					protected void paintComponent(Graphics g) {
-						g.drawImage(background, 0, 0, null);
-					}
-				};
+				// if this player not died,
+				if(isDied == false) {
+					// init player_A_role image
+					UI.player_A_role = new JButton(roleName){
+						private static final long serialVersionUID = 1L;
+						Image background = new ImageIcon(".\\.\\resources\\card\\role\\"+roleName+"_87.png").getImage();
+						// drawing background
+						protected void paintComponent(Graphics g) {
+							g.drawImage(background, 0, 0, null);
+						}
+					};	
+				}
+				// this player died, 
+				else {
+					// init player_A_role image
+					UI.player_A_role = new JButton(roleName){
+						private static final long serialVersionUID = 1L;
+						Image background = new ImageIcon(".\\.\\resources\\card\\role\\died\\"+roleName+"_87.png").getImage();
+						// drawing background
+						protected void paintComponent(Graphics g) {
+							g.drawImage(background, 0, 0, null);
+						}
+					};
+				}
 			}
 			// backward?
 			else if(isForward == false) {
@@ -1329,8 +1344,16 @@ public class CardMaker {
 					UI.player_A_role.setBorder(BorderFactory.createLineBorder(Color.GREEN, 2));
 					// isForward == true, show detail (image)
 					if(isForward == true) {
-						try {UI.show_detail_panel.add(new JLabel(new ImageIcon(ImageIO.read(new File
-								(".\\.\\resources\\card\\role\\"+roleName+"_155.png")))));} catch (IOException e1) {}
+						// if isDied == false, show color image
+						if(isDied == false) {
+							try {UI.show_detail_panel.add(new JLabel(new ImageIcon(ImageIO.read(new File
+									(".\\.\\resources\\card\\role\\"+roleName+"_155.png")))));} catch (IOException e1) {}	
+						}
+						// if isDied == true, show gray image
+						else {
+							try {UI.show_detail_panel.add(new JLabel(new ImageIcon(ImageIO.read(new File
+									(".\\.\\resources\\card\\role\\died\\"+roleName+"_155.png")))));} catch (IOException e1) {}
+						}
 					}
 					UI.mp.repaint();
 				}
@@ -1364,15 +1387,30 @@ public class CardMaker {
 		else if(UI.player_B_name.getText().equals(userName)) {
 			// forward?
 			if(isForward == true) {
-				// init player_B_role image
-				UI.player_B_role = new JButton(roleName) {
-					private static final long serialVersionUID = 1L;
-					Image background = new ImageIcon(".\\.\\resources\\card\\role\\"+roleName+"_87.png").getImage();
-					// drawing background
-					protected void paintComponent(Graphics g) {
-						g.drawImage(background, 0, 0, null);
-					}
-				};
+				// if this player is not died, 
+				if(isDied == false) {
+					// init player_B_role image
+					UI.player_B_role = new JButton(roleName) {
+						private static final long serialVersionUID = 1L;
+						Image background = new ImageIcon(".\\.\\resources\\card\\role\\"+roleName+"_87.png").getImage();
+						// drawing background
+						protected void paintComponent(Graphics g) {
+							g.drawImage(background, 0, 0, null);
+						}
+					};
+				}
+				// this player is died, 
+				else {
+					// init player_B_role image
+					UI.player_B_role = new JButton(roleName) {
+						private static final long serialVersionUID = 1L;
+						Image background = new ImageIcon(".\\.\\resources\\card\\role\\died\\"+roleName+"_87.png").getImage();
+						// drawing background
+						protected void paintComponent(Graphics g) {
+							g.drawImage(background, 0, 0, null);
+						}
+					};
+				}
 			}
 			// backward?
 			else if(isForward == false) {
@@ -1398,8 +1436,16 @@ public class CardMaker {
 					UI.player_B_role.setBorder(BorderFactory.createLineBorder(Color.GREEN, 2));
 					// isForward == true, show detail (image)
 					if(isForward == true) {
-						try {UI.show_detail_panel.add(new JLabel(new ImageIcon(ImageIO.read(new File
-								(".\\.\\resources\\card\\role\\"+roleName+"_155.png")))));} catch (IOException e1) {}
+						// if isDied == false, show color image
+						if(isDied == false) {
+							try {UI.show_detail_panel.add(new JLabel(new ImageIcon(ImageIO.read(new File
+									(".\\.\\resources\\card\\role\\"+roleName+"_155.png")))));} catch (IOException e1) {}	
+						}
+						// if isDied == true, show gray image
+						else {
+							try {UI.show_detail_panel.add(new JLabel(new ImageIcon(ImageIO.read(new File
+									(".\\.\\resources\\card\\role\\died\\"+roleName+"_155.png")))));} catch (IOException e1) {}
+						}
 					}
 					UI.mp.repaint();
 				}
@@ -1433,15 +1479,30 @@ public class CardMaker {
 		else if(UI.player_C_name.getText().equals(userName)) {
 			// forward?
 			if(isForward == true) {
-				// init player_C_role image
-				UI.player_C_role = new JButton(roleName) {
-					private static final long serialVersionUID = 1L;
-					Image background = new ImageIcon(".\\.\\resources\\card\\role\\"+roleName+"_87_player_C.png").getImage();
-					// drawing background
-					protected void paintComponent(Graphics g) {
-						g.drawImage(background, 0, 0, null);
-					}
-				};
+				// if this player is not died, 
+				if(isDied == false) {
+					// init player_C_role image
+					UI.player_C_role = new JButton(roleName) {
+						private static final long serialVersionUID = 1L;
+						Image background = new ImageIcon(".\\.\\resources\\card\\role\\"+roleName+"_87_player_C.png").getImage();
+						// drawing background
+						protected void paintComponent(Graphics g) {
+							g.drawImage(background, 0, 0, null);
+						}
+					};
+				}
+				// this player is died, 
+				else {
+					// init player_C_role image
+					UI.player_C_role = new JButton(roleName) {
+						private static final long serialVersionUID = 1L;
+						Image background = new ImageIcon(".\\.\\resources\\card\\role\\died\\"+roleName+"_87_player_C.png").getImage();
+						// drawing background
+						protected void paintComponent(Graphics g) {
+							g.drawImage(background, 0, 0, null);
+						}
+					};
+				}
 			}
 			// backward?
 			else if(isForward == false) {
@@ -1467,8 +1528,16 @@ public class CardMaker {
 					UI.player_C_role.setBorder(BorderFactory.createLineBorder(Color.GREEN, 2));
 					// isForward == true, show detail (iamge)
 					if(isForward == true) {
-						try {UI.show_detail_panel.add(new JLabel(new ImageIcon(ImageIO.read(new File
-								(".\\.\\resources\\card\\role\\"+roleName+"_155.png")))));} catch (IOException e1) {}
+						// if isDied == false, show color image
+						if(isDied == false) {
+							try {UI.show_detail_panel.add(new JLabel(new ImageIcon(ImageIO.read(new File
+									(".\\.\\resources\\card\\role\\"+roleName+"_155.png")))));} catch (IOException e1) {}	
+						}
+						// if isDied == true, show gray image
+						else {
+							try {UI.show_detail_panel.add(new JLabel(new ImageIcon(ImageIO.read(new File
+									(".\\.\\resources\\card\\role\\died\\"+roleName+"_155.png")))));} catch (IOException e1) {}
+						}
 					}
 					UI.mp.repaint();
 				}
@@ -1502,15 +1571,30 @@ public class CardMaker {
 		else if(UI.player_D_name.getText().equals(userName)) {
 			// forward?
 			if(isForward == true) {
-				// init player_D_role image
-				UI.player_D_role = new JButton(roleName) {
-					private static final long serialVersionUID = 1L;
-					Image background = new ImageIcon(".\\.\\resources\\card\\role\\"+roleName+"_87_player_DE.png").getImage();
-					// drawing background
-					protected void paintComponent(Graphics g) {
-						g.drawImage(background, 0, 0, null);
-					}
-				};
+				// if this player is not died, 
+				if(isDied == false) {
+					// init player_D_role image
+					UI.player_D_role = new JButton(roleName) {
+						private static final long serialVersionUID = 1L;
+						Image background = new ImageIcon(".\\.\\resources\\card\\role\\"+roleName+"_87_player_DE.png").getImage();
+						// drawing background
+						protected void paintComponent(Graphics g) {
+							g.drawImage(background, 0, 0, null);
+						}
+					};	
+				}
+				// this player is died, 
+				else {
+					// init player_D_role image
+					UI.player_D_role = new JButton(roleName) {
+						private static final long serialVersionUID = 1L;
+						Image background = new ImageIcon(".\\.\\resources\\card\\role\\died\\"+roleName+"_87_player_DE.png").getImage();
+						// drawing background
+						protected void paintComponent(Graphics g) {
+							g.drawImage(background, 0, 0, null);
+						}
+					};
+				}
 			}
 			// backward?
 			else if(isForward == false) {
@@ -1536,8 +1620,16 @@ public class CardMaker {
 					UI.player_D_role.setBorder(BorderFactory.createLineBorder(Color.GREEN, 2));
 					// isForward == true, show detail (image)
 					if(isForward == true) {
-						try {UI.show_detail_panel.add(new JLabel(new ImageIcon(ImageIO.read(new File
-								(".\\.\\resources\\card\\role\\"+roleName+"_155.png")))));} catch (IOException e1) {}
+						// if isDied == false, show color image
+						if(isDied == false) {
+							try {UI.show_detail_panel.add(new JLabel(new ImageIcon(ImageIO.read(new File
+									(".\\.\\resources\\card\\role\\"+roleName+"_155.png")))));} catch (IOException e1) {}	
+						}
+						// if isDied == true, show gray image
+						else {
+							try {UI.show_detail_panel.add(new JLabel(new ImageIcon(ImageIO.read(new File
+									(".\\.\\resources\\card\\role\\died\\"+roleName+"_155.png")))));} catch (IOException e1) {}
+						}
 					}
 					UI.mp.repaint();
 				}
@@ -1571,15 +1663,30 @@ public class CardMaker {
 		else if(UI.player_E_name.getText().equals(userName)) {
 			// forward?
 			if(isForward == true) {
-				// init player_E_role image
-				UI.player_E_role = new JButton(roleName) {
-					private static final long serialVersionUID = 1L;
-					Image background = new ImageIcon(".\\.\\resources\\card\\role\\"+roleName+"_87_player_DE.png").getImage();
-					// drawing background
-					protected void paintComponent(Graphics g) {
-						g.drawImage(background, 0, 0, null);
-					}
-				};
+				// if this player is not died, 
+				if(isDied == false) {
+					// init player_E_role image
+					UI.player_E_role = new JButton(roleName) {
+						private static final long serialVersionUID = 1L;
+						Image background = new ImageIcon(".\\.\\resources\\card\\role\\"+roleName+"_87_player_DE.png").getImage();
+						// drawing background
+						protected void paintComponent(Graphics g) {
+							g.drawImage(background, 0, 0, null);
+						}
+					};
+				}
+				// this player is died, 
+				else {
+					// init player_E_role image
+					UI.player_E_role = new JButton(roleName) {
+						private static final long serialVersionUID = 1L;
+						Image background = new ImageIcon(".\\.\\resources\\card\\role\\died\\"+roleName+"_87_player_DE.png").getImage();
+						// drawing background
+						protected void paintComponent(Graphics g) {
+							g.drawImage(background, 0, 0, null);
+						}
+					};
+				}
 			}
 			// backward?
 			else if(isForward == false) {
@@ -1605,8 +1712,16 @@ public class CardMaker {
 					UI.player_E_role.setBorder(BorderFactory.createLineBorder(Color.GREEN, 2));
 					// isForward == true, show detail (image)
 					if(isForward == true) {
-						try {UI.show_detail_panel.add(new JLabel(new ImageIcon(ImageIO.read(new File
-								(".\\.\\resources\\card\\role\\"+roleName+"_155.png")))));} catch (IOException e1) {}
+						// if isDied == false, show color image
+						if(isDied == false) {
+							try {UI.show_detail_panel.add(new JLabel(new ImageIcon(ImageIO.read(new File
+									(".\\.\\resources\\card\\role\\"+roleName+"_155.png")))));} catch (IOException e1) {}	
+						}
+						// if isDied == true, show gray image
+						else {
+							try {UI.show_detail_panel.add(new JLabel(new ImageIcon(ImageIO.read(new File
+									(".\\.\\resources\\card\\role\\died\\"+roleName+"_155.png")))));} catch (IOException e1) {}
+						}
 					}
 					UI.mp.repaint();
 				}
@@ -1640,15 +1755,30 @@ public class CardMaker {
 		else if(UI.player_F_name.getText().equals(userName)) {
 			// forward?
 			if(isForward == true) {
-				// init player_F_role image
-				UI.player_F_role = new JButton(roleName) {
-					private static final long serialVersionUID = 1L;
-					Image background = new ImageIcon(".\\.\\resources\\card\\role\\"+roleName+"_87_player_F.png").getImage();
-					// drawing background
-					protected void paintComponent(Graphics g) {
-						g.drawImage(background, 0, 0, null);
-					}
-				};
+				// if this player is not died, 
+				if(isDied == false) {
+					// init player_F_role image
+					UI.player_F_role = new JButton(roleName) {
+						private static final long serialVersionUID = 1L;
+						Image background = new ImageIcon(".\\.\\resources\\card\\role\\"+roleName+"_87_player_F.png").getImage();
+						// drawing background
+						protected void paintComponent(Graphics g) {
+							g.drawImage(background, 0, 0, null);
+						}
+					};
+				}
+				// this player is died, 
+				else {
+					// init player_F_role image
+					UI.player_F_role = new JButton(roleName) {
+						private static final long serialVersionUID = 1L;
+						Image background = new ImageIcon(".\\.\\resources\\card\\role\\died\\"+roleName+"_87_player_F.png").getImage();
+						// drawing background
+						protected void paintComponent(Graphics g) {
+							g.drawImage(background, 0, 0, null);
+						}
+					};
+				}
 			}
 			// backward?
 			else if(isForward == false) {
@@ -1674,8 +1804,16 @@ public class CardMaker {
 					UI.player_F_role.setBorder(BorderFactory.createLineBorder(Color.GREEN, 2));
 					// isForward == true, show detail (image)
 					if(isForward == true) {
-						try {UI.show_detail_panel.add(new JLabel(new ImageIcon(ImageIO.read(new File
-								(".\\.\\resources\\card\\role\\"+roleName+"_155.png")))));} catch (IOException e1) {}
+						// if isDied == false, show color image
+						if(isDied == false) {
+							try {UI.show_detail_panel.add(new JLabel(new ImageIcon(ImageIO.read(new File
+									(".\\.\\resources\\card\\role\\"+roleName+"_155.png")))));} catch (IOException e1) {}	
+						}
+						// if isDied == true, show gray image
+						else {
+							try {UI.show_detail_panel.add(new JLabel(new ImageIcon(ImageIO.read(new File
+									(".\\.\\resources\\card\\role\\died\\"+roleName+"_155.png")))));} catch (IOException e1) {}
+						}
 					}
 					UI.mp.repaint();
 				}
@@ -1709,15 +1847,30 @@ public class CardMaker {
 		else if(UI.player_G_name.getText().equals(userName)) {
 			// forward?
 			if(isForward == true) {
-				// init player_G_role image
-				UI.player_G_role = new JButton(roleName) {
-					private static final long serialVersionUID = 1L;
-					Image background = new ImageIcon(".\\.\\resources\\card\\role\\"+roleName+"_87.png").getImage();
-					// drawing background
-					protected void paintComponent(Graphics g) {
-						g.drawImage(background, 0, 0, null);
-					}
-				};
+				// if this player is not died, 
+				if(isDied == false) {
+					// init player_G_role image
+					UI.player_G_role = new JButton(roleName) {
+						private static final long serialVersionUID = 1L;
+						Image background = new ImageIcon(".\\.\\resources\\card\\role\\"+roleName+"_87.png").getImage();
+						// drawing background
+						protected void paintComponent(Graphics g) {
+							g.drawImage(background, 0, 0, null);
+						}
+					};	
+				}
+				// this player is died, 
+				else {
+					// init player_G_role image
+					UI.player_G_role = new JButton(roleName) {
+						private static final long serialVersionUID = 1L;
+						Image background = new ImageIcon(".\\.\\resources\\card\\role\\died\\"+roleName+"_87.png").getImage();
+						// drawing background
+						protected void paintComponent(Graphics g) {
+							g.drawImage(background, 0, 0, null);
+						}
+					};
+				}
 			}
 			// backward?
 			else if(isForward == false) {
@@ -1743,8 +1896,16 @@ public class CardMaker {
 					UI.player_G_role.setBorder(BorderFactory.createLineBorder(Color.GREEN, 2));
 					// isForward == true, show detail (image)
 					if(isForward == true) {
-						try {UI.show_detail_panel.add(new JLabel(new ImageIcon(ImageIO.read(new File
-								(".\\.\\resources\\card\\role\\"+roleName+"_155.png")))));} catch (IOException e1) {}
+						// if isDied == false, show color image
+						if(isDied == false) {
+							try {UI.show_detail_panel.add(new JLabel(new ImageIcon(ImageIO.read(new File
+									(".\\.\\resources\\card\\role\\"+roleName+"_155.png")))));} catch (IOException e1) {}	
+						}
+						// if isDied == true, show gray image
+						else {
+							try {UI.show_detail_panel.add(new JLabel(new ImageIcon(ImageIO.read(new File
+									(".\\.\\resources\\card\\role\\died\\"+roleName+"_155.png")))));} catch (IOException e1) {}
+						}
 					}
 					UI.mp.repaint();
 				}

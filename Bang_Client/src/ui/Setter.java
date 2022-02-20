@@ -2,9 +2,13 @@ package ui;
 
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Graphics;
+import java.awt.Image;
 import java.io.PrintWriter;
 
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
+import javax.swing.JPanel;
 
 import client.App;
 
@@ -775,16 +779,18 @@ public class Setter {
 			if(updateHp <= 0) {
 				// setting hp = 0
 				UI.player_A_hp_text.setText(" x "+0);
+				// setting color RED
+				UI.player_A_hp_text.setForeground(Color.RED);
 				// set role card open
 				Setter.setPlayerRoleImageAvailable(name, false);
-				CardMaker.make_card_handField_role(name, UI.player_A_role.getText(), true);
+				CardMaker.make_card_handField_role(name, UI.player_A_role.getText(), true, true);
 				Setter.setPlayerRoleImageAvailable(name, true);
 				// if deadACK == false, 
 				if(UI.deadACK == false) {
 					// send message to server
 					os.println("game/DIED/"+UI.player_A_role.getText());
 					// set deadACK == true
-					UI.deadACK = true;	
+					UI.deadACK = true;
 				}
 			}
 		}
@@ -796,9 +802,11 @@ public class Setter {
 			if(updateHp <= 0) {
 				// setting hp = 0
 				UI.player_B_hp_text.setText(" x "+0);
+				// setting color RED
+				UI.player_B_hp_text.setForeground(Color.RED);
 				// set role card open
 				Setter.setPlayerRoleImageAvailable(name, false);
-				CardMaker.make_card_handField_role(name, UI.player_B_role.getText(), true);
+				CardMaker.make_card_handField_role(name, UI.player_B_role.getText(), true, true);
 				Setter.setPlayerRoleImageAvailable(name, true);
 			}
 		}
@@ -810,9 +818,11 @@ public class Setter {
 			if(updateHp <= 0) {
 				// setting hp = 0
 				UI.player_C_hp_text.setText(" x "+0);
+				// setting color RED
+				UI.player_C_hp_text.setForeground(Color.RED);
 				// set role card open
 				Setter.setPlayerRoleImageAvailable(name, false);
-				CardMaker.make_card_handField_role(name, UI.player_C_role.getText(), true);
+				CardMaker.make_card_handField_role(name, UI.player_C_role.getText(), true, true);
 				Setter.setPlayerRoleImageAvailable(name, true);
 			}
 		}
@@ -824,9 +834,11 @@ public class Setter {
 			if(updateHp <= 0) {
 				// setting hp = 0
 				UI.player_D_hp_text.setText(" x "+0);
+				// setting color RED
+				UI.player_D_hp_text.setForeground(Color.RED);
 				// set role card open
 				Setter.setPlayerRoleImageAvailable(name, false);
-				CardMaker.make_card_handField_role(name, UI.player_D_role.getText(), true);
+				CardMaker.make_card_handField_role(name, UI.player_D_role.getText(), true, true);
 				Setter.setPlayerRoleImageAvailable(name, true);
 			}
 		}
@@ -838,9 +850,11 @@ public class Setter {
 			if(updateHp <= 0) {
 				// setting hp = 0
 				UI.player_E_hp_text.setText(" x "+0);
+				// setting color RED
+				UI.player_E_hp_text.setForeground(Color.RED);
 				// set role card open
 				Setter.setPlayerRoleImageAvailable(name, false);
-				CardMaker.make_card_handField_role(name, UI.player_E_role.getText(), true);
+				CardMaker.make_card_handField_role(name, UI.player_E_role.getText(), true, true);
 				Setter.setPlayerRoleImageAvailable(name, true);
 			}
 		}
@@ -852,9 +866,11 @@ public class Setter {
 			if(updateHp <= 0) {
 				// setting hp = 0
 				UI.player_F_hp_text.setText(" x "+0);
+				// setting color RED
+				UI.player_F_hp_text.setForeground(Color.RED);
 				// set role card open
 				Setter.setPlayerRoleImageAvailable(name, false);
-				CardMaker.make_card_handField_role(name, UI.player_F_role.getText(), true);
+				CardMaker.make_card_handField_role(name, UI.player_F_role.getText(), true, true);
 				Setter.setPlayerRoleImageAvailable(name, true);
 			}
 		}
@@ -866,9 +882,11 @@ public class Setter {
 			if(updateHp <= 0) {
 				// setting hp = 0
 				UI.player_G_hp_text.setText(" x "+0);
+				// setting color RED
+				UI.player_G_hp_text.setForeground(Color.RED);
 				// set role card open
 				Setter.setPlayerRoleImageAvailable(name, false);
-				CardMaker.make_card_handField_role(name, UI.player_G_role.getText(), true);
+				CardMaker.make_card_handField_role(name, UI.player_G_role.getText(), true, true);
 				Setter.setPlayerRoleImageAvailable(name, true);
 			}
 		}

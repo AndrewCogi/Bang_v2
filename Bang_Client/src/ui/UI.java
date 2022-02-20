@@ -1087,13 +1087,13 @@ public class UI {
 		Setter.setPlayerGoldTextAvailable(true);
 	
 		// test (직업 선택 완료)
-		CardMaker.make_card_handField_role(player_A_name.getText(), "vice", true);
-		CardMaker.make_card_handField_role(player_B_name.getText(), "sceriffo", false);
-		CardMaker.make_card_handField_role(player_C_name.getText(), "vice", false);
-		CardMaker.make_card_handField_role(player_D_name.getText(), "fuorilegge", false);
-		CardMaker.make_card_handField_role(player_E_name.getText(), "fuorilegge", false);
-		CardMaker.make_card_handField_role(player_F_name.getText(), "fuorilegge", false);
-		CardMaker.make_card_handField_role(player_G_name.getText(), "rinnegato", false);
+		CardMaker.make_card_handField_role(player_A_name.getText(), "fuorilegge", true, true);
+		CardMaker.make_card_handField_role(player_B_name.getText(), "fuorilegge", true, true);
+		CardMaker.make_card_handField_role(player_C_name.getText(), "fuorilegge", true, true);
+		CardMaker.make_card_handField_role(player_D_name.getText(), "fuorilegge", true, true);
+		CardMaker.make_card_handField_role(player_E_name.getText(), "fuorilegge", true, true);
+		CardMaker.make_card_handField_role(player_F_name.getText(), "fuorilegge", true, true);
+		CardMaker.make_card_handField_role(player_G_name.getText(), "fuorilegge", true, true);
 		// test (직업 이미지 보이게)
 		Setter.setPlayerRoleImageAvailable(player_A_name.getText(), true);
 		Setter.setPlayerRoleImageAvailable(player_B_name.getText(), true);
