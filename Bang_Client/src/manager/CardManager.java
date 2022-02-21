@@ -90,6 +90,16 @@ public class CardManager {
 		// ...
 		// volcanic
 		else if(cardName.equals("volcanic")) {
+			// if you have gun (not colt-45)
+			if(!UI.player_A_gun.getText().split("/")[1].equals("colt-45")) {
+				String cardColor_d = UI.player_A_gun.getText().split("/")[0];
+				String cardName_d = UI.player_A_gun.getText().split("/")[1];
+				String cardShape_d = UI.player_A_gun.getText().split("/")[2];
+				String cardNum_d = UI.player_A_gun.getText().split("/")[3];
+				// drop gun
+				os.println("game/DISCARDFIELDCARD/"+id+"/"+cardColor_d+"/"+cardName_d+"/"+cardShape_d+"/"+cardNum_d);
+			}
+			
 			// set 1
 			UI.useBangCount = 1;
 			// broadcast "add this card in gun field"
@@ -97,6 +107,16 @@ public class CardManager {
 		}
 		// schofield
 		else if(cardName.equals("schofield")) {
+			// if you have gun (not colt-45)
+			if(!UI.player_A_gun.getText().split("/")[1].equals("colt-45")) {
+				String cardColor_d = UI.player_A_gun.getText().split("/")[0];
+				String cardName_d = UI.player_A_gun.getText().split("/")[1];
+				String cardShape_d = UI.player_A_gun.getText().split("/")[2];
+				String cardNum_d = UI.player_A_gun.getText().split("/")[3];
+				// drop gun
+				os.println("game/DISCARDFIELDCARD/"+id+"/"+cardColor_d+"/"+cardName_d+"/"+cardShape_d+"/"+cardNum_d);
+			}
+			
 			// if you used <Bang!> this turn, useBangCount = 0
 			if(UI.useBang == true) UI.useBangCount = 0;
 			// broadcast "add this card in gun field"
@@ -104,6 +124,16 @@ public class CardManager {
 		}
 		// remington
 		else if(cardName.equals("remington")) {
+			// if you have gun (not colt-45)
+			if(!UI.player_A_gun.getText().split("/")[1].equals("colt-45")) {
+				String cardColor_d = UI.player_A_gun.getText().split("/")[0];
+				String cardName_d = UI.player_A_gun.getText().split("/")[1];
+				String cardShape_d = UI.player_A_gun.getText().split("/")[2];
+				String cardNum_d = UI.player_A_gun.getText().split("/")[3];
+				// drop gun
+				os.println("game/DISCARDFIELDCARD/"+id+"/"+cardColor_d+"/"+cardName_d+"/"+cardShape_d+"/"+cardNum_d);
+			}
+			
 			// if you used <Bang!> this turn, useBangCount = 0
 			if(UI.useBang == true) UI.useBangCount = 0;
 			// broadcast "add this card in gun field"
@@ -111,6 +141,16 @@ public class CardManager {
 		}
 		// rev_carbine
 		else if(cardName.equals("rev_carbine")) {
+			// if you have gun (not colt-45)
+			if(!UI.player_A_gun.getText().split("/")[1].equals("colt-45")) {
+				String cardColor_d = UI.player_A_gun.getText().split("/")[0];
+				String cardName_d = UI.player_A_gun.getText().split("/")[1];
+				String cardShape_d = UI.player_A_gun.getText().split("/")[2];
+				String cardNum_d = UI.player_A_gun.getText().split("/")[3];
+				// drop gun
+				os.println("game/DISCARDFIELDCARD/"+id+"/"+cardColor_d+"/"+cardName_d+"/"+cardShape_d+"/"+cardNum_d);
+			}
+			
 			// if you used <Bang!> this turn, useBangCount = 0
 			if(UI.useBang == true) UI.useBangCount = 0;
 			// broadcast "add this card in gun field"
@@ -118,6 +158,16 @@ public class CardManager {
 		}
 		// winchester
 		else if(cardName.equals("winchester")) {
+			// if you have gun (not colt-45)
+			if(!UI.player_A_gun.getText().split("/")[1].equals("colt-45")) {
+				String cardColor_d = UI.player_A_gun.getText().split("/")[0];
+				String cardName_d = UI.player_A_gun.getText().split("/")[1];
+				String cardShape_d = UI.player_A_gun.getText().split("/")[2];
+				String cardNum_d = UI.player_A_gun.getText().split("/")[3];
+				// drop gun
+				os.println("game/DISCARDFIELDCARD/"+id+"/"+cardColor_d+"/"+cardName_d+"/"+cardShape_d+"/"+cardNum_d);
+			}
+			
 			// if you used <Bang!> this turn, useBangCount = 0
 			if(UI.useBang == true) UI.useBangCount = 0;
 			// broadcast "add this card in gun field"
