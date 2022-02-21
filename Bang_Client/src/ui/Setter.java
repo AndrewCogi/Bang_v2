@@ -789,6 +789,37 @@ public class Setter {
 				if(UI.deadACK == false) {
 					// send message to server
 					os.println("game/DIED/"+UI.player_A_role.getText());
+					// discard hand card
+					for(Component c : UI.player_A_hand.getComponents()) {
+						String cardColor = ((Select_button)c).getColor();
+						String cardName = ((Select_button)c).getName();
+						char cardShape = ((Select_button)c).getShape();
+						int cardNum = ((Select_button)c).getNum();
+						// broadcast
+						os.println("game/DISCARDHANDCARD/"+UI.player_A_name.getText()+"/"+cardColor+"/"+cardName+"/"+cardShape+"/"+cardNum);
+						// delete card
+						UI.player_A_hand.remove(c);
+						// repaint
+						UI.mp.repaint();
+						// delay
+						try{Thread.sleep(200);} catch(InterruptedException e) {}
+					}
+					// discard field card (gun) (except colt-45)
+					if(!UI.player_A_gun.getText().split("/")[1].equals("colt-45")) {
+						String cardColor = UI.player_A_gun.getText().split("/")[0];
+						String cardName = UI.player_A_gun.getText().split("/")[1];
+						String cardShape = UI.player_A_gun.getText().split("/")[2];
+						String cardNum = UI.player_A_gun.getText().split("/")[3];
+						os.println("game/DISCARDFIELDCARD/"+UI.player_A_name.getText()+"/"+cardColor+"/"+cardName+"/"+cardShape+"/"+cardNum);
+						// set colt-45
+						os.println("game/REINIT/GUN/"+UI.player_A_name.getText());
+						// repaint
+						UI.mp.repaint();
+						// delay
+						try{Thread.sleep(200);} catch(InterruptedException e) {}
+					}
+					// discard field card (field)
+					// TODO
 					// set deadACK == true
 					UI.deadACK = true;
 				}

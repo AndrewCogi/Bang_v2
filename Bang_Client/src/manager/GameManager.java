@@ -251,6 +251,19 @@ public class GameManager {
 			}
 		}
 		
+		// game/REINIT/[??]
+		else if(splitCmd[1].equals("REINIT")) {
+			// game/REINIT/GUN
+			if(splitCmd[2].equals("GUN")) {
+				// available(->false) card
+				Setter.setPlayerGunImageAvailable(splitCmd[3],false);
+				// make card
+				CardMaker.make_card_field_gun_init(splitCmd[3]);
+				// available(->true) card
+				Setter.setPlayerGunImageAvailable(splitCmd[3],true);
+			}
+		}
+		
 		// game/SELECT/[??]
 		else if(splitCmd[1].equals("SELECT")) {
 			// game/SELECT/ROLE/roles[3~9]

@@ -117,8 +117,8 @@ public class CardManager {
 				os.println("game/DISCARDFIELDCARD/"+id+"/"+cardColor_d+"/"+cardName_d+"/"+cardShape_d+"/"+cardNum_d);
 			}
 			
-			// if you used <Bang!> this turn, useBangCount = 0
-			if(UI.useBang == true) UI.useBangCount = 0;
+			// if you used <Bang!> this turn or your character is not "willy the kid", useBangCount = 0
+			if(UI.useBang == true || !UI.player_A_character.getText().split("/")[1].equals("willy_the_kid")) UI.useBangCount = 0;
 			// broadcast "add this card in gun field"
 			os.println("game/CARDABILITY/SCHOFIELD/"+id+"/"+cardColor+"/"+cardName+"/"+cardShape+"/"+cardNum);
 		}
@@ -134,8 +134,8 @@ public class CardManager {
 				os.println("game/DISCARDFIELDCARD/"+id+"/"+cardColor_d+"/"+cardName_d+"/"+cardShape_d+"/"+cardNum_d);
 			}
 			
-			// if you used <Bang!> this turn, useBangCount = 0
-			if(UI.useBang == true) UI.useBangCount = 0;
+			// if you used <Bang!> this turn or your character is not "willy the kid", useBangCount = 0
+			if(UI.useBang == true || !UI.player_A_character.getText().split("/")[1].equals("willy_the_kid")) UI.useBangCount = 0;
 			// broadcast "add this card in gun field"
 			os.println("game/CARDABILITY/REMINGTON/"+id+"/"+cardColor+"/"+cardName+"/"+cardShape+"/"+cardNum);
 		}
@@ -151,8 +151,8 @@ public class CardManager {
 				os.println("game/DISCARDFIELDCARD/"+id+"/"+cardColor_d+"/"+cardName_d+"/"+cardShape_d+"/"+cardNum_d);
 			}
 			
-			// if you used <Bang!> this turn, useBangCount = 0
-			if(UI.useBang == true) UI.useBangCount = 0;
+			// if you used <Bang!> this turn or your character is not "willy the kid", useBangCount = 0
+			if(UI.useBang == true || !UI.player_A_character.getText().split("/")[1].equals("willy_the_kid")) UI.useBangCount = 0;
 			// broadcast "add this card in gun field"
 			os.println("game/CARDABILITY/REV_CARBINE/"+id+"/"+cardColor+"/"+cardName+"/"+cardShape+"/"+cardNum);
 		}
@@ -168,8 +168,8 @@ public class CardManager {
 				os.println("game/DISCARDFIELDCARD/"+id+"/"+cardColor_d+"/"+cardName_d+"/"+cardShape_d+"/"+cardNum_d);
 			}
 			
-			// if you used <Bang!> this turn, useBangCount = 0
-			if(UI.useBang == true) UI.useBangCount = 0;
+			// if you used <Bang!> this turn or your character is not "willy the kid", useBangCount = 0
+			if(UI.useBang == true || !UI.player_A_character.getText().split("/")[1].equals("willy_the_kid")) UI.useBangCount = 0;
 			// broadcast "add this card in gun field"
 			os.println("game/CARDABILITY/WINCHESTER/"+id+"/"+cardColor+"/"+cardName+"/"+cardShape+"/"+cardNum);
 		}
