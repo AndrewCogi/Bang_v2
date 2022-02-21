@@ -11,6 +11,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 import client.App;
+import manager.CardManager;
 
 public class Setter {
 	// set ready button available
@@ -797,6 +798,8 @@ public class Setter {
 						int cardNum = ((Select_button)c).getNum();
 						// broadcast
 						os.println("game/DISCARDHANDCARD/"+UI.player_A_name.getText()+"/"+cardColor+"/"+cardName+"/"+cardShape+"/"+cardNum);
+						// add into main deck (old) because of discard it
+						CardManager.addIntoMainDeck_old(cardColor, cardName, cardShape, cardNum);
 						// delete card
 						UI.player_A_hand.remove(c);
 						// repaint
