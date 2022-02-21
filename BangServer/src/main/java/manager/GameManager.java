@@ -32,6 +32,13 @@ public class GameManager{
 			else if(splitCmd[2].equals("OFF")) setReadyPlayer(getReadyPlayer()-1);
 			System.out.println("[System][GameManager] > Ready "+splitCmd[2].toUpperCase()+" ["+splitCmd[3]+"], ("+getReadyPlayer()+" / 7)");
 		}
+		// game/REINIT/[??]
+		else if(splitCmd[1].equals("REINIT")){
+			// game/INIT/GUN/[id]
+			if(splitCmd[2].equals("GUN")){
+				server.App.broadcast("game/REINIT/GUN/"+splitCmd[3]);
+			}
+		}
 		// game/SELECT/[??]
 		else if(splitCmd[1].equals("SELECT")){
 			// game/SELECT/ROLE/[id]/[role name]/[cardNum]
