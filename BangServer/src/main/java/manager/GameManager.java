@@ -160,6 +160,17 @@ public class GameManager{
 			Gm.addCardIntoMainDeck_old(cardColor,cardName,cardShape,cardNum);
 			server.App.broadcast_without(id,"game/ADD/MAIN_DECK_OLD/"+cardColor+"/"+cardName+"/"+cardShape+"/"+cardNum);
 		}
+		// game/DISCARDFIELDCARD/[id]/[cardColor]/[cardName]/[cardShape]/[cardNum]
+		else if(splitCmd[1].equals("DISCARDFIELDCARD")){
+			// String id = splitCmd[2];
+			String cardColor = splitCmd[3];
+			String cardName = splitCmd[4];
+			String cardShape = splitCmd[5];
+			String cardNum = splitCmd[6];
+			// add into maind deck (old) because of discard it, and also broadcasting it
+			Gm.addCardIntoMainDeck_old(cardColor,cardName,cardShape,cardNum);
+			server.App.broadcast("game/ADD/MAIN_DECK_OLD/"+cardColor+"/"+cardName+"/"+cardShape+"/"+cardNum);
+		}
 		// game/CARDABILITY/[??]
 		else if(splitCmd[1].equals("CARDABILITY")){
 			// game/CARDABILITY/BANG/[targetCardExtension]/[targetCardName]/[userCardExtension]/[userCardName]
