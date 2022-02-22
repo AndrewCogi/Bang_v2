@@ -178,6 +178,32 @@ public class GameManager{
 			Gm.addCardIntoMainDeck_old(cardColor,cardName,cardShape,cardNum);
 			server.App.broadcast("game/ADD/MAIN_DECK_OLD/"+cardColor+"/"+cardName+"/"+cardShape+"/"+cardNum);
 		}
+		// game/GIVEHANDCARD/[giver]/[getter]/[cardColor]/[cardName]/[cardShape]/[cardNum]
+		else if(splitCmd[1].equals("GIVEHANDCARD")){
+			String giver = splitCmd[2];
+			String getter = splitCmd[3];
+			String cardColor = splitCmd[4];
+			String cardName = splitCmd[5];
+			String cardShape = splitCmd[6];
+			String cardNum = splitCmd[7];
+			// broadcast [giver] player remove this card
+			server.App.broadcast("game/REMOVE/PLAYER_HAND/"+giver+"/"+cardColor+"/"+cardName+"/"+cardShape+"/"+cardNum);
+			// broadcast [getter] player add this card
+			server.App.broadcast("game/ADD/PLAYER_HAND/"+getter+"/"+cardColor+"/"+cardName+"/"+cardShape+"/"+cardNum);
+		}
+		// game/GIVEFIELDCARD/[giver]/[getter]/[cardColor]/[cardName]/[cardShape]/[cardNum]
+		else if(splitCmd[1].equals("GIVEFIELDCARD")){
+			String giver = splitCmd[2];
+			String getter = splitCmd[3];
+			String cardColor = splitCmd[4];
+			String cardName = splitCmd[5];
+			String cardShape = splitCmd[6];
+			String cardNum = splitCmd[7];
+			// delete card in [giver] field TODO
+
+			// broadcast [getter] player add this card
+			server.App.broadcast("game/ADD/PLAYER_HAND/"+getter+"/"+cardColor+"/"+cardName+"/"+cardShape+"/"+cardNum);
+		}
 		// game/CARDABILITY/[??]
 		else if(splitCmd[1].equals("CARDABILITY")){
 			// game/CARDABILITY/BANG/[targetCardExtension]/[targetCardName]/[userCardExtension]/[userCardName]

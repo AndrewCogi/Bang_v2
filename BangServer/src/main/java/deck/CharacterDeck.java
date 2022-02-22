@@ -41,7 +41,7 @@ public class CharacterDeck{
 		deck.add(new CharactersCard("original","slab_the_killer"));
 		deck.add(new CharactersCard("original","suzy_lafayette"));
 		deck.add(new CharactersCard("original","vulture_sam"));
-		deck.add(new CharactersCard("original","willy_the_kid"));
+		deck.add(new CharactersCard("original","willy_the_kid")); // complete
 		// dodge_city
 		deck.add(new CharactersCard("dodge_city","apache_kid"));
 		deck.add(new CharactersCard("dodge_city","belle_star"));
