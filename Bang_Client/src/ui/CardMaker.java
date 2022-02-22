@@ -1298,7 +1298,7 @@ public class CardMaker {
 				// if this player not died,
 				if(isDied == false) {
 					// init player_A_role image
-					UI.player_A_role = new JButton(roleName){
+					UI.player_A_role = new JButton(roleName+"/"+"alive"){
 						private static final long serialVersionUID = 1L;
 						Image background = new ImageIcon(".\\.\\resources\\card\\role\\"+roleName+"_87.png").getImage();
 						// drawing background
@@ -1310,7 +1310,7 @@ public class CardMaker {
 				// this player died, 
 				else {
 					// init player_A_role image
-					UI.player_A_role = new JButton(roleName){
+					UI.player_A_role = new JButton(roleName+"/"+"died"){
 						private static final long serialVersionUID = 1L;
 						Image background = new ImageIcon(".\\.\\resources\\card\\role\\died\\"+roleName+"_87.png").getImage();
 						// drawing background
@@ -1323,7 +1323,7 @@ public class CardMaker {
 			// backward?
 			else if(isForward == false) {
 				// init player_A_role image
-				UI.player_A_role = new JButton(roleName){
+				UI.player_A_role = new JButton(roleName+"/"+"alive"){
 					private static final long serialVersionUID = 1L;
 					Image background = new ImageIcon(".\\.\\resources\\card\\role\\"+"role_back"+"_87.png").getImage();
 					// drawing background
@@ -1390,7 +1390,7 @@ public class CardMaker {
 				// if this player is not died, 
 				if(isDied == false) {
 					// init player_B_role image
-					UI.player_B_role = new JButton(roleName) {
+					UI.player_B_role = new JButton(roleName+"/"+"alive") {
 						private static final long serialVersionUID = 1L;
 						Image background = new ImageIcon(".\\.\\resources\\card\\role\\"+roleName+"_87.png").getImage();
 						// drawing background
@@ -1402,7 +1402,7 @@ public class CardMaker {
 				// this player is died, 
 				else {
 					// init player_B_role image
-					UI.player_B_role = new JButton(roleName) {
+					UI.player_B_role = new JButton(roleName+"/"+"died") {
 						private static final long serialVersionUID = 1L;
 						Image background = new ImageIcon(".\\.\\resources\\card\\role\\died\\"+roleName+"_87.png").getImage();
 						// drawing background
@@ -1415,7 +1415,7 @@ public class CardMaker {
 			// backward?
 			else if(isForward == false) {
 				// init player_B_role image
-				UI.player_B_role = new JButton(roleName){
+				UI.player_B_role = new JButton(roleName+"/"+"alive"){
 					private static final long serialVersionUID = 1L;
 					Image background = new ImageIcon(".\\.\\resources\\card\\role\\"+"role_back"+"_87.png").getImage();
 					// drawing background
@@ -1482,7 +1482,7 @@ public class CardMaker {
 				// if this player is not died, 
 				if(isDied == false) {
 					// init player_C_role image
-					UI.player_C_role = new JButton(roleName) {
+					UI.player_C_role = new JButton(roleName+"/"+"alive") {
 						private static final long serialVersionUID = 1L;
 						Image background = new ImageIcon(".\\.\\resources\\card\\role\\"+roleName+"_87_player_C.png").getImage();
 						// drawing background
@@ -1494,7 +1494,7 @@ public class CardMaker {
 				// this player is died, 
 				else {
 					// init player_C_role image
-					UI.player_C_role = new JButton(roleName) {
+					UI.player_C_role = new JButton(roleName+"/"+"died") {
 						private static final long serialVersionUID = 1L;
 						Image background = new ImageIcon(".\\.\\resources\\card\\role\\died\\"+roleName+"_87_player_C.png").getImage();
 						// drawing background
@@ -1507,7 +1507,7 @@ public class CardMaker {
 			// backward?
 			else if(isForward == false) {
 				// init player_C_role image
-				UI.player_C_role = new JButton(roleName){
+				UI.player_C_role = new JButton(roleName+"/"+"alive"){
 					private static final long serialVersionUID = 1L;
 					Image background = new ImageIcon(".\\.\\resources\\card\\role\\"+"role_back"+"_87_player_C.png").getImage();
 					// drawing background
@@ -1574,7 +1574,7 @@ public class CardMaker {
 				// if this player is not died, 
 				if(isDied == false) {
 					// init player_D_role image
-					UI.player_D_role = new JButton(roleName) {
+					UI.player_D_role = new JButton(roleName+"/"+"alive") {
 						private static final long serialVersionUID = 1L;
 						Image background = new ImageIcon(".\\.\\resources\\card\\role\\"+roleName+"_87_player_DE.png").getImage();
 						// drawing background
@@ -1586,7 +1586,7 @@ public class CardMaker {
 				// this player is died, 
 				else {
 					// init player_D_role image
-					UI.player_D_role = new JButton(roleName) {
+					UI.player_D_role = new JButton(roleName+"/"+"died") {
 						private static final long serialVersionUID = 1L;
 						Image background = new ImageIcon(".\\.\\resources\\card\\role\\died\\"+roleName+"_87_player_DE.png").getImage();
 						// drawing background
@@ -1599,7 +1599,7 @@ public class CardMaker {
 			// backward?
 			else if(isForward == false) {
 				// init player_D_role image
-				UI.player_D_role = new JButton(roleName){
+				UI.player_D_role = new JButton(roleName+"/"+"alive"){
 					private static final long serialVersionUID = 1L;
 					Image background = new ImageIcon(".\\.\\resources\\card\\role\\"+"role_back"+"_87_player_DE.png").getImage();
 					// drawing background
@@ -1666,7 +1666,7 @@ public class CardMaker {
 				// if this player is not died, 
 				if(isDied == false) {
 					// init player_E_role image
-					UI.player_E_role = new JButton(roleName) {
+					UI.player_E_role = new JButton(roleName+"/"+"alive") {
 						private static final long serialVersionUID = 1L;
 						Image background = new ImageIcon(".\\.\\resources\\card\\role\\"+roleName+"_87_player_DE.png").getImage();
 						// drawing background
@@ -1678,7 +1678,7 @@ public class CardMaker {
 				// this player is died, 
 				else {
 					// init player_E_role image
-					UI.player_E_role = new JButton(roleName) {
+					UI.player_E_role = new JButton(roleName+"/"+"died") {
 						private static final long serialVersionUID = 1L;
 						Image background = new ImageIcon(".\\.\\resources\\card\\role\\died\\"+roleName+"_87_player_DE.png").getImage();
 						// drawing background
@@ -1691,7 +1691,7 @@ public class CardMaker {
 			// backward?
 			else if(isForward == false) {
 				// init player_E_role image
-				UI.player_E_role = new JButton(roleName){
+				UI.player_E_role = new JButton(roleName+"/"+"alive"){
 					private static final long serialVersionUID = 1L;
 					Image background = new ImageIcon(".\\.\\resources\\card\\role\\"+"role_back"+"_87_player_DE.png").getImage();
 					// drawing background
@@ -1758,7 +1758,7 @@ public class CardMaker {
 				// if this player is not died, 
 				if(isDied == false) {
 					// init player_F_role image
-					UI.player_F_role = new JButton(roleName) {
+					UI.player_F_role = new JButton(roleName+"/"+"alive") {
 						private static final long serialVersionUID = 1L;
 						Image background = new ImageIcon(".\\.\\resources\\card\\role\\"+roleName+"_87_player_F.png").getImage();
 						// drawing background
@@ -1770,7 +1770,7 @@ public class CardMaker {
 				// this player is died, 
 				else {
 					// init player_F_role image
-					UI.player_F_role = new JButton(roleName) {
+					UI.player_F_role = new JButton(roleName+"/"+"died") {
 						private static final long serialVersionUID = 1L;
 						Image background = new ImageIcon(".\\.\\resources\\card\\role\\died\\"+roleName+"_87_player_F.png").getImage();
 						// drawing background
@@ -1783,7 +1783,7 @@ public class CardMaker {
 			// backward?
 			else if(isForward == false) {
 				// init player_F_role image
-				UI.player_F_role = new JButton(roleName){
+				UI.player_F_role = new JButton(roleName+"/"+"alive"){
 					private static final long serialVersionUID = 1L;
 					Image background = new ImageIcon(".\\.\\resources\\card\\role\\"+"role_back"+"_87_player_F.png").getImage();
 					// drawing background
@@ -1850,7 +1850,7 @@ public class CardMaker {
 				// if this player is not died, 
 				if(isDied == false) {
 					// init player_G_role image
-					UI.player_G_role = new JButton(roleName) {
+					UI.player_G_role = new JButton(roleName+"/"+"alive") {
 						private static final long serialVersionUID = 1L;
 						Image background = new ImageIcon(".\\.\\resources\\card\\role\\"+roleName+"_87.png").getImage();
 						// drawing background
@@ -1862,7 +1862,7 @@ public class CardMaker {
 				// this player is died, 
 				else {
 					// init player_G_role image
-					UI.player_G_role = new JButton(roleName) {
+					UI.player_G_role = new JButton(roleName+"/"+"died") {
 						private static final long serialVersionUID = 1L;
 						Image background = new ImageIcon(".\\.\\resources\\card\\role\\died\\"+roleName+"_87.png").getImage();
 						// drawing background
@@ -1875,7 +1875,7 @@ public class CardMaker {
 			// backward?
 			else if(isForward == false) {
 				// init player_G_role image
-				UI.player_G_role = new JButton(roleName){
+				UI.player_G_role = new JButton(roleName+"/"+"alive"){
 					private static final long serialVersionUID = 1L;
 					Image background = new ImageIcon(".\\.\\resources\\card\\role\\"+"role_back"+"_87.png").getImage();
 					// drawing background

@@ -209,13 +209,13 @@ public class GameManager {
 			// game/INIT/HP_GOLD
 			else if(splitCmd[2].equals("HP_GOLD")) {
 				// setting hp
-				Setter.setPlayerHpText(UI.player_A_name.getText(), Integer.parseInt(UI.player_A_character.getText().split("/")[2]), UI.player_A_role.getText().equals("sceriffo"));
-				Setter.setPlayerHpText(UI.player_B_name.getText(), Integer.parseInt(UI.player_B_character.getText().split("/")[2]), UI.player_B_role.getText().equals("sceriffo"));
-				Setter.setPlayerHpText(UI.player_C_name.getText(), Integer.parseInt(UI.player_C_character.getText().split("/")[2]), UI.player_C_role.getText().equals("sceriffo"));
-				Setter.setPlayerHpText(UI.player_D_name.getText(), Integer.parseInt(UI.player_D_character.getText().split("/")[2]), UI.player_D_role.getText().equals("sceriffo"));
-				Setter.setPlayerHpText(UI.player_E_name.getText(), Integer.parseInt(UI.player_E_character.getText().split("/")[2]), UI.player_E_role.getText().equals("sceriffo"));
-				Setter.setPlayerHpText(UI.player_F_name.getText(), Integer.parseInt(UI.player_F_character.getText().split("/")[2]), UI.player_F_role.getText().equals("sceriffo"));
-				Setter.setPlayerHpText(UI.player_G_name.getText(), Integer.parseInt(UI.player_G_character.getText().split("/")[2]), UI.player_G_role.getText().equals("sceriffo"));
+				Setter.setPlayerHpText(UI.player_A_name.getText(), Integer.parseInt(UI.player_A_character.getText().split("/")[2]), UI.player_A_role.getText().split("/")[0].equals("sceriffo"));
+				Setter.setPlayerHpText(UI.player_B_name.getText(), Integer.parseInt(UI.player_B_character.getText().split("/")[2]), UI.player_B_role.getText().split("/")[0].equals("sceriffo"));
+				Setter.setPlayerHpText(UI.player_C_name.getText(), Integer.parseInt(UI.player_C_character.getText().split("/")[2]), UI.player_C_role.getText().split("/")[0].equals("sceriffo"));
+				Setter.setPlayerHpText(UI.player_D_name.getText(), Integer.parseInt(UI.player_D_character.getText().split("/")[2]), UI.player_D_role.getText().split("/")[0].equals("sceriffo"));
+				Setter.setPlayerHpText(UI.player_E_name.getText(), Integer.parseInt(UI.player_E_character.getText().split("/")[2]), UI.player_E_role.getText().split("/")[0].equals("sceriffo"));
+				Setter.setPlayerHpText(UI.player_F_name.getText(), Integer.parseInt(UI.player_F_character.getText().split("/")[2]), UI.player_F_role.getText().split("/")[0].equals("sceriffo"));
+				Setter.setPlayerHpText(UI.player_G_name.getText(), Integer.parseInt(UI.player_G_character.getText().split("/")[2]), UI.player_G_role.getText().split("/")[0].equals("sceriffo"));
 				// hp image & text available -> true
 				Setter.setPlayerHpImageAvailable(true);
 				Setter.setPlayerHpTextAvailable(true);
@@ -456,6 +456,8 @@ public class GameManager {
 							break;
 						}
 					}
+					// repaint
+					UI.mp.repaint();
 				}
 				else if(UI.player_C_name.getText().equals(id)) {
 					// find card, remove that card
@@ -468,6 +470,8 @@ public class GameManager {
 							break;
 						}
 					}
+					// repaint
+					UI.mp.repaint();
 				}
 				else if(UI.player_D_name.getText().equals(id)) {
 					// find card, remove that card
@@ -480,6 +484,8 @@ public class GameManager {
 							break;
 						}
 					}
+					// repaint
+					UI.mp.repaint();
 				}
 				else if(UI.player_E_name.getText().equals(id)) {
 					// find card, remove that card
@@ -492,6 +498,8 @@ public class GameManager {
 							break;
 						}
 					}
+					// repaint
+					UI.mp.repaint();
 				}
 				else if(UI.player_F_name.getText().equals(id)) {
 					// find card, remove that card
@@ -504,6 +512,8 @@ public class GameManager {
 							break;
 						}
 					}
+					// repaint
+					UI.mp.repaint();
 				}
 				else if(UI.player_G_name.getText().equals(id)) {
 					// find card, remove that card
@@ -516,9 +526,9 @@ public class GameManager {
 							break;
 						}
 					}
+					// repaint
+					UI.mp.repaint();
 				}
-				// repaint
-				UI.mp.repaint();
 			}
 		}
 		

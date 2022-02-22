@@ -782,22 +782,66 @@ public class Setter {
 				UI.player_A_hp_text.setText(" x "+0);
 				// set role card open
 				Setter.setPlayerRoleImageAvailable(name, false);
-				CardMaker.make_card_handField_role(name, UI.player_A_role.getText(), true, true);
+				CardMaker.make_card_handField_role(name, UI.player_A_role.getText().split("/")[0], true, true);
 				Setter.setPlayerRoleImageAvailable(name, true);
 				// if deadACK == false, 
 				if(UI.deadACK == false) {
 					// send message to server
-					os.println("game/DIED/"+UI.player_A_role.getText());
+					os.println("game/DIED/"+UI.player_A_role.getText().split("/")[0]);
 					// discard hand card
 					for(Component c : UI.player_A_hand.getComponents()) {
 						String cardColor = ((Select_button)c).getColor();
 						String cardName = ((Select_button)c).getName();
 						char cardShape = ((Select_button)c).getShape();
 						int cardNum = ((Select_button)c).getNum();
-						// broadcast
-						os.println("game/DISCARDHANDCARD/"+UI.player_A_name.getText()+"/"+cardColor+"/"+cardName+"/"+cardShape+"/"+cardNum);
-						// add into main deck (old) because of discard it
-						CardManager.addIntoMainDeck_old(cardColor, cardName, cardShape, cardNum);
+						// if vulture sam (B) is alive, give cards to him
+						if(UI.player_B_character.getText().split("/")[1].equals("vulture_sam") && UI.player_B_role.getText().split("/")[1].equals("alive")) {
+							// give cards to him
+							// game/GIVEHANDCARD/[giver]/[vulture_sam_owner]/[cardColor]/[cardName]/[cardShape]/[cardNum]
+							os.println("game/GIVEHANDCARD/"+UI.player_A_name.getText()+"/"+UI.player_B_name.getText()+"/"+
+							cardColor+"/"+cardName+"/"+cardShape+"/"+cardNum);
+						}
+						// if vulture sam (C) is alive, give cards to him
+						else if(UI.player_C_character.getText().split("/")[1].equals("vulture_sam") && UI.player_C_role.getText().split("/")[1].equals("alive")) {
+							// give cards to him
+							// game/GIVEHANDCARD/[giver]/[vulture_sam_owner]/[cardColor]/[cardName]/[cardShape]/[cardNum]
+							os.println("game/GIVEHANDCARD/"+UI.player_A_name.getText()+"/"+UI.player_C_name.getText()+"/"+
+							cardColor+"/"+cardName+"/"+cardShape+"/"+cardNum);
+						}
+						// if vulture sam (D) is alive, give cards to him
+						else if(UI.player_D_character.getText().split("/")[1].equals("vulture_sam") && UI.player_D_role.getText().split("/")[1].equals("alive")) {
+							// give cards to him
+							// game/GIVEHANDCARD/[giver]/[vulture_sam_owner]/[cardColor]/[cardName]/[cardShape]/[cardNum]
+							os.println("game/GIVEHANDCARD/"+UI.player_A_name.getText()+"/"+UI.player_D_name.getText()+"/"+
+							cardColor+"/"+cardName+"/"+cardShape+"/"+cardNum);
+						}
+						// if vulture sam (E) is alive, give cards to him
+						else if(UI.player_E_character.getText().split("/")[1].equals("vulture_sam") && UI.player_E_role.getText().split("/")[1].equals("alive")) {
+							// give cards to him
+							// game/GIVEHANDCARD/[giver]/[vulture_sam_owner]/[cardColor]/[cardName]/[cardShape]/[cardNum]
+							os.println("game/GIVEHANDCARD/"+UI.player_A_name.getText()+"/"+UI.player_E_name.getText()+"/"+
+							cardColor+"/"+cardName+"/"+cardShape+"/"+cardNum);
+						}
+						// if vulture sam (F) is alive, give cards to him
+						else if(UI.player_F_character.getText().split("/")[1].equals("vulture_sam") && UI.player_F_role.getText().split("/")[1].equals("alive")) {
+							// give cards to him
+							// game/GIVEHANDCARD/[giver]/[vulture_sam_owner]/[cardColor]/[cardName]/[cardShape]/[cardNum]
+							os.println("game/GIVEHANDCARD/"+UI.player_A_name.getText()+"/"+UI.player_F_name.getText()+"/"+
+							cardColor+"/"+cardName+"/"+cardShape+"/"+cardNum);
+						}
+						// if vulture sam (G) is alive, give cards to him
+						else if(UI.player_G_character.getText().split("/")[1].equals("vulture_sam") && UI.player_G_role.getText().split("/")[1].equals("alive")) {
+							// give cards to him
+							// game/GIVEHANDCARD/[giver]/[vulture_sam_owner]/[cardColor]/[cardName]/[cardShape]/[cardNum]
+							os.println("game/GIVEHANDCARD/"+UI.player_A_name.getText()+"/"+UI.player_G_name.getText()+"/"+
+							cardColor+"/"+cardName+"/"+cardShape+"/"+cardNum);
+						}
+						else {
+							// broadcast
+							os.println("game/DISCARDHANDCARD/"+UI.player_A_name.getText()+"/"+cardColor+"/"+cardName+"/"+cardShape+"/"+cardNum);
+							// add into main deck (old) because of discard it
+							CardManager.addIntoMainDeck_old(cardColor, cardName, cardShape, cardNum);	
+						}
 						// delete card
 						UI.player_A_hand.remove(c);
 						// repaint
@@ -811,7 +855,52 @@ public class Setter {
 						String cardName = UI.player_A_gun.getText().split("/")[1];
 						String cardShape = UI.player_A_gun.getText().split("/")[2];
 						String cardNum = UI.player_A_gun.getText().split("/")[3];
-						os.println("game/DISCARDFIELDCARD/"+UI.player_A_name.getText()+"/"+cardColor+"/"+cardName+"/"+cardShape+"/"+cardNum);
+						// if vulture sam (B) is alive, give cards to him
+						if(UI.player_B_character.getText().split("/")[1].equals("vulture_sam") && UI.player_B_role.getText().split("/")[1].equals("alive")) {
+							// give cards to him
+							// game/GIVEFIELDCARD/[giver]/[vulture_sam_owner]/[cardColor]/[cardName]/[cardShape]/[cardNum]
+							os.println("game/GIVEFIELDCARD/"+UI.player_A_name.getText()+"/"+UI.player_B_name.getText()+"/"+
+							cardColor+"/"+cardName+"/"+cardShape+"/"+cardNum);
+						}
+						// if vulture sam (C) is alive, give cards to him
+						else if(UI.player_C_character.getText().split("/")[1].equals("vulture_sam") && UI.player_C_role.getText().split("/")[1].equals("alive")) {
+							// give cards to him
+							// game/GIVEFIELDCARD/[giver]/[vulture_sam_owner]/[cardColor]/[cardName]/[cardShape]/[cardNum]
+							os.println("game/GIVEFIELDCARD/"+UI.player_A_name.getText()+"/"+UI.player_C_name.getText()+"/"+
+							cardColor+"/"+cardName+"/"+cardShape+"/"+cardNum);
+						}
+						// if vulture sam (D) is alive, give cards to him
+						else if(UI.player_D_character.getText().split("/")[1].equals("vulture_sam") && UI.player_D_role.getText().split("/")[1].equals("alive")) {
+							// give cards to him
+							// game/GIVEFIELDCARD/[giver]/[vulture_sam_owner]/[cardColor]/[cardName]/[cardShape]/[cardNum]
+							os.println("game/GIVEFIELDCARD/"+UI.player_A_name.getText()+"/"+UI.player_D_name.getText()+"/"+
+							cardColor+"/"+cardName+"/"+cardShape+"/"+cardNum);
+						}
+						// if vulture sam (E) is alive, give cards to him
+						else if(UI.player_E_character.getText().split("/")[1].equals("vulture_sam") && UI.player_E_role.getText().split("/")[1].equals("alive")) {
+							// give cards to him
+							// game/GIVEFIELDCARD/[giver]/[vulture_sam_owner]/[cardColor]/[cardName]/[cardShape]/[cardNum]
+							os.println("game/GIVEFIELDCARD/"+UI.player_A_name.getText()+"/"+UI.player_E_name.getText()+"/"+
+							cardColor+"/"+cardName+"/"+cardShape+"/"+cardNum);
+						}
+						// if vulture sam (F) is alive, give cards to him
+						else if(UI.player_F_character.getText().split("/")[1].equals("vulture_sam") && UI.player_F_role.getText().split("/")[1].equals("alive")) {
+							// give cards to him
+							// game/GIVEFIELDCARD/[giver]/[vulture_sam_owner]/[cardColor]/[cardName]/[cardShape]/[cardNum]
+							os.println("game/GIVEFIELDCARD/"+UI.player_A_name.getText()+"/"+UI.player_F_name.getText()+"/"+
+							cardColor+"/"+cardName+"/"+cardShape+"/"+cardNum);
+						}
+						// if vulture sam (G) is alive, give cards to him
+						else if(UI.player_G_character.getText().split("/")[1].equals("vulture_sam") && UI.player_G_role.getText().split("/")[1].equals("alive")) {
+							// give cards to him
+							// game/GIVEFIELDCARD/[giver]/[vulture_sam_owner]/[cardColor]/[cardName]/[cardShape]/[cardNum]
+							os.println("game/GIVEFIELDCARD/"+UI.player_A_name.getText()+"/"+UI.player_G_name.getText()+"/"+
+							cardColor+"/"+cardName+"/"+cardShape+"/"+cardNum);
+						}
+						else {
+							// broadcast
+							os.println("game/DISCARDFIELDCARD/"+UI.player_A_name.getText()+"/"+cardColor+"/"+cardName+"/"+cardShape+"/"+cardNum);	
+						}
 						// set colt-45
 						os.println("game/REINIT/GUN/"+UI.player_A_name.getText());
 						// repaint
@@ -836,7 +925,7 @@ public class Setter {
 				UI.player_B_hp_text.setText(" x "+0);
 				// set role card open
 				Setter.setPlayerRoleImageAvailable(name, false);
-				CardMaker.make_card_handField_role(name, UI.player_B_role.getText(), true, true);
+				CardMaker.make_card_handField_role(name, UI.player_B_role.getText().split("/")[0], true, true);
 				Setter.setPlayerRoleImageAvailable(name, true);
 			}
 		}
@@ -850,7 +939,7 @@ public class Setter {
 				UI.player_C_hp_text.setText(" x "+0);
 				// set role card open
 				Setter.setPlayerRoleImageAvailable(name, false);
-				CardMaker.make_card_handField_role(name, UI.player_C_role.getText(), true, true);
+				CardMaker.make_card_handField_role(name, UI.player_C_role.getText().split("/")[0], true, true);
 				Setter.setPlayerRoleImageAvailable(name, true);
 			}
 		}
@@ -864,7 +953,7 @@ public class Setter {
 				UI.player_D_hp_text.setText(" x "+0);
 				// set role card open
 				Setter.setPlayerRoleImageAvailable(name, false);
-				CardMaker.make_card_handField_role(name, UI.player_D_role.getText(), true, true);
+				CardMaker.make_card_handField_role(name, UI.player_D_role.getText().split("/")[0], true, true);
 				Setter.setPlayerRoleImageAvailable(name, true);
 			}
 		}
@@ -878,7 +967,7 @@ public class Setter {
 				UI.player_E_hp_text.setText(" x "+0);
 				// set role card open
 				Setter.setPlayerRoleImageAvailable(name, false);
-				CardMaker.make_card_handField_role(name, UI.player_E_role.getText(), true, true);
+				CardMaker.make_card_handField_role(name, UI.player_E_role.getText().split("/")[0], true, true);
 				Setter.setPlayerRoleImageAvailable(name, true);
 			}
 		}
@@ -892,7 +981,7 @@ public class Setter {
 				UI.player_F_hp_text.setText(" x "+0);
 				// set role card open
 				Setter.setPlayerRoleImageAvailable(name, false);
-				CardMaker.make_card_handField_role(name, UI.player_F_role.getText(), true, true);
+				CardMaker.make_card_handField_role(name, UI.player_F_role.getText().split("/")[0], true, true);
 				Setter.setPlayerRoleImageAvailable(name, true);
 			}
 		}
@@ -906,7 +995,7 @@ public class Setter {
 				UI.player_G_hp_text.setText(" x "+0);
 				// set role card open
 				Setter.setPlayerRoleImageAvailable(name, false);
-				CardMaker.make_card_handField_role(name, UI.player_G_role.getText(), true, true);
+				CardMaker.make_card_handField_role(name, UI.player_G_role.getText().split("/")[0], true, true);
 				Setter.setPlayerRoleImageAvailable(name, true);
 			}
 		}
