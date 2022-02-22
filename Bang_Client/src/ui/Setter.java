@@ -780,8 +780,6 @@ public class Setter {
 			if(updateHp <= 0) {
 				// setting hp = 0
 				UI.player_A_hp_text.setText(" x "+0);
-				// setting color RED
-				UI.player_A_hp_text.setForeground(Color.RED);
 				// set role card open
 				Setter.setPlayerRoleImageAvailable(name, false);
 				CardMaker.make_card_handField_role(name, UI.player_A_role.getText(), true, true);
@@ -836,8 +834,6 @@ public class Setter {
 			if(updateHp <= 0) {
 				// setting hp = 0
 				UI.player_B_hp_text.setText(" x "+0);
-				// setting color RED
-				UI.player_B_hp_text.setForeground(Color.RED);
 				// set role card open
 				Setter.setPlayerRoleImageAvailable(name, false);
 				CardMaker.make_card_handField_role(name, UI.player_B_role.getText(), true, true);
@@ -852,8 +848,6 @@ public class Setter {
 			if(updateHp <= 0) {
 				// setting hp = 0
 				UI.player_C_hp_text.setText(" x "+0);
-				// setting color RED
-				UI.player_C_hp_text.setForeground(Color.RED);
 				// set role card open
 				Setter.setPlayerRoleImageAvailable(name, false);
 				CardMaker.make_card_handField_role(name, UI.player_C_role.getText(), true, true);
@@ -868,8 +862,6 @@ public class Setter {
 			if(updateHp <= 0) {
 				// setting hp = 0
 				UI.player_D_hp_text.setText(" x "+0);
-				// setting color RED
-				UI.player_D_hp_text.setForeground(Color.RED);
 				// set role card open
 				Setter.setPlayerRoleImageAvailable(name, false);
 				CardMaker.make_card_handField_role(name, UI.player_D_role.getText(), true, true);
@@ -884,8 +876,6 @@ public class Setter {
 			if(updateHp <= 0) {
 				// setting hp = 0
 				UI.player_E_hp_text.setText(" x "+0);
-				// setting color RED
-				UI.player_E_hp_text.setForeground(Color.RED);
 				// set role card open
 				Setter.setPlayerRoleImageAvailable(name, false);
 				CardMaker.make_card_handField_role(name, UI.player_E_role.getText(), true, true);
@@ -900,8 +890,6 @@ public class Setter {
 			if(updateHp <= 0) {
 				// setting hp = 0
 				UI.player_F_hp_text.setText(" x "+0);
-				// setting color RED
-				UI.player_F_hp_text.setForeground(Color.RED);
 				// set role card open
 				Setter.setPlayerRoleImageAvailable(name, false);
 				CardMaker.make_card_handField_role(name, UI.player_F_role.getText(), true, true);
@@ -916,8 +904,6 @@ public class Setter {
 			if(updateHp <= 0) {
 				// setting hp = 0
 				UI.player_G_hp_text.setText(" x "+0);
-				// setting color RED
-				UI.player_G_hp_text.setForeground(Color.RED);
 				// set role card open
 				Setter.setPlayerRoleImageAvailable(name, false);
 				CardMaker.make_card_handField_role(name, UI.player_G_role.getText(), true, true);
