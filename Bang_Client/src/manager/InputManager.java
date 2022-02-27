@@ -3,6 +3,9 @@ package manager;
 import java.io.PrintWriter;
 import java.util.Scanner;
 
+import client.App;
+import ui.UI;
+
 public class InputManager {
 	private GameManager gm; // game command manager
 	private PlayerManager pm; // player login|out manager
@@ -16,6 +19,10 @@ public class InputManager {
 	
 	public void request(String cmd) {
 		if(!cmd.equals("session/SESSIONACK")) System.out.println("[InputManager][get]: "+cmd);
+		
+		// repaint
+		UI.mp.repaint();
+		App.u.setVisible(true);
 		
 		// player/[??]
 		if(cmd.startsWith("player")) {

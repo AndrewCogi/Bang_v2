@@ -165,7 +165,7 @@ public class UI {
 	// 타겟을 설정할 수 있도록 허용해주는 변수 (예: 뱅! 을 쓰고 사용할 타겟을 고를 때 true)
 	private static boolean setTarget = false;
 	// you attacked someone (ex: you get bang! someone, you can use missed!..)
-	// 누군가에게 공격을 당했을 때 카드가용가능 확인변수 (예: 뱅! 에 맞아서 빗나감! 등을 사용할 수 있도록 할 때 true)
+	// 누군가에게 공격을 당했을 때 카드가용가능 확인변수 (뱅! 관련 공격은 제외함. 자동처리됨.) (예: 결투, 인디언 등을 받았을 때 true)
 	private static boolean attacked = false;
 	// command string (which card you use with target)
 	// [?]에게 어떠한 카드가 사용가능한지 체크해주는 변수들 (예: 뱅! 사정거리 안 변수:"bang" / 밖 변수:"")
@@ -724,11 +724,6 @@ public class UI {
 						// init discardNum = 0
 						UI.discardNum = 0;
 						// disable phase3 end button
-						Setter.setPlayerButtonAvailable(false);
-					}
-					// if attacked == true
-					else if(attacked == true) {
-						os.println("game/NOUSECARD");
 						Setter.setPlayerButtonAvailable(false);
 					}
 				}

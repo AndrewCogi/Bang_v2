@@ -3005,6 +3005,7 @@ public class CardMaker {
 					else if(SwingUtilities.isLeftMouseButton(e)) {
 						// check can card use in phase2
 						if(UI.getCardUse2() == true) {
+							
 							// if you used bang this turn, abort it.
 							if(cardName.equals("bang") && UI.useBang == true) {
 								// if useBangCount <= 0, abort it.
@@ -3012,8 +3013,17 @@ public class CardMaker {
 									Setter.setTextNotice(1, "You already use <Bang!>");
 									return;	
 								}
-								// else useBangCount > 0, you can use <Bang!>
 							}
+							
+							// if, nobody target, abort
+							boolean[] canShoot = CardManager.checkDistance();
+							boolean checker = false;
+							for(boolean b : canShoot) if(b == true) checker = true;
+							if(checker == false) {
+								Setter.setTextNotice(1, "Can't use <Bang!> : Nobody target");
+								return;
+							}
+							
 							// send use message
 							os.println("game/USEHANDCARD/"+id+"/"+cardColor+"/"+cardName+"/"+cardShape+"/"+cardNum);
 							// if cardColor == brown, add into main deck (old)

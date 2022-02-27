@@ -38,7 +38,7 @@ public class CardManager {
 			UI.setSetTarget(true);
 			// notice change
 			Setter.setTextNotice(1, "Select Target...");
-
+			
 			// check distance
 			boolean[] canShoot = checkDistance();
 			
@@ -188,7 +188,7 @@ public class CardManager {
 	}
 	
 	// check distance
-	private static boolean[] checkDistance() {
+	public static boolean[] checkDistance() {
 		// {A,B,C,D,E,F,G}
 		boolean[] canShoot = new boolean[7];
 		
