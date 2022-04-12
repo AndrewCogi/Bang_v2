@@ -50,6 +50,8 @@ public class Capitalizer implements Runnable{
 		String cmd;
 		while(is.hasNextLine()){
 			cmd = is.nextLine();
+			// GET ALL COMMAND
+			System.out.println("[System][Capitalizer]{GET} > "+cmd);
 			// login command
 			if(cmd.startsWith("login")) login.request(cmd);
 			// session command
