@@ -76,8 +76,9 @@ public class GameManager {
 			if(splitCmd[2].equals("READYBUTTON")) {
 				Setter.setReadyButtonAvailable(false);
 				// reset button
-				UI.game_ready_button.setBackground(Color.GRAY);
-				UI.game_ready_button.setText("Ready?");
+				// TODO: CHECKING
+				// UI.game_ready_button.setBackground(Color.GRAY);
+				// UI.game_ready_button.setText("Ready?");
 			}
 			// game/DISABLE/TOP_NOTICE
 			else if(splitCmd[2].equals("TOP_NOTICE")) {
@@ -253,7 +254,7 @@ public class GameManager {
 		
 		// game/REINIT/[??]
 		else if(splitCmd[1].equals("REINIT")) {
-			// game/REINIT/GUN
+			// game/REINIT/GUN/[id]
 			if(splitCmd[2].equals("GUN")) {
 				// available(->false) card
 				Setter.setPlayerGunImageAvailable(splitCmd[3],false);
@@ -293,7 +294,7 @@ public class GameManager {
 				// init remain select chance
 				UI.select_chance = 1;
 			}
-			// game/SELECT/CHARACTER/[ex1]/[ch1]/[hp1]/[ex2]/[ch2]/[hp2]/[ex3]/[ch3]/[hp3]
+			// game/SELECT/CHARACTER/[ex1]/[ch1]/[hp1]/[ex2]/[ch2]/[hp2]/[ex3]/[ch3]/[hp3]/[ex4]/[ch4]/[hp4]
 			else if(splitCmd[2].equals("CHARACTER")) {
 				String extension1 = splitCmd[3];
 				String extension2 = splitCmd[6];
