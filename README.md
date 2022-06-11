@@ -1,2 +1,2 @@
-# Bang_Client
+# Bang! the board game
 Bang! the board game
