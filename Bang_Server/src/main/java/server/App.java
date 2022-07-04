@@ -24,7 +24,7 @@ public class App {
 	private static ServerSocket listener; // ServerSocket
 	private static ExecutorService pool; // ThreadPool
 	private static final int threadPoolNum = 10; // How many threads in pool
-	private static int accessAttempt = 0; // How many times access atteption
+	private static int accessAttempt = 0; // How many times access attempt
 	private static boolean gameStarted = false; // Check game is started
 	private static int loginPw; // login password (6-digits)
 	private static int startPw; // game start password (6-digits)
