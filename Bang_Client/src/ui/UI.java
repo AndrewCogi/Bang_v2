@@ -221,7 +221,6 @@ public class UI {
 		
 		// test function TODO
 		// test_func();
-		// TODO 총 갈아끼면 총 버려지는거 되도록 해주기
 	}
 	
 	// init game ready button
@@ -329,7 +328,7 @@ public class UI {
 		// set screen size
 		mf.setSize(1920,1040);
 		// set resize false
-		mf.setResizable(false);
+		// mf.setResizable(false);
 		// if mouse moved, repaint
 		mf.addMouseMotionListener(new MouseMotionAdapter() {
 			@Override
